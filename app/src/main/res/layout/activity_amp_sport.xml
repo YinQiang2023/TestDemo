@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/index_bg_color"
+    tools:context=".ui.sport.MapSportActivity">
+
+    <View
+        android:id="@+id/topView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="140dp">
+
+        <FrameLayout
+            android:id="@+id/google_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.amap.api.maps.MapView
+            android:id="@+id/aMap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            tools:background="@color/color_FFFFFF" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ivHoming"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/transparent"
+            android:src="@mipmap/sport_homing" />
+
+    </RelativeLayout>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_161A20"
+            android:minWidth="300dp"
+            app:behavior_hideable="false"
+            app:behavior_peekHeight="140dp"
+            app:layout_behavior="@string/bottom_sheet_behavior">
+
+            <!--region 详情布局 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_161A20"
+                android:minWidth="300dp"
+                tools:ignore="MissingConstraints">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivDown"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:rotation="-90"
+                    android:scaleType="center"
+                    android:src="@mipmap/left_arrow"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!--region 公里 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivDown">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no_data_sign"
+                        android:textColor="@color/color_FFFFFF"
+                        android:textSize="45sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvUnit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:text="@string/unit_distance_0"
+                        android:textColor="@color/color_FFFFFF"
+                        android:textSize="16sp"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvValue"
+                        app:layout_constraintStart_toEndOf="@id/tvValue" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!--endregion-->
+
+                <!--region 无设备时信息布局 -->
+                <!--<androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clNoDev"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cl"
+                    android:layout_marginTop="20dp"
+                    >
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.5" />
+
+                    &lt;!&ndash;region 运动时间 &ndash;&gt;
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/color_FFFFFF"
+                        android:text="@string/sport_time"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/guideline"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvSportTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="34sp"
+                        android:textColor="@color/color_FFFFFF"
+                        android:text="00:00:00"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/guideline"
+                        app:layout_constraintTop_toBottomOf="@id/tv1"
+                        />
+                    &lt;!&ndash;endregion&ndash;&gt;
+
+                    &lt;!&ndash;region 卡路里 &ndash;&gt;
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/color_FFFFFF"
+                        android:text="@string/sport_calories_describe"
+                        app:layout_constraintStart_toStartOf="@id/guideline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvCalories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="34sp"
+                        android:textColor="@color/color_FFFFFF"
+                        android:textStyle="bold"
+                        android:text="0"
+                        app:layout_constraintStart_toStartOf="@id/guideline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv2"
+                        />
+                    &lt;!&ndash;endregion&ndash;&gt;
+
+                    &lt;!&ndash;region 速度 &ndash;&gt;
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/color_FFFFFF"
+                        android:text="@string/sport_speed_describe"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/guideline"
+                        app:layout_constraintTop_toBottomOf="@id/tvSportTime"
+                        android:layout_marginTop="50dp"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="34sp"
+                        android:textColor="@color/color_FFFFFF"
+                        android:text="0"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/guideline"
+                        app:layout_constraintTop_toBottomOf="@id/tv3"
+                        />
+                    &lt;!&ndash;endregion&ndash;&gt;
+
+                    &lt;!&ndash;region 配速 &ndash;&gt;
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/color_FFFFFF"
+                        android:text="@string/sport_minkm"
+                        app:layout_constraintStart_toStartOf="@id/guideline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCalories"
+                        android:layout_marginTop="50dp"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvMinkm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="34sp"
+                        android:textColor="@color/color_FFFFFF"
+                        android:textStyle="bold"
+                        android:text="0"
+                        app:layout_constraintStart_toStartOf="@id/guideline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv4"
+                        />
+                    &lt;!&ndash;endregion&ndash;&gt;
+
+                </androidx.constraintlayout.widget.ConstraintLayout>-->
+                <!--endregion-->
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cl" />
+
+
+                <View
+                    android:id="@+id/v1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="25dp"
+                    android:background="@color/color_FFFFFF_20"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/v1">
+
+                    <!--region 底部按钮 -->
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/btnPause"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:src="@mipmap/sport_pause"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/btnLock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:scaleType="center"
+                        android:src="@mipmap/sport_lock"
+                        app:layout_constraintBottom_toBottomOf="@id/btnPause"
+                        app:layout_constraintEnd_toStartOf="@+id/rlStop"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/btnPause" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/rlUnLock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="invisible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        tools:visibility="visible">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnUnLock"
+                            android:layout_width="61dp"
+                            android:layout_height="61dp"
+                            android:layout_centerInParent="true"
+                            android:background="@mipmap/sport_lock2"
+                            android:scaleType="center"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            />
+
+                        <com.jwei.publicone.view.CircularSeekBar
+                            android:id="@+id/sbUnLock"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_centerInParent="true"
+                            app:circle_color="@color/color_FFFFFF_20"
+                            app:circle_progress_color="@color/color_FFFFFF"
+                            app:circle_stroke_width="2dip"
+                            app:circle_x_radius="100dip"
+                            app:circle_y_radius="100dip"
+                            app:circularSeekBar_progress="0"
+                            app:end_angle="270"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:pointer_alpha_ontouch="100"
+                            app:pointer_color="#00000000"
+                            app:pointer_halo_border_width="-5dip"
+                            app:pointer_halo_color="#00000000"
+                            app:pointer_halo_width="0dp"
+                            app:seekbar_max="100"
+                            app:start_angle="270"
+                            app:use_custom_radii="true" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_unlock_tips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sport_unlock_tips"
+                        android:textColor="@color/color_FFFFFF"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/rlUnLock"
+                        app:layout_constraintStart_toStartOf="@+id/rlUnLock"
+                        app:layout_constraintTop_toBottomOf="@+id/rlUnLock" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/rlStop"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_marginStart="84dp"
+                        android:layout_marginEnd="20dp"
+                        android:visibility="invisible"
+                        app:layout_constraintEnd_toStartOf="@+id/btnPause"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        tools:visibility="visible">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnStop"
+                            android:layout_width="61dp"
+                            android:layout_height="61dp"
+                            android:layout_centerInParent="true"
+                            android:background="@mipmap/sport_sotp"
+                            android:scaleType="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.jwei.publicone.view.CircularSeekBar
+                            android:id="@+id/sbStop"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_centerInParent="true"
+                            app:circle_color="@color/color_FFFFFF_20"
+                            app:circle_progress_color="@color/color_FFFFFF"
+                            app:circle_stroke_width="2dip"
+                            app:circle_x_radius="100dip"
+                            app:circle_y_radius="100dip"
+                            app:circularSeekBar_progress="0"
+                            app:end_angle="270"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:pointer_alpha_ontouch="100"
+                            app:pointer_color="#00000000"
+                            app:pointer_halo_border_width="-5dip"
+                            app:pointer_halo_color="#00000000"
+                            app:pointer_halo_width="0dp"
+                            app:seekbar_max="100"
+                            app:start_angle="270"
+                            app:use_custom_radii="true" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_stop_tips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sport_stop_tips"
+                        android:textColor="@color/color_FFFFFF"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/rlStop"
+                        app:layout_constraintStart_toStartOf="@+id/rlStop"
+                        app:layout_constraintTop_toBottomOf="@+id/rlStop" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/btnRestart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="84dp"
+                        android:background="@color/transparent"
+                        android:src="@mipmap/sport_restart"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/btnPause"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:visibility="visible" />
+                    <!--endregion-->
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--endregion-->
+
+            <!--region 简单布局 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clSimple"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:alpha="0"
+                android:background="@color/color_161A20"
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:rotation="90"
+                    android:scaleType="center"
+                    android:src="@mipmap/left_arrow"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <!--region 公里2 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="@id/guideline2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivUp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvKm2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/color_FFFFFF"
+                        android:textSize="44sp"
+                        android:textStyle="bold"
+                        tools:ignore="MissingConstraints" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvKm2Unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:text="@string/unit_distance_0"
+                        android:textColor="@color/color_FFFFFF"
+                        android:textSize="16sp"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvKm2"
+                        app:layout_constraintStart_toEndOf="@id/tvKm2" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!--endregion-->
+
+
+                <!--region 运动时间2 -->
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sport_time"
+                    android:textColor="@color/color_FFFFFF"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guideline2"
+                    app:layout_constraintTop_toTopOf="@id/cl2" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSportTime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00:00"
+                    android:textColor="@color/color_FFFFFF"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guideline2"
+                    app:layout_constraintTop_toBottomOf="@id/tv5"
+
+                    />
+                <!--endregion-->
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--endregion-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <!--region gps信号 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="94dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="45dp"
+        android:background="@mipmap/sport_gps_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvGps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="GPS"
+            android:textColor="@color/color_FFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivRssl1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:src="@mipmap/sport_gps_rssl_dim_1"
+            app:layout_constraintBottom_toBottomOf="@id/tvGps"
+            app:layout_constraintStart_toEndOf="@id/tvGps"
+            app:layout_constraintTop_toTopOf="@id/tvGps"
+            app:layout_constraintVertical_bias="0.75" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivRssl2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:src="@mipmap/sport_gps_rssl_dim_2"
+            app:layout_constraintBottom_toBottomOf="@id/ivRssl1"
+            app:layout_constraintStart_toEndOf="@id/ivRssl1" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivRssl3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:src="@mipmap/sport_gps_rssl_dim_3"
+            app:layout_constraintBottom_toBottomOf="@id/ivRssl2"
+            app:layout_constraintStart_toEndOf="@id/ivRssl2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--endregion-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

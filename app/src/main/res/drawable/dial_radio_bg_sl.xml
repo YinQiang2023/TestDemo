@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--选中时的状态-->
+    <item android:state_checked="true" android:drawable="@mipmap/rb_checked_bg"/>
+    <!--无状态-->
+    <item android:drawable="@mipmap/rb_normal_bg" />
+</selector>

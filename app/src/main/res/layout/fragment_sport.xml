@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/topView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/transparent"
+        android:minHeight="45dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topView"
+        app:tabIndicatorColor="@color/app_index_color"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/app_index_color"
+        app:tabTextAppearance="@style/tabLayoutTextSize"
+        app:tabTextColor="@color/color_FFFFFF">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sport_outdoor_sport" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/more_sport_6" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/more_sport_2" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/ivMap"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="14dp"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/color_161A20"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+               <!-- <com.jwei.publicone.view.GoogleMapView
+                    android:id="@+id/googleMapLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/gMap"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </com.jwei.publicone.view.GoogleMapView>-->
+
+                <FrameLayout
+                    android:id="@+id/fr_google_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.amap.api.maps.TextureMapView
+                    android:id="@+id/aMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:ignore="MissingConstraints" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivNoMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/no_map_permission" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/ivHoming"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/transparent"
+                android:src="@mipmap/sport_homing"
+                app:layout_constraintBottom_toBottomOf="@+id/ivMap"
+                app:layout_constraintEnd_toEndOf="@+id/ivMap" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/ivStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:background="@mipmap/sport_start"
+                android:gravity="center"
+                android:text="Start"
+                android:textColor="@color/color_FFFFFF"
+                android:textSize="21sp"
+                app:layout_constraintBottom_toBottomOf="@id/ivMap"
+                app:layout_constraintEnd_toEndOf="@id/ivMap"
+                app:layout_constraintStart_toStartOf="@id/ivMap" />
+
+            <!--<androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clOdometer"
+                android:layout_width="wrap_content"
+                android:minWidth="120dp"
+                android:minHeight="90dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/ivMap"
+                app:layout_constraintEnd_toEndOf="@id/ivMap"
+                app:layout_constraintTop_toTopOf="@id/ivMap"
+                android:layout_marginTop="58dp"
+                >
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvOdometer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_data_sign"
+                    android:textColor="@color/color_FFFFFF"
+                    android:textSize="44sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sport_cumulative_distance"
+                    android:textSize="12sp"
+                    android:textColor="@color/color_FFFFFF"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvOdometer"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/sport_anchor"
+                app:layout_constraintStart_toStartOf="@id/clOdometer"
+                app:layout_constraintEnd_toEndOf="@id/clOdometer"
+                app:layout_constraintTop_toBottomOf="@id/clOdometer"
+                android:layout_marginTop="42dp"
+                />-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

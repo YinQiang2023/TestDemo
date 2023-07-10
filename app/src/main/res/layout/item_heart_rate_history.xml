@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/public_bg"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvItemHeartRateDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/heart_rate_maximum_heart_rate"
+        android:textColor="@color/color_171717"
+        android:textSize="14sp" />
+
+    <Space
+        android:layout_width="5dp"
+        android:layout_height="match_parent" />
+
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/tvItemHeartRateHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_data_sign"
+        android:textColor="@color/color_171717"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hr_unit_bpm"
+        android:textColor="@color/color_171717"
+        android:textSize="12sp" />
+</LinearLayout>

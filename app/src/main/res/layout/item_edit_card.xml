@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/public_bg"
+    android:minHeight="50dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivItemLeft"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/healthy_item_calories" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvItemText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:paddingEnd="10dp"
+        android:text="@string/healthy_sports_calories"
+        android:textColor="@color/color_171717"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivItemLeft"
+        app:layout_constraintEnd_toStartOf="@+id/ivItemRight"
+        app:layout_constraintStart_toEndOf="@+id/ivItemLeft"
+        app:layout_constraintTop_toTopOf="@+id/ivItemLeft" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivItemRight"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/item_edit_card_right" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

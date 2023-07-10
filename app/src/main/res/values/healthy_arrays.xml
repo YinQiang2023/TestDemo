@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="healthyItemTitleList">
+        <item>@string/healthy_sports_list_step</item>
+        <item>@string/healthy_sports_list_distance</item>
+        <item>@string/healthy_sports_list_calories</item>
+        <item>@string/healthy_sports_list_sleep</item>
+        <item>@string/healthy_sports_list_heart</item>
+        <item>@string/healthy_sports_list_blood_oxygen</item>
+        <item>@string/healthy_sports_list_sport_record</item>
+        <item>@string/healthy_sports_list_effective_stand</item>//有效站立
+        <item>@string/healthy_ecg_title</item>//心电
+    </string-array>
+
+    <string-array name="healthyItemTitleList1">
+        <item>@string/healthy_sports_list_step</item>
+        <item>@string/healthy_sports_list_distance</item>
+        <item>@string/healthy_sports_list_calories</item>
+        <item>@string/healthy_sports_list_sleep</item>
+        <item>@string/healthy_sports_list_heart</item>
+        <item>@string/healthy_sports_list_blood_oxygen</item>
+        <item>@string/healthy_sports_list_sport_record</item>
+        <item>@string/healthy_sports_list_women_health</item>
+        <item>@string/healthy_sports_list_effective_stand</item>>//有效站立
+        <item>@string/healthy_ecg_title</item>//心电
+    </string-array>
+
+    <string-array name="healthyItemImageList">
+        <item>@mipmap/healthy_item_step</item>
+        <item>@mipmap/healthy_item_distance</item>
+        <item>@mipmap/healthy_item_calories</item>
+        <item>@mipmap/healthy_item_sleep</item>
+        <item>@mipmap/healthy_item_hr</item>
+        <item>@mipmap/healthy_item_blood_oxygen</item>
+        <item>@mipmap/healthy_item_sport_record</item>
+        <item>@mipmap/healthy_item_effective_stand</item>//有效站立
+        <item>@mipmap/healthy_item_ecg</item>//心电
+    </string-array>
+
+    <string-array name="healthyItemImageListAndWomen">
+        <item>@mipmap/healthy_item_step</item>
+        <item>@mipmap/healthy_item_distance</item>
+        <item>@mipmap/healthy_item_calories</item>
+        <item>@mipmap/healthy_item_sleep</item>
+        <item>@mipmap/healthy_item_hr</item>
+        <item>@mipmap/healthy_item_blood_oxygen</item>
+        <item>@mipmap/healthy_item_sport_record</item>
+        <item>@mipmap/healthy_item_women_health</item>
+        <item>@mipmap/healthy_item_effective_stand</item>//有效站立
+        <item>@mipmap/healthy_item_ecg</item>>//心电
+    </string-array>
+
+</resources>

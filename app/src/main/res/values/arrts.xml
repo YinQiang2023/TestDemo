@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="roundProgress2View">
+        <attr name="round_progress_bg" format="color" />
+        <attr name="round_progress_filling" format="color" />
+        <attr name="round_progress_width" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="histogramView">
+        <attr name="histogramView_histogram_bg" format="color" />
+        <attr name="histogramView_histogram" format="color" />
+        <attr name="histogramView_histogram_touch" format="color" />
+        <attr name="histogramView_x_text_color" format="color" />
+        <attr name="histogramView_isDrawX0" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="bloodoxygenview">
+        <attr name="bloodoxygenview_histogram_bg" format="color" />
+        <attr name="bloodoxygenview_histogram" format="color" />
+        <attr name="bloodoxygenview_histogram_touch" format="color" />
+        <attr name="bloodoxygenview_x_text_color" format="color" />
+        <attr name="bloodoxygenview_isDrawX0" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="offlinestressview">
+        <attr name="offlinestressview_histogram_bg" format="color" />
+        <attr name="offlinestressview_histogram" format="color" />
+        <attr name="offlinestressview_histogram_touch" format="color" />
+        <attr name="offlinestressview_x_text_color" format="color" />
+        <attr name="offlinestressview_isDrawX0" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="pressureview">
+        <attr name="pressureview_histogram_bg" format="color" />
+        <attr name="pressureview_histogram" format="color" />
+        <attr name="pressureview_histogram_touch" format="color" />
+        <attr name="pressureview_x_text_color" format="color" />
+        <attr name="pressureview_isDrawX0" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="heartRateView">
+        <attr name="heartRateView_histogram_bg" format="color" />
+        <attr name="heartRateView_histogram" format="color" />
+        <attr name="heartRateView_histogram_touch" format="color" />
+        <attr name="heartRateView_x_text_color" format="color" />
+        <attr name="heartRateView_isDrawX0" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="sleepView">
+        <attr name="sleepView_bg_1" format="color" />
+        <attr name="sleepView_bg_2" format="color" />
+        <attr name="sleepView_bg_3" format="color" />
+        <attr name="sleepView_bg_4" format="color" />
+        <attr name="sleepView_bg_touch" format="color" />
+        <attr name="sleepView_x_text_color" format="color" />
+    </declare-styleable>
+
+    <!-- 圆形进度条 -->
+    <declare-styleable name="CircularSeekBar">
+        <attr name="circularSeekBar_progress" format="integer"></attr>
+        <attr name="seekbar_max" format="integer"></attr>
+        <attr name="move_outside_circle" format="boolean"></attr>
+        <attr name="maintain_equal_circle" format="boolean"></attr>
+        <attr name="use_custom_radii" format="boolean"></attr>
+        <attr name="lock_enabled" format="boolean"></attr>
+        <attr name="circle_x_radius" format="dimension" />
+        <attr name="circle_y_radius" format="dimension" />
+        <!-- 圆环宽度-->
+        <attr name="circle_stroke_width" format="dimension" />
+        <attr name="pointer_radius" format="dimension" />
+        <attr name="pointer_halo_width" format="dimension" />
+        <attr name="pointer_halo_border_width" format="dimension"></attr>
+        <attr name="circle_color" format="color"></attr>
+        <attr name="circle_progress_color" format="color"></attr>
+        <attr name="pointer_color" format="color"></attr>
+        <attr name="pointer_halo_color" format="color"></attr>
+        <attr name="pointer_halo_color_ontouch" format="color"></attr>
+        <attr name="pointer_alpha_ontouch" format="integer"></attr>
+        <attr name="start_angle" format="float"></attr>
+        <attr name="end_angle" format="float"></attr>
+        <attr name="circle_fill" format="color"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="curveChartView">
+        <attr name="curveChartView_LineColor" format="color" />
+        <attr name="gradientColorStart" format="color" />
+        <attr name="gradientColorEnd" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="colorRoundAttr">
+        <attr name="bgColor" format="color" />
+        <attr name="ringColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="effectiveStandView">
+        <attr name="effectiveStandView_histogram_bg" format="color" />
+        <attr name="effectiveStandView_histogram" format="color" />
+        <attr name="effectiveStandView_histogram_touch" format="color" />
+        <attr name="effectiveStandView_x_text_color" format="color" />
+        <attr name="effectiveStandView_isDrawX0" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomProgressTextView">
+        <attr name="radius" format="float" />
+        <attr name="background_color" format="color" />
+        <attr name="stroke_color" format="color" />
+        <attr name="progress_color" format="color" />
+        <attr name="progress_bg_stroke" format="boolean" />
+    </declare-styleable>
+
+    <!-- 心电动画 -->
+    <declare-styleable name="elg">
+        <attr name="BackLineColor" format="color" />
+        <attr name="TitleColor" format="color" />
+        <attr name="PointerLineColor" format="color" />
+        <attr name="TitleSize" format="dimension" />
+        <attr name="XYTextSize" format="dimension" />
+    </declare-styleable>
+</resources>

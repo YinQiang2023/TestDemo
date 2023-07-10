@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="sexTextArrays">
+        <item>@string/user_info_male</item>
+        <item>@string/user_info_female</item>
+    </string-array>
+
+    <string-array name="sleepTarget">
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="unit_sleep">
+        <item>00</item>
+        <item>30</item>
+    </string-array>
+
+    <string-array name="sleepArrays_12">
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="sleepArrays_24">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
+
+    <string-array name="deviceSetStringList">
+        <item>@string/running_permission_title</item>
+        <item>@string/device_set_contacts</item>
+        <item>@string/device_fragment_set_message</item>
+        <item>@string/device_fragment_set_remind</item>
+        <item>@string/device_set_heart</item>
+        <item>@string/device_set_pressure</item>
+        <item>@string/device_fragment_set_sleep</item>
+        <item>@string/device_set_weather</item>
+        <item>@string/device_set_take_picture</item>
+    </string-array>
+
+    <string-array name="deviceSetImageList">
+        <item>@mipmap/device_fragment_keep_icon</item>
+        <item>@mipmap/device_fragment_set_contacts_icon</item>
+        <item>@mipmap/device_fragment_set_message_icon</item>
+        <item>@mipmap/device_fragment_set_remind_icon</item>
+        <item>@mipmap/device_set_heart</item>
+        <item>@mipmap/device_set_pressure</item>
+        <item>@mipmap/device_fragment_set_sleep_icon</item>
+        <item>@mipmap/weather_left</item>
+        <item>@mipmap/device_set_take_picture</item>
+    </string-array>
+
+    <string-array name="deviceSetString2List">
+        <item>@string/dev_more_set_power_saving</item>
+        <item>@string/device_set_wrist_bright</item>
+        <item>@string/dev_more_set_not_disturb</item>
+        <item>@string/dev_more_set_app_sort</item>
+        <item>@string/dev_more_set_card_sort</item>
+        <item>@string/dev_more_set_screen_display</item>
+        <item>@string/dev_more_set_short_reply</item>
+        <item>@string/device_set_world_clock</item>
+        <item>@string/device_set_find_device</item>
+        <item>@string/device_set_sports_selection</item>
+        <item>@string/device_set_take_more</item>
+    </string-array>
+
+    <string-array name="deviceSetImage2List">
+        <item>@mipmap/dev_set_power_saving</item>
+        <item>@mipmap/wrist_bright_screen_left</item>
+        <item>@mipmap/dev_set_not_disturb</item>
+        <item>@mipmap/dev_set_app_sort</item>
+        <item>@mipmap/dev_set_card_sort</item>
+        <item>@mipmap/dev_set_screen_display</item>
+        <item>@mipmap/dev_set_short_reply</item>
+        <item>@mipmap/device_set_world_clock</item>
+        <item>@mipmap/device_set_find_device</item>
+        <item>@mipmap/device_set_sports_selection</item>
+        <item>@mipmap/device_set_take_more</item>
+    </string-array>
+
+    <string-array name="deviceRemindStrList">
+        <item>@string/device_remind_alarm_clock</item>
+        <item>@string/device_remind_event</item>
+        <item>@string/device_remind_sedentary</item>
+        <item>@string/device_remind_drink_water</item>
+        <item>@string/device_remind_take_pills</item>
+        <item>@string/device_remind_hand_washing</item>
+    </string-array>
+
+    <string-array name="devMoreSetStrList">
+        <!--<item>@string/dev_more_set_google_fit</item>-->
+        <item>@string/dev_more_set_coverage_screen</item>
+        <item>@string/dev_more_set_time</item>
+        <item>@string/dev_more_set_lum</item>
+        <item>@string/dev_more_set_shake</item>
+        <item>@string/dev_more_set_language_sel</item>
+        <item>@string/dev_more_set_reboot</item>
+        <item>@string/dev_more_set_ble_mac</item>
+        <item>@string/dev_more_set_update</item>
+    </string-array>
+
+    <string-array name="deviceRemindImgList">
+        <item>@mipmap/device_remind_alarm_clock</item>
+        <item>@mipmap/device_remind_event</item>
+        <item>@mipmap/device_remind_sedentary</item>
+        <item>@mipmap/device_remind_drink_water</item>
+        <item>@mipmap/device_remind_take_pills</item>
+        <item>@mipmap/device_remind_hand_washing</item>
+    </string-array>
+
+    <string-array name="editCardStringList">
+        <item>@string/healthy_sports_list_step</item>
+        <item>@string/healthy_sports_list_distance</item>
+        <item>@string/healthy_sports_list_calories</item>
+        <item>@string/healthy_sports_list_sleep</item>
+        <item>@string/healthy_sports_list_heart</item>
+        <item>@string/healthy_sports_list_blood_oxygen</item>
+        <item>@string/healthy_sports_list_sport_record</item>
+        <item>@string/healthy_sports_list_effective_stand</item>//有效站立
+        <item>@string/healthy_ecg_title</item>//心电
+    </string-array>
+
+    <string-array name="editCardStringList2">
+        <item>@string/healthy_sports_list_step</item>
+        <item>@string/healthy_sports_list_distance</item>
+        <item>@string/healthy_sports_list_calories</item>
+        <item>@string/healthy_sports_list_sleep</item>
+        <item>@string/healthy_sports_list_heart</item>
+        <item>@string/healthy_sports_list_blood_oxygen</item>
+        <item>@string/healthy_sports_list_sport_record</item>
+        <item>@string/healthy_sports_list_women_health</item>
+        <item>@string/healthy_sports_list_effective_stand</item>//有效站立
+        <item>@string/healthy_ecg_title</item>//心电
+    </string-array>
+
+    <string-array name="sys_notify_list">
+        <item>@string/device_msg_notify_switch</item>
+        <item>@string/notify_sys_title</item>
+        <item>@string/device_msg_notify_call</item>
+        <item>@string/device_msg_notify_sms</item>
+        <item>@string/device_msg_notify_missed_call</item>
+        <item>@string/notify_app_title</item>
+        <item>@string/device_msg_notify_other</item>
+    </string-array>
+
+    <string-array name="editCardStringListTag">
+        <item>步数</item>
+        <item>距离</item>
+        <item>卡路里</item>
+        <item>睡眠</item>
+        <item>心率</item>
+        <item>血氧</item>
+        <item>运动记录</item>
+        <item>有效站立</item>
+        <item>心电</item>
+    </string-array>
+
+    <string-array name="editCardStringListTag2">
+        <item>步数</item>
+        <item>距离</item>
+        <item>卡路里</item>
+        <item>睡眠</item>
+        <item>心率</item>
+        <item>血氧</item>
+        <item>运动记录</item>
+        <item>生理周期</item>
+        <item>有效站立</item>
+        <item>心电</item>
+    </string-array>
+
+    <string-array name="editCardImageList">
+        <item>@mipmap/edit_card_item_step</item>
+        <item>@mipmap/edit_card_item_distance</item>
+        <item>@mipmap/edit_card_item_calories</item>
+        <item>@mipmap/edit_card_item_sleep</item>
+        <item>@mipmap/edit_card_item_hr</item>
+        <item>@mipmap/edit_card_item_blood_oxygen</item>
+        <item>@mipmap/edit_card_item_sport_record</item>
+        <item>@mipmap/edit_card_item_effective_stand</item>//有效站立
+        <item>@mipmap/edit_card_item_ecg</item>//心电
+    </string-array>
+
+    <string-array name="editCardImageList2">
+        <item>@mipmap/edit_card_item_step</item>
+        <item>@mipmap/edit_card_item_distance</item>
+        <item>@mipmap/edit_card_item_calories</item>
+        <item>@mipmap/edit_card_item_sleep</item>
+        <item>@mipmap/edit_card_item_hr</item>
+        <item>@mipmap/edit_card_item_blood_oxygen</item>
+        <item>@mipmap/edit_card_item_sport_record</item>
+        <item>@mipmap/edit_card_item_women_health</item>
+        <item>@mipmap/edit_card_item_effective_stand</item>//有效站立
+        <item>@mipmap/edit_card_item_ecg</item>//心电
+    </string-array>
+
+    <string-array name="wearTextArrays">
+        <item>@string/left_hand</item>
+        <item>@string/right_hand</item>
+    </string-array>
+    <string-array name="mapTypeTextArrays">
+        <item>@string/google</item>
+        <item>@string/gothe</item>
+    </string-array>
+
+
+    <string-array name="more_sport_str">
+        <item>@string/more_sport_1</item>
+        <item>@string/more_sport_2</item>
+        <item>@string/more_sport_3</item>
+        <item>@string/more_sport_4</item>
+        <item>@string/more_sport_5</item>
+        <item>@string/more_sport_6</item>
+        <item>@string/more_sport_7</item>
+        <item>@string/more_sport_8</item>
+        <item>@string/more_sport_9</item>
+
+        <item>@string/more_sport_10</item>
+        <item>@string/more_sport_11</item>
+        <item>@string/more_sport_12</item>
+        <item>@string/more_sport_13</item>
+        <item>@string/more_sport_14</item>
+        <item>@string/more_sport_15</item>
+        <item>@string/more_sport_16</item>
+        <item>@string/more_sport_17</item>
+        <item>@string/more_sport_18</item>
+        <item>@string/more_sport_19</item>
+
+        <item>@string/more_sport_20</item>
+        <item>@string/more_sport_21</item>
+        <item>@string/more_sport_22</item>
+        <item>@string/more_sport_23</item>
+        <item>@string/more_sport_24</item>
+        <item>@string/more_sport_25</item>
+        <item>@string/more_sport_26</item>
+        <item>@string/more_sport_27</item>
+        <item>@string/more_sport_28</item>
+        <item>@string/more_sport_29</item>
+
+        <item>@string/more_sport_30</item>
+        <item>@string/more_sport_31</item>
+        <item>@string/more_sport_32</item>
+        <item>@string/more_sport_33</item>
+        <item>@string/more_sport_34</item>
+        <item>@string/more_sport_35</item>
+        <item>@string/more_sport_36</item>
+        <item>@string/more_sport_37</item>
+        <item>@string/more_sport_38</item>
+        <item>@string/more_sport_39</item>
+
+        <item>@string/more_sport_40</item>
+        <item>@string/more_sport_41</item>
+        <item>@string/more_sport_42</item>
+        <item>@string/more_sport_43</item>
+        <item>@string/more_sport_44</item>
+        <item>@string/more_sport_45</item>
+        <item>@string/more_sport_46</item>
+        <item>@string/more_sport_47</item>
+        <item>@string/more_sport_48</item>
+        <item>@string/more_sport_49</item>
+
+        <item>@string/more_sport_50</item>
+        <item>@string/more_sport_51</item>
+        <item>@string/more_sport_52</item>
+        <item>@string/more_sport_53</item>
+        <item>@string/more_sport_54</item>
+        <item>@string/more_sport_55</item>
+        <item>@string/more_sport_56</item>
+        <item>@string/more_sport_57</item>
+        <item>@string/more_sport_58</item>
+        <item>@string/more_sport_59</item>
+
+        <item>@string/more_sport_60</item>
+        <item>@string/more_sport_61</item>
+        <item>@string/more_sport_62</item>
+        <item>@string/more_sport_63</item>
+        <item>@string/more_sport_64</item>
+        <item>@string/more_sport_65</item>
+        <item>@string/more_sport_66</item>
+        <item>@string/more_sport_67</item>
+        <item>@string/more_sport_68</item>
+        <item>@string/more_sport_69</item>
+
+        <item>@string/more_sport_70</item>
+        <item>@string/more_sport_71</item>
+        <item>@string/more_sport_72</item>
+        <item>@string/more_sport_73</item>
+        <item>@string/more_sport_74</item>
+        <item>@string/more_sport_75</item>
+        <item>@string/more_sport_76</item>
+        <item>@string/more_sport_77</item>
+        <item>@string/more_sport_78</item>
+        <item>@string/more_sport_79</item>
+
+        <item>@string/more_sport_80</item>
+        <item>@string/more_sport_81</item>
+        <item>@string/more_sport_82</item>
+        <item>@string/more_sport_83</item>
+        <item>@string/more_sport_84</item>
+        <item>@string/more_sport_85</item>
+        <item>@string/more_sport_86</item>
+        <item>@string/more_sport_87</item>
+        <item>@string/more_sport_88</item>
+        <item>@string/more_sport_89</item>
+
+        <item>@string/more_sport_90</item>
+        <item>@string/more_sport_91</item>
+        <item>@string/more_sport_92</item>
+        <item>@string/more_sport_93</item>
+        <item>@string/more_sport_94</item>
+        <item>@string/more_sport_95</item>
+        <item>@string/more_sport_96</item>
+        <item>@string/more_sport_97</item>
+        <item>@string/more_sport_98</item>
+        <item>@string/more_sport_99</item>
+
+        <item>@string/more_sport_100</item>
+        <item>@string/more_sport_101</item>
+        <item>@string/more_sport_102</item>
+        <item>@string/more_sport_103</item>
+        <item>@string/more_sport_104</item>
+        <item>@string/more_sport_105</item>
+        <item>@string/more_sport_106</item>
+        <item>@string/more_sport_107</item>
+        <item>@string/more_sport_108</item>
+        <item>@string/more_sport_109</item>
+
+        <item>@string/more_sport_110</item>
+        <item>@string/more_sport_111</item>
+        <item>@string/more_sport_112</item>
+        <item>@string/more_sport_113</item>
+        <item>@string/more_sport_114</item>
+        <item>@string/more_sport_115</item>
+        <item>@string/more_sport_116</item>
+        <item>@string/more_sport_117</item>
+        <item>@string/more_sport_118</item>
+        <item>@string/more_sport_119</item>
+
+        <item>@string/more_sport_120</item>
+        <item>@string/more_sport_121</item>
+        <item>@string/more_sport_122</item>
+        <item>@string/more_sport_123</item>
+        <item>@string/more_sport_124</item>
+        <item>@string/more_sport_125</item>
+        <item>@string/more_sport_126</item>
+        <item>@string/more_sport_127</item>
+        <item>@string/more_sport_128</item>
+        <item>@string/more_sport_129</item>
+
+        <item>@string/more_sport_130</item>
+        <item>@string/more_sport_131</item>
+        <item>@string/more_sport_132</item>
+        <item>@string/more_sport_133</item>
+        <item>@string/more_sport_134</item>
+        <item>@string/more_sport_135</item>
+        <item>@string/more_sport_136</item>
+        <item>@string/more_sport_137</item>
+        <item>@string/more_sport_138</item>
+    </string-array>
+
+    <string-array name="more_sport_img">
+        <item>@mipmap/more_sport_1</item>
+        <item>@mipmap/more_sport_2</item>
+        <item>@mipmap/more_sport_3</item>
+        <item>@mipmap/more_sport_4</item>
+        <item>@mipmap/more_sport_5</item>
+        <item>@mipmap/more_sport_6</item>
+        <item>@mipmap/more_sport_7</item>
+        <item>@mipmap/more_sport_8</item>
+        <item>@mipmap/more_sport_9</item>
+
+        <item>@mipmap/more_sport_10</item>
+        <item>@mipmap/more_sport_11</item>
+        <item>@mipmap/more_sport_12</item>
+        <item>@mipmap/more_sport_13</item>
+        <item>@mipmap/more_sport_14</item>
+        <item>@mipmap/more_sport_15</item>
+        <item>@mipmap/more_sport_16</item>
+        <item>@mipmap/more_sport_17</item>
+        <item>@mipmap/more_sport_18</item>
+        <item>@mipmap/more_sport_19</item>
+
+        <item>@mipmap/more_sport_20</item>
+        <item>@mipmap/more_sport_200</item>
+        <item>@mipmap/more_sport_201</item>
+        <item>@mipmap/more_sport_23</item>
+        <item>@mipmap/more_sport_24</item>
+        <item>@mipmap/more_sport_25</item>
+        <item>@mipmap/more_sport_26</item>
+        <item>@mipmap/more_sport_27</item>
+        <item>@mipmap/more_sport_28</item>
+        <item>@mipmap/more_sport_29</item>
+
+        <item>@mipmap/more_sport_30</item>
+        <item>@mipmap/more_sport_31</item>
+        <item>@mipmap/more_sport_32</item>
+        <item>@mipmap/more_sport_33</item>
+        <item>@mipmap/more_sport_34</item>
+        <item>@mipmap/more_sport_35</item>
+        <item>@mipmap/more_sport_36</item>
+        <item>@mipmap/more_sport_37</item>
+        <item>@mipmap/more_sport_38</item>
+        <item>@mipmap/more_sport_39</item>
+
+        <item>@mipmap/more_sport_40</item>
+        <item>@mipmap/more_sport_41</item>
+        <item>@mipmap/more_sport_42</item>
+        <item>@mipmap/more_sport_43</item>
+        <item>@mipmap/more_sport_44</item>
+        <item>@mipmap/more_sport_45</item>
+        <item>@mipmap/more_sport_46</item>
+        <item>@mipmap/more_sport_47</item>
+        <item>@mipmap/more_sport_48</item>
+        <item>@mipmap/more_sport_49</item>
+
+        <item>@mipmap/more_sport_50</item>
+        <item>@mipmap/more_sport_51</item>
+        <item>@mipmap/more_sport_52</item>
+        <item>@mipmap/more_sport_53</item>
+        <item>@mipmap/more_sport_54</item>
+        <item>@mipmap/more_sport_55</item>
+        <item>@mipmap/more_sport_56</item>
+        <item>@mipmap/more_sport_57</item>
+        <item>@mipmap/more_sport_58</item>
+        <item>@mipmap/more_sport_59</item>
+
+        <item>@mipmap/more_sport_60</item>
+        <item>@mipmap/more_sport_61</item>
+        <item>@mipmap/more_sport_62</item>
+        <item>@mipmap/more_sport_63</item>
+        <item>@mipmap/more_sport_64</item>
+        <item>@mipmap/more_sport_65</item>
+        <item>@mipmap/more_sport_66</item>
+        <item>@mipmap/more_sport_67</item>
+        <item>@mipmap/more_sport_68</item>
+        <item>@mipmap/more_sport_69</item>
+
+        <item>@mipmap/more_sport_70</item>
+        <item>@mipmap/more_sport_71</item>
+        <item>@mipmap/more_sport_72</item>
+        <item>@mipmap/more_sport_73</item>
+        <item>@mipmap/more_sport_74</item>
+        <item>@mipmap/more_sport_75</item>
+        <item>@mipmap/more_sport_76</item>
+        <item>@mipmap/more_sport_77</item>
+        <item>@mipmap/more_sport_78</item>
+        <item>@mipmap/more_sport_79</item>
+
+        <item>@mipmap/more_sport_80</item>
+        <item>@mipmap/more_sport_81</item>
+        <item>@mipmap/more_sport_82</item>
+        <item>@mipmap/more_sport_83</item>
+        <item>@mipmap/more_sport_84</item>
+        <item>@mipmap/more_sport_85</item>
+        <item>@mipmap/more_sport_86</item>
+        <item>@mipmap/more_sport_87</item>
+        <item>@mipmap/more_sport_88</item>
+        <item>@mipmap/more_sport_89</item>
+
+        <item>@mipmap/more_sport_90</item>
+        <item>@mipmap/more_sport_91</item>
+        <item>@mipmap/more_sport_92</item>
+        <item>@mipmap/more_sport_93</item>
+        <item>@mipmap/more_sport_94</item>
+        <item>@mipmap/more_sport_95</item>
+        <item>@mipmap/more_sport_96</item>
+        <item>@mipmap/more_sport_97</item>
+        <item>@mipmap/more_sport_98</item>
+        <item>@mipmap/more_sport_99</item>
+
+        <item>@mipmap/more_sport_100</item>
+        <item>@mipmap/more_sport_101</item>
+        <item>@mipmap/more_sport_102</item>
+        <item>@mipmap/more_sport_103</item>
+        <item>@mipmap/more_sport_104</item>
+        <item>@mipmap/more_sport_105</item>
+        <item>@mipmap/more_sport_106</item>
+        <item>@mipmap/more_sport_107</item>
+        <item>@mipmap/more_sport_108</item>
+        <item>@mipmap/more_sport_109</item>
+
+        <item>@mipmap/more_sport_110</item>
+        <item>@mipmap/more_sport_111</item>
+        <item>@mipmap/more_sport_112</item>
+        <item>@mipmap/more_sport_113</item>
+        <item>@mipmap/more_sport_114</item>
+        <item>@mipmap/more_sport_115</item>
+        <item>@mipmap/more_sport_116</item>
+        <item>@mipmap/more_sport_117</item>
+        <item>@mipmap/more_sport_118</item>
+        <item>@mipmap/more_sport_119</item>
+
+        <item>@mipmap/more_sport_120</item>
+        <item>@mipmap/more_sport_121</item>
+        <item>@mipmap/more_sport_122</item>
+        <item>@mipmap/more_sport_123</item>
+        <item>@mipmap/more_sport_124</item>
+        <item>@mipmap/more_sport_125</item>
+        <item>@mipmap/more_sport_126</item>
+        <item>@mipmap/more_sport_127</item>
+        <item>@mipmap/more_sport_128</item>
+        <item>@mipmap/more_sport_129</item>
+
+        <item>@mipmap/more_sport_130</item>
+        <item>@mipmap/more_sport_131</item>
+        <item>@mipmap/more_sport_132</item>
+        <item>@mipmap/more_sport_133</item>
+        <item>@mipmap/more_sport_134</item>
+        <item>@mipmap/more_sport_135</item>
+        <item>@mipmap/more_sport_136</item>
+        <item>@mipmap/more_sport_137</item>
+        <item>@mipmap/more_sport_138</item>
+    </string-array>
+
+
+    <string-array name="guideImgList">
+        <item>@mipmap/guide01</item>
+        <item>@mipmap/guide02</item>
+        <item>@mipmap/guide03</item>
+        <item>@mipmap/guide04</item>
+    </string-array>
+
+    <string-array name="weekArrays">
+        <item>@string/week_easy_1</item>
+        <item>@string/week_easy_2</item>
+        <item>@string/week_easy_3</item>
+        <item>@string/week_easy_4</item>
+        <item>@string/week_easy_5</item>
+        <item>@string/week_easy_6</item>
+        <item>@string/week_easy_7</item>
+    </string-array>
+
+    <string-array name="questionFeedBackType">
+        <item>@string/question_feedback_type_1</item>
+        <item>@string/question_feedback_type_2</item>
+        <item>@string/question_feedback_type_3</item>
+        <item>@string/question_feedback_type_4</item>
+<!--        <item>@string/question_feedback_type_6</item>
+        <item>@string/question_feedback_type_7</item>
+        <item>@string/question_feedback_type_8</item>
+        <item>@string/question_feedback_type_9</item>-->
+        <!--其它-->
+        <item>@string/question_feedback_type_5</item>
+    </string-array>
+
+    <string-array name="bloodPressureLevel">
+        <item>@string/blood_pressure_level_low</item>
+        <item>@string/blood_pressure_level_low_side</item>
+        <item>@string/blood_pressure_level_normal</item>
+        <item>@string/blood_pressure_level_high_side</item>
+        <item>@string/blood_pressure_level_high</item>
+    </string-array>
+
+    <string-array name="dataReductionString2List">
+        <item>@string/google_fit</item>
+        <item>@string/strava</item>
+    </string-array>
+
+    <string-array name="dataReductionImage2List">
+        <item>@mipmap/icon_google_fit</item>
+        <item>@mipmap/icon_strava</item>
+    </string-array>
+
+</resources>

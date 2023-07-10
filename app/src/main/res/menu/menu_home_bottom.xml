@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuHealthy"
+        android:icon="@drawable/menu_healthy_sl"
+        android:title="@string/home_bottom_menu_healthy"
+        />
+
+    <item
+        android:id="@+id/menuSport"
+        android:icon="@drawable/menu_sport_sl"
+        android:title="@string/home_bottom_menu_sports"
+        />
+
+    <item
+        android:id="@+id/menuDevice"
+        android:icon="@drawable/menu_device_sl"
+        android:title="@string/home_bottom_menu_device"
+        />
+
+    <item
+        android:id="@+id/menuMe"
+        android:icon="@drawable/menu_me_sl"
+        android:title="@string/home_bottom_menu_me"
+        />
+
+</menu>

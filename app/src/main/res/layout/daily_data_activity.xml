@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:histogramView="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/index_bg_color"
+    tools:context=".ui.healthy.history.DailyDataActivity">
+
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/public_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/dailySelect"
+        layout="@layout/layout_history_daily"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dailySelect">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <com.haibin.calendarview.CalendarView
+                android:id="@+id/calendarView"
+                style="@style/public_1_calender"
+                app:month_view="com.jwei.publicone.ui.view.SimpleMonthView"
+                tools:visibility="visible" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lyHistogramBg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/public_bg"
+                android:paddingBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dailySelect">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivTopLeftTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="20dp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@mipmap/healthy_item_step" />
+
+                <TextView
+                    android:id="@+id/tvTopLeftTitle"
+                    style="@style/history_top_text_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="距离" />
+
+                <TextView
+                    android:id="@+id/tvDistance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_171717"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@+id/tvTopLeftTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTopLeftTitle"
+                    tools:text="2.84" />
+
+                <TextView
+                    android:id="@+id/tvYaxisUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="12dp"
+                    android:textColor="@color/color_878787"
+                    android:textSize="8sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDistance"
+                    tools:text="(m)" />
+
+                <LinearLayout
+                    android:id="@+id/lyDailyRightTips"
+                    style="@style/details_tip_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvTopLeftTitle"
+                    tools:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/daily_data_total_sum_tips"
+                            android:textColor="@color/color_171717"
+                            android:textSize="12sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTotalSum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_171717"
+                            android:textSize="16sp"
+                            tools:text="700" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTotalSumUnit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="3dp"
+                            android:text="@string/unit_step"
+                            android:textColor="@color/color_171717"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTotalDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_171717"
+                            android:textSize="12sp"
+                            tools:text="06/21" />
+
+                        <Space
+                            android:layout_width="8dp"
+                            android:layout_height="match_parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTotalSumTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_171717"
+                            android:textSize="12sp"
+                            tools:text="05:00-06:00" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <com.jwei.publicone.ui.view.HistogramView
+                    android:id="@+id/mHistogramView"
+                    android:layout_width="match_parent"
+                    android:layout_height="136dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/transparent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDistance"
+                    histogramView:histogramView_histogram="@color/chart_step_color"
+                    histogramView:histogramView_histogram_bg="@color/transparent"
+                    histogramView:histogramView_histogram_touch="@color/chart_step_touch"
+                    histogramView:histogramView_isDrawX0="true"
+                    histogramView:histogramView_x_text_color="@color/chart_axis_text_color" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/layout_daily_total_sum_bg"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/tvLeftTotalSum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_171717"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.111"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1.34" />
+
+                <TextView
+                    android:id="@+id/tvLeftTotalSumUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/unit_distance_0"
+                    android:textColor="@color/color_878787"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvLeftTotalSum"
+                    app:layout_constraintStart_toEndOf="@+id/tvLeftTotalSum"
+                    app:layout_constraintTop_toTopOf="@+id/tvLeftTotalSum"
+                    app:layout_constraintVertical_bias="0.75" />
+
+                <TextView
+                    android:id="@+id/tvLeftTotalSumTips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/daily_data_total_mileage_tips"
+                    android:textColor="@color/color_878787"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvLeftTotalSumUnit"
+                    app:layout_constraintStart_toStartOf="@+id/tvLeftTotalSum"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLeftTotalSum" />
+
+                <TextView
+                    android:id="@+id/tvRightTotalSum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_171717"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.773"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="245" />
+
+                <TextView
+                    android:id="@+id/tvRightTotalSumUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/unit_calories"
+                    android:textColor="@color/color_878787"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvRightTotalSum"
+                    app:layout_constraintStart_toEndOf="@+id/tvRightTotalSum"
+                    app:layout_constraintTop_toTopOf="@+id/tvRightTotalSum"
+                    app:layout_constraintVertical_bias="0.75" />
+
+                <TextView
+                    android:id="@+id/tvRightTotalSumTips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_calories_tips"
+                    android:textColor="@color/color_878787"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvRightTotalSumUnit"
+                    app:layout_constraintStart_toStartOf="@+id/tvRightTotalSum"
+                    app:layout_constraintTop_toBottomOf="@+id/tvRightTotalSum" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/layout_daily_total_sum_bg"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/tvDifferenceBetweenData"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:textColor="@color/color_171717"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="截至当前，你今天比昨天少走了1000 步" />
+
+
+                <TextView
+                    android:id="@+id/tvBottomLeftThisTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/color_171717"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/tvDifferenceBetweenData"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDifferenceBetweenData"
+                    tools:text="今日:" />
+
+                <TextView
+                    android:id="@+id/tvBottomRightThisTimeData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="3dp"
+                    android:textColor="@color/color_171717"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvBottomLeftThisTime"
+                    app:layout_constraintEnd_toStartOf="@+id/tvBottomRightThisTimeUnit"
+                    app:layout_constraintTop_toTopOf="@+id/tvBottomLeftThisTime"
+                    tools:text="20" />
+
+                <TextView
+                    android:id="@+id/tvBottomRightThisTimeUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:textColor="@color/color_878787"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvBottomRightThisTimeData"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvBottomRightThisTimeData"
+                    app:layout_constraintVertical_bias="0.75"
+                    tools:text="单位" />
+
+                <TextView
+                    android:id="@+id/tvBottomLeftLastTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="11dp"
+                    android:textColor="@color/color_171717"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/tvBottomLeftThisTime"
+                    app:layout_constraintTop_toBottomOf="@+id/tvBottomLeftThisTime"
+                    tools:text="今日:" />
+
+                <TextView
+                    android:id="@+id/tvBottomRightLastTimeData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="3dp"
+                    android:textColor="@color/color_171717"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvBottomLeftLastTime"
+                    app:layout_constraintEnd_toStartOf="@+id/tvBottomRightLastTimeUnit"
+                    app:layout_constraintTop_toTopOf="@+id/tvBottomLeftLastTime"
+                    tools:text="20" />
+
+                <TextView
+                    android:id="@+id/tvBottomRightLastTimeUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:textColor="@color/color_878787"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvBottomRightLastTimeData"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvBottomRightLastTimeData"
+                    app:layout_constraintVertical_bias="0.75"
+                    tools:text="单位" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

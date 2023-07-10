@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutTitle"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:drawablePadding="12dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:lines="3"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textSize="16sp"
+        app:drawableStartCompat="@mipmap/left_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCenterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:lines="3"
+        android:textColor="@color/color_171717"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/main_app_name" />
+
+    <!--仅显示标题-->
+    <TextView
+        android:id="@+id/tvTitle2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:drawablePadding="12dp"
+        android:gravity="center"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textColor="@color/color_171717"
+        android:textSize="16sp"
+        android:visibility="gone"
+        tools:text="@string/main_app_name"
+        tools:visibility="visible" />
+
+
+    <ImageView
+        android:id="@+id/ivRightIcon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="center"
+        android:src="@mipmap/img_share"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/layoutRight"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="end"
+        android:minWidth="50dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/tvRIght"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="20dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:lines="3"
+            android:text=""
+            android:textColor="@color/color_171717"
+            android:textSize="16sp"
+            android:visibility="gone"
+            tools:text="@string/main_app_name"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

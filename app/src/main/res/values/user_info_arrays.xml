@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="userInfoNameList">
+        <item>@string/user_info_nickname</item>
+        <item>@string/user_info_sex</item>
+        <item>@string/user_info_unit</item>
+        <item>@string/user_info_date_birth</item>
+        <item>@string/user_info_height</item>
+        <item>@string/user_info_weight</item>
+        <item>@string/user_info_step_goal</item>
+        <item>@string/user_info_distance_target</item>
+        <item>@string/user_info_calories_target</item>
+        <item>@string/user_info_sleep_target</item>
+    </string-array>
+
+    <string-array name="userInfoImgList">
+        <item>@mipmap/img_user_info_nick_name</item>
+        <item>@mipmap/img_user_info_gender</item>
+        <item>@mipmap/img_user_info_unit</item>
+        <item>@mipmap/img_user_info_date_birth</item>
+        <item>@mipmap/img_user_info_height</item>
+        <item>@mipmap/img_user_info_weight</item>
+        <item>@mipmap/img_user_info_step_goal</item>
+        <item>@mipmap/img_user_info_distance_target</item>
+        <item>@mipmap/img_user_info_calories_target</item>
+        <item>@mipmap/img_user_info_sleep_target</item>
+    </string-array>
+
+
+    <string-array name="mineInfoNameList">
+        <item>@string/user_info_title</item>
+        <item>@string/unit_setting</item>
+        <item>@string/device_fragment_set_goal</item>
+        <item>@string/map</item>
+        <item>@string/wear</item>
+        <item>@string/question_feedback</item>
+        <item>@string/data_reduction</item>
+        <item>@string/common_question_help</item>
+        <item>@string/accounts_ecurity</item>
+        <item>@string/about</item>
+    </string-array>
+
+    <string-array name="mineInfoImgList">
+        <item>@mipmap/personal_info</item>
+        <item>@mipmap/unit_setting</item>
+        <item>@mipmap/target_setting</item>
+        <item>@mipmap/ic_map</item>
+        <item>@mipmap/ic_wear</item>
+        <item>@mipmap/ic_feedback</item>
+        <item>@mipmap/ic_data_reduction</item>
+        <item>@mipmap/ic_common_problem</item>
+        <item>@mipmap/ic_accounts_ecurity</item>
+        <item>@mipmap/ic_about</item>
+    </string-array>
+
+    <string-array name="targetSettingNameList">
+        <item>@string/healthy_sports_list_step</item>
+        <item>@string/healthy_sports_list_distance</item>
+        <item>@string/healthy_sports_list_calories</item>
+        <item>@string/sleep_title</item>
+    </string-array>
+
+    <string-array name="targetSettingImgList">
+        <item>@mipmap/ic_target_setting_step</item>
+        <item>@mipmap/ic_target_setting_distance</item>
+        <item>@mipmap/ic_target_setting_cal</item>
+        <item>@mipmap/ic_target_setting_sleep</item>
+    </string-array>
+
+    <string-array name="personalInfoNameList">
+        <item>@string/user_info_nickname</item>
+        <item>@string/user_info_sex</item>
+        <item>@string/birthday</item>
+        <item>@string/user_info_height</item>
+        <item>@string/user_info_weight</item>>
+    </string-array>
+
+    <string-array name="unitSettingNameList">
+        <item>@string/user_info_unit</item>
+        <item>@string/temperature</item>
+    </string-array>
+
+    <string-array name="unitSettingDescList">
+        <item>@string/unit_metric_desc</item>
+        <item>@string/unit_imperial_desc</item>
+        <item>@string/celsius</item>
+        <item>@string/fahrenheit</item>
+    </string-array>
+
+    <string-array name="helpAndFeedbackNameList">
+        <item>@string/question_feedback</item>
+        <item>@string/common_question_help</item>
+    </string-array>
+    <string-array name="helpAndFeedbackImgList">
+        <item>@mipmap/ic_feedback</item>
+        <item>@mipmap/ic_common_problem</item>
+    </string-array>
+
+    <string-array name="aboutNameList">
+        <item>@string/privacy_policy</item>
+        <item>@string/user_agreement</item>
+        <item>@string/current_app_version</item>
+    </string-array>
+</resources>

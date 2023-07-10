@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.debug.DebugActivity">
+
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/public_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_change_device"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/app_index_color"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:text="切换连接设备"
+                android:textColor="#ff0000" />
+
+            <TextView
+                android:id="@+id/tvFirewareUpgrade"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/app_index_color"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:text="@string/dev_more_set_update"
+                android:textColor="@color/color_171717" />
+
+            <TextView
+                android:id="@+id/tvTheme"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/app_index_color"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:text="@string/theme_center_dial_details_sync_btn"
+                android:textColor="@color/color_171717" />
+
+            <TextView
+                android:id="@+id/tvDevConnect"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/app_index_color"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:text="设备连接测试"
+                android:textColor="@color/color_171717" />
+
+            <TextView
+                android:id="@+id/tvApps"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/app_index_color"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:text="分享所有已安装应用列表"
+                android:textColor="@color/color_171717" />
+
+            <TextView
+                android:id="@+id/tvClassicBle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/app_index_color"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:text="经典蓝牙开关设置"
+                android:textColor="@color/color_171717" />
+
+            <TextView
+                android:id="@+id/tvFeedbackDecoding"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/app_index_color"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:text="意见反馈日志解码"
+                android:textColor="@color/color_171717" />
+
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/app_index_color"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:text="复制粘贴"
+                android:textColor="@color/color_171717"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvDebug"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/app_index_color"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:text="Debug"
+                android:textColor="@color/color_171717" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

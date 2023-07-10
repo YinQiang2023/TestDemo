@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string-array name="region_array">
+        <item name="region_ao">Angola_ao_244</item>
+        <item name="region_af">Afghanistan_af_93</item>
+        <item name="region_al">Albania_al_355</item>
+        <item name="region_dz">Algeria_dz_213</item>
+        <item name="region_ai">Anguilla_ai_1264</item>
+        <item name="region_ag">Antigua and Barbuda_ag_1268</item>
+        <item name="region_ar">Argentina_ar_54</item>
+        <item name="region_am">Armenia_am_374</item>
+        <item name="region_sh">Ascension_sh_247</item>
+        <item name="region_au">Australia_au_61</item>
+        <item name="region_at">Austria_at_43</item>
+        <item name="region_az">Azerbaijan_az_994</item>
+        <item name="region_bs">Bahamas_bs_1242</item>
+        <item name="region_bh">Bahrain_bh_973</item>
+        <item name="region_bd">Bangladesh_bd_880</item>
+        <item name="region_bb">Barbados_bb_1246</item>
+        <item name="region_by">Belarus_by_375</item>
+        <item name="region_be">Belgium_be_32</item>
+        <item name="region_bz">Belize_bz_501</item>
+        <item name="region_bj">Benin_bj_229</item>
+        <item name="region_bm">Bermuda_bm_1441</item>
+        <item name="region_bo">Bolivia_bo_591</item>
+        <item name="region_bw">Botswana_bw_267</item>
+        <item name="region_br">Brazil_br_55</item>
+        <item name="region_bn">Brunei_bn_673</item>
+        <item name="region_bg">Bulgaria_bg_359</item>
+        <item name="region_bf">Burkina Faso_bf_226</item>
+        <item name="region_mm">Myanmar_mm_95</item>
+        <item name="region_bi">Burundi_bi_257</item>
+        <item name="region_cm">Cameroon_cm_237</item>
+        <item name="region_ca">Canada_ca_1</item>
+        <item name="region_ky">Cayman Islands_ky_1345</item>
+        <item name="region_cf">Central African Republic_cf_236</item>
+        <item name="region_td">Chad_td_235</item>
+        <item name="region_cl">Chile_cl_56</item>
+        <item name="region_cn">China_cn_86</item>
+        <item name="region_co">Colombia_co_57</item>
+        <item name="region_ck">Island_ck_682</item>
+        <item name="region_cr">Costa Rica_cr_506</item>
+        <item name="region_cu">Cuba_cu_53</item>
+        <item name="region_cy">Cyprus_cy_357</item>
+        <item name="region_cz">Czech_cz_420</item>
+        <item name="region_dk">Denmark_dk_45</item>
+        <item name="region_dj">Djibouti_dj_253</item>
+        <item name="region_do">Dominican Republic_do_1890</item>
+        <item name="region_ec">Ecuador_ec_593</item>
+        <item name="region_eg">Egypt_eg_20</item>
+        <item name="region_sv">salvador_sv_503</item>
+        <item name="region_ee">Estonia_ee_372</item>
+        <item name="region_et">Ethiopia_et_251</item>
+        <item name="region_fj">Fiji_fj_679</item>
+        <item name="region_fi">Finland_fi_358</item>
+        <item name="region_fr">France_fr_33</item>
+        <item name="region_gf">French Guiana_gf_594</item>
+        <item name="region_ga">Gabon_ga_241</item>
+        <item name="region_gm">Gambia_gm_220</item>
+        <item name="region_ge">Georgia_ge_995</item>
+        <item name="region_de">Germany_de_49</item>
+        <item name="region_gh">Ghana_gh_233</item>
+        <item name="region_gi">Gibraltar_gi_350</item>
+        <item name="region_gr">Greece_gr_30</item>
+        <item name="region_gd">Grenada_gd_1809</item>
+        <item name="region_gu">Guam_gu_1671</item>
+        <item name="region_gt">Guatemala_gt_502</item>
+        <item name="region_gn">Guinea_gn_224</item>
+        <item name="region_gy">Guyana_gy_592</item>
+        <item name="region_ht">Haiti_ht_509</item>
+        <item name="region_hn">Honduras_hn_504</item>
+        <item name="region_hu">Hungary_hu_36</item>
+        <item name="region_is">Iceland_is_354</item>
+        <item name="region_in">India_in_91</item>
+        <item name="region_id">Indonesia_id_62</item>
+        <item name="region_ir">Iran_ir_98</item>
+        <item name="region_iq">Iraq_iq_964</item>
+        <item name="region_ie">Ireland_ie_353</item>
+        <item name="region_il">Israel_il_972</item>
+        <item name="region_it">Italy_it_39</item>
+        <item name="region_ci">Côte d‘Ivoire_ci_225</item>
+        <item name="region_jm">Jamaica_jm_1876</item>
+        <item name="region_jp">Japan_jp_81</item>
+        <item name="region_jo">Jordan_jo_962</item>
+        <item name="region_kh">Cambodia_kh_855</item>
+        <item name="region_ke">Kenya_ke_254</item>
+        <item name="region_kr">South Korea_kr_82</item>
+        <item name="region_kw">Kuwait_kw_965</item>
+        <item name="region_la">Laos_la_856</item>
+        <item name="region_lv">Latvia_lv_371</item>
+        <item name="region_lb">Lebanon_lb_961</item>
+        <item name="region_ls">Lesotho_ls_266</item>
+        <item name="region_lr">Liberia_lr_231</item>
+        <item name="region_ly">Libya_ly_218</item>
+        <item name="region_li">Liechtenstein_li_423</item>
+        <item name="region_lt">Lithuania_lt_370</item>
+        <item name="region_lu">Luxembourg_lu_352</item>
+        <item name="region_mg">Madagascar_mg_261</item>
+        <item name="region_mw">Malawi_mw_265</item>
+        <item name="region_my">Malaysia_my_60</item>
+        <item name="region_mv">Maldives_mv_960</item>
+        <item name="region_ml">Mali_ml_223</item>
+        <item name="region_mt">Malta_mt_356</item>
+        <item name="region_mp">Northern Mariana Islands_mp_1670</item>
+        <item name="region_mq">Martinique_mq_596</item>
+        <item name="region_mu">Mauritius_mu_230</item>
+        <item name="region_mx">Mexico_mx_52</item>
+        <item name="region_md">Moldova_md_373</item>
+        <item name="region_mc">Monaco_mc_377</item>
+        <item name="region_mn">Mongolia_mn_976</item>
+        <item name="region_ms">montserrat_ms_1664</item>
+        <item name="region_ma">Morocco_ma_212</item>
+        <item name="region_mz">Mozambique_mz_258</item>
+        <item name="region_na">Namibia_na_264</item>
+        <item name="region_nr">Nauru_nr_674</item>
+        <item name="region_np">Nepal_np_977</item>
+        <item name="region_an">Netherlands Antilles_an_599</item>
+        <item name="region_nl">Netherlands_nl_31</item>
+        <item name="region_nz">new Zealand_nz_64</item>
+        <item name="region_ni">Nicaragua_ni_505</item>
+        <item name="region_ne">Niger_ne_227</item>
+        <item name="region_ng">Nigeria_ng_234</item>
+        <item name="region_kp">North Korea_kp_850</item>
+        <item name="region_no">Norway_no_47</item>
+        <item name="region_om">Oman_om_968</item>
+        <item name="region_pk">Pakistan_pk_92</item>
+        <item name="region_pa">Panama_pa_507</item>
+        <item name="region_pg">Papua New Guinea_pg_675</item>
+        <item name="region_py">Paraguay_py_595</item>
+        <item name="region_pe">Peru_pe_51</item>
+        <item name="region_ph">the Philippines_ph_63</item>
+        <item name="region_pl">Poland_pl_48</item>
+        <item name="region_pf">French Polynesia_pf_689</item>
+        <item name="region_pt">Portugal_pt_351</item>
+        <item name="region_pr">Puerto Rico_pr_1787</item>
+        <item name="region_qa">Qatar_qa_974</item>
+        <item name="region_re">Reunion_re_262</item>
+        <item name="region_ro">Romania_ro_40</item>
+        <item name="region_ru">Russia_ru_7</item>
+        <item name="region_lc">Saint Lucia_lc_1758</item>
+        <item name="region_ws">Samoa_ws_685</item>
+        <item name="region_sm">San Marino_sm_378</item>
+        <item name="region_st">Sao Tome and Principe_st_239</item>
+        <item name="region_sa">Saudi Arabia_sa_966</item>
+        <item name="region_sn">Senegal_sn_221</item>
+        <item name="region_sc">Seychelles_sc_248</item>
+        <item name="region_sl">Sierra Leone_sl_232</item>
+        <item name="region_sg">Singapore_sg_65</item>
+        <item name="region_sk">Slovakia_sk_421</item>
+        <item name="region_si">Slovenia_si_386</item>
+        <item name="region_sb">Solomon Islands_sb_677</item>
+        <item name="region_so">Somalia_so_252</item>
+        <item name="region_za">South Africa_za_27</item>
+        <item name="region_es">Spain_es_34</item>
+        <item name="region_lk">Sri Lanka_lk_94</item>
+        <item name="region_vc">St Vincent_vc_1784</item>
+        <item name="region_sd">Sudan_sd_249</item>
+        <item name="region_sr">Suriname_sr_597</item>
+        <item name="region_sz">Swaziland_sz_268</item>
+        <item name="region_se">Sweden_se_46</item>
+        <item name="region_ch">Switzerland_ch_41</item>
+        <item name="region_sy">Syria_sy_963</item>
+        <item name="region_tj">Tajikistan_tj_992</item>
+        <item name="region_tz">Tanzania_tz_255</item>
+        <item name="region_th">Thailand_th_66</item>
+        <item name="region_tg">togo_tg_228</item>
+        <item name="region_to">Tonga_to_676</item>
+        <item name="region_tt">Trinidad and Tobago_tt_1868</item>
+        <item name="region_tn">Tunisia_tn_216</item>
+        <item name="region_tr">Turkey_tr_90</item>
+        <item name="region_tm">Turkmenistan_tm_993</item>
+        <item name="region_ug">Uganda_ug_256</item>
+        <item name="region_ua">Ukraine_ua_380</item>
+        <item name="region_ae">United Arab Emirates_ae_971</item>
+        <item name="region_gb">U.K_gb_44</item>
+        <item name="region_us">America_us_1</item>
+        <item name="region_uy">Uruguay_uy_598</item>
+        <item name="region_uz">Uzbekistan_uz_998</item>
+        <item name="region_ve">Venezuela_ve_58</item>
+        <item name="region_vn">Vietnam_vn_84</item>
+        <item name="region_ye">Yemen_ye_967</item>
+<!--        <item name="region_yu">Yugoslavia_yu_381</item>-->
+        <item name="region_zw">Zimbabwe_zw_263</item>
+<!--        <item name="region_zr">Zaire_zr_243</item>-->
+        <item name="region_zm">Zambia_zm_260</item>
+        <item name="region_vgb">British Virgin Islands_vgb_1284</item>
+        <item name="region_dma">Dominica_dma_1767</item>
+        <item name="region_kna">Saint Kitts and Nevis_kna_1869</item>
+        <item name="region_tc">Turks and Caicos Islands_tc_1649</item>
+        <item name="region_vi">United States Virgin Islands_vi_1340</item>
+        <item name="region_mr">Mauritania_mr_222</item>
+        <item name="region_cv">Cape Verde_cv_238</item>
+        <item name="region_gq">Equatorial Guinea_gq_240</item>
+        <item name="region_cg">The people\'s Republic of Congo_cg_242</item>
+        <item name="region_cd">Democratic Republic of Congo_cd_243</item>
+        <item name="region_gw">Guinea-Bissau_gw_245</item>
+        <item name="region_rw">Rwanda_rw_250</item>
+        <item name="region_shn">St. Helena_shn_290</item>
+        <item name="region_er">Eritrea_er_291</item>
+        <item name="region_aw">Aruba_aw_297</item>
+        <item name="region_fo">Faroe Islands_fo_298</item>
+        <item name="region_gl">Greenland_gl_299</item>
+        <item name="region_ad">Andorra Republic_ad_376</item>
+        <item name="region_va">Vatican_va_379</item>
+        <item name="region_rs">Serbia_rs_381</item>
+        <item name="region_me">Montenegro_me_382</item>
+        <item name="region_hr">Croatia_hr_385</item>
+        <item name="region_ba">Bosnia and Herzegovina_ba_387</item>
+        <item name="region_mk">Macedonia_mk_389</item>
+        <item name="region_cs">Czechoslovakia_cs_42</item>
+        <item name="region_fk">Falkland Islands_fk_500</item>
+        <item name="region_pm">Saint Pierre and Miquelon_pm_508</item>
+        <item name="region_gp">Guadeloupe_gp_590</item>
+        <item name="region_cw">Curacao_cw_599</item>
+        <item name="region_tl">East Timor_tl_670</item>
+<!--        <item name="region_aat">Australian Overseas Territory Antarctica_aat_672</item>-->
+        <item name="region_cx">christmas island_cx_672</item>
+        <item name="region_cc">cocos islands_cc_672</item>
+        <item name="region_nf">norfolk island_nf_672</item>
+        <item name="region_vu">Vanuatu_vu_678</item>
+        <item name="region_pw">Palau_pw_680</item>
+        <item name="region_wf">Wallis and Futuna Islands_wf_681</item>
+        <item name="region_nu">Niue_nu_683</item>
+        <item name="region_ki">Kiribati_ki_686</item>
+        <item name="region_nc">new caledonia_nc_687</item>
+        <item name="region_tv">Tuvalu_tv_688</item>
+        <item name="region_tk">tokelau islands_tk_690</item>
+        <item name="region_fm">Federated States of Micronesia_fm_691</item>
+        <item name="region_mh">Marshall Islands_mh_692</item>
+        <item name="region_hk">China Hong Kong_hk_852</item>
+        <item name="region_mo">Macao, China_mo_853</item>
+        <item name="region_ps">Palestine_ps_970</item>
+        <item name="region_bt">Bhutan_bt_975</item>
+        <item name="region_kg">Kyrgyzstan_kg_996</item>
+        <item name="region_tw">Taiwan, China_tw_886</item>
+    </string-array>
+
+    <string-array name="world_clock_zone_name">
+        <item>-10:00*Aleutian Islands</item>
+        <item>-10:00*hawaii</item>
+        <item>-09:30*Marquesas Islands</item>
+        <item>-09:00*Alaska</item>
+        <item>-08:00*Pacific Time (United States)</item>
+        <item>-08:00*Pacific Time (Canada)</item>
+        <item>-08:00*Baja California</item>
+        <item>-07:00*Chihuahua</item>
+        <item>-07:00*Mazatlan</item>
+        <item>-07:00*Mountain Time (US)</item>
+        <item>-07:00*Mountain Time (Canada)</item>
+        <item>-07:00*Arizona</item>
+        <item>-06:00*easter island</item>
+        <item>-06:00*Guadalajara</item>
+        <item>-06:00*Mexico City</item>
+        <item>-06:00*monterey</item>
+        <item>-06:00*Saskatchewan</item>
+        <item>-06:00*Central Time (US)</item>
+        <item>-06:00*Central Time (Canada)</item>
+        <item>-06:00*Central America</item>
+        <item>-05:00*Bogota</item>
+        <item>-05:00*Lima</item>
+        <item>-05:00*Quito</item>
+        <item>-05:00*Rio Blanco</item>
+        <item>-05:00*Eastern Time (US)</item>
+        <item>-05:00*Eastern Time (Canada)</item>
+        <item>-05:00*Havana</item>
+        <item>-05:00*Haiti</item>
+        <item>-05:00*Chetumal</item>
+        <item>-05:00*Indiana (East)</item>
+        <item>-04:00*Asuncion</item>
+        <item>-04:00*Atlantic Time (Canada)</item>
+        <item>-04:00*caracas</item>
+        <item>-04:00*Cuiaba</item>
+        <item>-04:00*Georgetown</item>
+<!--        <item>-04:00*La Paz</item>-->
+        <item>-04:00*Manaus</item>
+        <item>-04:00*san juan</item>
+        <item>-04:00*San Diego</item>
+        <item>-05:00*Turks and Caicos Islands</item>
+        <item>-03:30*Newfoundland</item>
+        <item>-03:00*Araguaina</item>
+        <item>-03:00*Brasilia</item>
+        <item>-03:00*Buenos Aires</item>
+        <item>-03:00*Greenland</item>
+        <item>-03:00*cayenne</item>
+        <item>-03:00*Fortaleza</item>
+        <item>-03:00*Montevideo</item>
+        <item>-03:00*salvador</item>
+        <item>-03:00*Saint Pierre and Miquelon</item>
+        <item>-02:00*mid-atlantic</item>
+        <item>-01:00*Cape Verde Islands</item>
+        <item>-01:00*Azores</item>
+        <item>+00:00*Dublin</item>
+        <item>+00:00*edinburgh</item>
+        <item>+00:00*Lisbon</item>
+        <item>+00:00*London</item>
+        <item>+00:00*Casablanca</item>
+        <item>+00:00*monrovia</item>
+        <item>+00:00*Reykjavik</item>
+        <item>+01:00*Amsterdam</item>
+        <item>+01:00*Berlin</item>
+        <item>+01:00*Bern</item>
+        <item>+01:00*Rome</item>
+        <item>+01:00*Stockholm</item>
+        <item>+01:00*Vienna</item>
+        <item>+01:00*Belgrade</item>
+        <item>+01:00*Bratislava</item>
+        <item>+01:00*Budapest</item>
+        <item>+01:00*Ljubljana</item>
+        <item>+01:00*Prague</item>
+        <item>+01:00*brussels</item>
+        <item>+01:00*Copenhagen</item>
+        <item>+01:00*Madrid</item>
+        <item>+01:00*Paris</item>
+        <item>+01:00*sarajevo</item>
+        <item>+01:00*Skopje</item>
+        <item>+01:00*Warsaw</item>
+        <item>+01:00*zagreb</item>
+        <item>+02:00*windhoek</item>
+        <item>+01:00*west central africa</item>
+        <item>+02:00*amman</item>
+        <item>+02:00*Beirut</item>
+        <item>+02:00*Damascus</item>
+        <item>+02:00*Tripoli</item>
+        <item>+02:00*Harare</item>
+        <item>+02:00*Pretoria</item>
+        <item>+02:00*Helsinki</item>
+        <item>+02:00*Kyiv</item>
+        <item>+02:00*Riga</item>
+        <item>+02:00*Sofia</item>
+        <item>+02:00*Tallinn</item>
+        <item>+02:00*Vilnius</item>
+        <item>+02:00*Chisinau</item>
+        <item>+02:00*Kaliningrad</item>
+        <item>+02:00*Gaza</item>
+        <item>+02:00*Hebron</item>
+        <item>+02:00*cairo</item>
+        <item>+02:00*Athens</item>
+        <item>+02:00*Bucharest</item>
+        <item>+02:00*Jerusalem</item>
+        <item>+03:00*Baghdad</item>
+        <item>+03:00*Riyadh</item>
+        <item>+03:00*Kuwait</item>
+        <item>+03:00*minsk</item>
+        <item>+03:00*Moscow</item>
+        <item>+03:00*St. Petersburg</item>
+        <item>+03:00*volgograd</item>
+        <item>+03:00*Nairobi</item>
+        <item>+03:00*istanbul</item>
+        <item>+03:30*Tehran</item>
+        <item>+04:00*Abu Dhabi</item>
+        <item>+04:00*Muscat</item>
+        <item>+04:00*Astrakhan</item>
+        <item>+04:00*ulyanovsk</item>
+        <item>+04:00*Yerevan</item>
+        <item>+04:00*Baku</item>
+        <item>+04:00*Tbilisi</item>
+        <item>+04:00*Port Louis</item>
+        <item>+04:00*Izhevsk</item>
+        <item>+04:00*samara</item>
+        <item>+04:30*Kabul</item>
+        <item>+05:00*Ashgabat</item>
+        <item>+05:00*Tashkent</item>
+        <item>+05:00*Yekaterinburg</item>
+        <item>+05:00*Islamabad</item>
+        <item>+05:00*Karachi</item>
+        <item>+05:30*Chennai</item>
+        <item>+05:30*Calcutta</item>
+        <item>+05:30*Mumbai</item>
+        <item>+05:30*New Delhi</item>
+        <item>+05:30*Sri Jaya Wodenpura</item>
+        <item>+05:45*Kathmandu</item>
+        <item>+06:00*Astana</item>
+        <item>+06:00*Dhaka</item>
+        <item>+06:00*Omsk</item>
+        <item>+06:30*Yangon</item>
+        <item>+07:00*Barnaul</item>
+        <item>+07:00*Gorno-Altaysk</item>
+        <item>+07:00*Cobdo</item>
+        <item>+07:00*Krasnoyarsk</item>
+        <item>+07:00*Bangkok</item>
+        <item>+07:00*Hanoi</item>
+        <item>+07:00*Jakarta</item>
+        <item>+07:00*Tomsk</item>
+        <item>+07:00*Novosibirsk</item>
+        <item>+07:00*christmas island</item>
+        <item>+08:00*Beijing</item>
+        <item>+08:00*chongqing</item>
+        <item>+08:00*Hong Kong Special Administrative Region</item>
+        <item>+08:00*Urumqi</item>
+        <item>+08:00*Kuala Lumpur</item>
+        <item>+08:00*Singapore</item>
+        <item>+08:00*Perth</item>
+        <item>+08:00*Taipei</item>
+        <item>+08:00*Ulaanbaatar</item>
+        <item>+08:00*Irkutsk</item>
+        <item>+09:00*Pyongyang</item>
+        <item>+08:45*Eucla</item>
+        <item>+09:00*Chita</item>
+        <item>+09:00*Osaka</item>
+        <item>+09:00*Sapporo</item>
+        <item>+09:00*Tokyo</item>
+        <item>+09:00*Seoul</item>
+        <item>+09:00*Yakutsk</item>
+        <item>+09:30*Adelaide</item>
+        <item>+09:30*Darwin</item>
+        <item>+10:00*Brisbane</item>
+        <item>+10:00*Vladivostok</item>
+        <item>+10:00*Guam</item>
+        <item>+10:00*port moresby</item>
+        <item>+10:00*Hobart</item>
+        <item>+10:00*Canberra</item>
+        <item>+10:00*Melbourne</item>
+        <item>+10:00*sydney</item>
+        <item>+10:30*Lord Howe Island</item>
+        <item>+11:00*Bougainville Island</item>
+        <item>+11:00*Magadan</item>
+        <item>+11:00*norfolk island</item>
+        <item>+11:00*Joe Kurdah</item>
+        <item>+11:00*Sakhalin</item>
+        <item>+11:00*Solomon Islands</item>
+        <item>+11:00*new caledonia</item>
+        <item>+12:00*Anadel</item>
+        <item>+12:00*Petropavlovsk, Kamchatka</item>
+        <item>+12:00*Wellington</item>
+        <item>+12:00*Auckland</item>
+        <item>+12:00*Fiji</item>
+        <item>+12:45*Chatham Islands</item>
+        <item>+13:00*Nukualofa</item>
+        <item>+13:00*Samoa</item>
+    </string-array>
+
+    <string-array name="world_clock_zone_name_abbreviation">
+        <item>Pacific/Honolulu</item>
+        <item>Pacific/Honolulu</item>
+        <item>Pacific/Marquesas</item>
+        <item>America/Anchorage</item>
+        <item>America/Los_Angeles</item>
+        <item>America/Los_Angeles</item>
+        <item>America/Los_Angeles</item>
+        <item>America/Chihuahua</item>
+        <item>America/Mazatlan</item>
+        <item>America/Denver</item>
+        <item>America/Denver</item>
+        <item>America/Phoenix</item>
+        <item>Pacific/Easter</item>
+        <item>America/Mexico_City</item>
+        <item>America/Mexico_City</item>
+        <item>America/Monterrey</item>
+        <item>America/Regina</item>
+        <item>America/Chicago</item>
+        <item>America/Chicago</item>
+        <item>America/Guatemala</item>
+        <item>America/Bogota</item>
+        <item>America/Lima</item>
+        <item>America/Guayaquil</item>
+        <item>America/Rio_Branco</item>
+        <item>America/New_York</item>
+        <item>America/New_York</item>
+        <item>America/Havana</item>
+        <item>America/Port-au-Prince</item>
+        <item>America/Cancun</item>
+        <item>America/Indiana/Indianapolis</item>
+        <item>America/Asuncion</item>
+        <item>America/Halifax</item>
+        <item>America/Caracas</item>
+        <item>America/Cuiaba</item>
+        <item>America/Guyana</item>
+        <item>America/La_Paz</item>
+        <item>America/Manaus</item>
+        <item>America/Puerto_Rico</item>
+        <item>America/Santiago</item>
+        <item>America/Grand_Turk</item>
+        <item>America/St_Johns</item>
+        <item>America/Araguaina</item>
+        <item>America/Sao_Paulo</item>
+        <item>America/Argentina/Buenos_Aires</item>
+        <item>America/Nuuk</item>
+        <item>America/Cayenne</item>
+        <item>America/Fortaleza</item>
+        <item>America/Montevideo</item>
+        <item>America/Bahia</item>
+        <item>America/Miquelon</item>
+        <item>Atlantic/South_Georgia</item>
+        <item>Atlantic/Cape_Verde</item>
+        <item>Atlantic/Azores</item>
+        <item>Europe/Dublin</item>
+        <item>Europe/London</item>
+        <item>Europe/Lisbon</item>
+        <item>Europe/London</item>
+        <item>Africa/Casablanca</item>
+        <item>Africa/Monrovia</item>
+        <item>Atlantic/Reykjavik</item>
+        <item>Europe/Amsterdam</item>
+        <item>Europe/Berlin</item>
+        <item>Europe/Zurich</item>
+        <item>Europe/Rome</item>
+        <item>Europe/Stockholm</item>
+        <item>Europe/Vienna</item>
+        <item>Europe/Belgrade</item>
+        <item>Europe/Bratislava</item>
+        <item>Europe/Budapest</item>
+        <item>Europe/Ljubljana</item>
+        <item>Europe/Prague</item>
+        <item>Europe/Brussels</item>
+        <item>Europe/Copenhagen</item>
+        <item>Europe/Madrid</item>
+        <item>Europe/Paris</item>
+        <item>Europe/Sarajevo</item>
+        <item>Europe/Skopje</item>
+        <item>Europe/Warsaw</item>
+        <item>Europe/Zagreb</item>
+        <item>Africa/Windhoek</item>
+        <item>Africa/Lagos</item>
+        <item>Asia/Amman</item>
+        <item>Asia/Beirut</item>
+        <item>Asia/Damascus</item>
+        <item>Africa/Tripoli</item>
+        <item>Africa/Harare</item>
+        <item>Africa/Johannesburg</item>
+        <item>Europe/Helsinki</item>
+        <item>Europe/Kyiv</item>
+        <item>Europe/Riga</item>
+        <item>Europe/Sofia</item>
+        <item>Europe/Tallinn</item>
+        <item>Europe/Vilnius</item>
+        <item>Europe/Chisinau</item>
+        <item>Europe/Kaliningrad</item>
+        <item>Asia/Gaza</item>
+        <item>Asia/Hebron</item>
+        <item>Africa/Cairo</item>
+        <item>Europe/Athens</item>
+        <item>Europe/Bucharest</item>
+        <item>Asia/Jerusalem</item>
+        <item>Asia/Baghdad</item>
+        <item>Asia/Riyadh</item>
+        <item>Asia/Kuwait</item>
+        <item>Europe/Minsk</item>
+        <item>Europe/Moscow</item>
+        <item>Europe/Moscow</item>
+        <item>Europe/Volgograd</item>
+        <item>Africa/Nairobi</item>
+        <item>Europe/Istanbul</item>
+        <item>Asia/Tehran</item>
+        <item>Asia/Dubai</item>
+        <item>Asia/Muscat</item>
+        <item>Europe/Samara</item>
+        <item>Europe/Samara</item>
+        <item>Asia/Yerevan</item>
+        <item>Asia/Baku</item>
+        <item>Asia/Tbilisi</item>
+        <item>Indian/Mauritius</item>
+        <item>Europe/Samara</item>
+        <item>Europe/Samara</item>
+        <item>Asia/Kabul</item>
+        <item>Asia/Ashgabat</item>
+        <item>Asia/Tashkent</item>
+        <item>Asia/Yekaterinburg</item>
+        <item>Asia/Karachi</item>
+        <item>Asia/Kolkata</item>
+        <item>Asia/Kolkata</item>
+        <item>Asia/Kolkata</item>
+        <item>Asia/Kolkata</item>
+        <item>Asia/Kolkata</item>
+        <item>Asia/Colombo</item>
+        <item>Asia/Kathmandu</item>
+        <item>Asia/Almaty</item>
+        <item>Asia/Dhaka</item>
+        <item>Asia/Omsk</item>
+        <item>Asia/Yangon</item>
+        <item>Asia/Krasnoyarsk</item>
+        <item>Asia/Barnaul</item>
+        <item>Asia/Hovd</item>
+        <item>Asia/Krasnoyarsk</item>
+        <item>Asia/Bangkok</item>
+        <item>Asia/Bangkok</item>
+        <item>Asia/Jakarta</item>
+        <item>Asia/Omsk</item>
+        <item>Asia/Novosibirsk</item>
+        <item>Asia/Shanghai</item>
+        <item>Asia/Shanghai</item>
+        <item>Asia/Hong_Kong</item>
+        <item>Asia/Shanghai</item>
+        <item>Asia/Kuala_Lumpur</item>
+        <item>Asia/Singapore</item>
+        <item>Australia/Perth</item>
+        <item>Asia/Taipei</item>
+        <item>Asia/Ulaanbaatar</item>
+        <item>Asia/Irkutsk</item>
+        <item>Asia/Pyongyang</item>
+        <item>Australia/Perth</item>
+        <item>Asia/Chita</item>
+        <item>Asia/Tokyo</item>
+        <item>Asia/Tokyo</item>
+        <item>Asia/Tokyo</item>
+        <item>Asia/Seoul</item>
+        <item>Asia/Yakutsk</item>
+        <item>Australia/Adelaide</item>
+        <item>Australia/Darwin</item>
+        <item>Australia/Brisbane</item>
+        <item>Asia/Vladivostok</item>
+        <item>Pacific/Guam</item>
+        <item>Pacific/Port_Moresby</item>
+        <item>Australia/Hobart</item>
+        <item>Australia/Sydney</item>
+        <item>Australia/Melbourne</item>
+        <item>Australia/Sydney</item>
+        <item>Australia/Lord_Howe</item>
+        <item>Pacific/Guadalcanal</item>
+        <item>Asia/Magadan</item>
+        <item>Pacific/Norfolk</item>
+        <item>Asia/Sakhalin</item>
+        <item>Asia/Sakhalin</item>
+        <item>Pacific/Guadalcanal</item>
+        <item>Pacific/Noumea</item>
+        <item>Asia/Anadyr</item>
+        <item>Asia/Kamchatka</item>
+        <item>Pacific/Auckland</item>
+        <item>Pacific/Auckland</item>
+        <item>Pacific/Fiji</item>
+        <item>Pacific/Chatham</item>
+        <item>Pacific/Tongatapu</item>
+        <item>Pacific/Apia</item>
+        <item>Indian/Christmas</item>
+    </string-array>
+</resources>

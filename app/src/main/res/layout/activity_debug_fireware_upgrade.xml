@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.debug.DebugFirewareUpgradeActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/public_title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTip1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:text="操作方法\n\n1.将[OTA文件(.bin)]，放到[内部存储\\Android\\data\\com.jwei.publicone\\otal]目录下\n\n2.点击[选择文件]按钮，选择文件\n\n3.点击[升级]开始升级"
+                android:textColor="@color/color_171717" />
+
+            <TextView
+                android:id="@+id/tvTip2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="PS:适用范围,仅支持[protobuf大包]传输协议的设备"
+                android:textColor="@android:color/holo_red_dark"
+                />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="文件名:"
+                android:textColor="@color/app_index_color" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_img"
+                    android:visibility="gone"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/color_171717"
+                    />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_text_img"
+                    android:visibility="gone"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="10dp"
+                    />
+            </RelativeLayout>
+
+
+
+            <Button
+                android:id="@+id/btnFile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="onClick"
+                android:text="选择在线表盘文件" />
+
+            <Button
+                android:id="@+id/btnFile2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="onClick"
+                android:text="选择相册表盘文件" />
+
+            <CheckBox
+                android:id="@+id/cbDirection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="相册正向"
+                android:textColor="@color/color_171717"
+                />
+
+            <CheckBox
+                android:id="@+id/cbRond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="相册圆形"
+                android:textColor="@color/color_171717"
+                />
+
+            <EditText
+                android:id="@+id/etColorR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_171717"
+                android:inputType="phone"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:hint="color R 0-255"
+                android:text="255"
+                />
+
+            <EditText
+                android:id="@+id/etColorG"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_171717"
+                android:inputType="phone"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:hint="color G 0-255"
+                android:text="255"
+                />
+
+            <EditText
+                android:id="@+id/etColorB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_171717"
+                android:inputType="phone"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:imeOptions="actionDone"
+                android:hint="color B 0-255"
+                android:text="255"
+                />
+
+
+            <Button
+                android:id="@+id/btnDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp"
+                android:onClick="onClick"
+                android:text="升级"
+                app:layout_constraintTop_toBottomOf="@id/btnFile" />
+
+            <Button
+                android:id="@+id/btnChangeDevice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="onClick"
+                android:text="切换设备"
+                android:visibility="gone"
+                 />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

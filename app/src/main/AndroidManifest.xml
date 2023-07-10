@@ -1,0 +1,832 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.jwei.publicone">
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 允许访问相机 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许访问网络，必选权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许读设备等信息 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许获取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许获取wifi网络信息 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许写入扩展存储 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 允许读设备等信息 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 允许获取精确位置 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 允许获取粗略位置 -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- 后台获取位置信息 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- Android 9前台服务权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 允许震动 -->
+    <!-- <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> &lt;!&ndash; 允许请求安装包 &ndash;&gt; -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 允许读取用户的联系人数据 -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- 允许访问联系人通讯录信息 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 允许电话呼叫 -->
+    <uses-permission android:name="android.permission.READ_CALL_LOG" /> <!-- 允许读取用户的通话日志 -->
+    <uses-permission android:name="android.permission.READ_SMS" /> <!-- 允许应用程序读取短信 -->
+    <uses-permission android:name="android.permission.SEND_SMS" /> <!-- 允许应用程序读取短信 -->
+    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" /> <!-- 允许应用程序接听来电 -->
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" /> <!-- Android10 获取应用列表 -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /> <!-- 音乐控制 -->
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" /> <!-- 不显示下载请求的Notification -->
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" /> <!-- 访问DownloadManager的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" /> <!-- 允许应用访问免打扰模式-控制静音模式 -->
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" /> <!-- 允许应用杀进程 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 允许应用保持不锁屏 -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" /> <!-- 忽略电池优化 -->
+    <!-- region 蓝牙相关权限 -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" /> <!-- android12 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <application
+        android:name="com.jwei.publicone.base.BaseApplication"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/main_app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:resizeableActivity="false"
+        android:roundIcon="@mipmap/icon_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ZhAppApplication"
+        android:usesCleartextTraffic="true"
+        tools:ignore="UnusedAttribute"
+        tools:replace="icon,label,theme"
+        tools:targetApi="m">
+
+        <activity
+            android:name="com.jwei.publicone.ui.WelcomeActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="true"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppThemeSplash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.jwei.publicone.ui.guide.GuidePageActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.guide.GuideConfigActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.weather.WeatherCitySearchActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.weather.WeatherActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.wristbright.WristBrightActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.heartrate.HeartRateSettingActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.contacts.ContactsActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.contacts.AddContactActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.sleep.SleepSettingActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.theme.MyDialCenterActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.history.EffectiveStandActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.theme.DialDetailsActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.theme.DiyDialActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.theme.FunctionSelectActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.theme.DialMoreActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.theme.ThemeCenterActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.devicecontrol.UnBindDeviceActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.DeviceManageActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.devicecontrol.NotEnabledActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.devicecontrol.EnableDeviceActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.history.womenhealth.WomenPeriodSettingActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.history.womenhealth.WomenHealthActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.history.womenhealth.WomenCycleExplainActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.history.HeartRateHistoryActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.history.DailyDataActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.history.BloodOxygenActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.history.HeartRateActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.history.SleepHistoryActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.DeviceSetActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.EditCardActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <!--
+<activity android:name=".ui.PermissionsActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            />
+        -->
+        <activity
+            android:name="com.jwei.publicone.ui.HomeActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.scan.ScanDeviceActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.scan.ScanCodeActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.login.LoginActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.sport.SportCountDownActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.sport.MapSportActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.sport.SportSingleDataActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.sport.SportDataActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.sport.SportShareActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.sport.SportRecordActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.debug.DebugActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.debug.DebugFirewareUpgradeActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.debug.DebugDialActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.debug.DebugConnectActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.debug.DebugClassicBleActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.debug.DebugFeedbackActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+
+        <activity
+            android:name="com.jwei.publicone.ui.debug.DebugWeatherActivity"
+                        android:configChanges="${CONFIG_CHANGES}"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.debug.DebugNoticeActivity"
+                        android:configChanges="${CONFIG_CHANGES}"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+
+        <activity
+            android:name="com.jwei.publicone.ui.debug.DebugListActivity"
+                        android:configChanges="${CONFIG_CHANGES}"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.notify.MsgNotifySetActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.remind.RemindSetActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.remind.ReminderActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.remind.ClockEventReminderActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.remind.AddAlarmClockActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.remind.AddEventActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.notify.NotifyOtherSetActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.DevMoreSetActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.more.ScreenDisplayActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.more.DoNotDisturbActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.more.LightSetActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.more.ApplicationSortActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.more.LanguageSetActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.more.ShortReplyActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.scan.BindDeviceActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.login.privacy.PrivacyPolicyActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.login.privacy.UseAgreementActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.login.privacy.PrivacyStatementActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.login.LoginHomeActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.login.register.RegisterActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.login.FindPassWordActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.user.UserInfoActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.user.PersonalInfoActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.user.UnitSettingActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.user.TargetSettingActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.user.HelpAndFeedbackMainActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.user.AboutActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.user.QuestionFeedbackActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.backgroundpermission.BackgroundPermissionMainActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.backgroundpermission.BackgroundDetailsActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.jwei.publicone.ui.user.AccountSecurityActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.jwei.publicone.ui.user.WriteOffActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.jwei.publicone.ui.user.DataReductionActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.jwei.publicone.ui.user.GoogleFitActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.jwei.publicone.ui.user.StravaActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.jwei.publicone.ui.user.StravaWebLoginActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+
+                <!-- scheme StravaManager INFOWEAR_SCHEME_URL scheme协议头 -->
+                <!-- host https://www.strava.com/settings/api Strava应用配置回调域 -->
+                <data
+                    android:host="wearheart"
+                    android:scheme="publicone" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.ecg.EcgDetailsActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.ecg.EcgReportActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.ecg.EcgCalibrationQuestionActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.ecg.EcgCalibrationActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.ecg.EcgActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.ecg.EcgMeasureActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.user.QAActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.sportmode.SportsModeActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.sportmode.AddSportModeActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.worldclock.WorldClockActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.worldclock.AddWorldClockActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.history.StressActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.healthy.history.OfflineStressActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.device.setting.stress.StressSetActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.region.RegionSettingActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.region.SelectRegionActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name="com.jwei.publicone.ui.debug.DebugLogDecodingActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" /> <!-- 高德地图 -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="${AMAP_API_KEY}" />
+
+        <service
+            android:name="com.amap.api.location.APSService"
+            android:exported="false"
+            android:foregroundServiceType="location" /> <!-- google地图 -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${GOOGLE_MAP_API_KEY}" /> <!-- 监听系统通知 -->
+        <service
+            android:name="com.jwei.publicone.service.MyNotificationsService"
+            android:enabled="true"
+            android:exported="true"
+            android:foregroundServiceType="location"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter android:priority="1000">
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service> <!-- region 相机modules -->
+        <activity
+            android:name="com.android.mycamera.CameraActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            android:theme="@style/Theme.Camera"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name="com.android.mycamera.SecureCameraActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            android:theme="@style/Theme.Camera"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
+            <intent-filter>
+                <action android:name="android.media.action.STILL_IMAGE_CAMERA_SECURE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.IMAGE_CAPTURE_SECURE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.android.keyguard.layout"
+                android:resource="@layout/keyguard_widget" />
+        </activity>
+        <activity
+            android:name="com.android.mycamera.crop.CropActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            android:theme="@style/Theme.Crop" />
+
+        <service
+            android:name="com.android.mycamera.MediaSaveService"
+            android:exported="false" /> <!-- endregion -->
+        <!-- 图片裁剪 -->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:configChanges="${CONFIG_CHANGES}"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" /> <!-- 定位服务 -->
+        <service
+            android:name="com.jwei.publicone.service.LocationService"
+            android:enabled="true"
+            android:exported="true"
+            android:foregroundServiceType="location">
+            <intent-filter android:priority="1000">
+                <action android:name=".service.LocationService" />
+            </intent-filter>
+        </service> <!-- 自定义广播 -->
+        <!-- 设备找手机通知被用户取消广播 -->
+        <receiver
+            android:name="com.jwei.publicone.receiver.StopFindPhoneReceiver"
+            android:exported="false" /> <!-- publicone 服务器url -->
+        <meta-data
+            android:name="com.jwei.publicone.serverUrl"
+            android:value="${SERVICE_URL}" />
+        <meta-data
+            android:name="com.jwei.publicone.foreignServerUrl"
+            android:value="${SERVICE_URL_FOREIGN}" />
+        <meta-data
+            android:name="com.jwei.publicone.trackingServerUrl"
+            android:value="${TRACKING_SERVICE_URL}" />
+        <meta-data
+            android:name="com.jwei.publicone.trackingForeignServerUrl"
+            android:value="${TRACKING_SERVICE_URL_FOREIGN}" /> <!-- strava 服务器url -->
+        <meta-data
+            android:name="com.jwei.publicone.stravaUrl"
+            android:value="${SERVICE_STRAVA_URL}" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.jwei.publicone.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

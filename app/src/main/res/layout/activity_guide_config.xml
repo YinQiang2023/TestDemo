@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/index_bg_color"
+    android:orientation="vertical">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_guide"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7" />
+
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:textColor="@color/color_171717"
+        android:textSize="15sp"
+        tools:text="描述内容" />
+
+    <com.jwei.publicone.ui.guide.view.PageIndicatorView
+        android:id="@+id/pageIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="2">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_next"
+            style="@style/selector_public_button"
+            android:layout_centerInParent="true"
+            android:text="@string/button_next" />
+
+    </RelativeLayout>
+
+</LinearLayout>

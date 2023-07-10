@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.healthy.history.EffectiveStandActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/public_title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/dailySelect"
+        layout="@layout/layout_history_daily"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dailySelect">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.haibin.calendarview.CalendarView
+                android:id="@+id/calendarView"
+                style="@style/public_1_calender"
+                app:month_view="com.jwei.publicone.ui.view.SimpleMonthView"
+                tools:visibility="visible" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/public_bg"
+                android:paddingBottom="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/title">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivTopLeftTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="20dp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@mipmap/healthy_item_effective_stand" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTopLeftTitle"
+                    style="@style/history_top_text_title"
+                    android:text="@string/effective_stand_top_left_title1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDistance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2.84"
+                    android:textColor="@color/color_171717"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@+id/tvTopLeftTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTopLeftTitle" />
+
+                <LinearLayout
+                    android:id="@+id/lyDailyRightTips"
+                    style="@style/details_tip_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvTopLeftTitle">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTotalLeft"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/effective_stand_top_left_title"
+                            android:textColor="@color/color_171717"
+                            android:textSize="12sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTotalSum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_171717"
+                            android:textSize="16sp"
+                            tools:text="700" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTotalSumUnit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/effective_stand_total_sum_unit"
+                            android:textColor="@color/color_171717"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTotalDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_171717"
+                            android:textSize="12sp"
+                            tools:text="06/21" />
+
+                        <Space
+                            android:layout_width="8dp"
+                            android:layout_height="match_parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvTotalSumTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_171717"
+                            android:textSize="12sp"
+                            tools:text="05:00-06:00" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <com.jwei.publicone.ui.view.EffectiveStandView
+                    android:id="@+id/effectiveStandView"
+                    android:layout_width="match_parent"
+                    android:layout_height="136dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/transparent"
+                    app:effectiveStandView_histogram="@color/chart_effective_color"
+                    app:effectiveStandView_histogram_bg="@color/transparent"
+                    app:effectiveStandView_histogram_touch="@color/chart_effective_touch"
+                    app:effectiveStandView_isDrawX0="true"
+                    app:effectiveStandView_x_text_color="@color/chart_axis_text_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDistance" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/details_describe_text"
+                android:text="@string/effective_stand_text_tips" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

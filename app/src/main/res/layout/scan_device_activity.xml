@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/index_bg_color"
+    android:orientation="vertical"
+    tools:context=".ui.device.scan.ScanDeviceActivity">
+
+    <View
+        android:id="@+id/topView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/layoutTitle"
+        layout="@layout/public_title" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutScanDevice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/public_bg"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/tvScanningTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/scan_device_scanning"
+            android:textColor="@color/color_171717"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/ivScanningRightIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvScanningTip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/scan_device_tip"
+            android:textColor="@color/color_878787"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/ivScanningRightIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvScanningTitle" />
+
+        <ImageView
+            android:id="@+id/ivScanningRightIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/scan_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:scrollbarSize="3dp"
+        android:scrollbars="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBleState"
+        tools:listitem="@layout/device_item_layout" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="25dp"
+            android:text="@string/bind_device_help"
+            android:textColor="@color/app_index_color"
+            android:textSize="14sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</LinearLayout>

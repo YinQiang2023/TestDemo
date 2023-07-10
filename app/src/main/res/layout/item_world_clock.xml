@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/public_bg"
+    android:minHeight="64dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivItemLeft"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/healthy_calories" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTodayTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="11dp"
+        android:text="@string/device_set_world_clock"
+        android:textColor="@color/color_171717"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/ivItemLeft"
+        app:layout_constraintEnd_toStartOf="@+id/tvNowTime"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvItemText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="11dp"
+        android:paddingEnd="2dp"
+        android:text="@string/device_set_world_clock"
+        android:textColor="@color/color_171717"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvNowTime"
+        app:layout_constraintStart_toStartOf="@id/tvTodayTime"
+        app:layout_constraintTop_toBottomOf="@+id/tvTodayTime"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNowTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="@string/device_set_world_clock"
+        android:textColor="@color/color_171717"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ivItemRight"
+        app:layout_constraintStart_toEndOf="@+id/tvItemText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivItemRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/item_edit_card_right" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

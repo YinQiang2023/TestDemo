@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/index_bg_color"
+    tools:context=".ui.sport.SportRecordActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/public_title" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lyDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-/-/-"
+            android:textColor="@color/color_171717"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivDateArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDate"
+            app:layout_constraintStart_toEndOf="@+id/tvDate"
+            app:layout_constraintTop_toTopOf="@+id/tvDate"
+            app:srcCompat="@mipmap/arrow_down" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.haibin.calendarview.CalendarLayout
+        android:id="@+id/calendarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:calendar_content_view_id="@+id/lyRefresh"
+        app:calendar_show_mode="both_month_week_view"
+        app:default_status="shrink"
+        app:gesture_mode="disabled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lyDate">
+
+
+        <com.haibin.calendarview.CalendarView
+            android:id="@+id/calendarView"
+            style="@style/public_1_calender"
+            android:layout_marginBottom="0dp"
+            android:background="@color/transparent"
+            android:visibility="visible"
+            app:month_view="com.jwei.publicone.ui.view.SimpleMonthView"
+            app:week_view="com.jwei.publicone.ui.view.SimpleWeekView" />
+
+
+        <com.jwei.publicone.ui.refresh.CustomizeRefreshLayout
+            android:id="@+id/lyRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/index_bg_color">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/item_sport_record_common" />
+
+                <!--TODO 没有数据-->
+                <include
+                    android:id="@+id/noData"
+                    layout="@layout/layout_no_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.jwei.publicone.ui.refresh.CustomizeRefreshLayout>
+
+    </com.haibin.calendarview.CalendarLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

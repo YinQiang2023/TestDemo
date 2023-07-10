@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.jwei.publicone.view.wheelview.widget.WheelView
+        android:id="@+id/wheelHour"
+        style="@style/WheelDefault"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0" />
+
+    <TextView
+        android:id="@+id/wheel_picker_number_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text=":"
+        android:textSize="20sp" />
+
+    <com.jwei.publicone.view.wheelview.widget.WheelView
+        android:id="@+id/wheelMin"
+        style="@style/WheelDefault"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0" />
+
+</LinearLayout>

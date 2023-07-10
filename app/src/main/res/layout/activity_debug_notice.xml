@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.debug.DebugNoticeActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/public_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTip1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:autoLink="web"
+                android:text="操作方法\n\n1.将[APP配置文件(.txt)]，放到[内部存储\\Android\\data\\com.jwei.publicone\\notice\\app]目录下\n\n2.进入界面自动加载配置"
+                android:textColor="@color/color_171717"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/frameLayout2" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <FrameLayout
+                    android:id="@+id/frameLayout2"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_spinner"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Spinner
+                        android:id="@+id/spiner_select"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:spinnerMode="dialog" />
+                </FrameLayout>
+
+
+                <TextView
+                    android:id="@+id/textTitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="标题1:"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/frameLayout2" />
+
+                <EditText
+                    android:id="@+id/et_Title1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintBottom_toBottomOf="@id/textTitle1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textTitle1"
+                    app:layout_constraintTop_toTopOf="@+id/textTitle1" />
+
+                <TextView
+                    android:id="@+id/textContext1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="内容1:"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textTitle1" />
+
+
+                <EditText
+                    android:id="@+id/et_Context1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/color_171717"
+
+                    app:layout_constraintBottom_toBottomOf="@id/textContext1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/textContext1"
+                    app:layout_constraintTop_toTopOf="@+id/textContext1" />
+
+                <TextView
+                    android:id="@+id/textTitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="标题2:"
+                    android:textColor="@color/color_171717"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textContext1" />
+
+                <EditText
+                    android:id="@+id/et_Title2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/color_171717"
+
+                    app:layout_constraintBottom_toBottomOf="@id/textTitle2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textTitle2"
+                    app:layout_constraintTop_toTopOf="@+id/textTitle2" />
+
+
+                <TextView
+                    android:id="@+id/textContext2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="内容2:"
+                    android:textColor="@color/color_171717"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textTitle2" />
+
+                <EditText
+                    android:id="@+id/et_Context2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/color_171717"
+
+                    app:layout_constraintBottom_toBottomOf="@id/textContext2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textContext2"
+                    app:layout_constraintTop_toTopOf="@+id/textContext2" />
+
+                <TextView
+                    android:id="@+id/textTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="间隔时间(ms):"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textContext2" />
+
+                <EditText
+                    android:id="@+id/et_Time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:inputType="number"
+                    android:text="1000"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintBottom_toBottomOf="@id/textTime"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textTime"
+                    app:layout_constraintTop_toTopOf="@+id/textTime" />
+
+                <TextView
+                    android:id="@+id/textCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="循环次数:"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textTime" />
+
+                <EditText
+                    android:id="@+id/et_Count"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:inputType="number"
+                    android:text="5"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintBottom_toBottomOf="@id/textCount"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textCount"
+                    app:layout_constraintTop_toTopOf="@+id/textCount" />
+
+                <TextView
+                    android:id="@+id/tv_Progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0/0"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintBottom_toTopOf="@+id/btnStart"
+                    app:layout_constraintEnd_toEndOf="@+id/btnStart"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_Count" />
+
+                <Button
+                    android:id="@+id/btnStart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:onClick="onClick"
+                    android:text="开始测试"
+                    app:layout_constraintTop_toBottomOf="@+id/et_Count"
+                    tools:layout_editor_absoluteX="16dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/line_divider_color"
+                app:layout_constraintTop_toBottomOf="@+id/btnFile" />
+
+            <TextView
+                android:id="@+id/tvTip2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginBottom="0dp"
+                android:autoLink="web"
+                android:text="操作方法\n\n1.将[字库配置文件(.txt)]，放到[内部存储\\Android\\data\\com.jwei.publicone\\notice\\character]目录下\n\n2.点击导入字库表格加载配置"
+                android:textColor="@color/color_171717"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/frameLayout2" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+                <Button
+                    android:id="@+id/btn_import"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="onClick"
+                    android:text="导入字库表格"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textTime1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="间隔时间(ms):"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btn_import" />
+
+                <EditText
+                    android:id="@+id/et_Time1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:inputType="number"
+                    android:text="1000"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintBottom_toBottomOf="@id/textTime1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textTime1"
+                    app:layout_constraintTop_toTopOf="@+id/textTime1" />
+
+                <TextView
+                    android:id="@+id/textSend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="当前发送:"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textTime1" />
+
+                <EditText
+                    android:id="@+id/et_send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:inputType="number"
+                    android:minWidth="50dp"
+                    android:text="0"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintBottom_toBottomOf="@id/textSend"
+                    app:layout_constraintStart_toEndOf="@+id/textSend"
+                    app:layout_constraintTop_toTopOf="@+id/textSend" />
+
+                <TextView
+                    android:id="@+id/tv_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="/"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintStart_toEndOf="@+id/et_send"
+                    app:layout_constraintTop_toBottomOf="@id/textTime1" />
+
+
+                <TextView
+                    android:id="@+id/textSendContext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="当前发送内容:"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textSend" />
+
+                <TextView
+                    android:id="@+id/tv_SendContext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"
+                    android:textColor="@color/color_171717"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textSendContext"
+                    tools:text="000000000000000000000000000000000000000000" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_SendContext"
+                    tools:layout_editor_absoluteX="16dp">
+
+                    <Button
+                        android:id="@+id/btn_last"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:layout_weight="1"
+                        android:onClick="onClick"
+                        android:text="上一个"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btn_next"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:layout_weight="1"
+                        android:onClick="onClick"
+                        android:text="下一个"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnStart1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="onClick"
+                    android:text="开始测试"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout16"
+                    tools:layout_editor_absoluteX="16dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

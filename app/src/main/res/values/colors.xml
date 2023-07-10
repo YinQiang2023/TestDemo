@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="black">#FF000000</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="white">#FFFFFFFF</color>
+    <color name="color_FFFFFF">#FFFFFF</color>
+    <color name="color_FFFFFF_12">#1eFFFFFF</color>
+    <color name="color_FFFFFF_20">#33FFFFFF</color>
+    <color name="color_FFFFFF_35">#59FFFFFF</color>
+    <color name="color_FFFFFF_50">#7fFFFFFF</color>
+    <color name="color_FFFFFF_70">#B2FFFFFF</color>
+
+    <color name="color_B8B8B8">#B8B8B8</color>
+    <color name="color_99D5D5D6">#99D5D5D6</color>
+    <color name="color_161A20">#161A20</color>
+    <color name="color_97EEFF">#97EEFF</color>
+    <color name="color_26A9D0">#26A9D0</color>
+    <color name="color_D93F6A">#D93F6A</color>
+    <color name="color_D93F6A_15">#26D93F6A</color>
+
+    <color name="pickerview_wheelview_textcolor_out">#a8a8a8</color>
+    <color name="pickerview_bgColor_overlay">#00000000</color>
+
+    <color name="device_sport_heart1">#6E2CB1</color>
+    <color name="device_sport_heart2">#965DF9</color>
+    <color name="device_sport_heart3">#FFC444</color>
+    <color name="device_sport_heart4">#FF38C4</color>
+    <color name="device_sport_heart5">#288DFE</color>
+
+    <color name="sport_no_data_mask">#99707070</color>
+    <color name="sport_locus_color">#34E296</color>
+    <color name="sport_heart_rate_1">#FA254E</color>
+    <color name="sport_heart_rate_2">#FF7311</color>
+    <color name="sport_heart_rate_3">#FEC60D</color>
+    <color name="sport_heart_rate_4">#64F586</color>
+    <color name="sport_heart_rate_5">#3F90FB</color>
+
+    <color name="sport_speed_level_1">#2AFF33</color>
+    <color name="sport_speed_level_2">#B2FF3E</color>
+    <color name="sport_speed_level_3">#F9FF31</color>
+    <color name="sport_speed_level_4">#FFC63A</color>
+    <color name="sport_speed_level_5">#FF5237</color>
+
+    <color name="sport_chart_minkm_line">#0AC269</color>
+    <color name="sport_chart_minkm_start">#4D0AC269</color>
+    <color name="sport_chart_minkm_end">#050AC269</color>
+    <color name="sport_chart_speed_line">#288DFE</color>
+    <color name="sport_chart_speed_start">#4D288DFE</color>
+    <color name="sport_chart_speed_end">#05288DFE</color>
+    <color name="sport_chart_step_line">#FF6631</color>
+    <color name="sport_chart_step_start">#4DFF6631</color>
+    <color name="sport_chart_step_end">#05FF6631</color>
+    <color name="sport_chart_heart_line">#FC4D4D</color>
+    <color name="sport_chart_heart_start">#4DFC4D4D</color>
+    <color name="sport_chart_heart_end">#05FC4D4D</color>
+    <color name="sport_chart_cal_line">#FF6631</color>
+    <color name="sport_chart_cal_start">#4DFF6631</color>
+    <color name="sport_chart_cal_end">#05FF6631</color>
+    <color name="sport_chart_swims_line">#F5D649</color>
+    <color name="sport_chart_swims_start">#4DF5D649</color>
+    <color name="sport_chart_swims_end">#05F5D649</color>
+    <color name="sport_chart_swolf_line">#3F91FF</color>
+    <color name="sport_chart_swolf_start">#4D3F91FF</color>
+    <color name="sport_chart_swolf_end">#053F91FF</color>
+
+
+    <!--============new============-->
+    <!--主题色-->
+    <color name="app_index_color">#2D7DE7</color>
+    <color name="app_index_color_30">#4D2D7DE7</color>
+    <!-- 背景颜色 -->
+    <color name="index_bg_color">#F1F1F2</color>
+    <!-- 字体颜色 -->
+    <color name="color_171717">#171717</color>
+    <color name="color_878787">#878787</color>
+    <!--线条颜色-->
+    <color name="line_divider_color">#33878787</color>
+
+    <!-- 主页底部菜单栏 背景颜色 -->
+    <color name="bottom_menu_bg">#FFFFFF</color>
+    <!-- 底部颜色变化 -->
+    <color name="bottom_color_on">#171717</color>
+    <color name="bottom_color_off">#878787</color>
+
+    <!-- 主按钮 -->
+    <color name="selector_public_button_on">#2D7DE7</color>
+    <color name="selector_public_button_off">#EE2D7DE7</color>
+    <color name="selector_public_button_no_touch">#ACCAF7</color>
+    <!-- 按钮1 -->
+    <color name="selector_public_button_1_on">#A9AEB6</color>
+    <color name="selector_public_button_1_off">#eeA9AEB6</color>
+    <color name="selector_public_button_1_no_touch">#A9AEB6</color>
+    <!-- 按钮2 -->
+    <color name="selector_public_button_2_on">#1BA29A</color>
+    <color name="selector_public_button_2_off">#ee1BA29A</color>
+    <color name="selector_public_button_2_no_touch">#701BA29A</color>
+    <!-- 主按钮 -->
+    <color name="item_scan_device_bg_on">#161A20</color>
+    <color name="item_scan_device_bg_off">#222222</color>
+
+    <!--图表颜色-->
+    <color name="chart_axis_text_color">#171717</color>
+    <color name="chart_step_color">#5AF3BB</color>
+    <color name="chart_step_touch">#995AF3BB</color>
+    <color name="chart_calorie_color">#FFB64E</color>
+    <color name="chart_calorie_touch">#99FFB64E</color>
+    <color name="chart_distance_color">#2D7DE7</color>
+    <color name="chart_distance_touch">#992D7DE7</color>
+    <color name="chart_heart_color">#E5436F</color>
+    <color name="chart_heart_touch">#99E5436F</color>
+    <color name="chart_blood_oxygen_color">#CEC1C3</color>
+    <color name="chart_blood_oxygen_touch">#FF8383</color>
+    <color name="chart_effective_color">#30E89D</color>
+    <color name="chart_effective_touch">#C9FFE4</color>
+    <color name="chart_stress_color">#D45F36</color>
+    <color name="chart_stress_touch">#FBAD74</color>
+    <color name="chart_offline_stress_color">#CEC1C3</color>
+    <color name="chart_offline_stress_touch">#98E6FD</color>
+
+    <!--睡眠-->
+    <color name="sleepView_no_data">#F1F1F2</color>
+    <color name="sleepView_bg_1">#8D37E5</color>
+    <color name="sleepView_bg_2">#A46FFF</color>
+    <color name="sleepView_bg_3">#FFDC69</color>
+    <color name="sleepView_bg_4">#FE46C8</color>
+    <color name="sleepView_bg_touch">#D1B7FF</color>
+
+    <!-- 心电图 -->
+    <color name="ecg_bg_clolor">#147F8088</color>
+    <color name="ecg_bg_line_clolor">#88b5b5b5</color>
+    <color name="ecg_line_clolor">#58af47</color>
+    <color name="ecg_text_clolor">#00000000</color>
+    <color name="color_3C243A">#3C243A</color>
+
+    <!--周期颜色值 默认-->
+    <color name="cycle_color_type0_text">#FFFFFF</color>
+    <color name="cycle_color_type0_bg">#FFFFFF</color>
+    <!--周期颜色值 月经期-->
+    <color name="cycle_color_img_1">#F83D82</color>
+    <color name="cycle_color_type1_text">#FFFFFF</color>
+    <color name="cycle_color_type1_bg">#F8669B</color>
+    <!--周期颜色值 安全期-->
+    <color name="cycle_color_img_2">#FFA124</color>
+    <color name="cycle_color_type2_text">#8ADCCE</color>
+    <color name="cycle_color_type2_bg">#FFFFFF</color>
+    <!--周期颜色值 危险期-->
+    <color name="cycle_color_img_3">#37DEC3</color>
+    <color name="cycle_color_type3_text">#FFC16E</color>
+    <color name="cycle_color_type3_bg">#FFFFFF</color>
+
+    <!--健康顶部颜色-->
+    <color name="index_top_step_bg">#195AF3BB</color>
+    <color name="index_top_step_color">#5AF3BB</color>
+    <color name="index_top_calorie_bg">#19FFB64E</color>
+    <color name="index_top_calorie_color">#FFB64E</color>
+    <color name="index_top_distance_bg">#192D7DE7</color>
+    <color name="index_top_distance_color">#2D7DE7</color>
+
+    <!--相册表盘字体颜色-->
+    <color name="theme_color1">#FFFFFF</color>
+    <color name="theme_color2">#F53958</color>
+    <color name="theme_color3">#FF5B29</color>
+    <color name="theme_color4">#F8962B</color>
+    <color name="theme_color5">#F9C1AA</color>
+    <color name="theme_color6">#F4F1BA</color>
+    <color name="theme_color7">#B2EB9E</color>
+    <color name="theme_color8">#78C4DC</color>
+    <color name="theme_color9">#AB9B8E</color>
+
+
+    <!--ECG-->
+    <color name="color_BackLineColor">#fff1f1f1</color>
+    <color name="color_PointerLineColor">#E5436F</color>
+
+</resources>

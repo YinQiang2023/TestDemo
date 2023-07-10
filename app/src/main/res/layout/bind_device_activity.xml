@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.device.scan.BindDeviceActivity">
+
+    <View
+        android:id="@+id/topView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/layoutTitle"
+        layout="@layout/public_title" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="25dp">
+
+                <ImageView
+                    android:id="@+id/ivDeviceIcon"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:background="@mipmap/device_no_bind_right_img" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDeviceName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:ellipsize="end"
+                    android:maxLines="4"
+                    android:textColor="@color/color_171717"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/ivDeviceIcon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="E15B_01234567891234567890123456789123456789" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTopTips"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:maxLines="3"
+                    android:text="@string/bind_device_tip"
+                    android:textColor="@color/color_878787"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@+id/ivDeviceIcon"
+                    app:layout_constraintStart_toStartOf="@+id/tvDeviceName"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDeviceName" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/public_bg"
+                android:padding="15dp">
+
+
+                <ImageView
+                    android:id="@+id/ivConnecting1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/loading"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <View
+                    android:id="@+id/view01"
+                    android:layout_width="1dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/transparent"
+                    app:layout_constraintEnd_toEndOf="@+id/ivConnecting1"
+                    app:layout_constraintStart_toStartOf="@+id/ivConnecting1"
+                    app:layout_constraintTop_toBottomOf="@+id/ivConnecting1" />
+
+
+                <ImageView
+                    android:id="@+id/ivConnecting2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/loading"
+                    app:layout_constraintEnd_toEndOf="@+id/ivConnecting1"
+                    app:layout_constraintStart_toStartOf="@+id/ivConnecting1"
+                    app:layout_constraintTop_toBottomOf="@+id/view01" />
+
+                <View
+                    android:id="@+id/view02"
+                    android:layout_width="1dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/transparent"
+                    app:layout_constraintEnd_toEndOf="@+id/view01"
+                    app:layout_constraintStart_toStartOf="@+id/view01"
+                    app:layout_constraintTop_toBottomOf="@+id/ivConnecting2" />
+
+
+                <ImageView
+                    android:id="@+id/ivConnecting3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/loading"
+                    app:layout_constraintEnd_toEndOf="@+id/ivConnecting1"
+                    app:layout_constraintStart_toStartOf="@+id/ivConnecting1"
+                    app:layout_constraintTop_toBottomOf="@+id/view02" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvConnectState1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bind_device_state1_1"
+                    android:textColor="@color/color_171717"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivConnecting1"
+                    app:layout_constraintEnd_toStartOf="@+id/ivConnecting1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/ivConnecting1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvConnectState2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bind_device_state2_1"
+                    android:textColor="@color/color_171717"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivConnecting2"
+                    app:layout_constraintEnd_toStartOf="@+id/ivConnecting2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/ivConnecting2" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvConnectState3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bind_device_state3_1"
+                    android:textColor="@color/color_171717"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivConnecting3"
+                    app:layout_constraintEnd_toStartOf="@+id/ivConnecting3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/ivConnecting3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lyBottomView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="0.5"
+                android:padding="25dp"
+                android:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btRetry"
+                    style="@style/selector_public_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:text="@string/dialog_retry_btn"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/btRetry">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvBindResult"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bind_device_error"
+                        android:textColor="@color/color_171717"
+                        android:textSize="14sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvHelp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bind_device_help"
+                        android:textColor="@color/app_index_color"
+                        android:textSize="14sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

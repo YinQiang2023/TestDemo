@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/shareCustomDataLayout"
+        android:layout_width="match_parent"
+        android:layout_height="370dp"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/sport_share_custom_bg_1"
+            android:scaleType="centerCrop"
+            />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp"
+            app:cardBackgroundColor="@color/color_99D5D5D6"
+            app:cardCornerRadius="35dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivCustomHead"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_personal_avatar" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCustomName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="@string/no_data_sign"
+            android:textColor="@color/color_FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/cardView2"
+            app:layout_constraintTop_toTopOf="@id/cardView2"
+            app:layout_constraintBottom_toBottomOf="@id/cardView2"
+            tools:text="用户名" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCustomSportName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/rvStyle"
+            android:textColor="@color/color_FFFFFF"
+            android:textSize="14sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="12dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCustomDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            app:layout_constraintStart_toEndOf="@id/tvCustomSportName"
+            app:layout_constraintBottom_toBottomOf="@id/tvCustomSportName"
+            android:layout_marginStart="11dp"
+            android:textColor="@color/color_FFFFFF"
+            android:textSize="14sp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_height="60dp"
+            tools:listitem="@layout/item_sport_share_custom_sytle"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/background"
+        android:textColor="@color/color_FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shareCustomDataLayout"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="18dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCustomBg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_bg"
+        android:layout_marginTop="7dp"
+        tools:layout_height="160dp"
+        tools:listitem="@layout/item_sport_share_custom_bg"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/healthy_sports_data_string_tips"
+        android:textColor="@color/color_FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvCustomBg"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="18dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCustomData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_data"
+        android:layout_marginTop="7dp"
+        tools:layout_height="80dp"
+        tools:listitem="@layout/item_sport_share_custom_bg"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

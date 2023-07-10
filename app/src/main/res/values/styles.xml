@@ -1,0 +1,144 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <!-- 主按钮 -->
+    <style name="selector_public_button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginStart">25dp</item>
+        <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:background">@drawable/selector_public_button</item>
+    </style>
+
+    <!-- 按钮1-镂空按钮 -->
+    <style name="selector_public_1_button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginStart">25dp</item>
+        <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:background">@drawable/selector_public_button_1</item>
+    </style>
+
+
+    <!-- 健康页-顶部-图标 -->
+    <style name="health_top_icon">
+        <item name="android:layout_width">15dp</item>
+        <item name="android:layout_height">15dp</item>
+    </style>
+
+    <!-- 健康页-顶部-文本 -->
+    <style name="health_top_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/color_171717</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!--1像素保活透明Activity-->
+    <style name="onePixelActivity" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="switchCompatImage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <!-- 输入框 -->
+    <style name="public_1_edittext">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:textColor">@color/color_171717</item>
+        <item name="android:textColorHint">@color/color_878787</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@null</item>
+        <item name="android:textCursorDrawable">@drawable/cursor_color</item>
+    </style>
+
+    <!-- 日历 -->
+    <style name="public_1_calender">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:background">@drawable/public_bg</item>
+        <item name="android:visibility">gone</item>
+        <item name="calendar_height">40dp</item>  <!-- 图表高度 -->
+        <item name="current_day_text_color">@color/color_878787</item>
+        <item name="current_month_lunar_text_color">#000000</item>
+        <item name="current_month_text_color">@color/color_878787</item>
+        <item name="min_year">2004</item>
+        <item name="month_view">40dp</item>
+        <item name="other_month_text_color">@color/color_878787</item>
+        <item name="scheme_text">""</item>
+        <item name="scheme_text_color">@color/color_878787</item>
+        <item name="scheme_theme_color">@color/color_878787</item>
+        <item name="selected_lunar_text_color">#CFCFCF</item>
+        <item name="selected_text_color">@color/color_FFFFFF</item>
+        <item name="selected_theme_color">@color/app_index_color</item>
+        <item name="week_background">@color/transparent</item>
+        <item name="week_text_color">@color/color_878787</item>
+        <item name="year_view_month_padding_bottom">10dp</item>
+    </style>
+
+    <!-- 历史详情-描述 -->
+    <style name="details_tip_bg">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@drawable/public_chart_label_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">3dp</item>
+    </style>
+
+    <!-- 历史详情-描述 -->
+    <style name="details_describe_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:background">@drawable/public_bg</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">@color/color_878787</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <!-- TabLayout -->
+
+    <style name="public_tabLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:minHeight">45dp</item>
+        <item name="tabIndicatorColor">@color/app_index_color</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabMode">fixed</item>
+        <item name="tabSelectedTextColor">@color/app_index_color</item>
+        <item name="tabTextAppearance">@style/tabLayoutTextSize</item>
+        <item name="tabTextColor">@color/color_878787</item>
+    </style>
+
+
+    <style name="history_top_text_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">12dp</item>
+        <item name="android:layout_marginTop">14dp</item>
+        <item name="android:textColor">@color/color_171717</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+</resources>
+

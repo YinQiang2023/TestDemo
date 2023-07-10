@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/sport_userinfo_bg"
+    android:minHeight="140dp"
+    android:padding="14dp"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSportType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/no_data_sign"
+        android:textColor="@color/color_FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/tvSportShareTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="运动类型" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSportShareTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="@string/no_data_sign"
+        android:textColor="@color/color_FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvSportType"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="APP name + 运动健康" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="18dp"
+        app:cardBackgroundColor="@color/color_99D5D5D6"
+        app:cardCornerRadius="35dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSportShareTitle">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivHead"
+            android:layout_width="63dp"
+            android:layout_height="63dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_personal_avatar" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/no_data_sign"
+        android:textColor="@color/color_FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/cardView"
+        tools:text="用户名用户名用户名" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/no_data_sign"
+        android:textColor="@color/color_FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/tvName"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        tools:text="yyyy-MM-DD  小HH:mm" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

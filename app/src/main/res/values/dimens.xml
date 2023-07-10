@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- 顶部按钮栏高度 -->
+    <dimen name="pickerview_topbar_height">44dp</dimen>
+
+    <!-- 顶部按钮padding -->
+    <dimen name="pickerview_topbar_padding">20dp</dimen>
+
+    <!-- 顶部按钮文字大小 -->
+    <dimen name="pickerview_topbar_btn_textsize">17sp</dimen>
+    <dimen name="pickerview_topbar_title_textsize">18sp</dimen>
+    <!-- 选项文字大小 -->
+    <dimen name="pickerview_textsize">20sp</dimen>
+
+    <!--图片裁剪库的logo大小-->
+    <dimen name="ucrop_default_crop_logo_size" tools:override="true">0dp</dimen>
+
+    <!-- 底部菜单 -->
+    <dimen name="bottom_menu_height">60dp</dimen>
+    <dimen name="bottom_menu_img_size">28dp</dimen>
+    <dimen name="bottom_menu_text_size">12sp</dimen>
+
+</resources>

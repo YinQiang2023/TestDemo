@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--未启用时的状态-->
+    <item android:state_enabled="false" android:color="@color/color_878787" />
+    <!--选中时的状态-->
+    <item android:state_checked="true" android:color="@color/app_index_color"/>
+    <!--无状态-->
+    <item android:color="@color/color_171717" />
+</selector>

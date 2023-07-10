@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/index_bg_color"
+    android:orientation="vertical"
+    tools:context=".ui.login.FindPassWordActivity">
+
+    <include
+        android:id="@+id/layoutTitle"
+        layout="@layout/public_title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/find_password_title"
+                android:textColor="@color/color_171717"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etPhoneOrEmail"
+                style="@style/public_1_edittext"
+                android:layout_width="match_parent"
+                android:layout_marginTop="30dp"
+                android:hint="@string/register_account_tips"
+                android:maxLength="50"
+                android:singleLine="true"
+                app:layout_constraintStart_toStartOf="@+id/appCompatTextView"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_divider_color"
+                app:layout_constraintEnd_toEndOf="@+id/etPhoneOrEmail"
+                app:layout_constraintStart_toStartOf="@+id/etPhoneOrEmail"
+                app:layout_constraintTop_toBottomOf="@+id/etPhoneOrEmail" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etCode"
+                style="@style/public_1_edittext"
+                android:layout_width="match_parent"
+                android:layout_marginTop="16dp"
+                android:hint="@string/verification_code"
+                android:maxLength="50"
+                android:singleLine="true"
+                app:layout_constraintStart_toStartOf="@+id/etPhoneOrEmail"
+                app:layout_constraintTop_toBottomOf="@+id/etPhoneOrEmail" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btCode"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:background="@null"
+                android:gravity="center"
+                android:text="@string/find_password_get_code"
+                android:textAllCaps="false"
+                android:textColor="@color/app_index_color"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/etCode"
+                app:layout_constraintEnd_toEndOf="@+id/etCode"
+                app:layout_constraintTop_toTopOf="@+id/etCode" />
+
+            <View
+                android:id="@+id/view0"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_divider_color"
+                app:layout_constraintEnd_toEndOf="@+id/etCode"
+                app:layout_constraintStart_toStartOf="@+id/etCode"
+                app:layout_constraintTop_toBottomOf="@+id/etCode" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etPassWord"
+                style="@style/public_1_edittext"
+                android:layout_width="match_parent"
+                android:layout_marginTop="16dp"
+                android:hint="@string/register_psw_tips"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:minLines="6"
+                android:singleLine="true"
+                app:layout_constraintStart_toStartOf="@+id/etCode"
+                app:layout_constraintTop_toBottomOf="@+id/view0" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/chHidePsw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:button="@drawable/password_checkbox_sl"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/etPassWord"
+                app:layout_constraintEnd_toEndOf="@+id/etPassWord"
+                app:layout_constraintTop_toTopOf="@+id/etPassWord" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_divider_color"
+                app:layout_constraintEnd_toEndOf="@+id/etPassWord"
+                app:layout_constraintStart_toStartOf="@+id/etPassWord"
+                app:layout_constraintTop_toBottomOf="@+id/etPassWord" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etConfirmPassWord"
+                style="@style/public_1_edittext"
+                android:layout_width="match_parent"
+                android:layout_marginTop="16dp"
+                android:hint="@string/register_confirm_psw_tips"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:minLines="6"
+                android:singleLine="true"
+                app:layout_constraintStart_toStartOf="@+id/etPhoneOrEmail"
+                app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/chConfirmHidePsw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:button="@drawable/password_checkbox_sl"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/etConfirmPassWord"
+                app:layout_constraintEnd_toEndOf="@+id/etConfirmPassWord"
+                app:layout_constraintTop_toTopOf="@+id/etConfirmPassWord" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_divider_color"
+                app:layout_constraintEnd_toEndOf="@+id/etConfirmPassWord"
+                app:layout_constraintStart_toStartOf="@+id/etConfirmPassWord"
+                app:layout_constraintTop_toBottomOf="@+id/etConfirmPassWord" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/register_psw_length_tips"
+                android:textColor="@color/color_878787"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/etConfirmPassWord"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btOk"
+                style="@style/selector_public_button"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="154dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="50dp"
+                android:text="@string/dialog_confirm_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

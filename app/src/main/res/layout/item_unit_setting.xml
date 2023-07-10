@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    tools:context=".ui.user.UnitSettingActivity">
+
+    <TextView
+        android:id="@+id/tv_item_unit_setting_tittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_info_unit"
+        android:textColor="@color/color_171717"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/ll_item_unit_setting_metric_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_item_unit_setting_tittle"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_unit_setting_tittle">
+
+        <TextView
+            android:id="@+id/tv_item_unit_setting_metric_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/check_circle_selector"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:text="@string/user_info_unit_metric"
+            android:textColor="@color/color_171717"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_item_unit_setting_metric_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/color_878787"
+            android:textSize="14sp"
+            tools:text="(米、公里、公斤、千克)" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_item_unit_setting_imperial_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@+id/ll_item_unit_setting_metric_parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_item_unit_setting_metric_parent">
+
+        <TextView
+            android:id="@+id/tv_item_unit_setting_imperial_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/check_circle_selector"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:text="@string/user_info_unit_imperial"
+            android:textColor="@color/color_171717"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_item_unit_setting_imperial_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/color_878787"
+            android:textSize="14sp"
+            tools:text="(米、公里、公斤、千克)" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/viewLine01"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/line_divider_color"
+        app:layout_constraintTop_toBottomOf="@id/ll_item_unit_setting_imperial_parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

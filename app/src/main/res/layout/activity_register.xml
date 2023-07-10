@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/index_bg_color"
+    android:orientation="vertical"
+    tools:context=".ui.login.register.RegisterActivity">
+
+    <include
+        android:id="@+id/layoutTitle"
+        layout="@layout/public_title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/login_home_register_btn"
+                android:textColor="@color/color_171717"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSelectLocale"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center_vertical"
+                android:maxLength="50"
+                android:textColor="@color/color_171717"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/appCompatTextView"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSelectLocale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                app:layout_constraintBottom_toBottomOf="@id/tvSelectLocale"
+                app:layout_constraintEnd_toEndOf="@id/tvSelectLocale"
+                app:layout_constraintTop_toTopOf="@id/tvSelectLocale" />
+
+            <View
+                android:id="@+id/view0"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_divider_color"
+                app:layout_constraintEnd_toEndOf="@+id/tvSelectLocale"
+                app:layout_constraintStart_toStartOf="@+id/tvSelectLocale"
+                app:layout_constraintTop_toBottomOf="@+id/tvSelectLocale" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etPhoneOrEmail"
+                style="@style/public_1_edittext"
+                android:layout_width="match_parent"
+                android:layout_marginTop="16dp"
+                android:hint="@string/register_account_tips"
+                android:maxLength="50"
+                android:singleLine="true"
+                app:layout_constraintStart_toStartOf="@+id/appCompatTextView"
+                app:layout_constraintTop_toBottomOf="@+id/view0" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_divider_color"
+                app:layout_constraintEnd_toEndOf="@+id/etPhoneOrEmail"
+                app:layout_constraintStart_toStartOf="@+id/etPhoneOrEmail"
+                app:layout_constraintTop_toBottomOf="@+id/etPhoneOrEmail" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etPassWord"
+                style="@style/public_1_edittext"
+                android:layout_width="match_parent"
+                android:layout_marginTop="16dp"
+                android:hint="@string/register_psw_tips"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:minLines="6"
+                android:singleLine="true"
+                app:layout_constraintStart_toStartOf="@+id/etPhoneOrEmail"
+                app:layout_constraintTop_toBottomOf="@+id/view1" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/chHidePsw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:button="@drawable/password_checkbox_sl"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/etPassWord"
+                app:layout_constraintEnd_toEndOf="@+id/etPassWord"
+                app:layout_constraintTop_toTopOf="@+id/etPassWord" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_divider_color"
+                app:layout_constraintEnd_toEndOf="@+id/etPassWord"
+                app:layout_constraintStart_toStartOf="@+id/etPassWord"
+                app:layout_constraintTop_toBottomOf="@+id/etPassWord" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etConfirmPassWord"
+                style="@style/public_1_edittext"
+                android:layout_width="match_parent"
+                android:layout_marginTop="16dp"
+                android:hint="@string/register_confirm_psw_tips"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:minLines="6"
+                android:singleLine="true"
+                app:layout_constraintStart_toStartOf="@+id/etPhoneOrEmail"
+                app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/chConfirmHidePsw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:button="@drawable/password_checkbox_sl"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/etConfirmPassWord"
+                app:layout_constraintEnd_toEndOf="@+id/etConfirmPassWord"
+                app:layout_constraintTop_toTopOf="@+id/etConfirmPassWord" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_divider_color"
+                app:layout_constraintEnd_toEndOf="@+id/etConfirmPassWord"
+                app:layout_constraintStart_toStartOf="@+id/etConfirmPassWord"
+                app:layout_constraintTop_toBottomOf="@+id/etConfirmPassWord" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/passwordTipTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/register_psw_length_tips"
+                android:textColor="@color/color_878787"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/etConfirmPassWord"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRegisterAndLogin"
+                style="@style/selector_public_button"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="145dp"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/login_home_login_grey_btn"
+                android:text="@string/register_btn_register_and_login"
+                app:layout_constraintStart_toStartOf="@+id/etPassWord"
+                app:layout_constraintTop_toBottomOf="@+id/passwordTipTextView" />
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/chbPrivacyAuthority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:button="@drawable/privacy_authority_sl"
+                android:paddingStart="5dp"
+                android:textColor="@color/color_878787"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnRegisterAndLogin" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPrivacyAuthority"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/no_data_sign"
+                android:textColor="@color/color_878787"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/chbPrivacyAuthority"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/chbPrivacyAuthority"
+                app:layout_constraintTop_toTopOf="@+id/chbPrivacyAuthority" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

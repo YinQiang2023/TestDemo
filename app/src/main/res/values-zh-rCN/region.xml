@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="region_array">
+        <item name="region_ao">安哥拉_ao_244</item>
+        <item name="region_af">阿富汗_af_93</item>
+        <item name="region_al">阿尔巴尼亚_al_355</item>
+        <item name="region_dz">阿尔及利亚_dz_213</item>
+        <item name="region_ai">安圭拉岛_ai_1264</item>
+        <item name="region_ag">安提瓜和巴布达_ag_1268</item>
+        <item name="region_ar">阿根廷_ar_54</item>
+        <item name="region_am">亚美尼亚_am_374</item>
+        <item name="region_sh">阿森松_sh_247</item>
+        <item name="region_au">澳大利亚_au_61</item>
+        <item name="region_at">奥地利_at_43</item>
+        <item name="region_az">阿塞拜疆_az_994</item>
+        <item name="region_bs">巴哈马_bs_1242</item>
+        <item name="region_bh">巴林_bh_973</item>
+        <item name="region_bd">孟加拉国_bd_880</item>
+        <item name="region_bb">巴巴多斯_bb_1246</item>
+        <item name="region_by">白俄罗斯_by_375</item>
+        <item name="region_be">比利时_be_32</item>
+        <item name="region_bz">伯利兹_bz_501</item>
+        <item name="region_bj">贝宁_bj_229</item>
+        <item name="region_bm">百慕大群岛_bm_1441</item>
+        <item name="region_bo">玻利维亚_bo_591</item>
+        <item name="region_bw">博茨瓦纳_bw_267</item>
+        <item name="region_br">巴西_br_55</item>
+        <item name="region_bn">文莱_bn_673</item>
+        <item name="region_bg">保加利亚_bg_359</item>
+        <item name="region_bf">布基纳法索_bf_226</item>
+        <item name="region_mm">缅甸_mm_95</item>
+        <item name="region_bi">布隆迪_bi_257</item>
+        <item name="region_cm">喀麦隆_cm_237</item>
+        <item name="region_ca">加拿大_ca_1</item>
+        <item name="region_ky">开曼群岛_ky_1345</item>
+        <item name="region_cf">中非共和国_cf_236</item>
+        <item name="region_td">乍得_td_235</item>
+        <item name="region_cl">智利_cl_56</item>
+        <item name="region_cn">中国_cn_86</item>
+        <item name="region_co">哥伦比亚_co_57</item>
+        <item name="region_ck">库克群岛_ck_682</item>
+        <item name="region_cr">哥斯达黎加_cr_506</item>
+        <item name="region_cu">古巴_cu_53</item>
+        <item name="region_cy">塞浦路斯_cy_357</item>
+        <item name="region_cz">捷克_cz_420</item>
+        <item name="region_dk">丹麦_dk_45</item>
+        <item name="region_dj">吉布提_dj_253</item>
+        <item name="region_do">多米尼加共和国_do_1890</item>
+        <item name="region_ec">厄瓜多尔_ec_593</item>
+        <item name="region_eg">埃及_eg_20</item>
+        <item name="region_sv">萨尔瓦多_sv_503</item>
+        <item name="region_ee">爱沙尼亚_ee_372</item>
+        <item name="region_et">埃塞俄比亚_et_251</item>
+        <item name="region_fj">斐济_fj_679</item>
+        <item name="region_fi">芬兰_fi_358</item>
+        <item name="region_fr">法国_fr_33</item>
+        <item name="region_gf">法属圭亚那_gf_594</item>
+        <item name="region_ga">加蓬_ga_241</item>
+        <item name="region_gm">冈比亚_gm_220</item>
+        <item name="region_ge">格鲁吉亚_ge_995</item>
+        <item name="region_de">德国_de_49</item>
+        <item name="region_gh">加纳_gh_233</item>
+        <item name="region_gi">直布罗陀_gi_350</item>
+        <item name="region_gr">希腊_gr_30</item>
+        <item name="region_gd">格林纳达_gd_1809</item>
+        <item name="region_gu">关岛_gu_1671</item>
+        <item name="region_gt">危地马拉_gt_502</item>
+        <item name="region_gn">几内亚_gn_224</item>
+        <item name="region_gy">圭亚那_gy_592</item>
+        <item name="region_ht">海地_ht_509</item>
+        <item name="region_hn">洪都拉斯_hn_504</item>
+        <item name="region_hu">匈牙利_hu_36</item>
+        <item name="region_is">冰岛_is_354</item>
+        <item name="region_in">印度_in_91</item>
+        <item name="region_id">印度尼西亚_id_62</item>
+        <item name="region_ir">伊朗_ir_98</item>
+        <item name="region_iq">伊拉克_iq_964</item>
+        <item name="region_ie">爱尔兰_ie_353</item>
+        <item name="region_il">以色列_il_972</item>
+        <item name="region_it">意大利_it_39</item>
+        <item name="region_ci">科特迪瓦_ci_225</item>
+        <item name="region_jm">牙买加_jm_1876</item>
+        <item name="region_jp">日本_jp_81</item>
+        <item name="region_jo">约旦_jo_962</item>
+        <item name="region_kh">柬埔寨_kh_855</item>
+        <item name="region_ke">肯尼亚_ke_254</item>
+        <item name="region_kr">韩国_kr_82</item>
+        <item name="region_kw">科威特_kw_965</item>
+        <item name="region_la">老挝_la_856</item>
+        <item name="region_lv">拉脱维亚_lv_371</item>
+        <item name="region_lb">黎巴嫩_lb_961</item>
+        <item name="region_ls">莱索托_ls_266</item>
+        <item name="region_lr">利比里亚_lr_231</item>
+        <item name="region_ly">利比亚_ly_218</item>
+        <item name="region_li">列支敦士登_li_423</item>
+        <item name="region_lt">立陶宛_lt_370</item>
+        <item name="region_lu">卢森堡_lu_352</item>
+        <item name="region_mg">马达加斯加_mg_261</item>
+        <item name="region_mw">马拉维_mw_265</item>
+        <item name="region_my">马来西亚_my_60</item>
+        <item name="region_mv">马尔代夫_mv_960</item>
+        <item name="region_ml">马里_ml_223</item>
+        <item name="region_mt">马耳他_mt_356</item>
+        <item name="region_mp">北马里亚纳群岛_mp_1670</item>
+        <item name="region_mq">马提尼克_mq_596</item>
+        <item name="region_mu">毛里求斯_mu_230</item>
+        <item name="region_mx">墨西哥_mx_52</item>
+        <item name="region_md">摩尔多瓦_md_373</item>
+        <item name="region_mc">摩纳哥_mc_377</item>
+        <item name="region_mn">蒙古_mn_976</item>
+        <item name="region_ms">蒙特塞拉特岛_ms_1664</item>
+        <item name="region_ma">摩洛哥_ma_212</item>
+        <item name="region_mz">莫桑比克_mz_258</item>
+        <item name="region_na">纳米比亚_na_264</item>
+        <item name="region_nr">瑙鲁_nr_674</item>
+        <item name="region_np">尼泊尔_np_977</item>
+        <item name="region_an">荷属安的列斯_an_599</item>
+        <item name="region_nl">荷兰_nl_31</item>
+        <item name="region_nz">新西兰_nz_64</item>
+        <item name="region_ni">尼加拉瓜_ni_505</item>
+        <item name="region_ne">尼日尔_ne_227</item>
+        <item name="region_ng">尼日利亚_ng_234</item>
+        <item name="region_kp">朝鲜_kp_850</item>
+        <item name="region_no">挪威_no_47</item>
+        <item name="region_om">阿曼_om_968</item>
+        <item name="region_pk">巴基斯坦_pk_92</item>
+        <item name="region_pa">巴拿马_pa_507</item>
+        <item name="region_pg">巴布亚新几内亚_pg_675</item>
+        <item name="region_py">巴拉圭_py_595</item>
+        <item name="region_pe">秘鲁_pe_51</item>
+        <item name="region_ph">菲律宾_ph_63</item>
+        <item name="region_pl">波兰_pl_48</item>
+        <item name="region_pf">法属玻利尼西亚_pf_689</item>
+        <item name="region_pt">葡萄牙_pt_351</item>
+        <item name="region_pr">波多黎各_pr_1787</item>
+        <item name="region_qa">卡塔尔_qa_974</item>
+        <item name="region_re">留尼旺_re_262</item>
+        <item name="region_ro">罗马尼亚_ro_40</item>
+        <item name="region_ru">俄罗斯_ru_7</item>
+        <item name="region_lc">圣卢西亚_lc_1758</item>
+        <item name="region_ws">萨摩亚_ws_685</item>
+        <item name="region_sm">圣马力诺_sm_378</item>
+        <item name="region_st">圣多美和普林西比_st_239</item>
+        <item name="region_sa">沙特阿拉伯_sa_966</item>
+        <item name="region_sn">塞内加尔_sn_221</item>
+        <item name="region_sc">塞舌尔_sc_248</item>
+        <item name="region_sl">塞拉利昂_sl_232</item>
+        <item name="region_sg">新加坡_sg_65</item>
+        <item name="region_sk">斯洛伐克_sk_421</item>
+        <item name="region_si">斯洛文尼亚_si_386</item>
+        <item name="region_sb">所罗门群岛_sb_677</item>
+        <item name="region_so">索马里_so_252</item>
+        <item name="region_za">南非_za_27</item>
+        <item name="region_es">西班牙_es_34</item>
+        <item name="region_lk">斯里兰卡_lk_94</item>
+        <item name="region_vc">圣文森特_vc_1784</item>
+        <item name="region_sd">苏丹_sd_249</item>
+        <item name="region_sr">苏里南_sr_597</item>
+        <item name="region_sz">斯威士兰_sz_268</item>
+        <item name="region_se">瑞典_se_46</item>
+        <item name="region_ch">瑞士_ch_41</item>
+        <item name="region_sy">叙利亚_sy_963</item>
+        <item name="region_tj">塔吉克斯坦_tj_992</item>
+        <item name="region_tz">坦桑尼亚_tz_255</item>
+        <item name="region_th">泰国_th_66</item>
+        <item name="region_tg">多哥_tg_228</item>
+        <item name="region_to">汤加_to_676</item>
+        <item name="region_tt">特立尼达和多巴哥_tt_1868</item>
+        <item name="region_tn">突尼斯_tn_216</item>
+        <item name="region_tr">土耳其_tr_90</item>
+        <item name="region_tm">土库曼斯坦_tm_993</item>
+        <item name="region_ug">乌干达_ug_256</item>
+        <item name="region_ua">乌克兰_ua_380</item>
+        <item name="region_ae">阿拉伯联合酋长国_ae_971</item>
+        <item name="region_gb">英国_gb_44</item>
+        <item name="region_us">美国_us_1</item>
+        <item name="region_uy">乌拉圭_uy_598</item>
+        <item name="region_uz">乌兹别克斯坦_uz_998</item>
+        <item name="region_ve">委内瑞拉_ve_58</item>
+        <item name="region_vn">越南_vn_84</item>
+        <item name="region_ye">也门_ye_967</item>
+        <item name="region_zw">津巴布韦_zw_263</item>
+        <item name="region_zm">赞比亚_zm_260</item>
+        <item name="region_vgb">英属维京群岛_vgb_1284</item>
+        <item name="region_dma">多米尼克_dma_1767</item>
+        <item name="region_kna">圣基茨和尼维斯_kna_1869</item>
+        <item name="region_tc">特克斯和凯科斯群岛_tc_1649</item>
+        <item name="region_vi">美属维尔京群岛_vi_1340</item>
+        <item name="region_mr">毛里塔尼亚_mr_222</item>
+        <item name="region_cv">佛得角_cv_238</item>
+        <item name="region_gq">赤道几内亚_gq_240</item>
+        <item name="region_cg">刚果人民共和国_cg_242</item>
+        <item name="region_cd">刚果民主共和国_cd_243</item>
+        <item name="region_gw">几内亚比绍_gw_245</item>
+        <item name="region_rw">卢旺达_rw_250</item>
+        <item name="region_shn">圣赫勒拿_shn_290</item>
+        <item name="region_er">厄立特里亚_er_291</item>
+        <item name="region_aw">阿鲁巴_aw_297</item>
+        <item name="region_fo">法罗群岛_fo_298</item>
+        <item name="region_gl">格陵兰岛_gl_299</item>
+        <item name="region_ad">安道尔共和国_ad_376</item>
+        <item name="region_va">梵蒂冈_va_379</item>
+        <item name="region_rs">塞尔维亚_rs_381</item>
+        <item name="region_me">黑山_me_382</item>
+        <item name="region_hr">克罗地亚_hr_385</item>
+        <item name="region_ba">波黑_ba_387</item>
+        <item name="region_mk">马其顿_mk_389</item>
+        <item name="region_cs">捷克斯洛伐克_cs_42</item>
+        <item name="region_fk">福克兰群岛_fk_500</item>
+        <item name="region_pm">圣皮埃尔和密克隆群岛_pm_508</item>
+        <item name="region_gp">瓜德罗普_gp_590</item>
+        <item name="region_cw">库拉索_cw_599</item>
+        <item name="region_tl">东帝汶_tl_670</item>
+        <item name="region_cx">圣诞岛_cx_672</item>
+        <item name="region_cc">科科斯群岛_cc_672</item>
+        <item name="region_nf">诺福克岛_nf_672</item>
+        <item name="region_vu">瓦努阿图_vu_678</item>
+        <item name="region_pw">帕劳_pw_680</item>
+        <item name="region_wf">瓦利斯和富图纳群岛_wf_681</item>
+        <item name="region_nu">纽埃_nu_683</item>
+        <item name="region_ki">基里巴斯_ki_686</item>
+        <item name="region_nc">新喀里多尼亚_nc_687</item>
+        <item name="region_tv">图瓦卢_tv_688</item>
+        <item name="region_tk">托克劳群岛_tk_690</item>
+        <item name="region_fm">密克罗尼西亚联邦_fm_691</item>
+        <item name="region_mh">马绍尔群岛_mh_692</item>
+        <item name="region_hk">中国香港_hk_852</item>
+        <item name="region_mo">中国澳门_mo_853</item>
+        <item name="region_ps">巴勒斯坦_ps_970</item>
+        <item name="region_bt">不丹_bt_975</item>
+        <item name="region_kg">吉尔吉斯斯坦_kg_996</item>
+        <item name="region_tw">中国台湾_tw_886</item>
+    </string-array>
+
+    <string-array name="world_clock_zone_name">
+        <item>-10:00*阿留申群岛</item>
+        <item>-10:00*夏威夷</item>
+        <item>-09:30*马克萨斯群岛</item>
+        <item>-09:00*阿拉斯加</item>
+        <item>-08:00*太平洋时间(美国)</item>
+        <item>-08:00*太平洋时间(加拿大)</item>
+        <item>-08:00*下加利福尼亚州</item>
+        <item>-07:00*奇瓦瓦</item>
+        <item>-07:00*马萨特兰</item>
+        <item>-07:00*山地时间(美国)</item>
+        <item>-07:00*山地时间(加拿大)</item>
+        <item>-07:00*亚利桑那</item>
+        <item>-06:00*复活节岛</item>
+        <item>-06:00*瓜达拉哈拉</item>
+        <item>-06:00*墨西哥城</item>
+        <item>-06:00*蒙特雷</item>
+        <item>-06:00*萨斯喀彻温</item>
+        <item>-06:00*中部时间(美国)</item>
+        <item>-06:00*中部时间(加拿大)</item>
+        <item>-06:00*中美洲</item>
+        <item>-05:00*波哥大</item>
+        <item>-05:00*利马</item>
+        <item>-05:00*基多</item>
+        <item>-05:00*里奥布朗库</item>
+        <item>-05:00*东部时间(美国)</item>
+        <item>-05:00*东部时间(加拿大)</item>
+        <item>-05:00*哈瓦那</item>
+        <item>-05:00*海地</item>
+        <item>-05:00*切图马尔</item>
+        <item>-05:00*印地安那州(东部)</item>
+        <item>-05:00*特克斯和凯科斯群岛</item>
+        <item>-04:00*亚松森</item>
+        <item>-04:00*大西洋时间(加拿大)</item>
+        <item>-04:00*加拉加斯</item>
+        <item>-04:00*库亚巴</item>
+        <item>-04:00*乔治敦</item>
+<!--        <item>-04:00*拉巴斯</item>-->
+        <item>-04:00*马瑙斯</item>
+        <item>-04:00*圣胡安</item>
+        <item>-04:00*圣地亚哥</item>
+        <item>-03:30*纽芬兰</item>
+        <item>-03:00*阿拉瓜伊纳</item>
+        <item>-03:00*巴西利亚</item>
+        <item>-03:00*布宜诺斯艾利斯</item>
+        <item>-03:00*格陵兰</item>
+        <item>-03:00*卡宴</item>
+        <item>-03:00*福塔雷萨</item>
+        <item>-03:00*蒙得维的亚</item>
+        <item>-03:00*萨尔瓦多</item>
+        <item>-03:00*圣皮埃尔和密克隆群岛</item>
+        <item>-02:00*中大西洋</item>
+        <item>-01:00*佛得角群岛</item>
+        <item>-01:00*亚速尔群岛</item>
+        <item>+00:00*都柏林</item>
+        <item>+00:00*爱丁堡</item>
+        <item>+00:00*里斯本</item>
+        <item>+00:00*伦敦</item>
+        <item>+00:00*卡萨布兰卡</item>
+        <item>+00:00*蒙罗维亚</item>
+        <item>+00:00*雷克雅未克</item>
+        <item>+01:00*阿姆斯特丹</item>
+        <item>+01:00*柏林</item>
+        <item>+01:00*伯尔尼</item>
+        <item>+01:00*罗马</item>
+        <item>+01:00*斯德哥尔摩</item>
+        <item>+01:00*维也纳</item>
+        <item>+01:00*贝尔格莱德</item>
+        <item>+01:00*布拉迪斯拉发</item>
+        <item>+01:00*布达佩斯</item>
+        <item>+01:00*卢布尔雅那</item>
+        <item>+01:00*布拉格</item>
+        <item>+01:00*布鲁塞尔</item>
+        <item>+01:00*哥本哈根</item>
+        <item>+01:00*马德里</item>
+        <item>+01:00*巴黎</item>
+        <item>+01:00*萨拉热窝</item>
+        <item>+01:00*斯科普里</item>
+        <item>+01:00*华沙</item>
+        <item>+01:00*萨格勒布</item>
+        <item>+01:00*中非西部</item>
+        <item>+02:00*温得和克</item>
+        <item>+02:00*安曼</item>
+        <item>+02:00*贝鲁特</item>
+        <item>+02:00*大马士革</item>
+        <item>+02:00*的黎波里</item>
+        <item>+02:00*哈拉雷</item>
+        <item>+02:00*比勒陀利亚</item>
+        <item>+02:00*赫尔辛基</item>
+        <item>+02:00*基辅</item>
+        <item>+02:00*里加</item>
+        <item>+02:00*索非亚</item>
+        <item>+02:00*塔林</item>
+        <item>+02:00*维尔纽斯</item>
+        <item>+02:00*基希讷乌</item>
+        <item>+02:00*加里宁格勒</item>
+        <item>+02:00*加沙</item>
+        <item>+02:00*希伯伦</item>
+        <item>+02:00*开罗</item>
+        <item>+02:00*雅典</item>
+        <item>+02:00*布加勒斯特</item>
+        <item>+02:00*耶路撒冷</item>
+        <item>+03:00*巴格达</item>
+        <item>+03:00*利雅得</item>
+        <item>+03:00*科威特</item>
+        <item>+03:00*明斯克</item>
+        <item>+03:00*莫斯科</item>
+        <item>+03:00*圣彼得堡</item>
+        <item>+03:00*伏尔加格勒</item>
+        <item>+03:00*内罗毕</item>
+        <item>+03:00*伊斯坦布尔</item>
+        <item>+03:30*德黑兰</item>
+        <item>+04:00*阿布扎比</item>
+        <item>+04:00*马斯喀特</item>
+        <item>+04:00*阿斯特拉罕</item>
+        <item>+04:00*乌里扬诺夫斯克</item>
+        <item>+04:00*埃里温</item>
+        <item>+04:00*巴库</item>
+        <item>+04:00*第比利斯</item>
+        <item>+04:00*路易港</item>
+        <item>+04:00*伊热夫斯克</item>
+        <item>+04:00*萨马拉</item>
+        <item>+04:30*喀布尔</item>
+        <item>+05:00*阿什哈巴德</item>
+        <item>+05:00*塔什干</item>
+        <item>+05:00*叶卡捷琳堡</item>
+        <item>+05:00*伊斯兰堡</item>
+        <item>+05:00*卡拉奇</item>
+        <item>+05:30*钦奈</item>
+        <item>+05:30*加尔各答</item>
+        <item>+05:30*孟买</item>
+        <item>+05:30*新德里</item>
+        <item>+05:30*斯里加亚渥登普拉</item>
+        <item>+05:45*加德满都</item>
+        <item>+06:00*阿斯塔纳</item>
+        <item>+06:00*达卡</item>
+        <item>+06:00*鄂木斯克</item>
+        <item>+06:30*仰光</item>
+        <item>+07:00*巴尔瑙尔</item>
+        <item>+07:00*戈尔诺-阿尔泰斯克</item>
+        <item>+07:00*科布多</item>
+        <item>+07:00*克拉斯诺亚尔斯克</item>
+        <item>+07:00*曼谷</item>
+        <item>+07:00*河内</item>
+        <item>+07:00*雅加达</item>
+        <item>+07:00*托木斯克</item>
+        <item>+07:00*新西伯利亚</item>
+        <item>+07:00*圣诞岛</item>
+        <item>+08:00*北京</item>
+        <item>+08:00*重庆</item>
+        <item>+08:00*香港特别行政区</item>
+        <item>+08:00*乌鲁木齐</item>
+        <item>+08:00*吉隆坡</item>
+        <item>+08:00*新加坡</item>
+        <item>+08:00*珀斯</item>
+        <item>+08:00*台北</item>
+        <item>+08:00*乌兰巴托</item>
+        <item>+08:00*伊尔库茨克</item>
+        <item>+09:00*平壤</item>
+        <item>+08:45*尤克拉</item>
+        <item>+09:00*赤塔市</item>
+        <item>+09:00*大阪</item>
+        <item>+09:00*札幌</item>
+        <item>+09:00*东京</item>
+        <item>+09:00*首尔</item>
+        <item>+09:00*雅库茨克</item>
+        <item>+09:30*阿德莱德</item>
+        <item>+09:30*达尔文</item>
+        <item>+10:00*布里斯班</item>
+        <item>+10:00*符拉迪沃斯托克</item>
+        <item>+10:00*关岛</item>
+        <item>+10:00*莫尔兹比港</item>
+        <item>+10:00*霍巴特</item>
+        <item>+10:00*堪培拉</item>
+        <item>+10:00*墨尔本</item>
+        <item>+10:00*悉尼</item>
+        <item>+10:30*豪勋爵岛</item>
+        <item>+11:00*布干维尔岛</item>
+        <item>+11:00*马加丹</item>
+        <item>+11:00*诺福克岛</item>
+        <item>+11:00*乔库尔达赫</item>
+        <item>+11:00*萨哈林</item>
+        <item>+11:00*所罗门群岛</item>
+        <item>+11:00*新喀里多尼亚</item>
+        <item>+12:00*阿纳德尔</item>
+        <item>+12:00*堪察加彼得罗巴甫洛夫斯克</item>
+        <item>+12:00*惠灵顿</item>
+        <item>+12:00*奥克兰</item>
+        <item>+12:00*斐济</item>
+        <item>+12:45*查塔姆群岛</item>
+        <item>+13:00*努库阿洛法</item>
+        <item>+13:00*萨摩亚群岛</item>
+    </string-array>
+</resources>
