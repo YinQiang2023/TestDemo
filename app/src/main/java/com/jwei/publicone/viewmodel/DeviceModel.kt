@@ -893,9 +893,9 @@ class DeviceModel : BaseViewModel() {
                 val result = MyRetrofitClient.service.queryFirewareUpgradeVersion(
                     JsonUtils.getRequestJson(
                         FirewareUpdateParam(
-                            Global.deviceType,
-                            Global.deviceVersion,
-                            firmwarePlatform,
+                            /*Global.deviceType*/"50000",
+                            /*Global.deviceVersion*/"1.0.1",
+                            /*firmwarePlatform*/"4",
                             userId
                         ),
                         FirewareUpdateParam::class.java
@@ -1002,6 +1002,8 @@ class DeviceModel : BaseViewModel() {
                             result.data.mtuList?.toTypedArray()?.contentToString()
                         }"
                     )
+                    SpUtils.getSPUtilsInstance().put(SpUtils.CURRENT_FIRMWARE_PLATFORM, result.data.firmwarePlatform)
+
                     if (isSave) {
                         LogUtils.w(TAG, "getProductInfo isSave = $isSave")
                         var mtu = "0"

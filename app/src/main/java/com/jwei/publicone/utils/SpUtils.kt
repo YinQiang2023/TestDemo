@@ -122,6 +122,8 @@ object SpUtils {
     const val REQUEST_DEVICE_INFO_IS_HAS_DATA = "REQUEST_DEVICE_INFO_IS_HAS_DATA"
     const val LAST_DEVICE_LOGIN_TIME = "LAST_DEVICE_LOGIN_TIME" //同一个账号上次登录的时间
 
+
+
     //存储服务器返回MTU信息
     const val THE_SERVER_MTU_INFO_MTU = "THE_SERVER_MTU_INFO_MTU" //MTU
     const val THE_SERVER_MTU_INFO_MAX_VALUE = "THE_SERVER_MTU_INFO_MAX_VALUE" //max
@@ -132,6 +134,9 @@ object SpUtils {
 
     //存储服务器返回设备指令间隔
     const val THE_SERVER_PACK_SEND_INTERVAL = "SERVER_PACK_SEND_INTERVAL"
+
+    //当前设备固件平台
+    const val CURRENT_FIRMWARE_PLATFORM = "CURRENT_FIRMWARE_PLATFORM"
 
     //strava token
     const val STRAVA_TOKEN_KEY = "STRAVA_TOKEN"

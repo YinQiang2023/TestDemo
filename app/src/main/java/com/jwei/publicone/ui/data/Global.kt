@@ -348,42 +348,49 @@ object Global {
                 bean.isHide = isHide
                 bean.tag = "步数"
             }
+
             "距离" -> {
                 bean.centerTextId = resources.getString(R.string.healthy_sports_list_distance)
                 bean.leftImg = getIdentifier("edit_card_item_distance", "mipmap")
                 bean.isHide = isHide
                 bean.tag = "距离"
             }
+
             "卡路里" -> {
                 bean.centerTextId = resources.getString(R.string.healthy_sports_list_calories)
                 bean.leftImg = getIdentifier("edit_card_item_calories", "mipmap")
                 bean.isHide = isHide
                 bean.tag = "卡路里"
             }
+
             "睡眠" -> {
                 bean.centerTextId = resources.getString(R.string.healthy_sports_list_sleep)
                 bean.leftImg = getIdentifier("edit_card_item_sleep", "mipmap")
                 bean.isHide = isHide
                 bean.tag = "睡眠"
             }
+
             "心率" -> {
                 bean.centerTextId = resources.getString(R.string.healthy_sports_list_heart)
                 bean.leftImg = getIdentifier("edit_card_item_hr", "mipmap")
                 bean.isHide = isHide
                 bean.tag = "心率"
             }
+
             "血氧" -> {
                 bean.centerTextId = resources.getString(R.string.healthy_sports_list_blood_oxygen)
                 bean.leftImg = getIdentifier("edit_card_item_blood_oxygen", "mipmap")
                 bean.isHide = isHide
                 bean.tag = "血氧"
             }
+
             "生理周期" -> {
                 bean.centerTextId = resources.getString(R.string.healthy_sports_list_women_health)
                 bean.leftImg = getIdentifier("edit_card_item_women_health", "mipmap")
                 bean.isHide = isHide
                 bean.tag = "生理周期"
             }
+
             "有效站立" -> {
                 bean.centerTextId =
                     resources.getString(R.string.healthy_sports_list_effective_stand)
@@ -391,6 +398,7 @@ object Global {
                 bean.isHide = isHide
                 bean.tag = "有效站立"
             }
+
             "心电" -> {
                 bean.centerTextId =
                     resources.getString(R.string.healthy_ecg_title)
@@ -399,6 +407,7 @@ object Global {
                 bean.tag = "心电"
                 //Log.i(TAG, "addEditCardItem() = bean = $bean")
             }
+
             "连续压力" -> {
                 bean.centerTextId =
                     resources.getString(R.string.healthy_pressure_title)
@@ -406,6 +415,7 @@ object Global {
                 bean.isHide = isHide
                 bean.tag = "连续压力"
             }
+
             "离线压力" -> {
                 bean.centerTextId =
                     resources.getString(R.string.healthy_pressure_title)
@@ -413,6 +423,7 @@ object Global {
                 bean.isHide = isHide
                 bean.tag = "离线压力"
             }
+
             "运动记录" -> {
                 bean.centerTextId = resources.getString(R.string.healthy_sports_list_sport_record)
                 bean.leftImg = getIdentifier("edit_card_item_sport_record", "mipmap")
@@ -432,42 +443,49 @@ object Global {
                 bean.bg = getIdentifier("public_bg", "drawable")
                 bean.tag = "步数"
             }
+
             "距离" -> {
                 bean.topTitleText = resources.getString(R.string.healthy_sports_list_distance)
                 bean.topTitleImg = getIdentifier("healthy_item_distance", "mipmap")
                 bean.bg = getIdentifier("public_bg", "drawable")
                 bean.tag = "距离"
             }
+
             "卡路里" -> {
                 bean.topTitleText = resources.getString(R.string.healthy_sports_list_calories)
                 bean.topTitleImg = getIdentifier("healthy_item_calories", "mipmap")
                 bean.bg = getIdentifier("public_bg", "drawable")
                 bean.tag = "卡路里"
             }
+
             "睡眠" -> {
                 bean.topTitleText = resources.getString(R.string.healthy_sports_list_sleep)
                 bean.topTitleImg = getIdentifier("healthy_item_sleep", "mipmap")
                 bean.bg = getIdentifier("public_bg", "drawable")
                 bean.tag = "睡眠"
             }
+
             "心率" -> {
                 bean.topTitleText = resources.getString(R.string.healthy_sports_list_heart)
                 bean.topTitleImg = getIdentifier("healthy_item_hr", "mipmap")
                 bean.bg = getIdentifier("public_bg", "drawable")
                 bean.tag = "心率"
             }
+
             "血氧" -> {
                 bean.topTitleText = resources.getString(R.string.healthy_sports_list_blood_oxygen)
                 bean.topTitleImg = getIdentifier("healthy_item_blood_oxygen", "mipmap")
                 bean.bg = getIdentifier("public_bg", "drawable")
                 bean.tag = "血氧"
             }
+
             "生理周期" -> {
                 bean.topTitleText = resources.getString(R.string.healthy_sports_list_women_health)
                 bean.topTitleImg = getIdentifier("healthy_item_women_health", "mipmap")
                 bean.bg = getIdentifier("public_bg", "drawable")
                 bean.tag = "生理周期"
             }
+
             "有效站立" -> {
                 bean.topTitleText =
                     resources.getString(R.string.healthy_sports_list_effective_stand)
@@ -475,12 +493,14 @@ object Global {
                 bean.bg = getIdentifier("public_bg", "drawable")
                 bean.tag = "有效站立"
             }
+
             "心电" -> {
                 bean.topTitleText = resources.getString(R.string.healthy_ecg_title)
                 bean.topTitleImg = getIdentifier("healthy_item_ecg", "mipmap")
                 bean.bg = getIdentifier("public_bg", "drawable")
                 bean.tag = "心电"
             }
+
             "连续压力" -> {
                 bean.topTitleText =
                     resources.getString(R.string.healthy_pressure_title)
@@ -488,6 +508,7 @@ object Global {
                 bean.bg = getIdentifier("public_bg", "drawable")
                 bean.tag = "连续压力"
             }
+
             "离线压力" -> {
                 bean.topTitleText =
                     resources.getString(R.string.healthy_pressure_title)
@@ -495,6 +516,7 @@ object Global {
                 bean.bg = getIdentifier("public_bg", "drawable")
                 bean.tag = "离线压力"
             }
+
             "运动记录" -> {
                 bean.topTitleText = resources.getString(R.string.healthy_sports_list_sport_record)
                 bean.topTitleImg = getIdentifier("healthy_item_sport_record", "mipmap")
@@ -803,9 +825,11 @@ object Global {
             ONE_TYPE -> {
                 result = ONE_TEXT_COLOR
             }
+
             TWO_TYPE -> {
                 result = TWO_TEXT_COLOR
             }
+
             THREE_TYPE -> {
                 result = THREE_TEXT_COLOR
             }
@@ -822,9 +846,11 @@ object Global {
             ONE_TYPE -> {
                 result = ONE_BG_COLOR
             }
+
             TWO_TYPE -> {
 //                result = TWO_BG_COLOR
             }
+
             THREE_TYPE -> {
 //                result = THREE_BG_COLOR
             }
@@ -837,4 +863,31 @@ object Global {
 
     //设备产品图路径
     val DEVICE_ICON_PATH: String = PathUtils.getAppDataPathExternalFirst() + "/cache/device_img.jpg"
+
+    //region 后台返回设备固件平台分类
+    /**
+     * Nordic
+     */
+    val FIRMWARE_PLATFORM_NORDIC = "0"
+    /**
+     * Realtek
+     */
+    val FIRMWARE_PLATFORM_REALTEK = "1"
+    /**
+     * Dialog
+     */
+    val FIRMWARE_PLATFORM_DIALOG = "2"
+    /**
+     * 炬芯
+     */
+    val FIRMWARE_PLATFORM_JUXING = "3"
+    /**
+     * 思澈
+     */
+    val FIRMWARE_PLATFORM_SIFLI = "4"
+    /**
+     * 杰理
+     */
+    val FIRMWARE_PLATFORM_JIELI = "5"
+    //endregion
 }

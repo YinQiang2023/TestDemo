@@ -119,5 +119,19 @@ object EventAction {
     //绑定引导-触发开启设置通知总开关
     const val ACTION_GUIDE_NOTIFY_SWITCH = "ACTION_GUIDE_NOTIFY_SWITCH"
 
+    //SIFLI DFU STATE 思澈ota状态
+    const val ACTION_SIFLI_DFU_STATE = "ACTION_SIFLI_DFU_STATE"
+
+    //SIFLI DFU PRO 思澈ota进度
+    const val ACTION_SIFLI_DFU_PROGRESS = "ACTION_SIFLI_DFU_PROGRESS"
+
+    //SIFLI DFU STATE 思澈表盘状态
+    const val ACTION_SIFLI_FACE_STATE = "ACTION_SIFLI_FACE_STATE"
+
+    //SIFLI DFU PRO 思澈表盘进度
+    const val ACTION_SIFLI_FACE_PROGRESS = "ACTION_SIFLI_FACE_PROGRESS"
+
+
+
 
 }

@@ -5,6 +5,7 @@ package com.jwei.publicone.https.response
  */
 data class FirewareUpgradeResponse(
     var id: String = "",                 //OTA升级文件ID
+    var firmwarePlatform:String = "",    //固件平台
     var deviceType: String = "",         //设备号
     var versionBefore: String = "",      //待升级版本号
     var versionAfter: String = "",       //升级后版本号
@@ -15,6 +16,6 @@ data class FirewareUpgradeResponse(
 
 ) {
     override fun toString(): String {
-        return "FirewareUpgradeResponse(id='$id', deviceType='$deviceType', versionBefore='$versionBefore', versionAfter='$versionAfter', resType='$resType', versionUrl='$versionUrl', remark='$remark', mustUpdate='$mustUpdate')"
+        return "FirewareUpgradeResponse(id='$id', firmwarePlatform='$firmwarePlatform', deviceType='$deviceType', versionBefore='$versionBefore', versionAfter='$versionAfter', resType='$resType', versionUrl='$versionUrl', remark='$remark', mustUpdate='$mustUpdate')"
     }
 }

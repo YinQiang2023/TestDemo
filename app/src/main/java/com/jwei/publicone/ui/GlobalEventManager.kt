@@ -45,6 +45,8 @@ import com.jwei.publicone.https.download.DownloadListener
 import com.jwei.publicone.https.download.DownloadManager
 import com.jwei.publicone.https.response.AgpsResponse
 import com.jwei.publicone.https.response.FirewareUpgradeResponse
+import com.jwei.publicone.receiver.SifliReceiver
+import com.jwei.publicone.ui.data.Global
 import com.jwei.publicone.ui.device.backgroundpermission.BackgroundPermissionMainActivity
 import com.jwei.publicone.ui.device.bean.DeviceSettingBean
 import com.jwei.publicone.ui.device.bean.NotifyItem
@@ -60,9 +62,13 @@ import com.jwei.publicone.utils.manager.AppTrackingManager
 import com.jwei.publicone.utils.manager.DevSportManager
 import com.jwei.publicone.viewmodel.DeviceModel
 import com.jwei.publicone.viewmodel.UserModel
+import com.sifli.siflidfu.DFUImagePath
+import com.sifli.siflidfu.Protocol
+import com.sifli.siflidfu.SifliDFUService
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.io.File
 import java.lang.ref.WeakReference
 import java.util.*
 
@@ -174,7 +180,7 @@ object GlobalEventManager {
                 val bleName = msg.obj as String?
                 LogUtils.i(TAG, "ACTION_HEADSET_BOND bleMac = $bleName")
                 AppUtils.tryBlock {
-                    topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity)
+                    topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity?)
                     if (topActivity.get() == null) return@tryBlock
                     showHeadsetBondLoading(bleName)
                 }
@@ -183,7 +189,7 @@ object GlobalEventManager {
 
             //region 通话蓝牙配对失败
             EventAction.ACTION_HEADSETBOND_FAILED -> {
-                topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity)
+                topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity?)
                 if (topActivity.get() == null) return
                 val hBleName = msg.obj.toString()
                 if (!TextUtils.isEmpty(hBleName) && !isHeadsetBondFailedDialog) {
@@ -211,6 +217,17 @@ object GlobalEventManager {
             }
             //endregion
 
+            //region SIFLI ota 状态和进度
+            EventAction.ACTION_SIFLI_DFU_STATE -> {
+                val dfuState = msg.obj as SifliReceiver.DFUState
+                sifliDfuState(dfuState)
+            }
+
+            EventAction.ACTION_SIFLI_DFU_PROGRESS -> {
+                val dfuProgress = msg.obj as SifliReceiver.DFUProgress
+                sifliDfuProgress(dfuProgress)
+            }
+            //endregion
         }
     }
 
@@ -228,8 +245,8 @@ object GlobalEventManager {
 
     private val checkOtaLog by lazy { TrackingLog.getSerTypeTrack("app请求获取OTA文件", "固件升级", "ffit/firmware/getFirewareUpgradeVersion") }
 
-    private fun checkFirmwareUpgrade() {
-        topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity)
+    fun checkFirmwareUpgrade() {
+        topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity?)
         if (topActivity.get() == null) {
             return
         }
@@ -246,7 +263,7 @@ object GlobalEventManager {
             if (it.versionBefore != it.versionAfter && it.versionUrl.isNotEmpty() && TextUtils.equals(it.mustUpdate, "1") && !isUpload) {
                 AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_OTA, TrackingLog.getStartTypeTrack("OTA"), isStart = true)
                 AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_OTA, checkOtaLog)
-                showUpdateDialog(deviceModel, it.remark)
+                showUpdateDialog()
             } else {
                 if (it.id.isEmpty()) {
                     AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_OTA, TrackingLog.getStartTypeTrack("OTA"), isStart = true)
@@ -260,8 +277,8 @@ object GlobalEventManager {
         deviceModel.checkFirewareUpgrade(checkOtaLog)
     }
 
-    private fun showUpdateDialog(deviceModel: DeviceModel, remark: String) {
-        topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity)
+    private fun showUpdateDialog() {
+        topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity?)
         if (topActivity.get() == null) return
         isUpload = true
         val dialog = DialogUtils.showDialogTwoBtn(
@@ -278,7 +295,7 @@ object GlobalEventManager {
                             isUpload = false
                             return@isAvailableAsync
                         }
-                        showDownloadingDialog(deviceModel)
+                        showDownloadingDialog()
                     }
                 }
 
@@ -294,7 +311,8 @@ object GlobalEventManager {
     /**
      * 固件文件下载
      */
-    private fun showDownloadingDialog(deviceModel: DeviceModel) {
+    private fun showDownloadingDialog() {
+
         if (!ControlBleTools.getInstance().isConnect) {
             ToastUtils.showToast(R.string.device_no_connection)
             isUpload = false
@@ -306,9 +324,11 @@ object GlobalEventManager {
             return
         }
         isUpload = true
+        topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity?)
         if (topActivity.get() == null) {
             return
         }
+        val deviceModel: DeviceModel = ViewModelProvider(topActivity.get()!!).get(DeviceModel::class.java)
         val downloadDialog = DownloadDialog(
             topActivity.get(),
             BaseApplication.mContext.getString(R.string.theme_center_dial_down_load_title), ""
@@ -348,7 +368,7 @@ object GlobalEventManager {
                     topActivity.get()?.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)?.let {
                         FileUtils.deleteAll(it.path)
                     }
-                    showUpdateFailedDialog(deviceModel)
+                    showUpdateFailedDialog()
                 }
 
                 override fun onSucceed(path: String) {
@@ -361,12 +381,15 @@ object GlobalEventManager {
                         downloadOtaLog.log += "\nota Download onSuccess"
                         downloadOtaLog.serResult = "成功"
                         AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_OTA, downloadOtaLog)
-
-                        deviceLargeFileState(deviceModel, path)
+                        if (it.firmwarePlatform == Global.FIRMWARE_PLATFORM_SIFLI) {
+                            slfliOtaUnzip(path)
+                        } else {
+                            deviceLargeFileState(path)
+                        }
                     } else {
                         ErrorUtils.onLogResult("ota file path is null")
                         ErrorUtils.onLogError(ErrorUtils.ERROR_MODE_OTHER)
-                        showUpdateFailedDialog(deviceModel)
+                        showUpdateFailedDialog()
                         AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_OTA, downloadOtaLog.apply {
                             log = "\n ota file path is null \n 下载文件失败/超时"
                         }, "1911", isEnd = true)
@@ -379,9 +402,9 @@ object GlobalEventManager {
     /**
      * 升级失败提示
      */
-    private fun showUpdateFailedDialog(deviceModel: DeviceModel) {
+    private fun showUpdateFailedDialog() {
         isUpload = false
-        topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity)
+        topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity?)
         if (topActivity.get() == null) return
         val dialog = DialogUtils.showDialogTwoBtn(
             topActivity.get(),
@@ -399,7 +422,7 @@ object GlobalEventManager {
                             return@isAvailableAsync
                         }
                         if (AppUtils.isOpenBluetooth() && ControlBleTools.getInstance().isConnect) {
-                            showDownloadingDialog(deviceModel)
+                            showDownloadingDialog()
                         } else {
                             ToastUtils.showToast(R.string.device_no_connection)
                         }
@@ -420,24 +443,18 @@ object GlobalEventManager {
     /**
      * 请求设备传文件状态
      */
-    private fun deviceLargeFileState(deviceModel: DeviceModel, path: String, version: String = "111", md5: String = "222") {
+    private fun deviceLargeFileState(path: String, version: String = "111", md5: String = "222") {
         fileStatusTrackingLog.startTime = TrackingLog.getNowString()
         fileStatusTrackingLog.log = "isForce:true"
-        ControlBleTools.getInstance().getDeviceLargeFileState(true, version, md5, MyDeviceLargeFileStatusListener(deviceModel, path))
+        ControlBleTools.getInstance().getDeviceLargeFileState(true, version, md5, MyDeviceLargeFileStatusListener(path))
     }
 
     class MyDeviceLargeFileStatusListener(
-        model: DeviceModel,
         var path: String
     ) : DeviceLargeFileStatusListener {
-        private lateinit var deviceModel: DeviceModel
-
-        init {
-            deviceModel = model
-        }
-
         @SuppressLint("SuspiciousIndentation")
         override fun onSuccess(statusValue: Int, statusName: String?) {
+            topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity?)
             topActivity.get()?.apply {
                 LogUtils.e(TAG, "showUpdateDialog getDeviceLargeFileState onSuccess $statusName", true)
                 when (statusName) {
@@ -446,7 +463,7 @@ object GlobalEventManager {
                         if (fileByte == null) {
                             ErrorUtils.onLogResult("ota fileByte is not null")
                             ErrorUtils.onLogError(ErrorUtils.ERROR_MODE_OTHER)
-                            showUpdateFailedDialog(deviceModel)
+                            showUpdateFailedDialog()
                             return
                         }
                         fileStatusTrackingLog.apply {
@@ -454,21 +471,24 @@ object GlobalEventManager {
                             devResult = "statusValue:$statusValue,statusName : $statusName"
                             AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_OTA, this)
                         }
-                        uploadFile(deviceModel, fileByte)
+                        uploadFile(fileByte)
                     }
+
                     "BUSY" -> {
                         ToastUtils.showToast(R.string.ota_device_busy_tips)
                     }
+
                     "DOWNGRADE", "DUPLICATED", "LOW_STORAGE" -> {
                         ToastUtils.showToast(R.string.ota_device_request_failed_tips)
                     }
+
                     "LOW_BATTERY" -> {
                         ToastUtils.showToast(R.string.ota_device_low_power_tips)
                     }
                 }
                 if (statusName != "READY") {
                     isUpload = false
-                    showUpdateFailedDialog(deviceModel)
+                    showUpdateFailedDialog()
                     if (statusName != "LOW_BATTERY") {
                         AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_OTA, fileStatusTrackingLog.apply {
                             endTime = TrackingLog.getNowString()
@@ -494,7 +514,7 @@ object GlobalEventManager {
                 getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)?.let {
                     FileUtils.deleteAll(it.path)
                 }
-                showUpdateFailedDialog(deviceModel)
+                showUpdateFailedDialog()
             }
         }
     }
@@ -504,23 +524,17 @@ object GlobalEventManager {
     /**
      * 发送文件至设备
      */
-    private fun uploadFile(model: DeviceModel, fileByte: ByteArray) {
+    private fun uploadFile(fileByte: ByteArray) {
         uploadDialog = DownloadDialog(topActivity.get()!!, BaseApplication.mContext.getString(R.string.theme_fireware_update_title), "")
         uploadDialog?.showDialog()
         uploadDialog?.tvSize?.text = BaseApplication.mContext.getString(R.string.theme_center_dial_up_load_tips)
         isOtaSending = true
         uploadOtaTrackingLog.startTime = TrackingLog.getNowString()
         uploadOtaTrackingLog.log = "type:${BleCommonAttributes.UPLOAD_BIG_DATA_WATCH},fileByte:${fileByte.size},isResumable:true"
-        ControlBleTools.getInstance().startUploadBigData(BleCommonAttributes.UPLOAD_BIG_DATA_OTA, fileByte, true, MyUploadBigDataListener(model))
+        ControlBleTools.getInstance().startUploadBigData(BleCommonAttributes.UPLOAD_BIG_DATA_OTA, fileByte, true, MyUploadBigDataListener())
     }
 
-    class MyUploadBigDataListener(model: DeviceModel) : UploadBigDataListener {
-        private lateinit var deviceModel: DeviceModel
-
-        init {
-            deviceModel = model
-        }
-
+    class MyUploadBigDataListener() : UploadBigDataListener {
         override fun onSuccess() {
             LogUtils.e(TAG, "showUpdateDialog startUploadBigData onSuccess", true)
             uploadDialog?.cancel()
@@ -579,7 +593,7 @@ object GlobalEventManager {
                         ToastUtils.showToast(
                             R.string.ota_device_timeout_tips
                         )
-                        showUpdateFailedDialog(deviceModel)
+                        showUpdateFailedDialog()
                     }
                 }
 
@@ -589,6 +603,143 @@ object GlobalEventManager {
             }
         }
     }
+
+    //region 思澈平台ota处理
+    private var slfliLoading: Dialog? = null
+    private var slfliOtaFiles = ArrayList<DFUImagePath>()
+    private fun slfliOtaUnzip(path: String) {
+        getContext()?.let { context ->
+            slfliLoading = DialogUtils.showLoad(context, true)
+        }
+        ThreadUtils.executeByIo(object : ThreadUtils.Task<List<File>?>() {
+            override fun doInBackground(): List<File>? {
+                com.blankj.utilcode.util.LogUtils.d("file:$path")
+                //1.解压zip
+                val zipFile = com.blankj.utilcode.util.FileUtils.getFileByPath(path)
+                val unZipDirPath = PathUtils.getExternalAppFilesPath() + "/otal/fireware/" + com.blankj.utilcode.util.FileUtils.getFileNameNoExtension(zipFile)
+                com.blankj.utilcode.util.FileUtils.createOrExistsDir(unZipDirPath)
+                ZipUtils.unzipFile(zipFile, com.blankj.utilcode.util.FileUtils.getFileByPath(unZipDirPath))
+                return com.blankj.utilcode.util.FileUtils.listFilesInDir(unZipDirPath)
+            }
+
+            override fun onCancel() {}
+
+            override fun onFail(t: Throwable?) {
+                t?.printStackTrace()
+                DialogUtils.dismissDialog(slfliLoading)
+                showUpdateFailedDialog()
+            }
+
+            override fun onSuccess(result: List<File>?) {
+                if (result.isNullOrEmpty()) {
+                    DialogUtils.dismissDialog(slfliLoading)
+                    showUpdateFailedDialog()
+                    return
+                }
+                for (file in result) {
+                    com.blankj.utilcode.util.LogUtils.d("file:${file.absolutePath}")
+                    val name: String = com.blankj.utilcode.util.FileUtils.getFileNameNoExtension(file)
+                    var dfuFile: DFUImagePath? = null
+                    if (name.uppercase(Locale.ENGLISH).contains("ctrl_packet".uppercase(Locale.ENGLISH))) {
+                        dfuFile = DFUImagePath(null, UriUtils.file2Uri(file), Protocol.IMAGE_ID_CTRL)
+                    } else if (name.uppercase(Locale.ENGLISH).contains("outapp".uppercase(Locale.ENGLISH))) {
+                        dfuFile = DFUImagePath(null, UriUtils.file2Uri(file), Protocol.IMAGE_ID_HCPU)
+                    } else if (name.uppercase(Locale.ENGLISH).contains("outex".uppercase(Locale.ENGLISH))) {
+                        dfuFile = DFUImagePath(null, UriUtils.file2Uri(file), Protocol.IMAGE_ID_EX)
+                    } else if (name.uppercase(Locale.ENGLISH).contains("outfont".uppercase(Locale.ENGLISH))) {
+                        dfuFile = DFUImagePath(null, UriUtils.file2Uri(file), Protocol.IMAGE_ID_FONT)
+                    } else if (name.uppercase(Locale.ENGLISH).contains("outres".uppercase(Locale.ENGLISH))) {
+                        dfuFile = DFUImagePath(null, UriUtils.file2Uri(file), Protocol.IMAGE_ID_RES)
+                    }
+                    if (dfuFile != null) {
+                        slfliOtaFiles.add(dfuFile)
+                    }
+                }
+                if (slfliOtaFiles.isNullOrEmpty()) {
+                    DialogUtils.dismissDialog(slfliLoading)
+                    showUpdateFailedDialog()
+                    return
+                }
+                startOrRefSifliTimeOut()
+                //执行思澈dfu方法
+                SifliDFUService.startActionDFUNor(getContext(), SpUtils.getValue(SpUtils.DEVICE_MAC, ""), slfliOtaFiles, Protocol.DFU_MODE_NORMAL, 0)
+            }
+        })
+    }
+
+    private class SifliDFUTask : ThreadUtils.SimpleTask<Int>() {
+        var i = 0
+        var isOk = false
+
+        fun finish(isOk: Boolean) {
+            i = 30
+            this.isOk = isOk
+        }
+
+        override fun doInBackground(): Int {
+            while (i <= 30) {
+                i++
+                Thread.sleep(1000)
+            }
+            return 0
+        }
+
+        override fun onSuccess(result: Int?) {
+            //超时 或者 完成（成功失败）
+            DialogUtils.dismissDialog(slfliLoading)
+            if (!isOk) {
+                uploadDialog?.isShowing()?.let {
+                    if (it) uploadDialog?.cancel()
+                }
+                showUpdateFailedDialog()
+            } else {
+                uploadDialog?.isShowing()?.let {
+                    if (it) uploadDialog?.cancel()
+                }
+                isOtaSending = false
+                isUpload = false
+            }
+        }
+    }
+
+    private var sifliDFUTask: SifliDFUTask? = null
+    private fun startOrRefSifliTimeOut() {
+        if (sifliDFUTask != null) {
+            ThreadUtils.cancel(sifliDFUTask)
+        }
+        sifliDFUTask = SifliDFUTask()
+        ThreadUtils.executeByIo(sifliDFUTask)
+    }
+
+    private fun sifliDfuProgress(dfuProgress: SifliReceiver.DFUProgress) {
+        startOrRefSifliTimeOut()
+        if (dfuProgress.progress == 0) {
+            DialogUtils.dismissDialog(slfliLoading)
+            uploadDialog = DownloadDialog(topActivity.get()!!, BaseApplication.mContext.getString(R.string.theme_fireware_update_title), "")
+            uploadDialog?.showDialog()
+            uploadDialog?.tvSize?.text = BaseApplication.mContext.getString(R.string.theme_center_dial_up_load_tips)
+        } else {
+            uploadDialog?.progressView?.max = 100
+            uploadDialog?.progressView?.progress = dfuProgress.progress
+            uploadDialog?.tvProgress?.text = "${dfuProgress.progress}%"
+        }
+    }
+
+    private fun sifliDfuState(dfuState: SifliReceiver.DFUState) {
+        if (dfuState.stateResult != 0) {
+            //失败
+            DialogUtils.dismissDialog(slfliLoading)
+            showUpdateFailedDialog()
+            sifliDFUTask?.finish(false)
+        } else {
+            if (dfuState.state == Protocol.DFU_SERVICE_EXIT) {
+                //成功
+                sifliDFUTask?.finish(true)
+            }
+        }
+    }
+    //endregion
+
     //endregion
 
 
@@ -621,7 +772,7 @@ object GlobalEventManager {
     class MyAgpsCallBask : AgpsCallBack {
         override fun onRequestState(isNeed: Boolean) {
             LogUtils.e(TAG, "requestAgpsState  isNeed --> $isNeed,isAGPSUpDatIng -->$isAGPSUpDating", true)
-            topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity)
+            topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity?)
             if (topActivity.get() == null) return
             val viewModel: UserModel = ViewModelProvider(topActivity.get()!!).get(UserModel::class.java)
             if (isNeed && !isAGPSUpDating) {
@@ -823,6 +974,7 @@ object GlobalEventManager {
                                 uploadDialog?.showDialog()
                                 sendAgps(fileByte)
                             }
+
                             "BUSY" -> {
                                 ToastUtils.showToast(R.string.ota_device_busy_tips)
                                 isAGPSUpDating = false
@@ -830,6 +982,7 @@ object GlobalEventManager {
                                 //重新执行同步完成事件
                                 EventBus.getDefault().post(EventMessage(EventAction.ACTION_FINISH_UPDATE_FOR_CONNECTED_DEVICE))
                             }
+
                             "DOWNGRADE", "DUPLICATED", "LOW_STORAGE" -> {
                                 ToastUtils.showToast(R.string.ota_device_request_failed_tips)
                                 isAGPSUpDating = false
@@ -837,6 +990,7 @@ object GlobalEventManager {
                                 //重新执行同步完成事件
                                 EventBus.getDefault().post(EventMessage(EventAction.ACTION_FINISH_UPDATE_FOR_CONNECTED_DEVICE))
                             }
+
                             "LOW_BATTERY" -> {
                                 ToastUtils.showToast(R.string.ota_device_low_power_tips)
                                 isAGPSUpDating = false
@@ -965,7 +1119,7 @@ object GlobalEventManager {
     //region 提醒后台保活说明弹窗
     private fun executionKeepLiveExplanation() {
         AppUtils.tryBlock {
-            topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity)
+            topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity?)
             if (topActivity.get() == null) return@tryBlock
             val isShowKeepLive = SpUtils.getSPUtilsInstance().getBoolean(SpUtils.BIND_DEVICE_CONNECTED_KEEPLIVE_EXPLANATION, true)
             if (!isShowKeepLive) {
@@ -1219,8 +1373,8 @@ object GlobalEventManager {
     }
 
     private fun showNotifySwitchTips() {
-        for (activity in ActivityUtils.getActivityList()){
-            if(activity is HomeActivity){
+        for (activity in ActivityUtils.getActivityList()) {
+            if (activity is HomeActivity) {
                 DialogUtils.showDialogTwoBtn(
                     activity,
                     null,

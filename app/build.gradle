@@ -262,6 +262,10 @@ dependencies {
     implementation 'com.vdurmont:emoji-java:5.1.1'
     //内存泄露检测
     //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
+    //思澈sdk ota :SifliDFU, 表盘：serialTransport watchfacelibrary
+    implementation files('libs/SifliDFU-release.aar')
+    implementation files('libs/serialTransport-release.aar')
+    implementation files('libs/watchfacelibrary-release.aar')
 }
 
 //获取版本名称后缀

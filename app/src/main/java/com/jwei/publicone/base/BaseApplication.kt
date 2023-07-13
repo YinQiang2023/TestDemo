@@ -9,6 +9,7 @@ import android.bluetooth.BluetoothDevice
 import android.content.*
 import android.os.IBinder
 import android.util.Log
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.blankj.utilcode.util.*
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.FileUtils
@@ -42,6 +43,8 @@ import com.jwei.publicone.utils.ToastUtils
 import com.jwei.publicone.utils.manager.GoogleFitManager
 import com.jwei.publicone.utils.manager.StravaManager
 import com.jwei.publicone.viewmodel.DeviceModel
+import com.sifli.siflidfu.SifliDFUService
+import com.sifli.watchfacelibrary.SifliWatchfaceService
 import org.greenrobot.eventbus.EventBus
 import org.litepal.LitePal
 import kotlin.math.abs
@@ -248,7 +251,6 @@ class BaseApplication : Application(), OnMapsSdkInitializedCallback {
         }
 
 
-
         //开启无声音乐
         ControlBleTools.getInstance().enableUseSilenceMusic(true, 5000)
 
@@ -293,6 +295,16 @@ class BaseApplication : Application(), OnMapsSdkInitializedCallback {
         timeUpdateFilter.addAction(Intent.ACTION_TIME_TICK)
         timeUpdateFilter.addAction(Intent.ACTION_TIME_CHANGED)
         registerReceiver(TimeUpdateReceiver(), timeUpdateFilter)
+        //思澈sdk本地关闭
+        val SifliFilter = IntentFilter()
+        SifliFilter.addAction(SifliDFUService.BROADCAST_DFU_LOG)
+        SifliFilter.addAction(SifliDFUService.BROADCAST_DFU_STATE)
+        SifliFilter.addAction(SifliDFUService.BROADCAST_DFU_PROGRESS)
+        SifliFilter.addAction(SifliWatchfaceService.BROADCAST_WATCHFACE_STATE)
+        SifliFilter.addAction(SifliWatchfaceService.BROADCAST_WATCHFACE_PROGRESS)
+        LocalBroadcastManager.getInstance(this).registerReceiver(SifliReceiver(), SifliFilter)
+        //LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver!!)
+
     }
 
     //region 通知服务
@@ -425,7 +437,7 @@ class BaseApplication : Application(), OnMapsSdkInitializedCallback {
                 ThreadUtils.runOnUiThreadDelayed({
                     LogUtils.d(" ActivityList size ----> ${ActivityUtils.getActivityList().size}")
                     if (ActivityUtils.getActivityList().size == 0) {
-                        com.jwei.publicone.utils.LogUtils.e("sdk release","live Activity size == 0")
+                        com.jwei.publicone.utils.LogUtils.e("sdk release", "live Activity size == 0")
                         //清除sdk内部设备信息
                         ControlBleTools.getInstance().disconnect()
                         ControlBleTools.getInstance().release()
