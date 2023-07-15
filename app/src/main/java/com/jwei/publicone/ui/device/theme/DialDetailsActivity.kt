@@ -27,17 +27,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.*
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import com.yalantis.ucrop.UCrop
-import com.zhapp.ble.BleCommonAttributes
-import com.zhapp.ble.ControlBleTools
-import com.zhapp.ble.ThemeManager
-import com.zhapp.ble.bean.WatchFaceInstallResultBean
-import com.zhapp.ble.callback.CallBackUtils
-import com.zhapp.ble.callback.DeviceWatchFaceFileStatusListener
-import com.zhapp.ble.callback.UploadBigDataListener
-import com.zhapp.ble.callback.WatchFaceInstallCallBack
-import com.zhapp.ble.custom.CustomClockDialNewUtils
-import com.zhapp.ble.custom.MyCustomClockUtils
 import com.jwei.publicone.R
 import com.jwei.publicone.base.BaseActivity
 import com.jwei.publicone.base.BaseApplication
@@ -52,6 +41,7 @@ import com.jwei.publicone.https.HttpCommonAttributes
 import com.jwei.publicone.https.download.DownloadListener
 import com.jwei.publicone.https.download.DownloadManager
 import com.jwei.publicone.https.response.DialInfoResponse
+import com.jwei.publicone.receiver.SifliReceiver
 import com.jwei.publicone.ui.adapter.MultiItemCommonAdapter
 import com.jwei.publicone.ui.data.Global
 import com.jwei.publicone.ui.eventbus.EventAction
@@ -68,6 +58,18 @@ import com.jwei.publicone.utils.manager.WakeLockManager
 import com.jwei.publicone.view.ColorPickerView
 import com.jwei.publicone.view.ColorRoundView
 import com.jwei.publicone.viewmodel.DeviceModel
+import com.sifli.watchfacelibrary.SifliWatchfaceService
+import com.yalantis.ucrop.UCrop
+import com.zhapp.ble.BleCommonAttributes
+import com.zhapp.ble.ControlBleTools
+import com.zhapp.ble.ThemeManager
+import com.zhapp.ble.bean.WatchFaceInstallResultBean
+import com.zhapp.ble.callback.CallBackUtils
+import com.zhapp.ble.callback.DeviceWatchFaceFileStatusListener
+import com.zhapp.ble.callback.UploadBigDataListener
+import com.zhapp.ble.callback.WatchFaceInstallCallBack
+import com.zhapp.ble.custom.CustomClockDialNewUtils
+import com.zhapp.ble.custom.MyCustomClockUtils
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -144,6 +146,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
             binding.layoutCustomizeColor.id -> {
                 showSelectColor()
             }
+
             binding.ivCustomizeColor.id -> {
                 showSelectColor()
             }
@@ -168,6 +171,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                     showAvatarDialog()
                 }
             }
+
             binding.btnSync.id -> {
                 for (dLog in dialInfoTrackingLog) {
                     if (TextUtils.equals(dLog.serResult, "失败")) {
@@ -271,7 +275,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                 if (takePictureUri != null) {
                     cropImage(takePictureUri!!)
                 }
-            }else{
+            } else {
                 delAllCacheImg()
             }
         }
@@ -386,9 +390,11 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                     BleCommonAttributes.STATE_CONNECTED -> {
                         LogUtils.i(TAG, "device connected")
                     }
+
                     BleCommonAttributes.STATE_CONNECTING -> {
                         LogUtils.i(TAG, "device connecting")
                     }
+
                     BleCommonAttributes.STATE_DISCONNECTED -> {
                         LogUtils.e(TAG, "device disconnect")
 //                        ToastUtils.showToast(R.string.device_disconnected)
@@ -398,6 +404,17 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                         }
                     }
                 }
+            }
+
+            EventAction.ACTION_SIFLI_FACE_PROGRESS -> {
+                val progress = msg.arg as Int?
+                com.blankj.utilcode.util.LogUtils.d("ACTION_SIFLI_FACE_PROGRESS:" + progress)
+                sifliFaceProgress(progress)
+            }
+
+            EventAction.ACTION_SIFLI_FACE_STATE -> {
+                val faceState = msg.obj as SifliReceiver.SifliFaceState
+                sifliFaceState(faceState)
             }
         }
     }
@@ -556,6 +573,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                     }
                 }
             }
+
             UCrop.REQUEST_CROP -> {
                 //裁剪后
                 if (resultCode == RESULT_OK) {
@@ -650,7 +668,14 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                 downloadTrackingLog.serResult = "成功"
                 AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_DIAL, downloadTrackingLog)
 
-                sendOnlineDial(path)
+                //TODO 区分平台
+                val firmware = SpUtils.getSPUtilsInstance().getString(SpUtils.CURRENT_FIRMWARE_PLATFORM, "")
+                if (firmware == Global.FIRMWARE_PLATFORM_SIFLI) {
+                    //思澈平台表盘处理
+                    slfliSendOnlineDial(path)
+                } else {
+                    sendOnlineDial(path)
+                }
             }
         })
     }
@@ -728,7 +753,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                     wrActivity?.get()?.postDialLog(4)
                 }
                 wrActivity?.get()?.fileStateTrackingLog?.apply {
-                    if(statusName != "LOW_BATTERY") {
+                    if (statusName != "LOW_BATTERY") {
                         AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_DIAL, this.apply {
                             log += "\nstatus == $statusName != READY\n请求文件状态超时/失败"
                         }, "1816", true)
@@ -1037,7 +1062,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                     wrActivity?.get()?.postDialLog(4)
                 }
                 wrActivity?.get()?.fileStateTrackingLog?.apply {
-                    if(statusName != "LOW_BATTERY") {
+                    if (statusName != "LOW_BATTERY") {
                         log += "\nstatus == $statusName != READY\n请求文件状态超时/失败"
                         AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_DIAL, this, "1816", true)
                     }
@@ -1169,6 +1194,114 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
             }
         }
     }
+
+    //region 思澈平台表盘处理
+    private fun slfliSendOnlineDial(path: String) {
+        com.blankj.utilcode.util.LogUtils.d("slfliSendOnlineDial：$path")
+        ThreadUtils.executeByIo(object : ThreadUtils.SimpleTask<String>() {
+            override fun doInBackground(): String {
+                val faceFile = com.blankj.utilcode.util.FileUtils.getFileByPath(path)
+                val newFaceFilePath = faceFile.parent + File.separator + com.blankj.utilcode.util.FileUtils.getFileNameNoExtension(faceFile) + ".zip"
+                //重命名
+                com.blankj.utilcode.util.FileUtils.rename(faceFile, com.blankj.utilcode.util.FileUtils.getFileNameNoExtension(faceFile) + ".zip")
+                val zipFile = com.blankj.utilcode.util.FileUtils.getFileByPath(newFaceFilePath)
+                val unZipDirPath = PathUtils.getExternalAppFilesPath() + "/otal/face/" + com.blankj.utilcode.util.FileUtils.getFileNameNoExtension(zipFile)
+                //解压
+                com.blankj.utilcode.util.FileUtils.createOrExistsDir(unZipDirPath)
+                ZipUtils.unzipFile(zipFile, com.blankj.utilcode.util.FileUtils.getFileByPath(unZipDirPath))
+                //去掉一层文件夹再压缩
+                val faceZipPath = "${PathUtils.getExternalAppFilesPath()}/otal/face/dynamic_app.zip"
+                for (file in com.blankj.utilcode.util.FileUtils.listFilesInDir(unZipDirPath)){
+                    ZipUtils.zipFile(file.absolutePath, faceZipPath)
+                }
+                if (com.blankj.utilcode.util.FileUtils.isFile(faceZipPath)) {
+                    return faceZipPath
+                }
+                return ""
+            }
+
+            override fun onSuccess(result: String?) {
+                if (result.isNullOrEmpty()) {
+                    ToastUtils.showToast(R.string.ota_device_timeout_tips2)
+                    DialogUtils.dismissDialog(dialog)
+                    return
+                }
+                startOrRefSifliTimeOut()
+                SifliWatchfaceService.startActionWatchface(this@DialDetailsActivity, result, SpUtils.getValue(SpUtils.DEVICE_MAC, ""), 0)
+            }
+        })
+    }
+
+    private inner class SifliDFUTask : ThreadUtils.SimpleTask<Int>() {
+        var i = 0
+        var isOk = false
+
+        fun finish(isOk: Boolean) {
+            i = 30
+            this.isOk = isOk
+        }
+
+        override fun doInBackground(): Int {
+            while (i <= 30) {
+                i++
+                Thread.sleep(1000)
+            }
+            return 0
+        }
+
+        override fun onSuccess(result: Int?) {
+            //超时 或者 完成（成功失败）
+            DialogUtils.dismissDialog(dialog)
+            sifliFaceUploadDialog?.isShowing()?.let {
+                if (it) sifliFaceUploadDialog?.cancel()
+            }
+            //清除已使用的文件
+            com.blankj.utilcode.util.FileUtils.deleteAllInDir(PathUtils.getExternalAppFilesPath() + "/otal/face/")
+            if (!isOk) {
+                ToastUtils.showToast(R.string.healthy_sports_sync_fail)
+            } else {
+                ToastUtils.showToast(R.string.sync_success_tips)
+                RefreshMyDialListState.postValue(true)
+            }
+        }
+    }
+
+    private var sifliDFUTask: SifliDFUTask? = null
+    private fun startOrRefSifliTimeOut() {
+        if (sifliDFUTask != null) {
+            ThreadUtils.cancel(sifliDFUTask)
+        }
+        sifliDFUTask = SifliDFUTask()
+        ThreadUtils.executeByIo(sifliDFUTask)
+    }
+
+    private var sifliFaceUploadDialog: DownloadDialog? = null
+    private fun sifliFaceProgress(progress: Int?) {
+        DialogUtils.dismissDialog(dialog)
+        startOrRefSifliTimeOut()
+        progress?.let {
+            if (it == 0) {
+                com.blankj.utilcode.util.LogUtils.d("effectImgUrl:" + groupDialList[clickCount].effectImgUrl)
+                sifliFaceUploadDialog = DownloadDialog(
+                    this@DialDetailsActivity,
+                    getString(R.string.theme_center_dial_up_load_title),
+                    groupDialList[clickCount].effectImgUrl
+                )
+                sifliFaceUploadDialog?.showDialog()
+                sifliFaceUploadDialog?.tvSize?.text = getString(R.string.theme_center_dial_up_load_tips)
+            } else {
+                sifliFaceUploadDialog?.progressView?.max = 100
+                sifliFaceUploadDialog?.progressView?.progress = it
+                sifliFaceUploadDialog?.tvProgress?.text = "$it%"
+            }
+        }
+    }
+
+    private fun sifliFaceState(faceState: SifliReceiver.SifliFaceState) {
+        sifliDFUTask?.finish(faceState.state == 0)
+    }
+
+    //endregion
 
     // 弹框的信息
     private var dialogAvatar: Dialog? = null

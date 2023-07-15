@@ -616,10 +616,10 @@ object GlobalEventManager {
                 com.blankj.utilcode.util.LogUtils.d("file:$path")
                 //1.解压zip
                 val zipFile = com.blankj.utilcode.util.FileUtils.getFileByPath(path)
-                val unZipDirPath = PathUtils.getExternalAppFilesPath() + "/otal/fireware/" + com.blankj.utilcode.util.FileUtils.getFileNameNoExtension(zipFile)
+                val unZipDirPath = PathUtils.getExternalAppFilesPath() + "/otal/firmware/" + com.blankj.utilcode.util.FileUtils.getFileNameNoExtension(zipFile)
                 com.blankj.utilcode.util.FileUtils.createOrExistsDir(unZipDirPath)
                 ZipUtils.unzipFile(zipFile, com.blankj.utilcode.util.FileUtils.getFileByPath(unZipDirPath))
-                return com.blankj.utilcode.util.FileUtils.listFilesInDir(unZipDirPath)
+                return com.blankj.utilcode.util.FileUtils.listFilesInDir(unZipDirPath,true)
             }
 
             override fun onCancel() {}
@@ -662,7 +662,10 @@ object GlobalEventManager {
                 }
                 startOrRefSifliTimeOut()
                 //执行思澈dfu方法
-                SifliDFUService.startActionDFUNor(getContext(), SpUtils.getValue(SpUtils.DEVICE_MAC, ""), slfliOtaFiles, Protocol.DFU_MODE_NORMAL, 0)
+                //ResumeMode:
+                //设置为0时，OTA将始终重新开始传输
+                //设置为1时，SDK会自动判断续传条件，会在可以续传的时候尝试续传，不能续传的时候也会重新开始传输。
+                SifliDFUService.startActionDFUNorExt(getContext(), SpUtils.getValue(SpUtils.DEVICE_MAC, ""), slfliOtaFiles, 1, 0)
             }
         })
     }
@@ -687,15 +690,14 @@ object GlobalEventManager {
         override fun onSuccess(result: Int?) {
             //超时 或者 完成（成功失败）
             DialogUtils.dismissDialog(slfliLoading)
+            uploadDialog?.isShowing()?.let {
+                if (it) uploadDialog?.cancel()
+            }
+            //清除已使用的文件
+            com.blankj.utilcode.util.FileUtils.deleteAllInDir(PathUtils.getExternalAppFilesPath() + "/otal/firmware/")
             if (!isOk) {
-                uploadDialog?.isShowing()?.let {
-                    if (it) uploadDialog?.cancel()
-                }
                 showUpdateFailedDialog()
             } else {
-                uploadDialog?.isShowing()?.let {
-                    if (it) uploadDialog?.cancel()
-                }
                 isOtaSending = false
                 isUpload = false
             }

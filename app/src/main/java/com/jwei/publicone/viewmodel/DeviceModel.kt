@@ -310,6 +310,7 @@ class DeviceModel : BaseViewModel() {
                         EventBus.getDefault()
                             .post(EventMessage(EventAction.ACTION_REF_DEVICE_SETTING))
                     }
+
                     HttpCommonAttributes.REQUEST_SEND_CODE_NO_DATA -> {
                         SpUtils.getSPUtilsInstance().remove(SpUtils.DEVICE_SETTING)
                         Global.fillListData()
@@ -893,9 +894,9 @@ class DeviceModel : BaseViewModel() {
                 val result = MyRetrofitClient.service.queryFirewareUpgradeVersion(
                     JsonUtils.getRequestJson(
                         FirewareUpdateParam(
-                            /*Global.deviceType*/"50000",
-                            /*Global.deviceVersion*/"1.0.1",
-                            /*firmwarePlatform*/"4",
+                            Global.deviceType,
+                            Global.deviceVersion,
+                            firmwarePlatform,
                             userId
                         ),
                         FirewareUpdateParam::class.java
@@ -958,6 +959,7 @@ class DeviceModel : BaseViewModel() {
             }
         }
     }
+
     /**
      * 产品设备信息
      * */
@@ -1287,24 +1289,31 @@ class DeviceModel : BaseViewModel() {
                     NetworkUtils.NetworkType.NETWORK_ETHERNET -> {
                         "ETHERNET"
                     }
+
                     NetworkUtils.NetworkType.NETWORK_WIFI -> {
                         "WIFI"
                     }
+
                     NetworkUtils.NetworkType.NETWORK_4G -> {
                         "4G"
                     }
+
                     NetworkUtils.NetworkType.NETWORK_3G -> {
                         "3G"
                     }
+
                     NetworkUtils.NetworkType.NETWORK_2G -> {
                         "2G"
                     }
+
                     NetworkUtils.NetworkType.NETWORK_NO -> {
                         "NO"
                     }
+
                     NetworkUtils.NetworkType.NETWORK_UNKNOWN -> {
                         "UNKNOWN"
                     }
+
                     else -> {
                         "UNKNOWN"
                     }
@@ -2042,573 +2051,763 @@ class DeviceModel : BaseViewModel() {
             1 -> {
                 languageContext?.getString(R.string.world_clock_city_1) ?: ""
             }
+
             2 -> {
                 languageContext?.getString(R.string.world_clock_city_2) ?: ""
             }
+
             3 -> {
                 languageContext?.getString(R.string.world_clock_city_3) ?: ""
             }
+
             4 -> {
                 languageContext?.getString(R.string.world_clock_city_4) ?: ""
             }
+
             5 -> {
                 languageContext?.getString(R.string.world_clock_city_5) ?: ""
             }
+
             6 -> {
                 languageContext?.getString(R.string.world_clock_city_6) ?: ""
             }
+
             7 -> {
                 languageContext?.getString(R.string.world_clock_city_7) ?: ""
             }
+
             8 -> {
                 languageContext?.getString(R.string.world_clock_city_8) ?: ""
             }
+
             9 -> {
                 languageContext?.getString(R.string.world_clock_city_9) ?: ""
             }
+
             10 -> {
                 languageContext?.getString(R.string.world_clock_city_10) ?: ""
             }
+
             11 -> {
                 languageContext?.getString(R.string.world_clock_city_11) ?: ""
             }
+
             12 -> {
                 languageContext?.getString(R.string.world_clock_city_12) ?: ""
             }
+
             13 -> {
                 languageContext?.getString(R.string.world_clock_city_13) ?: ""
             }
+
             14 -> {
                 languageContext?.getString(R.string.world_clock_city_14) ?: ""
             }
+
             15 -> {
                 languageContext?.getString(R.string.world_clock_city_15) ?: ""
             }
+
             16 -> {
                 languageContext?.getString(R.string.world_clock_city_16) ?: ""
             }
+
             17 -> {
                 languageContext?.getString(R.string.world_clock_city_17) ?: ""
             }
+
             18 -> {
                 languageContext?.getString(R.string.world_clock_city_18) ?: ""
             }
+
             19 -> {
                 languageContext?.getString(R.string.world_clock_city_19) ?: ""
             }
+
             20 -> {
                 languageContext?.getString(R.string.world_clock_city_20) ?: ""
             }
+
             21 -> {
                 languageContext?.getString(R.string.world_clock_city_21) ?: ""
             }
+
             22 -> {
                 languageContext?.getString(R.string.world_clock_city_22) ?: ""
             }
+
             23 -> {
                 languageContext?.getString(R.string.world_clock_city_23) ?: ""
             }
+
             24 -> {
                 languageContext?.getString(R.string.world_clock_city_24) ?: ""
             }
+
             25 -> {
                 languageContext?.getString(R.string.world_clock_city_25) ?: ""
             }
+
             26 -> {
                 languageContext?.getString(R.string.world_clock_city_26) ?: ""
             }
+
             27 -> {
                 languageContext?.getString(R.string.world_clock_city_27) ?: ""
             }
+
             28 -> {
                 languageContext?.getString(R.string.world_clock_city_28) ?: ""
             }
+
             29 -> {
                 languageContext?.getString(R.string.world_clock_city_29) ?: ""
             }
+
             30 -> {
                 languageContext?.getString(R.string.world_clock_city_30) ?: ""
             }
+
             31 -> {
                 languageContext?.getString(R.string.world_clock_city_31) ?: ""
             }
+
             32 -> {
                 languageContext?.getString(R.string.world_clock_city_32) ?: ""
             }
+
             33 -> {
                 languageContext?.getString(R.string.world_clock_city_33) ?: ""
             }
+
             34 -> {
                 languageContext?.getString(R.string.world_clock_city_34) ?: ""
             }
+
             35 -> {
                 languageContext?.getString(R.string.world_clock_city_35) ?: ""
             }
+
             37 -> {
                 languageContext?.getString(R.string.world_clock_city_37) ?: ""
             }
+
             38 -> {
                 languageContext?.getString(R.string.world_clock_city_38) ?: ""
             }
+
             39 -> {
                 languageContext?.getString(R.string.world_clock_city_39) ?: ""
             }
+
             40 -> {
                 languageContext?.getString(R.string.world_clock_city_40) ?: ""
             }
+
             41 -> {
                 languageContext?.getString(R.string.world_clock_city_41) ?: ""
             }
+
             42 -> {
                 languageContext?.getString(R.string.world_clock_city_42) ?: ""
             }
+
             43 -> {
                 languageContext?.getString(R.string.world_clock_city_43) ?: ""
             }
+
             44 -> {
                 languageContext?.getString(R.string.world_clock_city_44) ?: ""
             }
+
             45 -> {
                 languageContext?.getString(R.string.world_clock_city_45) ?: ""
             }
+
             46 -> {
                 languageContext?.getString(R.string.world_clock_city_46) ?: ""
             }
+
             47 -> {
                 languageContext?.getString(R.string.world_clock_city_47) ?: ""
             }
+
             48 -> {
                 languageContext?.getString(R.string.world_clock_city_48) ?: ""
             }
+
             49 -> {
                 languageContext?.getString(R.string.world_clock_city_49) ?: ""
             }
+
             50 -> {
                 languageContext?.getString(R.string.world_clock_city_50) ?: ""
             }
+
             51 -> {
                 languageContext?.getString(R.string.world_clock_city_51) ?: ""
             }
+
             52 -> {
                 languageContext?.getString(R.string.world_clock_city_52) ?: ""
             }
+
             53 -> {
                 languageContext?.getString(R.string.world_clock_city_53) ?: ""
             }
+
             54 -> {
                 languageContext?.getString(R.string.world_clock_city_54) ?: ""
             }
+
             55 -> {
                 languageContext?.getString(R.string.world_clock_city_55) ?: ""
             }
+
             56 -> {
                 languageContext?.getString(R.string.world_clock_city_56) ?: ""
             }
+
             57 -> {
                 languageContext?.getString(R.string.world_clock_city_57) ?: ""
             }
+
             58 -> {
                 languageContext?.getString(R.string.world_clock_city_58) ?: ""
             }
+
             59 -> {
                 languageContext?.getString(R.string.world_clock_city_59) ?: ""
             }
+
             60 -> {
                 languageContext?.getString(R.string.world_clock_city_60) ?: ""
             }
+
             61 -> {
                 languageContext?.getString(R.string.world_clock_city_61) ?: ""
             }
+
             62 -> {
                 languageContext?.getString(R.string.world_clock_city_62) ?: ""
             }
+
             63 -> {
                 languageContext?.getString(R.string.world_clock_city_63) ?: ""
             }
+
             64 -> {
                 languageContext?.getString(R.string.world_clock_city_64) ?: ""
             }
+
             65 -> {
                 languageContext?.getString(R.string.world_clock_city_65) ?: ""
             }
+
             66 -> {
                 languageContext?.getString(R.string.world_clock_city_66) ?: ""
             }
+
             67 -> {
                 languageContext?.getString(R.string.world_clock_city_67) ?: ""
             }
+
             68 -> {
                 languageContext?.getString(R.string.world_clock_city_68) ?: ""
             }
+
             69 -> {
                 languageContext?.getString(R.string.world_clock_city_69) ?: ""
             }
+
             70 -> {
                 languageContext?.getString(R.string.world_clock_city_70) ?: ""
             }
+
             71 -> {
                 languageContext?.getString(R.string.world_clock_city_71) ?: ""
             }
+
             72 -> {
                 languageContext?.getString(R.string.world_clock_city_72) ?: ""
             }
+
             73 -> {
                 languageContext?.getString(R.string.world_clock_city_73) ?: ""
             }
+
             74 -> {
                 languageContext?.getString(R.string.world_clock_city_74) ?: ""
             }
+
             75 -> {
                 languageContext?.getString(R.string.world_clock_city_75) ?: ""
             }
+
             76 -> {
                 languageContext?.getString(R.string.world_clock_city_76) ?: ""
             }
+
             77 -> {
                 languageContext?.getString(R.string.world_clock_city_77) ?: ""
             }
+
             78 -> {
                 languageContext?.getString(R.string.world_clock_city_78) ?: ""
             }
+
             79 -> {
                 languageContext?.getString(R.string.world_clock_city_79) ?: ""
             }
+
             80 -> {
                 languageContext?.getString(R.string.world_clock_city_80) ?: ""
             }
+
             81 -> {
                 languageContext?.getString(R.string.world_clock_city_81) ?: ""
             }
+
             82 -> {
                 languageContext?.getString(R.string.world_clock_city_82) ?: ""
             }
+
             83 -> {
                 languageContext?.getString(R.string.world_clock_city_83) ?: ""
             }
+
             84 -> {
                 languageContext?.getString(R.string.world_clock_city_84) ?: ""
             }
+
             85 -> {
                 languageContext?.getString(R.string.world_clock_city_85) ?: ""
             }
+
             86 -> {
                 languageContext?.getString(R.string.world_clock_city_86) ?: ""
             }
+
             87 -> {
                 languageContext?.getString(R.string.world_clock_city_87) ?: ""
             }
+
             88 -> {
                 languageContext?.getString(R.string.world_clock_city_88) ?: ""
             }
+
             89 -> {
                 languageContext?.getString(R.string.world_clock_city_89) ?: ""
             }
+
             90 -> {
                 languageContext?.getString(R.string.world_clock_city_90) ?: ""
             }
+
             91 -> {
                 languageContext?.getString(R.string.world_clock_city_91) ?: ""
             }
+
             92 -> {
                 languageContext?.getString(R.string.world_clock_city_92) ?: ""
             }
+
             93 -> {
                 languageContext?.getString(R.string.world_clock_city_93) ?: ""
             }
+
             94 -> {
                 languageContext?.getString(R.string.world_clock_city_94) ?: ""
             }
+
             95 -> {
                 languageContext?.getString(R.string.world_clock_city_95) ?: ""
             }
+
             96 -> {
                 languageContext?.getString(R.string.world_clock_city_96) ?: ""
             }
+
             97 -> {
                 languageContext?.getString(R.string.world_clock_city_97) ?: ""
             }
+
             98 -> {
                 languageContext?.getString(R.string.world_clock_city_98) ?: ""
             }
+
             99 -> {
                 languageContext?.getString(R.string.world_clock_city_99) ?: ""
             }
+
             100 -> {
                 languageContext?.getString(R.string.world_clock_city_100) ?: ""
             }
+
             101 -> {
                 languageContext?.getString(R.string.world_clock_city_101) ?: ""
             }
+
             102 -> {
                 languageContext?.getString(R.string.world_clock_city_102) ?: ""
             }
+
             103 -> {
                 languageContext?.getString(R.string.world_clock_city_103) ?: ""
             }
+
             104 -> {
                 languageContext?.getString(R.string.world_clock_city_104) ?: ""
             }
+
             105 -> {
                 languageContext?.getString(R.string.world_clock_city_105) ?: ""
             }
+
             106 -> {
                 languageContext?.getString(R.string.world_clock_city_106) ?: ""
             }
+
             107 -> {
                 languageContext?.getString(R.string.world_clock_city_107) ?: ""
             }
+
             108 -> {
                 languageContext?.getString(R.string.world_clock_city_108) ?: ""
             }
+
             109 -> {
                 languageContext?.getString(R.string.world_clock_city_109) ?: ""
             }
+
             110 -> {
                 languageContext?.getString(R.string.world_clock_city_110) ?: ""
             }
+
             111 -> {
                 languageContext?.getString(R.string.world_clock_city_111) ?: ""
             }
+
             112 -> {
                 languageContext?.getString(R.string.world_clock_city_112) ?: ""
             }
+
             113 -> {
                 languageContext?.getString(R.string.world_clock_city_113) ?: ""
             }
+
             114 -> {
                 languageContext?.getString(R.string.world_clock_city_114) ?: ""
             }
+
             115 -> {
                 languageContext?.getString(R.string.world_clock_city_115) ?: ""
             }
+
             116 -> {
                 languageContext?.getString(R.string.world_clock_city_116) ?: ""
             }
+
             117 -> {
                 languageContext?.getString(R.string.world_clock_city_117) ?: ""
             }
+
             118 -> {
                 languageContext?.getString(R.string.world_clock_city_118) ?: ""
             }
+
             119 -> {
                 languageContext?.getString(R.string.world_clock_city_119) ?: ""
             }
+
             120 -> {
                 languageContext?.getString(R.string.world_clock_city_120) ?: ""
             }
+
             121 -> {
                 languageContext?.getString(R.string.world_clock_city_121) ?: ""
             }
+
             122 -> {
                 languageContext?.getString(R.string.world_clock_city_122) ?: ""
             }
+
             123 -> {
                 languageContext?.getString(R.string.world_clock_city_123) ?: ""
             }
+
             124 -> {
                 languageContext?.getString(R.string.world_clock_city_124) ?: ""
             }
+
             125 -> {
                 languageContext?.getString(R.string.world_clock_city_125) ?: ""
             }
+
             126 -> {
                 languageContext?.getString(R.string.world_clock_city_126) ?: ""
             }
+
             127 -> {
                 languageContext?.getString(R.string.world_clock_city_127) ?: ""
             }
+
             128 -> {
                 languageContext?.getString(R.string.world_clock_city_128) ?: ""
             }
+
             129 -> {
                 languageContext?.getString(R.string.world_clock_city_129) ?: ""
             }
+
             130 -> {
                 languageContext?.getString(R.string.world_clock_city_130) ?: ""
             }
+
             131 -> {
                 languageContext?.getString(R.string.world_clock_city_131) ?: ""
             }
+
             132 -> {
                 languageContext?.getString(R.string.world_clock_city_132) ?: ""
             }
+
             133 -> {
                 languageContext?.getString(R.string.world_clock_city_133) ?: ""
             }
+
             134 -> {
                 languageContext?.getString(R.string.world_clock_city_134) ?: ""
             }
+
             135 -> {
                 languageContext?.getString(R.string.world_clock_city_135) ?: ""
             }
+
             136 -> {
                 languageContext?.getString(R.string.world_clock_city_136) ?: ""
             }
+
             137 -> {
                 languageContext?.getString(R.string.world_clock_city_137) ?: ""
             }
+
             138 -> {
                 languageContext?.getString(R.string.world_clock_city_138) ?: ""
             }
+
             139 -> {
                 languageContext?.getString(R.string.world_clock_city_139) ?: ""
             }
+
             140 -> {
                 languageContext?.getString(R.string.world_clock_city_140) ?: ""
             }
+
             141 -> {
                 languageContext?.getString(R.string.world_clock_city_141) ?: ""
             }
+
             142 -> {
                 languageContext?.getString(R.string.world_clock_city_142) ?: ""
             }
+
             143 -> {
                 languageContext?.getString(R.string.world_clock_city_143) ?: ""
             }
+
             144 -> {
                 languageContext?.getString(R.string.world_clock_city_144) ?: ""
             }
+
             145 -> {
                 languageContext?.getString(R.string.world_clock_city_145) ?: ""
             }
+
             146 -> {
                 languageContext?.getString(R.string.world_clock_city_146) ?: ""
             }
+
             147 -> {
                 languageContext?.getString(R.string.world_clock_city_147) ?: ""
             }
+
             148 -> {
                 languageContext?.getString(R.string.world_clock_city_148) ?: ""
             }
+
             149 -> {
                 languageContext?.getString(R.string.world_clock_city_149) ?: ""
             }
+
             150 -> {
                 languageContext?.getString(R.string.world_clock_city_150) ?: ""
             }
+
             151 -> {
                 languageContext?.getString(R.string.world_clock_city_151) ?: ""
             }
+
             152 -> {
                 languageContext?.getString(R.string.world_clock_city_152) ?: ""
             }
+
             153 -> {
                 languageContext?.getString(R.string.world_clock_city_153) ?: ""
             }
+
             154 -> {
                 languageContext?.getString(R.string.world_clock_city_154) ?: ""
             }
+
             155 -> {
                 languageContext?.getString(R.string.world_clock_city_155) ?: ""
             }
+
             156 -> {
                 languageContext?.getString(R.string.world_clock_city_156) ?: ""
             }
+
             157 -> {
                 languageContext?.getString(R.string.world_clock_city_157) ?: ""
             }
+
             158 -> {
                 languageContext?.getString(R.string.world_clock_city_158) ?: ""
             }
+
             159 -> {
                 languageContext?.getString(R.string.world_clock_city_159) ?: ""
             }
+
             160 -> {
                 languageContext?.getString(R.string.world_clock_city_160) ?: ""
             }
+
             161 -> {
                 languageContext?.getString(R.string.world_clock_city_161) ?: ""
             }
+
             162 -> {
                 languageContext?.getString(R.string.world_clock_city_162) ?: ""
             }
+
             163 -> {
                 languageContext?.getString(R.string.world_clock_city_163) ?: ""
             }
+
             164 -> {
                 languageContext?.getString(R.string.world_clock_city_164) ?: ""
             }
+
             165 -> {
                 languageContext?.getString(R.string.world_clock_city_165) ?: ""
             }
+
             166 -> {
                 languageContext?.getString(R.string.world_clock_city_166) ?: ""
             }
+
             167 -> {
                 languageContext?.getString(R.string.world_clock_city_167) ?: ""
             }
+
             168 -> {
                 languageContext?.getString(R.string.world_clock_city_168) ?: ""
             }
+
             169 -> {
                 languageContext?.getString(R.string.world_clock_city_169) ?: ""
             }
+
             170 -> {
                 languageContext?.getString(R.string.world_clock_city_170) ?: ""
             }
+
             171 -> {
                 languageContext?.getString(R.string.world_clock_city_171) ?: ""
             }
+
             172 -> {
                 languageContext?.getString(R.string.world_clock_city_172) ?: ""
             }
+
             173 -> {
                 languageContext?.getString(R.string.world_clock_city_173) ?: ""
             }
+
             174 -> {
                 languageContext?.getString(R.string.world_clock_city_174) ?: ""
             }
+
             175 -> {
                 languageContext?.getString(R.string.world_clock_city_175) ?: ""
             }
+
             176 -> {
                 languageContext?.getString(R.string.world_clock_city_176) ?: ""
             }
+
             177 -> {
                 languageContext?.getString(R.string.world_clock_city_177) ?: ""
             }
+
             178 -> {
                 languageContext?.getString(R.string.world_clock_city_178) ?: ""
             }
+
             179 -> {
                 languageContext?.getString(R.string.world_clock_city_179) ?: ""
             }
+
             180 -> {
                 languageContext?.getString(R.string.world_clock_city_180) ?: ""
             }
+
             181 -> {
                 languageContext?.getString(R.string.world_clock_city_181) ?: ""
             }
+
             182 -> {
                 languageContext?.getString(R.string.world_clock_city_182) ?: ""
             }
+
             183 -> {
                 languageContext?.getString(R.string.world_clock_city_183) ?: ""
             }
+
             184 -> {
                 languageContext?.getString(R.string.world_clock_city_184) ?: ""
             }
+
             185 -> {
                 languageContext?.getString(R.string.world_clock_city_185) ?: ""
             }
+
             186 -> {
                 languageContext?.getString(R.string.world_clock_city_186) ?: ""
             }
+
             187 -> {
                 languageContext?.getString(R.string.world_clock_city_187) ?: ""
             }
+
             188 -> {
                 languageContext?.getString(R.string.world_clock_city_188) ?: ""
             }
+
             189 -> {
                 languageContext?.getString(R.string.world_clock_city_189) ?: ""
             }
+
             190 -> {
                 languageContext?.getString(R.string.world_clock_city_190) ?: ""
             }
+
             191 -> {
                 languageContext?.getString(R.string.world_clock_city_191) ?: ""
             }
+
             else -> {
                 ""
             }

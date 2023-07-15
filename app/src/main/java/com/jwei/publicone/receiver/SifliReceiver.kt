@@ -20,9 +20,11 @@ class SifliReceiver : BroadcastReceiver() {
 
     var faceProgress = -1
 
-    data class DFUState(var state:Int,var stateResult:Int)
+    data class DFUState(var state: Int, var stateResult: Int)
 
-    data class DFUProgress(var progress:Int,var progressType:Int)
+    data class DFUProgress(var progress: Int, var progressType: Int)
+
+    data class SifliFaceState(var state: Int, var rsp: Int)
 
 
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -37,12 +39,12 @@ class SifliReceiver : BroadcastReceiver() {
                     val state = intent.getIntExtra(SifliDFUService.EXTRA_DFU_STATE, 0)
                     val stateResult = intent.getIntExtra(SifliDFUService.EXTRA_DFU_STATE_RESULT, 0)
                     Log.d("DFU STATE", " state:$state,stateResult:$stateResult")
-                    EventBus.getDefault().post(EventMessage(EventAction.ACTION_SIFLI_DFU_STATE,DFUState(state,stateResult)))
-                    if(stateResult != 0){
+                    EventBus.getDefault().post(EventMessage(EventAction.ACTION_SIFLI_DFU_STATE, DFUState(state, stateResult)))
+                    if (stateResult != 0) {
                         //失败
                         dfuProgress = -1
-                    }else{
-                        if(state == Protocol.DFU_SERVICE_EXIT){
+                    } else {
+                        if (state == Protocol.DFU_SERVICE_EXIT) {
                             //成功
                             dfuProgress = -1
                         }
@@ -55,7 +57,7 @@ class SifliReceiver : BroadcastReceiver() {
                     if (dfuProgress != progress) {
                         dfuProgress = progress
                         Log.d("DFU PROGRESS", "progress:$progress,progressType:$progressType")
-                        EventBus.getDefault().post(EventMessage(EventAction.ACTION_SIFLI_DFU_PROGRESS,DFUProgress(dfuProgress,progressType)))
+                        EventBus.getDefault().post(EventMessage(EventAction.ACTION_SIFLI_DFU_PROGRESS, DFUProgress(dfuProgress, progressType)))
                     }
                 }
 
@@ -64,7 +66,8 @@ class SifliReceiver : BroadcastReceiver() {
                     val rsp = intent.getIntExtra(SifliWatchfaceService.EXTRA_WATCHFACE_STATE_RSP, 0)
 
                     Log.d("FACE STATE", "state:$state, rsp:$rsp")
-                    EventBus.getDefault().post(EventMessage(EventAction.ACTION_SIFLI_FACE_STATE,state))
+                    EventBus.getDefault().post(EventMessage(EventAction.ACTION_SIFLI_FACE_STATE, SifliFaceState(state, rsp)))
+                    faceProgress = -1
                     /*if(state == 0){
                         //成功
                     }else{
@@ -77,7 +80,7 @@ class SifliReceiver : BroadcastReceiver() {
                     if (faceProgress != progress) {
                         faceProgress = progress
                         Log.d("FACE PROGRESS", "progress:$progress")
-                        EventBus.getDefault().post(EventMessage(EventAction.ACTION_SIFLI_FACE_PROGRESS,progress))
+                        EventBus.getDefault().post(EventMessage(EventAction.ACTION_SIFLI_FACE_PROGRESS, progress))
                     }
 
                 }
