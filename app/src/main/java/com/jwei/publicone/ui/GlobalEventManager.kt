@@ -660,6 +660,7 @@ object GlobalEventManager {
                     showUpdateFailedDialog()
                     return
                 }
+                ControlBleTools.getInstance().disconnect()
                 startOrRefSifliTimeOut()
                 //执行思澈dfu方法
                 //ResumeMode:
@@ -695,6 +696,7 @@ object GlobalEventManager {
             }
             //清除已使用的文件
             com.blankj.utilcode.util.FileUtils.deleteAllInDir(PathUtils.getExternalAppFilesPath() + "/otal/firmware/")
+            SendCmdUtils.connectDevice(SpUtils.getValue(SpUtils.DEVICE_NAME, ""), SpUtils.getValue(SpUtils.DEVICE_MAC, ""))
             if (!isOk) {
                 showUpdateFailedDialog()
             } else {

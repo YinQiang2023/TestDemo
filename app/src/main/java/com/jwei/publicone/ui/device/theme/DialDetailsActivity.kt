@@ -667,12 +667,11 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                 downloadTrackingLog.endTime = TrackingLog.getNowString()
                 downloadTrackingLog.serResult = "成功"
                 AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_DIAL, downloadTrackingLog)
-
                 //TODO 区分平台
                 val firmware = SpUtils.getSPUtilsInstance().getString(SpUtils.CURRENT_FIRMWARE_PLATFORM, "")
                 if (firmware == Global.FIRMWARE_PLATFORM_SIFLI) {
                     //思澈平台表盘处理
-                    slfliSendOnlineDial(path)
+                    getSifliSendState(path)
                 } else {
                     sendOnlineDial(path)
                 }
@@ -1196,8 +1195,69 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
     }
 
     //region 思澈平台表盘处理
-    private fun slfliSendOnlineDial(path: String) {
-        com.blankj.utilcode.util.LogUtils.d("slfliSendOnlineDial：$path")
+    /**
+     * 获取表盘发送状态
+     */
+    private fun getSifliSendState(path: String) {
+        val fileByte: ByteArray? = FileUtils.getBytes(path)
+        if (fileByte != null) {
+            postDialLog(2)
+            LogUtils.i(TAG, "getSlfiSendState getDeviceWatchFace downFile dialCode = $dialCode")
+            AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_DIAL, TrackingLog.getAppTypeTrack("获取表盘文件"))
+
+            fileStateTrackingLog.startTime = TrackingLog.getNowString()
+
+            ControlBleTools.getInstance().getDeviceWatchFace(
+                dialCode,
+                fileByte.size,
+                false,
+                object : DeviceWatchFaceFileStatusListener {
+                    override fun onSuccess(statusValue: Int, statusName: String?) {
+                        when (statusName) {
+                            "READY" -> {
+                                sendSlfliOnlineDial(path)
+                            }
+                            //重复上传
+                            "DUPLICATED" -> {
+                                ToastUtils.showToast(R.string.ota_device_is_duplicated)
+                            }
+                            //电量低
+                            "LOW_BATTERY" -> {
+                                ToastUtils.showToast(R.string.ota_device_low_power_tips)
+                            }
+                            //繁忙
+                            "BUSY" -> {
+                                ToastUtils.showToast(R.string.ota_device_busy_tips)
+                            }
+                            //错误
+                            "DOWNGRADE", "LOW_STORAGE" -> {
+                                ToastUtils.showToast(R.string.healthy_sports_sync_fail)
+                            }
+                        }
+                    }
+
+                    override fun timeOut() {
+                        LogUtils.e(TAG, "sendCustomDial getDeviceWatchFace onTimeout", true)
+                        ErrorUtils.onLogResult("CustomDial getDeviceWatchFace onTimeout")
+                        ErrorUtils.onLogError(ErrorUtils.ERROR_MODE_TRANSMISSION_TIMEOUT)
+                        postDialLog(4)
+                        DialogUtils.dismissDialog(dialog)
+                        ToastUtils.showToast(R.string.ota_device_timeout_tips)
+                        BaseApplication.application.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)?.let { FileUtils.deleteAll(it.path) }
+                    }
+
+                }
+            )
+        } else {
+            ErrorUtils.onLogResult("sendOnlineDial file is null")
+            ErrorUtils.onLogError(ErrorUtils.ERROR_MODE_OTHER)
+            AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_DIAL, TrackingLog.getAppTypeTrack("获取表盘文件").apply {
+                log += "在线文件为空\n获取表盘文件失败"
+            }, "1815", true)
+        }
+    }
+
+    private fun sendSlfliOnlineDial(path: String) {
         ThreadUtils.executeByIo(object : ThreadUtils.SimpleTask<String>() {
             override fun doInBackground(): String {
                 val faceFile = com.blankj.utilcode.util.FileUtils.getFileByPath(path)
