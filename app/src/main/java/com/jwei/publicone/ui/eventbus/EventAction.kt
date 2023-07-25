@@ -131,6 +131,9 @@ object EventAction {
     //SIFLI DFU PRO 思澈表盘进度
     const val ACTION_SIFLI_FACE_PROGRESS = "ACTION_SIFLI_FACE_PROGRESS"
 
+    //SIFLI 无可用服务
+    const val ACTION_SIFLI_WITHOUT_SERVICE = "ACTION_SIFLI_FACE_PROGRESS"
+
 
 
 

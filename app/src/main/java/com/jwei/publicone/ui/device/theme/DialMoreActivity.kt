@@ -42,7 +42,7 @@ class DialMoreActivity : BaseActivity<ActivityDialMoreBinding, DeviceModel>(Acti
             ToastUtils.showToast(R.string.theme_center_item_dial_id_error)
             finish()
         }
-        binding.title.tvTitle.text = intent.getStringExtra("typeName")
+        setTvTitle(intent.getStringExtra("typeName") ?: "")
 
         binding.rvList.apply {
             adapter = initAdapter()

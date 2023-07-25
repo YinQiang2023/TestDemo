@@ -2,11 +2,11 @@
     <!-- 波兰语 -->
     <!--占位符放置最前%-->
     <string name="miss_permission_hint">Aby korzystać z tej funkcji, aplikacja musi poprosić o pozwolenie %s.</string>
-    <string name="denied_forever_permission_hint">Żądanie pozwolenia odrzucone. Aplikacja musi korzystać z uprawnienia %s. Przejdź do \"Ustawienia\">\"Zarządzanie aplikacjami\">\"X Fit\">\"Uprawnienia\", aby zezwolić na korzystanie z tej funkcji w normalny sposób.</string>
+    <string name="denied_forever_permission_hint">Żądanie pozwolenia odrzucone. Aplikacja musi korzystać z uprawnienia %s. Przejdź do \"Ustawienia\">\"Zarządzanie aplikacjami\">\"XzFit\">\"Uprawnienia\", aby zezwolić na korzystanie z tej funkcji w normalny sposób.</string>
     <string name="remote_landing">Dostęp do Twojego konta został umożliwiony na urządzeniu w %s. Jeśli nie zostało to zrobione przez Ciebie, hasło mogło wyciec. Zalecamy przejść do aplikacji, aby się zalogować, kliknąć Zapomnij hasło i zmienić hasło.</string>
     <string name="exit_app_tips">Naciśnij ponownie aby wyjść z aplikacji</string>
     <string name="privacy_statement_title">Oświadczenie o zezwoleniu na ochronę prywatności</string>
-    <string name="privacy_statement_content">Witamy w X Fit. Możesz używać tej aplikacji do zarządzania i przeglądania danych ćwiczeń i zdrowia. Będziemy przestrzegać przepisów prawa, regulaminów i polityki prywatności, aby chronić Twoje dane osobowe. Aby zapewnić najbardziej podstawowe usługi, aplikacja musi być podłączona do Internetu.</string>
+    <string name="privacy_statement_content">Witamy w XzFit. Możesz używać tej aplikacji do zarządzania i przeglądania danych ćwiczeń i zdrowia. Będziemy przestrzegać przepisów prawa, regulaminów i polityki prywatności, aby chronić Twoje dane osobowe. Aby zapewnić najbardziej podstawowe usługi, aplikacja musi być podłączona do Internetu.</string>
     <string name="privacy_statement_agree">Zgadzam się i kontynuuję</string>
     <string name="privacy_statement_quit">Wyjdź</string>
     <string name="privacy_statement_disagree">Nie zgadzam się</string>
@@ -22,7 +22,7 @@
     <string name="send_code_mistake">Nieprawidłowy kod weryfikacyjny</string>
     <string name="not_network_tips">Upewnij się, że sieć WiFi lub sieć danych jest dostępna</string>
     <string name="err_network_tips">Żądanie nieudane. Spróbuj później</string>
-    <string name="disagree_context">Przed dalszym korzystaniem z usług X Fit wymagana jest Twoja zgoda.</string>
+    <string name="disagree_context">Przed dalszym korzystaniem z usług XzFit wymagana jest Twoja zgoda.</string>
     <string name="disagree_left_btn">Nie zgadzam się</string>
     <string name="disagree_right_btn">Zgadzam się i kontynuuję</string>
     <string name="scan_device_title">Paruj urządzenie</string>
@@ -71,7 +71,7 @@
     <string name="device_fragment_using">Włączanie</string>
     <string name="device_fragment_using_no">Nie włączone</string>
     <string name="device_set_title">Szczegóły urządzenia</string>
-    <string name="device_welcome_user">X Fit Witaj</string>
+    <string name="device_welcome_user">XzFit Witaj</string>
     <string name="device_no_bind_add_text">Proszę dodać swoje urządzenie</string>
     <string name="device_no_bind_click_add_text">Kliknij, aby dodać urządzenie</string>
     <string name="device_battery_charge_state">Ładowanie</string>
@@ -304,7 +304,7 @@
     <string name="dialog_unbind_btn">Odparuj</string>
     <string name="dialog_unbind_btn2">Kontynuuj odparuj</string>
     <string name="dialog_title_bluetooth_not_enabled">Bluetooth nie jest wł.</string>
-    <string name="dialog_context_open_bluetooth">Proszę włączyć Bluetooth, aby umożliwić poł. X Fit z urządzeniem.</string>
+    <string name="dialog_context_open_bluetooth">Proszę włączyć Bluetooth, aby umożliwić poł. XzFit z urządzeniem.</string>
     <string name="dialog_confirm_unbind_device_tips">Potwierdzić odparowanie urządzenia?</string>
     <string name="dialog_confirm_unbind_device_tips2">Urządzenie nie jest podłączone. Odłączenie może spowodować utratę niezsynchronizowanych danych. Kontynuować odparowanie?</string>
     <string name="dialog_confirm_unbind_device_tips3">Odparowanie nie jest włączone dla urządzenia. Wymaga ręcznego przywrócenia ustawień fabrycznych urządzenia, aby powiązać je z kontem. Potwierdzić odparowanie?</string>
@@ -577,11 +577,11 @@
     <string name="know">Rozumiem</string>
     <string name="manual_binding">Ustawienia ręczne</string>
     <string name="apply_permission">Wniosek o zezwolenie</string>
-    <string name="open_gps_hint">Proszę włączyć usługę lokalizacji X Fit w Ustawieniach>Prywatność>Usługa lokalizacji</string>
+    <string name="open_gps_hint">Proszę włączyć usługę lokalizacji XzFit w Ustawieniach>Prywatność>Usługa lokalizacji</string>
     <string name="open_location_per_explain">Niniejsza aplikacja gromadzi dane o lokalizacji w celu umożliwienia [pozyskiwania informacji o lokalizacji urządzenia w tle], [pozyskiwania informacji o lokalizacji urządzenia], rejestrowania śladów lokalizacji użytkownika oraz wykonywania funkcji ćwiczenia aplikacji.</string>
-    <string name="open_notify_hint">Aplikacja musi korzystać z dostępu do powiadomień w celu sterowania muzyką z urządzenia, powiadamiania o przychodzących połączeniach i SMS-ach, powiadomieniach aplikacji innych firm synchronizowanych z urządzeniem itp. Aby normalnie korzystać z tej funkcji, należy przyznać X Fit dostęp do powiadomień.</string>
-    <string name="open_notify_donotdisturb_hint">Aplikacja musi korzystać z uprawnienia DND. Proszę włączyć zezwolenie DND dla X Fit, aby móc normalnie korzystać z tej funkcji.</string>
-    <string name="notification_permission_hint">Aplikacja musi korzystać z uprawnienia do powiadamiania przez aplikację. Przejdź do \"Ustawienia\">\"Zarządzanie powiadomieniami\">"X Fit\"> i zezwól na dostęp do powiadomień, aby móc normalnie korzystać z aplikacji.</string>
+    <string name="open_notify_hint">Aplikacja musi korzystać z dostępu do powiadomień w celu sterowania muzyką z urządzenia, powiadamiania o przychodzących połączeniach i SMS-ach, powiadomieniach aplikacji innych firm synchronizowanych z urządzeniem itp. Aby normalnie korzystać z tej funkcji, należy przyznać XzFit dostęp do powiadomień.</string>
+    <string name="open_notify_donotdisturb_hint">Aplikacja musi korzystać z uprawnienia DND. Proszę włączyć zezwolenie DND dla XzFit, aby móc normalnie korzystać z tej funkcji.</string>
+    <string name="notification_permission_hint">Aplikacja musi korzystać z uprawnienia do powiadamiania przez aplikację. Przejdź do \"Ustawienia\">\"Zarządzanie powiadomieniami\">"XzFit\"> i zezwól na dostęp do powiadomień, aby móc normalnie korzystać z aplikacji.</string>
     <string name="permission_location">Informacje o lokalizacji</string>
     <string name="permission_camera">Aparat, pliki i nośniki</string>
     <string name="permission_sdcard">Pliki i media</string>
@@ -723,7 +723,7 @@
     <string name="locate_success_tips">Zlokalizowano</string>
     <string name="locate_tips1">Lokalizacja nie jest włączona. Włączyć lokalizację?</string>
     <string name="guide_title">Przewodnik użytkownika</string>
-    <string name="guide_bottom_tips1">Witamy w X Fit. Korzystaj z aplikacji</string>
+    <string name="guide_bottom_tips1">Witamy w XzFit. Korzystaj z aplikacji</string>
     <string name="guide_bottom_tips2">do zarządzania urządzeniem i wyświetlania powiązanych danych dotyczących ćwiczeń i zdrowia</string>
     <string name="personal_information">Dane osobiste</string>
     <string name="unit_setting">Ustawienia jednostek</string>
@@ -803,8 +803,8 @@
     <string name="running_permission_title">Umożliwienie dostępu do uruchomień w tle</string>
     <string name="running_permission_cur_phone">Obecne telefony komórkowe</string>
     <string name="phone_huawei">Huawei EMUI/HarmonyOS</string>
-    <string name="running_permission_tip">Dlaczego aplikacja X Fit APP musi być uruchomiona w tle?</string>
-    <string name="running_permission_tip2">Podczas korzystania z funkcji alertu wiadomości, należy zachować X Fit APP uruchomiony w tle. Jeśli połączenia przychodzące, SMS i APP powiadomienia nie są odbierane, może to być spowodowane następującym procesem niewłaściwego użytkowania systemu, można odnieść się do następujących sugestii, aby skonfigurować.\n\nUwaga: Jeśli w telefonie zainstalowane jest oprogramowanie zabezpieczające innych firm, konieczne będzie również umieszczenie X Fit na białej liście jako aplikacji.</string>
+    <string name="running_permission_tip">Dlaczego aplikacja XzFit APP musi być uruchomiona w tle?</string>
+    <string name="running_permission_tip2">Podczas korzystania z funkcji alertu wiadomości, należy zachować XzFit APP uruchomiony w tle. Jeśli połączenia przychodzące, SMS i APP powiadomienia nie są odbierane, może to być spowodowane następującym procesem niewłaściwego użytkowania systemu, można odnieść się do następujących sugestii, aby skonfigurować.\n\nUwaga: Jeśli w telefonie zainstalowane jest oprogramowanie zabezpieczające innych firm, konieczne będzie również umieszczenie XzFit na białej liście jako aplikacji.</string>
     <string name="running_permission_tip3">Metoda ustawiania</string>
     <string name="running_permission_tip4">Procedura jest następująca:</string>
     <string name="running_permission_boot_completed">Zezwalaj na samoczynne uruchamianie się aplikacji</string>
@@ -823,10 +823,10 @@
     <string name="power_saving2">2. Otwórz przycisk \"Ustawienia\" w prawym górnym rogu strony i wyłącz \"Oszczędzanie baterii\" i \"Ultra oszczędzanie baterii\" na stronie \"Ustawienia\";</string>
     <string name="power_saving3">3. Wróć do strony \"Oszczędzanie baterii i bateria\", kliknij \"Bateria\" > \"Zadania automatyczne\" i wybierz opcję wyłączenia wszystkich scenariuszy zadań automatycznych po wejściu.</string>
     <string name="unlimited1">1. Otwórz Ustawienia i kliknij \"Aplikacje\" > \"Zarządzaj aplikacjami\".</string>
-    <string name="unlimited2">2. Znajdź X Fit APP i kliknij na niego, aby wejść.</string>
+    <string name="unlimited2">2. Znajdź XzFit APP i kliknij na niego, aby wejść.</string>
     <string name="unlimited3">3. Kliknij na \"Oszczędzanie baterii\", przejdź do niego i wybierz \"Bez ograniczeń\".</string>
     <string name="boot_completed_xiaomi1">1. Otwórz Ustawienia i kliknij \"Aplikacje\"> \"Zarządzaj aplikacjami\".</string>
-    <string name="boot_completed_xiaomi2">2. Znajdź X Fit APP i kliknij na niego, aby wejść.</string>
+    <string name="boot_completed_xiaomi2">2. Znajdź XzFit APP i kliknij na niego, aby wejść.</string>
     <string name="boot_completed_xiaomi3">3. Wybierz \"Autostart\" i włącz go.</string>
     <string name="boot_completed_huawei1">1. Otwórz aplikację \"Menedżer telefonu\" na pulpicie telefonu komórkowego, wybierz opcję \"Application Launch Management\" (Zarządzanie uruchamianiem aplikacji) i kliknij ją, aby wejść.</string>
     <string name="boot_completed_huawei2">2. Jeśli przełącznik jest wyłączony, włącz go, a następnie wyłącz; jeśli przełącznik jest włączony, ustaw go w pozycji wyłączonej, a w oknie podręcznym \"Zarządzanie ręczne\" zaznacz opcje \"Zezwalaj na autostart\", \"Zezwalaj na powiązane uruchamianie\" i \"Zezwalaj na działanie w tle\", a następnie kliknij przycisk \"OK\".</string>
@@ -836,34 +836,34 @@
     <string name="boot_completed_huawei6">3. Jeśli przełącznik jest wyłączony, włącz go, a następnie wyłącz; jeśli przełącznik jest włączony, ustaw go w pozycji wyłączonej, a w oknie podręcznym \"Zarządzanie ręczne\" zaznacz opcje \"Zezwalaj na autostart\", \"Zezwalaj na powiązane uruchamianie\" i \"Zezwalaj na działanie w tle\", a następnie kliknij przycisk \"OK\".</string>
     <string name="boot_completed_oppo1">1. Otwórz aplikację \"Menedżer telefonu\" na pulpicie telefonu i wybierz opcję \"Uprawnienia prywatności\".</string>
     <string name="boot_completed_oppo2">2. Znajdź \"Menedżera rozruchu\" w uprawnieniach prywatności i kliknij go, aby wejść.</string>
-    <string name="boot_completed_oppo3">3. znajdź X Fit na liście programów i włącz przełącznik.</string>
+    <string name="boot_completed_oppo3">3. znajdź XzFit na liście programów i włącz przełącznik.</string>
     <string name="boot_completed_vivo1">1. Otwórz aplikację \"iManager\" na pulpicie telefonu komórkowego i kliknij na \"App Manager\".</string>
     <string name="boot_completed_vivo2">2. Kliknij \"Zarządzanie uprawnieniami\" w interfejsie menedżera aplikacji.</string>
     <string name="boot_completed_vivo3">3. W Zarządzaniu uprawnieniami znajdź pozycję \"Autostart\".</string>
-    <string name="boot_completed_vivo4">4. Znajdź X Fit w menedżerze samoczynnego uruchamiania i włącz przełącznik.</string>
+    <string name="boot_completed_vivo4">4. Znajdź XzFit w menedżerze samoczynnego uruchamiania i włącz przełącznik.</string>
     <string name="Locking_xiaomi1">1. Otwórz stronę \"Ostatnio otwierane programy\" w swoim telefonie.</string>
-    <string name="Locking_xiaomi2">2. Naciśnij długo kartę X Fit APP, aż pojawi się ikona blokady po prawej stronie, kliknij, aby ją zablokować.</string>
+    <string name="Locking_xiaomi2">2. Naciśnij długo kartę XzFit APP, aż pojawi się ikona blokady po prawej stronie, kliknij, aby ją zablokować.</string>
     <string name="Locking_huawei1">1. Otwórz stronę \"Ostatnio otwierane programy\" w swoim telefonie.</string>
-    <string name="Locking_huawei2">2. Wystarczy pociągnąć w dół X Fit APP i symbol blokady pojawi się w górnej części APP.</string>
+    <string name="Locking_huawei2">2. Wystarczy pociągnąć w dół XzFit APP i symbol blokady pojawi się w górnej części APP.</string>
     <string name="Locking_oppo1">1. Otwórz stronę \"Ostatnio otwierane programy\" w swoim telefonie.</string>
-    <string name="Locking_oppo2">2. kliknij \":\" w górnej części X Fit APP, ikona blokady pojawi się, kliknij, aby go zablokować.</string>
+    <string name="Locking_oppo2">2. kliknij \":\" w górnej części XzFit APP, ikona blokady pojawi się, kliknij, aby go zablokować.</string>
     <string name="Locking_vivo1">1. Otwórz stronę \"Ostatnio otwierane programy\" w swoim telefonie.</string>
-    <string name="Locking_vivo2">2. Wystarczy pociągnąć w dół X Fit APP, a symbol blokady pojawi się nad kartą APP.</string>
+    <string name="Locking_vivo2">2. Wystarczy pociągnąć w dół XzFit APP, a symbol blokady pojawi się nad kartą APP.</string>
     <string name="powermanagement1">1. Otwórz aplikację \"Ustawienia\" w telefonie.</string>
     <string name="powermanagement2">2. W polu wyszukiwania wyszukaj hasło \" Optymalizacja zużycia baterii\".</string>
     <string name="powermanagement3">3. Kliknij w Optymalizacja zużycia baterii i wybierz \"Wszystkie aplikacje\" jako filtr w lewym górnym rogu.</string>
-    <string name="powermanagement4">4. Znajdź X Fit, wybierz \"Niedozwolone\" i kliknij OK.</string>
+    <string name="powermanagement4">4. Znajdź XzFit, wybierz \"Niedozwolone\" i kliknij OK.</string>
     <string name="power_consumption_oppo1">1. Otwórz ustawienia i kliknij na \"Bateria\".</string>
     <string name="power_consumption_oppo2">2. Kliknij na \"Zarządzanie baterią aplikacji\".</string>
-    <string name="power_consumption_oppo3">3. Znajdź X Fit i kliknij na niego, aby wejść.</string>
+    <string name="power_consumption_oppo3">3. Znajdź XzFit i kliknij na niego, aby wejść.</string>
     <string name="power_consumption_oppo4">4. Włącz przełącznik zezwalaj na aktywność w tle.</string>
     <string name="power_consumption_vivo1">1. otwórz ustawienia telefonu i kliknij na \"Bateria\".</string>
     <string name="power_consumption_vivo2">2. Wybierz opcję \"Wysokie zużycie energii w tle\" (w systemie Origin OS nazywaną \"Zarządzaniem zużyciem energii w tle\").</string>
-    <string name="power_consumption_vivo3">3. Znajdź X Fit i kliknij przycisk Zezwalaj (w przypadku systemu Origin OS znajdź X Fit i wybierz opcję \"Wysokie zużycie energii w tle\").</string>
-    <string name="phone_other1">1. Zablokuj aplikację X Fit APP na stronie Ostatnio otwierane programy.</string>
-    <string name="phone_other2">2. Znajdź opcję Self-boot Management w Centrum zabezpieczeń lub Ustawieniach telefonu, a następnie znajdź X Fit i włącz ją.</string>
-    <string name="phone_other3">3. Dodaj aplikację X Fit do białej listy w Centrum zabezpieczeń lub w ustawieniach telefonu.</string>
-    <string name="phone_other4">4. Jeśli w telefonie zainstalowano odpowiednie narzędzia do hibernacji aplikacji, takie jak Green Guardian i Self-Start Manager, należy usunąć X Fit z listy tych aplikacji do hibernacji.</string>
+    <string name="power_consumption_vivo3">3. Znajdź XzFit i kliknij przycisk Zezwalaj (w przypadku systemu Origin OS znajdź XzFit i wybierz opcję \"Wysokie zużycie energii w tle\").</string>
+    <string name="phone_other1">1. Zablokuj aplikację XzFit APP na stronie Ostatnio otwierane programy.</string>
+    <string name="phone_other2">2. Znajdź opcję Self-boot Management w Centrum zabezpieczeń lub Ustawieniach telefonu, a następnie znajdź XzFit i włącz ją.</string>
+    <string name="phone_other3">3. Dodaj aplikację XzFit do białej listy w Centrum zabezpieczeń lub w ustawieniach telefonu.</string>
+    <string name="phone_other4">4. Jeśli w telefonie zainstalowano odpowiednie narzędzia do hibernacji aplikacji, takie jak Green Guardian i Self-Start Manager, należy usunąć XzFit z listy tych aplikacji do hibernacji.</string>
     <string name="running_permission_set">Przejdź do ustawień</string>
     <string name="agps_updating_tips">Aktualizowanie AGPS</string>
     <string name="agps_update_success_tips">Zaktualizowano </string>
@@ -879,7 +879,7 @@
     <string name="bind_view_back_tips">Zakończyć wiązanie?</string>
     <string name="bind_device_tip2">Proszę kliknąć Zgadzam się na zegarku.</string>
     <string name="range_tips">Zasięg:</string>
-    <string name="device_sport_no_per_tips">X Fit wymaga zezwolenia na lokalizację do normalnego korzystania z zarządzania ćwiczeniami w urządzeniu</string>
+    <string name="device_sport_no_per_tips">XzFit wymaga zezwolenia na lokalizację do normalnego korzystania z zarządzania ćwiczeniami w urządzeniu</string>
     <string name="device_sport_no_gps_tips">Proszę włączyć lokalizację systemu, aby móc normalnie korzystać z zarządzania ćwiczeniami na urządzeniu.</string>
     <string name="accounts_ecurity">Konto i bezpieczeństwo</string>
     <string name="write_off">Wyloguj</string>
@@ -890,7 +890,7 @@
     <string name="write_off_last_tips">Po wpisaniu hasła do konta i potwierdzeniu konto zostanie zlikwidowane</string>
     <string name="data_reduction">Autoryzacja danych</string>
     <string name="close_power_saving">Wykryto, że tryb oszczędzania energii jest włączony, kliknij OK, aby wyjść z trybu oszczędzania energii</string>
-    <string name="google_fit_explanation">Jeśli zdecydujesz się włączyć przełącznik Google Fit, będziesz udostępniać dane fitness X Fit (które mogą obejmować kroki, dystans, kalorie, wzrost, wagę, sen itp.) do Google Fit. Udostępnianie możesz połączyć lub rozłączyć w dowolnym momencie w aplikacji X Fit.</string>
+    <string name="google_fit_explanation">Jeśli zdecydujesz się włączyć przełącznik Google Fit, będziesz udostępniać dane fitness XzFit (które mogą obejmować kroki, dystans, kalorie, wzrost, wagę, sen itp.) do Google Fit. Udostępnianie możesz połączyć lub rozłączyć w dowolnym momencie w aplikacji XzFit.</string>
     <string name="manual_bind">Wiązanie ręczne</string>
     <string name="scan_timeout_tips">Kod QR nie został zeskanowany, czy chcesz kontynuować?</string>
     <string name="connect_fail_tips">Urządzenie zostało przywrócone do ustawień fabrycznych lub powiązane z innym kontem, sprawdź i spróbuj ponownie</string>
@@ -975,13 +975,13 @@
     <string name="contact_duplicate_tip">Kontakt już istnieje</string>
     <string name="contact_del_tip">Czy na pewno chcesz usunąć ten kontakt?</string>
     <string name="refreshing_tips">Orzeźwiający…</string>
-    <string name="strava_data_hint">*Ponieważ Strava używa różnych algorytmów, niektóre elementy danych mogą nie być w pełni zgodne z X Fit</string>
+    <string name="strava_data_hint">*Ponieważ Strava używa różnych algorytmów, niektóre elementy danych mogą nie być w pełni zgodne z XzFit</string>
     <string name="ucrop_label_original" tools:override="true">oryginalna skala</string>
     <string name="ucrop_menu_crop" tools:override="true">przyciąć</string>
     <string name="ucrop_rotate" tools:override="true">obracać się</string>
     <string name="ucrop_scale" tools:override="true">Powiększenie</string>
     <string name="img_fail_tip">Nie udało się uzyskać zasobu obrazu, spróbuj go ponownie pobrać</string>
-    <string name="strava_explanation">Jeśli zdecydujesz się włączyć przełącznik Strava, będziesz udostępniać dane fitness X Fit (w tym kroki, dystans, kalorie itp.) w serwisie Strava. Udostępnianie można połączyć lub rozłączyć w dowolnym momencie w aplikacji X Fit.</string>
+    <string name="strava_explanation">Jeśli zdecydujesz się włączyć przełącznik Strava, będziesz udostępniać dane fitness XzFit (w tym kroki, dystans, kalorie itp.) w serwisie Strava. Udostępnianie można połączyć lub rozłączyć w dowolnym momencie w aplikacji XzFit.</string>
     <string name="pool_length">Długość basenu</string>
     <string name="trip">Liczba wyjazdów</string>
     <string name="avg_stroke_frequency">Średnia częstotliwość uderzeń</string>
@@ -1260,17 +1260,17 @@
     <string name="not_support_device_bind">Powiązanie z tym urządzeniem nie jest obecnie obsługiwane</string>
     <string name="running_permission_one_plus">ONE PLUS</string>
     <string name="locking_one_plus1">1. Otwórz stronę „Ostatnio używane programy” w telefonie komórkowym;</string>
-    <string name="locking_one_plus2">2. Kliknij logo X Fit i kliknij, aby zablokować aplikację po wyświetleniu wyskakującego okienka;</string>
-    <string name="power_consumption_one_plus1">1. Otwórz ustawienia systemowe, kliknij „Aplikacje” > wybierz X Fit, aby wejść;</string>
+    <string name="locking_one_plus2">2. Kliknij logo XzFit i kliknij, aby zablokować aplikację po wyświetleniu wyskakującego okienka;</string>
+    <string name="power_consumption_one_plus1">1. Otwórz ustawienia systemowe, kliknij „Aplikacje” > wybierz XzFit, aby wejść;</string>
     <string name="power_consumption_one_plus2">2. Kliknij „Bateria”, aby wejść;</string>
     <string name="power_consumption_one_plus3">3. Wybierz „Nie optymalizuj”;</string>
     <string name="running_permission_samsung">SAMSUNG</string>
     <string name="locking_samsung1">1. Otwórz stronę „Ostatnio używane programy” w telefonie komórkowym;</string>
-    <string name="locking_samsung2">2. Naciśnij i przytrzymaj kartę X Fit, a następnie kliknij, aby ją zablokować po wyświetleniu wyskakującego okienka;</string>
-    <string name="power_consumption_samsung1">1. Otwórz ustawienia systemowe, kliknij „Aplikacje” > wybierz X Fit, aby wejść;</string>
+    <string name="locking_samsung2">2. Naciśnij i przytrzymaj kartę XzFit, a następnie kliknij, aby ją zablokować po wyświetleniu wyskakującego okienka;</string>
+    <string name="power_consumption_samsung1">1. Otwórz ustawienia systemowe, kliknij „Aplikacje” > wybierz XzFit, aby wejść;</string>
     <string name="power_consumption_samsung2">2. Kliknij „Bateria”, aby wejść, wybierz „Nie optymalizuj”;</string>
     <string name="running_permission_motorola">MOTOROLA</string>
-    <string name="power_consumption_motorola1">1. Otwórz ustawienia systemowe, kliknij „Aplikacje i powiadomienia” > wybierz X Fit, aby wejść;</string>
+    <string name="power_consumption_motorola1">1. Otwórz ustawienia systemowe, kliknij „Aplikacje i powiadomienia” > wybierz XzFit, aby wejść;</string>
     <string name="power_consumption_motorola2">2. Kliknij „Bateria”, aby wejść, wybierz „Nie optymalizuj”;</string>
     <string name="notify_guided_hint">Jeśli chcesz otrzymywać powiadomienia o wiadomościach na urządzeniu, zalecamy włączenie przełącznika przypomnienia o wiadomości i przypomnienia o połączeniu przychodzącym</string>
     <string name="set_up_later">Założyć później</string>

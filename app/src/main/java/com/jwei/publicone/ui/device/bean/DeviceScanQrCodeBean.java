@@ -17,6 +17,8 @@ public class DeviceScanQrCodeBean implements Parcelable {
     private String radio = "";      //广播
     private String random = "";     //随机验证码
     private String name = "-";       //设备名称
+
+    private String dfu = "";        //是否思澈ota模式
     private DeviceRadioBroadcastBean mDeviceRadioBroadcastBean;
 
     protected DeviceScanQrCodeBean(Parcel in) {
@@ -24,6 +26,7 @@ public class DeviceScanQrCodeBean implements Parcelable {
         radio = in.readString();
         random = in.readString();
         name = in.readString();
+        dfu = in.readString();
         mDeviceRadioBroadcastBean = in.readParcelable(DeviceRadioBroadcastBean.class.getClassLoader());
     }
 
@@ -33,6 +36,7 @@ public class DeviceScanQrCodeBean implements Parcelable {
         dest.writeString(radio);
         dest.writeString(random);
         dest.writeString(name);
+        dest.writeString(dfu);
         dest.writeParcelable(mDeviceRadioBroadcastBean, flags);
     }
 
@@ -75,6 +79,14 @@ public class DeviceScanQrCodeBean implements Parcelable {
 
     public void setRandom(String random) {
         this.random = random;
+    }
+
+    public String getDfu() {
+        return dfu;
+    }
+
+    public void setDfu(String dfu) {
+        this.dfu = dfu;
     }
 
     public String getName() {
@@ -389,6 +401,11 @@ public class DeviceScanQrCodeBean implements Parcelable {
             String random = mUri.getQueryParameter("random").trim();
             LogUtils.d("======参数===random ==" + random);
             setRandom(random);
+        }
+        if (isUriExistParam(mUri, "dfu")) {
+            String dfu = mUri.getQueryParameter("dfu").trim();
+            LogUtils.d("======参数===dfu ==" + dfu);
+            setDfu(dfu);
         }
         if (isUriExistParam(mUri, "name")) {
             String name = mUri.getQueryParameter("name").trim();

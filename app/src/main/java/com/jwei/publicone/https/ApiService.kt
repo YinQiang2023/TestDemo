@@ -183,6 +183,11 @@ interface ApiService {
     @POST("ffit/dial/info")
     suspend fun dialInfo(@Body requestBody: RequestBody): Response<DialInfoResponse>
 
+    //思澈表盘详情
+    @POST("ffit/dial/sifiInfo")
+    suspend fun siflidialInfo(@Body requestBody: RequestBody): Response<SiflidialInfoResponse>
+
+
     //获取系统表盘列表
     @POST("ffit/dial/queryDialSystemList")
     suspend fun queryDialSystemList(@Body requestBody: RequestBody): Response<DialSystemResponse>

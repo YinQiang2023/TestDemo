@@ -159,6 +159,7 @@ class BaseApplication : Application(), OnMapsSdkInitializedCallback {
             GlobalEventManager.initEventBus()
             //日志保存
             SaveLog.init(this)
+            com.zhapp.ble.utils.SaveLog.init(this)
             HttpLog.init(this)
             //bugly
             CrashReport.initCrashReport(mContext, "72e8206b11", AppUtils.isAppDebug())
@@ -262,6 +263,8 @@ class BaseApplication : Application(), OnMapsSdkInitializedCallback {
                 }
             }
         })
+
+        ControlBleTools.getInstance().isScanBroadcastWithoutService(true)
     }
 
     /**

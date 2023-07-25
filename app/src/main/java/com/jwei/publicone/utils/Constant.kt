@@ -53,14 +53,14 @@ object Constant {
 
     const val SEX_DEFAULT_VALUE = "0"
 
-    const val PRIVACY_POLICY_URL_ZH = "http://www.wearheart.cn/infowear/yinsi_infowear_zh.html"
-    const val PRIVACY_POLICY_URL_EN = "http://www.wearheart.cn/infowear/yinsi_infowear_en.html"
+    const val PRIVACY_POLICY_URL_ZH = "https://www.zhouhaismart.com/XzFit/yinsi_zh.html"
+    const val PRIVACY_POLICY_URL_EN = "https://www.zhouhaismart.com/XzFit/yinsi_en.html"
 
-    const val USER_AGREEMENT_URL_ZH = "http://www.wearheart.cn/infowear/user_infowear_zh.html"
-    const val USER_AGREEMENT_URL_EN = "http://www.wearheart.cn/infowear/user_infowear_en.html"
+    const val USER_AGREEMENT_URL_ZH = "https://www.zhouhaismart.com/XzFit/user_zh.html"
+    const val USER_AGREEMENT_URL_EN = "https://www.zhouhaismart.com/XzFit/user_en.html"
 
-    const val FAQ_URL_ZH = "https://www.zhouhaismart.com/faq/cn/index.html"
-    const val FAQ_URL_EN = "https://www.zhouhaismart.com/faq/en/index.html"
+    const val FAQ_URL_ZH = "https://www.zhouhaismart.com/XzFit/faq/cn/index.html"
+    const val FAQ_URL_EN = "https://www.zhouhaismart.com/XzFit/faq/en/index.html"
 
 
 }

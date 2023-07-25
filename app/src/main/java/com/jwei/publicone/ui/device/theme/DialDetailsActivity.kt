@@ -70,6 +70,7 @@ import com.zhapp.ble.callback.UploadBigDataListener
 import com.zhapp.ble.callback.WatchFaceInstallCallBack
 import com.zhapp.ble.custom.CustomClockDialNewUtils
 import com.zhapp.ble.custom.MyCustomClockUtils
+import com.zhapp.ble.utils.UnitConversionUtils
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -257,7 +258,14 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
         intent.getStringExtra("dialId")?.let {
             val tLog = TrackingLog.getSerTypeTrack("app获取后台表盘详情", "表盘详情", "ffit/dial/info")
             dialInfoTrackingLog.add(tLog)
-            viewModel.dialInfo(it, tLog)
+            if (SpUtils.getSPUtilsInstance().getString(SpUtils.CURRENT_FIRMWARE_PLATFORM, "") ==
+                Global.FIRMWARE_PLATFORM_SIFLI
+            ) {
+                viewModel.siflidialInfo(it, tLog)
+            } else {
+                viewModel.dialInfo(it, tLog)
+            }
+
         }
         dialog?.show()
 
@@ -380,6 +388,64 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
             }
             adapter?.notifyDataSetChanged()
         })
+
+        viewModel.siflidialInfo.observe(this) {
+            DialogUtils.dismissDialog(dialog)
+            if (it == null) return@observe
+            if (!TextUtils.isEmpty(it.code)) {
+                if (it.code == HttpCommonAttributes.REQUEST_SUCCESS) {
+                    com.blankj.utilcode.util.LogUtils.i(TAG, "后台返回-成功-siflidialInfo = $it")
+                    binding.viewHaveData.visibility = View.VISIBLE
+                    binding.viewNoData.layoutMain.visibility = View.GONE
+
+                    binding.tvName.text = it.data.dialName
+                    dialCode = it.data.dialCode
+                    binding.tvIntroduction.text = it.data.dialDescribe
+                    groupDialList.clear()
+                    dialFileList.clear()
+                    it.data.groupDialList?.let { groups->
+                        groupDialList.addAll(groups)
+                    }
+                    if (!it.data.dialFileUrl.isNullOrEmpty()) {
+                        val file = DialInfoResponse.DialFile()
+                        file.dialFileUrl = it.data.dialFileUrl
+                        dialFileList.add(file)
+                    }
+                    if (!it.data.binSize.isNullOrEmpty()) {
+                        binding.tvSize.text = "${UnitConversionUtils.bigDecimalFormat(it.data.binSize.trim().toFloat() / 1024)} KB"
+                    }
+                    binding.layoutCustomize.visibility = View.GONE
+                    binding.layoutSelectPicture.visibility = View.GONE
+
+                    if (!it.data.effectImgUrl.isNullOrEmpty()) {
+                        GlideApp.with(this).load(it.data.effectImgUrl)
+                            .into(object : CustomTarget<Drawable>() {
+                                override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                                    val bitmapDrawable: BitmapDrawable = resource as BitmapDrawable
+                                    val bitmap: Bitmap = bitmapDrawable.bitmap
+                                    binding.ivThemeMain.setImageBitmap(bitmap)
+                                }
+
+                                override fun onLoadCleared(placeholder: Drawable?) {
+
+                                }
+                            })
+                    }
+
+                    for ( i in 0 until groupDialList.size){
+                        if(groupDialList[i].dialId == it.data.dialId){
+                            clickCount = i
+                        }
+                    }
+                } else {
+                    binding.viewHaveData.visibility = View.GONE
+                    binding.viewNoData.layoutMain.visibility = View.VISIBLE
+                    LogUtils.i(TAG, "表盘详情获取后台返回-失败")
+                    ToastUtils.showToast(getString(R.string.err_network_tips))
+                }
+                adapter?.notifyDataSetChanged()
+            }
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
@@ -443,7 +509,13 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                 setViewsClickListener({
                     val tLog = TrackingLog.getSerTypeTrack("app获取后台表盘详情", "表盘详情", "ffit/dial/info")
                     dialInfoTrackingLog.add(tLog)
-                    viewModel.dialInfo(t.dialId, tLog)
+                    if (SpUtils.getSPUtilsInstance().getString(SpUtils.CURRENT_FIRMWARE_PLATFORM, "") ==
+                        Global.FIRMWARE_PLATFORM_SIFLI
+                    ) {
+                        viewModel.siflidialInfo(t.dialId, tLog)
+                    } else {
+                        viewModel.dialInfo(t.dialId, tLog)
+                    }
                     dialog?.show()
                     clickCount = position
                     notifyDataSetChanged()
@@ -619,15 +691,22 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
         ErrorUtils.onLogResult("sendOnlineDial downFile start")
         LogUtils.i(TAG, "sendOnlineDial downFile start", true)
         LogUtils.i(TAG, "sendOnlineDial downFile dialCode = " + dialCode)
-        if (dialFileList.isEmpty()) {
-            DialogUtils.dismissDialog(dialog)
-            ErrorUtils.onLogError(ErrorUtils.ERROR_MODE_DOWNLOAD_FAIL)
-            return
-        }
-        val url = if (clockDialDataFormat == 0) {
-            dialFileList[0].dialFileUrl
+        var url = ""
+        if (SpUtils.getSPUtilsInstance().getString(SpUtils.CURRENT_FIRMWARE_PLATFORM, "") ==
+            Global.FIRMWARE_PLATFORM_SIFLI
+        ) {
+            url = dialFileList[0].dialFileUrl
         } else {
-            dialFileList[1].dialFileUrl
+            if (dialFileList.isEmpty()) {
+                DialogUtils.dismissDialog(dialog)
+                ErrorUtils.onLogError(ErrorUtils.ERROR_MODE_DOWNLOAD_FAIL)
+                return
+            }
+            url = if (clockDialDataFormat == 0) {
+                dialFileList[0].dialFileUrl
+            } else {
+                dialFileList[1].dialFileUrl
+            }
         }
 
         val downloadTrackingLog = TrackingLog.getSerTypeTrack("下载表盘资源", "下载", url)
@@ -750,6 +829,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
             if (statusName != "READY") {
                 wrActivity?.get()?.postDelay(100) {
                     wrActivity?.get()?.postDialLog(4)
+                    DialogUtils.dismissDialog(wrActivity?.get()?.dialog)
                 }
                 wrActivity?.get()?.fileStateTrackingLog?.apply {
                     if (statusName != "LOW_BATTERY") {
@@ -1059,6 +1139,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
             if (statusName != "READY") {
                 wrActivity?.get()?.postDelay(100) {
                     wrActivity?.get()?.postDialLog(4)
+                    DialogUtils.dismissDialog(wrActivity?.get()?.dialog)
                 }
                 wrActivity?.get()?.fileStateTrackingLog?.apply {
                     if (statusName != "LOW_BATTERY") {
@@ -1234,6 +1315,9 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                                 ToastUtils.showToast(R.string.healthy_sports_sync_fail)
                             }
                         }
+                        if (statusName != "READY") {
+                            DialogUtils.dismissDialog(dialog)
+                        }
                     }
 
                     override fun timeOut() {
@@ -1258,7 +1342,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
     }
 
     private fun sendSlfliOnlineDial(path: String) {
-        ThreadUtils.executeByIo(object : ThreadUtils.SimpleTask<String>() {
+        ThreadUtils.executeByIo(object : ThreadUtils.Task<String>() {
             override fun doInBackground(): String {
                 val faceFile = com.blankj.utilcode.util.FileUtils.getFileByPath(path)
                 val newFaceFilePath = faceFile.parent + File.separator + com.blankj.utilcode.util.FileUtils.getFileNameNoExtension(faceFile) + ".zip"
@@ -1271,13 +1355,24 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                 ZipUtils.unzipFile(zipFile, com.blankj.utilcode.util.FileUtils.getFileByPath(unZipDirPath))
                 //去掉一层文件夹再压缩
                 val faceZipPath = "${PathUtils.getExternalAppFilesPath()}/otal/face/dynamic_app.zip"
-                for (file in com.blankj.utilcode.util.FileUtils.listFilesInDir(unZipDirPath)){
+                for (file in com.blankj.utilcode.util.FileUtils.listFilesInDir(unZipDirPath)) {
                     ZipUtils.zipFile(file.absolutePath, faceZipPath)
                 }
                 if (com.blankj.utilcode.util.FileUtils.isFile(faceZipPath)) {
                     return faceZipPath
                 }
                 return ""
+            }
+
+            override fun onCancel() {
+
+            }
+
+            override fun onFail(t: Throwable?) {
+                t?.printStackTrace()
+                LogUtils.e(TAG, "思澈表盘详情下载异常：$t")
+                ToastUtils.showToast(R.string.ota_device_timeout_tips2)
+                DialogUtils.dismissDialog(dialog)
             }
 
             override fun onSuccess(result: String?) {

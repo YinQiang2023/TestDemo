@@ -29,7 +29,6 @@ import com.zhapp.ble.callback.UploadBigDataListener
 import com.zhapp.ble.parsing.ParsingStateManager.SendCmdStateListener
 import com.zhapp.ble.parsing.SendCmdState
 import com.zhapp.ble.utils.UnitConversionUtils
-import com.jwei.publicone.BuildConfig
 import com.jwei.publicone.R
 import com.jwei.publicone.base.BaseApplication
 import com.jwei.publicone.databinding.DialogHeadsetBondFailedBinding
@@ -45,6 +44,7 @@ import com.jwei.publicone.https.download.DownloadListener
 import com.jwei.publicone.https.download.DownloadManager
 import com.jwei.publicone.https.response.AgpsResponse
 import com.jwei.publicone.https.response.FirewareUpgradeResponse
+import com.jwei.publicone.https.response.ProductListResponse
 import com.jwei.publicone.receiver.SifliReceiver
 import com.jwei.publicone.ui.data.Global
 import com.jwei.publicone.ui.device.backgroundpermission.BackgroundPermissionMainActivity
@@ -65,6 +65,7 @@ import com.jwei.publicone.viewmodel.UserModel
 import com.sifli.siflidfu.DFUImagePath
 import com.sifli.siflidfu.Protocol
 import com.sifli.siflidfu.SifliDFUService
+import com.zhapp.ble.bean.ScanDeviceBean
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -112,6 +113,7 @@ object GlobalEventManager {
                 //检测固件升级
                 if (isCanShowFirmwareUpgrade) {
                     isCanShowFirmwareUpgrade = false
+                    isOnlyDeviceType = false
                     checkFirmwareUpgrade()
                     return
                 }
@@ -227,6 +229,20 @@ object GlobalEventManager {
                 val dfuProgress = msg.obj as SifliReceiver.DFUProgress
                 sifliDfuProgress(dfuProgress)
             }
+
+            EventAction.ACTION_SIFLI_WITHOUT_SERVICE -> {
+                if(msg.obj is ScanDeviceBean?) {
+                    val device = msg.obj as ScanDeviceBean?
+                    if (device != null) {
+                        if (ControlBleTools.getInstance().currentDeviceMac == device.address && !TextUtils.isEmpty(device.deviceType) && !isUpload) {
+                            isOnlyDeviceType = true
+                            checkFirmwareUpgrade(isOnlyDeviceType, device.deviceType)
+                        }
+                    }
+                }else if(msg.obj is com.jwei.publicone.ui.device.bean.DeviceScanQrCodeBean?) {
+
+                }
+            }
             //endregion
         }
     }
@@ -241,11 +257,14 @@ object GlobalEventManager {
     //是否传输ota中
     private var isOtaSending = false
 
+    //是否仅设备类型
+    private var isOnlyDeviceType = false
+
     private var firmwareObserver: Observer<FirewareUpgradeResponse?>? = null
 
     private val checkOtaLog by lazy { TrackingLog.getSerTypeTrack("app请求获取OTA文件", "固件升级", "ffit/firmware/getFirewareUpgradeVersion") }
 
-    fun checkFirmwareUpgrade() {
+    fun checkFirmwareUpgrade(isOnlyType: Boolean = false, deviceType: String = "") {
         topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity?)
         if (topActivity.get() == null) {
             return
@@ -259,27 +278,34 @@ object GlobalEventManager {
             if (it == null) return@Observer
             checkOtaLog.endTime = TrackingLog.getNowString()
 
-
-            if (it.versionBefore != it.versionAfter && it.versionUrl.isNotEmpty() && TextUtils.equals(it.mustUpdate, "1") && !isUpload) {
+            if (it.versionUrl.isNotEmpty() && TextUtils.equals(it.mustUpdate, "1") && !isUpload) {
                 AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_OTA, TrackingLog.getStartTypeTrack("OTA"), isStart = true)
                 AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_OTA, checkOtaLog)
                 showUpdateDialog()
             } else {
+                isOnlyDeviceType = false
                 if (it.id.isEmpty()) {
                     AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_OTA, TrackingLog.getStartTypeTrack("OTA"), isStart = true)
                     AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_OTA, checkOtaLog.apply { log += "请求失败/超时" }, "1910", true)
                 }
-                //重新执行同步完成事件
-                EventBus.getDefault().post(EventMessage(EventAction.ACTION_FINISH_UPDATE_FOR_CONNECTED_DEVICE))
+                if (!isOnlyType) {
+                    //重新执行同步完成事件
+                    EventBus.getDefault().post(EventMessage(EventAction.ACTION_FINISH_UPDATE_FOR_CONNECTED_DEVICE))
+                }
             }
         }
         deviceModel.firewareUpgradeData.observe(topActivity.get()!!, firmwareObserver!!)
-        deviceModel.checkFirewareUpgrade(checkOtaLog)
+        if (!isOnlyType) {
+            deviceModel.checkFirewareUpgrade(checkOtaLog)
+        } else {
+            deviceModel.checkFirewareUpgradeByDeviceType(deviceType, checkOtaLog)
+        }
     }
 
     private fun showUpdateDialog() {
         topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity?)
         if (topActivity.get() == null) return
+        if (isUpload) return
         isUpload = true
         val dialog = DialogUtils.showDialogTwoBtn(
             topActivity.get(),
@@ -301,8 +327,11 @@ object GlobalEventManager {
 
                 override fun OnCancel() {
                     isUpload = false
-                    //重新执行同步完成事件
-                    EventBus.getDefault().post(EventMessage(EventAction.ACTION_FINISH_UPDATE_FOR_CONNECTED_DEVICE))
+                    if (!isOnlyDeviceType) {
+                        //重新执行同步完成事件
+                        EventBus.getDefault().post(EventMessage(EventAction.ACTION_FINISH_UPDATE_FOR_CONNECTED_DEVICE))
+                    }
+                    isOnlyDeviceType = false
                 }
             })
         dialog.show()
@@ -312,8 +341,7 @@ object GlobalEventManager {
      * 固件文件下载
      */
     private fun showDownloadingDialog() {
-
-        if (!ControlBleTools.getInstance().isConnect) {
+        if (!isOnlyDeviceType && !ControlBleTools.getInstance().isConnect) {
             ToastUtils.showToast(R.string.device_no_connection)
             isUpload = false
             return
@@ -421,7 +449,7 @@ object GlobalEventManager {
                             ToastUtils.showToast(R.string.not_network_tips)
                             return@isAvailableAsync
                         }
-                        if (AppUtils.isOpenBluetooth() && ControlBleTools.getInstance().isConnect) {
+                        if (AppUtils.isOpenBluetooth() && (isOnlyDeviceType || ControlBleTools.getInstance().isConnect)) {
                             showDownloadingDialog()
                         } else {
                             ToastUtils.showToast(R.string.device_no_connection)
@@ -619,7 +647,7 @@ object GlobalEventManager {
                 val unZipDirPath = PathUtils.getExternalAppFilesPath() + "/otal/firmware/" + com.blankj.utilcode.util.FileUtils.getFileNameNoExtension(zipFile)
                 com.blankj.utilcode.util.FileUtils.createOrExistsDir(unZipDirPath)
                 ZipUtils.unzipFile(zipFile, com.blankj.utilcode.util.FileUtils.getFileByPath(unZipDirPath))
-                return com.blankj.utilcode.util.FileUtils.listFilesInDir(unZipDirPath,true)
+                return com.blankj.utilcode.util.FileUtils.listFilesInDir(unZipDirPath, true)
             }
 
             override fun onCancel() {}
@@ -642,13 +670,13 @@ object GlobalEventManager {
                     var dfuFile: DFUImagePath? = null
                     if (name.uppercase(Locale.ENGLISH).contains("ctrl_packet".uppercase(Locale.ENGLISH))) {
                         dfuFile = DFUImagePath(null, UriUtils.file2Uri(file), Protocol.IMAGE_ID_CTRL)
-                    } else if (name.uppercase(Locale.ENGLISH).contains("outapp".uppercase(Locale.ENGLISH))) {
+                    } else if (name.uppercase(Locale.ENGLISH).contains("outapp".uppercase(Locale.ENGLISH)) || name.uppercase(Locale.ENGLISH).contains("outcom_app".uppercase(Locale.ENGLISH))) {
                         dfuFile = DFUImagePath(null, UriUtils.file2Uri(file), Protocol.IMAGE_ID_HCPU)
-                    } else if (name.uppercase(Locale.ENGLISH).contains("outex".uppercase(Locale.ENGLISH))) {
+                    } else if (name.uppercase(Locale.ENGLISH).contains("outex".uppercase(Locale.ENGLISH)) || name.uppercase(Locale.ENGLISH).contains("outcom_ex".uppercase(Locale.ENGLISH))) {
                         dfuFile = DFUImagePath(null, UriUtils.file2Uri(file), Protocol.IMAGE_ID_EX)
-                    } else if (name.uppercase(Locale.ENGLISH).contains("outfont".uppercase(Locale.ENGLISH))) {
+                    } else if (name.uppercase(Locale.ENGLISH).contains("outfont".uppercase(Locale.ENGLISH)) || name.uppercase(Locale.ENGLISH).contains("outcom_font".uppercase(Locale.ENGLISH))) {
                         dfuFile = DFUImagePath(null, UriUtils.file2Uri(file), Protocol.IMAGE_ID_FONT)
-                    } else if (name.uppercase(Locale.ENGLISH).contains("outres".uppercase(Locale.ENGLISH))) {
+                    } else if (name.uppercase(Locale.ENGLISH).contains("outres".uppercase(Locale.ENGLISH)) || name.uppercase(Locale.ENGLISH).contains("outcom_res".uppercase(Locale.ENGLISH))) {
                         dfuFile = DFUImagePath(null, UriUtils.file2Uri(file), Protocol.IMAGE_ID_RES)
                     }
                     if (dfuFile != null) {
@@ -660,13 +688,13 @@ object GlobalEventManager {
                     showUpdateFailedDialog()
                     return
                 }
-                ControlBleTools.getInstance().disconnect()
                 startOrRefSifliTimeOut()
                 //执行思澈dfu方法
                 //ResumeMode:
                 //设置为0时，OTA将始终重新开始传输
                 //设置为1时，SDK会自动判断续传条件，会在可以续传的时候尝试续传，不能续传的时候也会重新开始传输。
-                SifliDFUService.startActionDFUNorExt(getContext(), SpUtils.getValue(SpUtils.DEVICE_MAC, ""), slfliOtaFiles, 1, 0)
+                SifliDFUService.startActionDFUNorExt(getContext(), ControlBleTools.getInstance().currentDeviceMac, slfliOtaFiles, 1, 0)
+                ControlBleTools.getInstance().disconnect()
             }
         })
     }
@@ -676,12 +704,12 @@ object GlobalEventManager {
         var isOk = false
 
         fun finish(isOk: Boolean) {
-            i = 30
+            i = 60
             this.isOk = isOk
         }
 
         override fun doInBackground(): Int {
-            while (i <= 30) {
+            while (i <= 60) {
                 i++
                 Thread.sleep(1000)
             }
@@ -717,12 +745,13 @@ object GlobalEventManager {
 
     private fun sifliDfuProgress(dfuProgress: SifliReceiver.DFUProgress) {
         startOrRefSifliTimeOut()
-        if (dfuProgress.progress == 0) {
+        if ((uploadDialog == null) || (uploadDialog!!.context?.isDestroyed == true) || (uploadDialog!!.context?.isFinishing == true)) {
             DialogUtils.dismissDialog(slfliLoading)
-            uploadDialog = DownloadDialog(topActivity.get()!!, BaseApplication.mContext.getString(R.string.theme_fireware_update_title), "")
+            uploadDialog = DownloadDialog(getContext(), BaseApplication.mContext.getString(R.string.theme_fireware_update_title), "")
             uploadDialog?.showDialog()
             uploadDialog?.tvSize?.text = BaseApplication.mContext.getString(R.string.theme_center_dial_up_load_tips)
         } else {
+            if (uploadDialog?.isShowing() == false) uploadDialog?.showDialog()
             uploadDialog?.progressView?.max = 100
             uploadDialog?.progressView?.progress = dfuProgress.progress
             uploadDialog?.tvProgress?.text = "${dfuProgress.progress}%"
@@ -733,8 +762,10 @@ object GlobalEventManager {
         if (dfuState.stateResult != 0) {
             //失败
             DialogUtils.dismissDialog(slfliLoading)
-            showUpdateFailedDialog()
-            sifliDFUTask?.finish(false)
+            if (isUpload) {
+                showUpdateFailedDialog()
+                sifliDFUTask?.finish(false)
+            }
         } else {
             if (dfuState.state == Protocol.DFU_SERVICE_EXIT) {
                 //成功
@@ -1040,7 +1071,8 @@ object GlobalEventManager {
             LogUtils.e(TAG, "sendAgps  -------> size == ${fileByte.size}", true)
             uploadAgpsTrackingLog.startTime = TrackingLog.getNowString()
             uploadAgpsTrackingLog.log = "type:${BleCommonAttributes.UPLOAD_BIG_DATA_LTO},fileByte:${fileByte.size},isResumable:true"
-            ControlBleTools.getInstance().startUploadBigData(BleCommonAttributes.UPLOAD_BIG_DATA_LTO,
+            ControlBleTools.getInstance().startUploadBigData(
+                BleCommonAttributes.UPLOAD_BIG_DATA_LTO,
                 fileByte, true, object : UploadBigDataListener {
                     override fun onSuccess() {
                         uploadDialog?.cancel()
@@ -1153,7 +1185,7 @@ object GlobalEventManager {
                 .build()
             keExplainDialog.show()
 
-            if (!BuildConfig.DEBUG) { //debug模式下快速关闭
+            if (!com.jwei.publicone.BuildConfig.DEBUG) { //debug模式下快速关闭
                 dialogBinding.btnGotIt.isEnabled = false
             }
             dialogBinding.btnGotIt.setTextColor(ContextCompat.getColor(activity, R.color.app_index_color_30))//定制
@@ -1214,18 +1246,29 @@ object GlobalEventManager {
         }
         if (headsetMac.isNotEmpty()) {
             topActivity.get()?.let { activity ->
-                if (!BleBCManager.getInstance().checkBondByMac(headsetMac)) {   //未配对
-                    ToastUtils.showToast(R.string.br_bond_tips, Toast.LENGTH_LONG)
-                    brDialog = DialogUtils.showLoad(activity)
-                    brDialog!!.setCancelable(true)
-                    brDialog!!.show()
-                    isCreateBonding = true
-                    BleBCManager.getInstance().createBond(headsetMac, SearchHeadsetBondListener(headsetMac))
-//                    BleBCManager.getInstance().companionDeviceCreateBond(activity, headsetMac, "", SearchHeadsetBondListener(headsetMac))
-                } else {
-                    //执行连接，可以不处理结果
-                    BleBCManager.getInstance().connectHeadsetBluetoothDevice(headsetMac, MyHeadsetConnectListener(headsetMac))
+                var product: ProductListResponse.Data? = null
+                for (j in Global.productList.indices) {
+                    if (TextUtils.equals(Global.deviceType, Global.productList[j].deviceType)) {
+                        product = Global.productList[j]
+                        break
+                    }
                 }
+                val isSupportBt = product?.supportBt == "1"
+                if (isSupportBt) { //服务器配置支持bt
+                    if (!BleBCManager.getInstance().checkBondByMac(headsetMac)) {   //未配对
+                        ToastUtils.showToast(R.string.br_bond_tips, Toast.LENGTH_LONG)
+                        brDialog = DialogUtils.showLoad(activity)
+                        brDialog!!.setCancelable(true)
+                        brDialog!!.show()
+                        isCreateBonding = true
+                        BleBCManager.getInstance().createBond(headsetMac, SearchHeadsetBondListener(headsetMac))
+//                    BleBCManager.getInstance().companionDeviceCreateBond(activity, headsetMac, "", SearchHeadsetBondListener(headsetMac))
+                    } else {
+                        //执行连接，可以不处理结果
+                        BleBCManager.getInstance().connectHeadsetBluetoothDevice(headsetMac, MyHeadsetConnectListener(headsetMac))
+                    }
+                }
+
             }
         }
     }

@@ -30,7 +30,7 @@ android {
         minSdk 21
         targetSdk 31
         versionCode 60
-        versionName "6.0.1" //versionName X.Y.Z ---> XY=“versionCode”X十位Y个位,Z=正式版本0，测试版本1..累加
+        versionName "6.0.2" //versionName X.Y.Z ---> XY=“versionCode”X十位Y个位,Z=正式版本0，测试版本1..累加
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
@@ -119,7 +119,7 @@ android {
     android.applicationVariants.all { variant ->
         //apk打包名称
         variant.outputs.all {
-            outputFileName = "Android_XFit_" +
+            outputFileName = "Android_XzFit_" +
                     new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC")) +
                     "_V${variant.versionName}" +
                     versionSuffix(variant) +

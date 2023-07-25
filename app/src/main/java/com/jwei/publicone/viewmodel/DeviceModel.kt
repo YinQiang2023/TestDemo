@@ -719,6 +719,96 @@ class DeviceModel : BaseViewModel() {
         }
     }
 
+    //思澈表盘详情
+    val siflidialInfo = MutableLiveData<Response<SiflidialInfoResponse>>()
+    fun siflidialInfo(dialId: String, vararg tracks: TrackingLog) {
+        launchUI {
+            try {
+                val userId = SpUtils.getValue(SpUtils.USER_ID, "")
+                if (TextUtils.isEmpty(userId)) {
+                    return@launchUI
+                }
+                val bean = SifliDialInfoBean()
+                bean.userId = userId
+                bean.dialId = dialId
+                bean.languageCode = if (AppUtils.isZh(BaseApplication.mContext)) {
+                    if (Locale.getDefault().country == "CN") {
+                        "1"
+                    } else {
+                        "112"
+                    }
+                } else {
+                    "0"
+                }
+                bean.productNo = Global.deviceType
+
+                if (tracks.isNotEmpty()) {
+                    for (track in tracks) {
+                        track.startTime = TrackingLog.getNowString()
+                        track.serReqJson = AppUtils.toSimpleJsonString(bean)
+                    }
+                }
+
+                val result = MyRetrofitClient.service.siflidialInfo(JsonUtils.getRequestJson(bean, SifliDialInfoBean::class.java))
+                LogUtils.e(TAG, "siflidialInfo result = $result")
+
+                if (tracks.isNotEmpty()) {
+                    for (track in tracks) {
+                        track.serResJson = AppUtils.toSimpleJsonString(result)
+                        track.serResult = if (result.code == HttpCommonAttributes.REQUEST_SUCCESS) "成功" else "失败"
+                    }
+                }
+
+                siflidialInfo.postValue(result)
+
+                if (tracks.isNotEmpty()) {
+                    for (track in tracks) {
+                        track.endTime = TrackingLog.getNowString()
+                    }
+                }
+                userLoginOut(result.code)
+            } catch (e: Exception) {
+                LogUtils.e(TAG, "siflidialInfo e =$e")
+                val msg = StringBuilder()
+                if (e is HttpException) {
+                    //获取对应statusCode和Message
+                    val exception: HttpException = e as HttpException
+                    val message = exception.response()?.message()
+                    val code = exception.response()?.code()
+                    if (code != null && message != null) {
+                        msg.append("Http code = $code message: $message\n")
+                    }
+                }
+                if (e.stackTrace.isNotEmpty()) {
+                    val stackTrace = e.stackTrace[0]
+                    LogUtils.e(TAG, "siflidialInfo e =$e" + "  =" + stackTrace.lineNumber + " calss = " + stackTrace.className, true)
+                    ErrorUtils.onLogResult("siflidialInfo e =$e" + "  =" + stackTrace.lineNumber + " calss = " + stackTrace.className)
+                    msg.append(e)
+                }
+                if (msg.isNotEmpty()) {
+                    ErrorUtils.onLogResult("请求后台表盘详情数据失败：dialId：$dialId, msg:$msg network isAvailable:" + Jdk9Platform.isAvailable)
+                    ErrorUtils.onLogError(ErrorUtils.ERROR_MODE_REQUEST_BACKGROUND_DATA)
+                }
+
+                val result = Response("", "siflidialInfo e =$e", HttpCommonAttributes.SERVER_ERROR, "", SiflidialInfoResponse())
+                if (tracks.isNotEmpty()) {
+                    for (track in tracks) {
+                        track.serResJson = AppUtils.toSimpleJsonString(result)
+                        track.serResult = "失败"
+                    }
+                }
+
+                siflidialInfo.postValue(result)
+
+                if (tracks.isNotEmpty()) {
+                    for (track in tracks) {
+                        track.endTime = TrackingLog.getNowString()
+                    }
+                }
+            }
+        }
+    }
+
     val getDialFromDevice = MutableLiveData<MutableList<WatchFaceListBean>>()
     fun getDialFromDeviceAndOnline() {
         Log.i(TAG, "getDialFromDeviceAndOnline")
@@ -805,6 +895,19 @@ class DeviceModel : BaseViewModel() {
                 val bean = DialSystemBean()
                 bean.dialCodes = dialCodes
                 bean.deviceType = Global.deviceType
+                if (SpUtils.getSPUtilsInstance().getString(SpUtils.CURRENT_FIRMWARE_PLATFORM, "") ==
+                    Global.FIRMWARE_PLATFORM_SIFLI
+                ) {
+                    bean.languageCode = if (AppUtils.isZh(BaseApplication.mContext)) {
+                        if (Locale.getDefault().country == "CN") {
+                            "1"
+                        } else {
+                            "112"
+                        }
+                    } else {
+                        "0"
+                    }
+                }
                 val result = MyRetrofitClient.service.queryDialSystemList(
                     JsonUtils.getRequestJson(
                         TAG,
@@ -959,6 +1062,95 @@ class DeviceModel : BaseViewModel() {
             }
         }
     }
+
+    /**
+     * 只根据设备型号获取固件更新
+     */
+    fun checkFirewareUpgradeByDeviceType(deviceType: String, vararg tracks: TrackingLog) {
+        launchUI {
+            try {
+                val userId = SpUtils.getValue(SpUtils.USER_ID, "")
+                var firmwarePlatform = ""
+                Global.productList.firstOrNull { it.deviceType == deviceType }?.let {
+                    firmwarePlatform = it.firmwarePlatform
+                }
+
+                if (tracks.isNotEmpty()) {
+                    for (track in tracks) {
+                        track.startTime = TrackingLog.getNowString()
+                        track.serReqJson = AppUtils.toSimpleJsonString(FirewareUpdateParam(Global.deviceType, Global.deviceVersion, firmwarePlatform, userId))
+                    }
+                }
+                val result = MyRetrofitClient.service.queryFirewareUpgradeVersion(
+                    JsonUtils.getRequestJson(
+                        FirewareUpdateParam(
+                            deviceType,
+                            "0",
+                            firmwarePlatform,
+                            userId
+                        ),
+                        FirewareUpdateParam::class.java
+                    )
+                )
+
+                LogUtils.e(TAG, "checkFirewareUpgradeByDeviceType result = $result")
+
+                if (tracks.isNotEmpty()) {
+                    for (track in tracks) {
+                        track.serResJson = AppUtils.toSimpleJsonString(result)
+                        track.serResult = if (result.code == HttpCommonAttributes.REQUEST_SUCCESS) "成功" else "失败"
+                    }
+                }
+
+                queryFirewareCode.postValue(result.code)
+                if (result.code == HttpCommonAttributes.REQUEST_SUCCESS) {
+                    val firewareUpgrade = result.data
+                    LogUtils.e(TAG, firewareUpgrade.toString())
+                    firewareUpgradeData.postValue(firewareUpgrade)
+                } else {
+                    val firewareUpgrade = FirewareUpgradeResponse().apply { id = if (result.code == HttpCommonAttributes.REQUEST_SEND_CODE_NO_DATA) "-1" else "" } //无数据
+                    firewareUpgradeData.postValue(firewareUpgrade)
+                }
+                userLoginOut(result.code)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                val msg = StringBuilder()
+                if (e is HttpException) {
+                    //获取对应statusCode和Message
+                    val exception: HttpException = e as HttpException
+                    val message = exception.response()?.message()
+                    val code = exception.response()?.code()
+                    if (code != null && message != null) {
+                        msg.append("Http code = $code message: $message\n")
+                    }
+                }
+                if (e.stackTrace.isNotEmpty()) {
+                    val stackTrace = e.stackTrace[0]
+                    LogUtils.e(TAG, "checkFirewareUpgrade e =$e" + "  =" + stackTrace.lineNumber + " calss = " + stackTrace.className, true)
+                    ErrorUtils.onLogResult("checkFirewareUpgrade e =$e" + "  =" + stackTrace.lineNumber + " calss = " + stackTrace.className)
+                    msg.append(e)
+                }
+                if (msg.isNotEmpty()) {
+                    //请求前判断网络是否可用
+                    NetworkUtils.isAvailableAsync {
+                        ErrorUtils.onLogResult("请求后台OTA数据失败：msg:$msg network isAvailable:$it")
+                        ErrorUtils.onLogError(ErrorUtils.ERROR_MODE_REQUEST_BACKGROUND_DATA)
+                    }
+                }
+
+                val firewareUpgrade = FirewareUpgradeResponse()
+                val result = Response("", "checkFirewareUpgrade e =$e", HttpCommonAttributes.SERVER_ERROR, "", firewareUpgrade)
+                if (tracks.isNotEmpty()) {
+                    for (track in tracks) {
+                        track.serResJson = AppUtils.toSimpleJsonString(result)
+                        track.serResult = "失败"
+                    }
+                }
+                firewareUpgradeData.postValue(firewareUpgrade)
+            }
+        }
+    }
+
 
     /**
      * 产品设备信息

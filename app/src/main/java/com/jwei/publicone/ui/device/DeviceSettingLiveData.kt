@@ -425,6 +425,14 @@ class DeviceSettingLiveData private constructor() {
                 }*/
             }
         })
+
+        CallBackUtils.setWithoutServiceBroadcastCallBck(object :WithoutServiceBroadcastCallBck{
+            override fun onBroadcastDevice(device: ScanDeviceBean?) {
+                if(device == null) return
+                //EventBus.getDefault().post(EventMessage(EventAction.ACTION_SIFLI_WITHOUT_SERVICE,device))
+            }
+
+        })
     }
 
     //连接超时失败上次日志,避免多次重复日志上传
