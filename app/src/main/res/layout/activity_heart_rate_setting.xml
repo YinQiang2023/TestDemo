@@ -47,7 +47,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.jwei.publicone.view.MySwitchCompat
+                <com.jwei.xzfit.view.MySwitchCompat
                     android:id="@+id/chbContinuousHeartHare"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.jwei.publicone.view.MySwitchCompat
+                    <com.jwei.xzfit.view.MySwitchCompat
                         android:id="@+id/chbHeartHareWarning"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

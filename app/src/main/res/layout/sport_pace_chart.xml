@@ -125,7 +125,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.jwei.publicone.view.DeviceSportChartView
+    <com.jwei.xzfit.view.DeviceSportChartView
         android:id="@+id/mPaceCurveChartView"
         android:layout_width="match_parent"
         android:layout_height="120dp"

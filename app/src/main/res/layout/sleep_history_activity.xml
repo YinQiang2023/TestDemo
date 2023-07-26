@@ -38,7 +38,7 @@
             <com.haibin.calendarview.CalendarView
                 android:id="@+id/calendarView"
                 style="@style/public_1_calender"
-                app:month_view="com.jwei.publicone.ui.view.SimpleMonthView"
+                app:month_view="com.jwei.xzfit.ui.view.SimpleMonthView"
                 tools:visibility="gone" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -142,7 +142,7 @@
                 </LinearLayout>
 
 
-                <com.jwei.publicone.ui.view.SleepView
+                <com.jwei.xzfit.ui.view.SleepView
                     android:id="@+id/mSleepView"
                     android:layout_width="match_parent"
                     android:layout_height="136dp"
@@ -361,7 +361,7 @@
                             tools:text="睡眠质量高" />
                     </LinearLayout>
 
-                    <com.jwei.publicone.view.BlockProgressView
+                    <com.jwei.xzfit.view.BlockProgressView
                         android:id="@+id/blockProgress"
                         android:layout_width="0dp"
                         android:layout_height="18dp"

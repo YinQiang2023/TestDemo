@@ -16,7 +16,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <com.jwei.publicone.view.wheelview.widget.NumberWheelView
+    <com.jwei.xzfit.view.wheelview.widget.NumberWheelView
         android:id="@+id/wheel_picker_date_year_wheel"
         style="@style/WheelDefault"
         android:layout_width="0dp"
@@ -32,7 +32,7 @@
         android:text=""
         android:visibility="visible" />
 
-    <com.jwei.publicone.view.wheelview.widget.NumberWheelView
+    <com.jwei.xzfit.view.wheelview.widget.NumberWheelView
         android:id="@+id/wheel_picker_date_month_wheel"
         style="@style/WheelDefault"
         android:layout_width="0dp"
@@ -48,7 +48,7 @@
         android:text=""
         android:visibility="visible" />
 
-    <com.jwei.publicone.view.wheelview.widget.NumberWheelView
+    <com.jwei.xzfit.view.wheelview.widget.NumberWheelView
         android:id="@+id/wheel_picker_date_day_wheel"
         style="@style/WheelDefault"
         android:layout_width="0dp"

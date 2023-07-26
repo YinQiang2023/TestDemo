@@ -17,14 +17,14 @@
     android:baselineAligned="false"
     android:orientation="horizontal">
 
-    <com.jwei.publicone.view.wheelview.widget.DateWheelLayout
+    <com.jwei.xzfit.view.wheelview.widget.DateWheelLayout
         android:id="@+id/wheel_picker_date_wheel"
         style="@style/WheelDefault"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1.2" />
 
-    <com.jwei.publicone.view.wheelview.widget.TimeWheelLayout
+    <com.jwei.xzfit.view.wheelview.widget.TimeWheelLayout
         android:id="@+id/wheel_picker_time_wheel"
         style="@style/WheelDefault"
         android:layout_width="0dp"

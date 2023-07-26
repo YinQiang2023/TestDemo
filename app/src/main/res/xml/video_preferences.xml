@@ -15,7 +15,7 @@
 -->
 
 <PreferenceGroup
-    xmlns:camera="http://schemas.android.com/apk/res/com.jwei.publicone"
+    xmlns:camera="http://schemas.android.com/apk/res/com.jwei.xzfit"
     xmlns:tools="http://schemas.android.com/tools"
     camera:title="@string/pref_camcorder_settings_category"
     tools:ignore="ResAuto">

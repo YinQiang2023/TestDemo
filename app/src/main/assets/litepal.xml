@@ -6,25 +6,25 @@
     <version value="6" />
     <!--映射模型-->
     <list>
-        <mapping class="com.jwei.publicone.db.model.Daily" />
-        <mapping class="com.jwei.publicone.db.model.Sleep" />
-        <mapping class="com.jwei.publicone.db.model.HeartRate" />
-        <mapping class="com.jwei.publicone.db.model.SingleHeartRate" />
-        <mapping class="com.jwei.publicone.db.model.sport.SportModleInfo" />
-        <mapping class="com.jwei.publicone.db.model.sport.ExerciseApp" />
-        <mapping class="com.jwei.publicone.db.model.sport.ExerciseAuxiliary" />
-        <mapping class="com.jwei.publicone.db.model.sport.ExerciseIndoor" />
-        <mapping class="com.jwei.publicone.db.model.sport.ExerciseOutdoor" />
-        <mapping class="com.jwei.publicone.db.model.sport.ExerciseSwimming" />
-        <mapping class="com.jwei.publicone.db.model.BloodOxygen" />
-        <mapping class="com.jwei.publicone.db.model.EffectiveStand" />
-        <mapping class="com.jwei.publicone.db.model.SingleBloodOxygen" />
-        <mapping class="com.jwei.publicone.db.model.Ecg" />
-        <mapping class="com.jwei.publicone.db.model.SinglePressure" />
-        <mapping class="com.jwei.publicone.db.model.Pressure" />
-        <mapping class="com.jwei.publicone.db.model.track.AppTrackingLog" />
-        <mapping class="com.jwei.publicone.db.model.track.DevTrackingLog" />
-        <mapping class="com.jwei.publicone.db.model.track.BehaviorTrackingLog" />
+        <mapping class="com.jwei.xzfit.db.model.Daily" />
+        <mapping class="com.jwei.xzfit.db.model.Sleep" />
+        <mapping class="com.jwei.xzfit.db.model.HeartRate" />
+        <mapping class="com.jwei.xzfit.db.model.SingleHeartRate" />
+        <mapping class="com.jwei.xzfit.db.model.sport.SportModleInfo" />
+        <mapping class="com.jwei.xzfit.db.model.sport.ExerciseApp" />
+        <mapping class="com.jwei.xzfit.db.model.sport.ExerciseAuxiliary" />
+        <mapping class="com.jwei.xzfit.db.model.sport.ExerciseIndoor" />
+        <mapping class="com.jwei.xzfit.db.model.sport.ExerciseOutdoor" />
+        <mapping class="com.jwei.xzfit.db.model.sport.ExerciseSwimming" />
+        <mapping class="com.jwei.xzfit.db.model.BloodOxygen" />
+        <mapping class="com.jwei.xzfit.db.model.EffectiveStand" />
+        <mapping class="com.jwei.xzfit.db.model.SingleBloodOxygen" />
+        <mapping class="com.jwei.xzfit.db.model.Ecg" />
+        <mapping class="com.jwei.xzfit.db.model.SinglePressure" />
+        <mapping class="com.jwei.xzfit.db.model.Pressure" />
+        <mapping class="com.jwei.xzfit.db.model.track.AppTrackingLog" />
+        <mapping class="com.jwei.xzfit.db.model.track.DevTrackingLog" />
+        <mapping class="com.jwei.xzfit.db.model.track.BehaviorTrackingLog" />
     </list>
 
     <!--region 数据库升级记录 -->

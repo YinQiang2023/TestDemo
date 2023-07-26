@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.jwei.publicone.ui.refresh.CustomizeRefreshLayout
+    <com.jwei.xzfit.ui.refresh.CustomizeRefreshLayout
         android:id="@+id/lyRefresh"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -35,9 +35,9 @@
             tools:listitem="@layout/device_item_layout" />
 
 
-    </com.jwei.publicone.ui.refresh.CustomizeRefreshLayout>
+    </com.jwei.xzfit.ui.refresh.CustomizeRefreshLayout>
 
-    <com.jwei.publicone.ui.view.ViewForLayoutNoInternet
+    <com.jwei.xzfit.ui.view.ViewForLayoutNoInternet
         android:id="@+id/lyNoNetWork"
         android:layout_width="match_parent"
         android:layout_height="0dp"

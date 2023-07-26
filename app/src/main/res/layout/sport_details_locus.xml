@@ -19,7 +19,7 @@
             android:layout_weight="1">
 
 
-            <com.jwei.publicone.view.GoogleMapView
+            <com.jwei.xzfit.view.GoogleMapView
                 android:id="@+id/googleMapLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -29,9 +29,9 @@
                     android:id="@+id/gMap"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
-            </com.jwei.publicone.view.GoogleMapView>
+            </com.jwei.xzfit.view.GoogleMapView>
 
-            <com.jwei.publicone.view.AMapView
+            <com.jwei.xzfit.view.AMapView
                 android:id="@+id/aMap"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

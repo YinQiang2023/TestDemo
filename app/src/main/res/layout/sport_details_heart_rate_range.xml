@@ -46,7 +46,7 @@
             app:layout_constraintStart_toStartOf="@+id/tv1"
             app:layout_constraintTop_toBottomOf="@+id/tv1" />
 
-        <com.jwei.publicone.view.BlockProgressView
+        <com.jwei.xzfit.view.BlockProgressView
             android:id="@+id/progressView"
             android:layout_width="0dp"
             android:layout_height="14dp"

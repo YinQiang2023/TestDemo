@@ -7,7 +7,7 @@
     android:layout_margin="10dp"
     android:gravity="center">
 
-    <com.jwei.publicone.view.RoundedImageView
+    <com.jwei.xzfit.view.RoundedImageView
         android:id="@+id/iv_feedback_screenshots_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -16,7 +16,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <com.jwei.publicone.view.wheelview.widget.WheelView
+    <com.jwei.xzfit.view.wheelview.widget.WheelView
         android:id="@+id/wheel_picker_number_wheel"
         style="@style/WheelDefault"
         android:layout_width="0dp"

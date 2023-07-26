@@ -85,7 +85,7 @@
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="8dp">
 
-                    <com.jwei.publicone.view.wheelview.widget.TimeWheelLayout
+                    <com.jwei.xzfit.view.wheelview.widget.TimeWheelLayout
                         android:id="@+id/timeWheel"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

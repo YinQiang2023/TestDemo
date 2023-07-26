@@ -15,7 +15,7 @@
             android:layout_height="45dp"
             android:padding="2dp">
 
-            <com.jwei.publicone.view.ColorRoundView
+            <com.jwei.xzfit.view.ColorRoundView
                 android:id="@+id/colorRoundView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

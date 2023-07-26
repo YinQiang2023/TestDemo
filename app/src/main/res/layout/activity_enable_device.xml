@@ -64,7 +64,7 @@
                 app:layout_constraintTop_toTopOf="@+id/roundView"
                 app:srcCompat="@mipmap/enable_view_center_img" />
 
-            <com.jwei.publicone.view.RoundProgress2View
+            <com.jwei.xzfit.view.RoundProgress2View
                 android:id="@+id/roundView"
                 android:layout_width="250dp"
                 android:layout_height="250dp"

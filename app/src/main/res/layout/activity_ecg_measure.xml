@@ -31,7 +31,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView33">
 
-            <com.jwei.publicone.ui.healthy.ecg.view.ECGView
+            <com.jwei.xzfit.ui.healthy.ecg.view.ECGView
                 android:id="@+id/ecgMeasureEcgview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

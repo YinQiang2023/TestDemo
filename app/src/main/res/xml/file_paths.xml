@@ -3,7 +3,7 @@
 
     <external-files-path
         name="external_files"
-        path="com.jwei.publicone/apk/" />
+        path="com.jwei.xzfit/apk/" />
 
 <!--    这个是保存拍照图片的路径,必须配置-->
     <files-path

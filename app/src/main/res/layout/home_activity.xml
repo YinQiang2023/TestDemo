@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.jwei.publicone.view.ViewPagerNoScroll
+    <com.jwei.xzfit.view.ViewPagerNoScroll
         android:id="@+id/viewPager"
         android:layout_width="0dp"
         android:layout_height="0dp"

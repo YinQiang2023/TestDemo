@@ -40,7 +40,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-    <com.jwei.publicone.view.MySwitchCompat
+    <com.jwei.xzfit.view.MySwitchCompat
         android:id="@+id/mSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

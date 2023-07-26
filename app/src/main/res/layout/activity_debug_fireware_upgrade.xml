@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autoLink="web"
-                android:text="操作方法\n\n1.将[OTA文件(.bin)]，放到[内部存储\\Android\\data\\com.jwei.publicone\\otal]目录下\n\n2.点击[选择文件]按钮，选择文件\n\n3.点击[升级]开始升级"
+                android:text="操作方法\n\n1.将[OTA文件(.bin)]，放到[内部存储\\Android\\data\\com.jwei.xzfit\\otal]目录下\n\n2.点击[选择文件]按钮，选择文件\n\n3.点击[升级]开始升级"
                 android:textColor="@color/color_171717" />
 
             <TextView

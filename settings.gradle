@@ -19,7 +19,7 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "PublicOne"
+rootProject.name = "XzFit"
 include ':app'
 include ':ZhAppBle'
 include ':mycamera'

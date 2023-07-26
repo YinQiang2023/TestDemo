@@ -37,7 +37,7 @@
             <com.haibin.calendarview.CalendarView
                 android:id="@+id/calendarView"
                 style="@style/public_1_calender"
-                app:month_view="com.jwei.publicone.ui.view.SimpleMonthView"
+                app:month_view="com.jwei.xzfit.ui.view.SimpleMonthView"
                 tools:visibility="visible" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -145,7 +145,7 @@
 
                 </LinearLayout>
 
-                <com.jwei.publicone.ui.view.EffectiveStandView
+                <com.jwei.xzfit.ui.view.EffectiveStandView
                     android:id="@+id/effectiveStandView"
                     android:layout_width="match_parent"
                     android:layout_height="136dp"

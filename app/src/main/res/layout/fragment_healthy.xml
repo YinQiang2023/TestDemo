@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp" />
 
-    <com.jwei.publicone.ui.refresh.CustomizeRefreshLayout
+    <com.jwei.xzfit.ui.refresh.CustomizeRefreshLayout
         android:id="@+id/lyRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -171,7 +171,7 @@
                             android:visibility="gone"
                             tools:visibility="visible">
 
-                            <com.jwei.publicone.view.BatteryPowerView
+                            <com.jwei.xzfit.view.BatteryPowerView
                                 android:id="@+id/battery"
                                 android:layout_width="24dp"
                                 android:layout_height="11dp"
@@ -354,7 +354,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
-                                <com.jwei.publicone.view.RoundProgress2View
+                                <com.jwei.xzfit.view.RoundProgress2View
                                     android:id="@+id/roundView1"
                                     android:layout_width="130dp"
                                     android:layout_height="130dp"
@@ -367,7 +367,7 @@
                                     app:round_progress_filling="@color/index_top_step_color"
                                     app:round_progress_width="12" />
 
-                                <com.jwei.publicone.view.RoundProgress2View
+                                <com.jwei.xzfit.view.RoundProgress2View
                                     android:id="@+id/roundView2"
                                     android:layout_width="90dp"
                                     android:layout_height="90dp"
@@ -380,7 +380,7 @@
                                     app:round_progress_filling="@color/index_top_calorie_color"
                                     app:round_progress_width="12" />
 
-                                <com.jwei.publicone.view.RoundProgress2View
+                                <com.jwei.xzfit.view.RoundProgress2View
                                     android:id="@+id/roundView3"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
@@ -428,5 +428,5 @@
 
         </androidx.core.widget.NestedScrollView>
 
-    </com.jwei.publicone.ui.refresh.CustomizeRefreshLayout>
+    </com.jwei.xzfit.ui.refresh.CustomizeRefreshLayout>
 </LinearLayout>
