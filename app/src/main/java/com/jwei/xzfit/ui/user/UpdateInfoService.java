@@ -35,7 +35,7 @@ import com.jwei.xzfit.utils.*;
 public class UpdateInfoService {
     private final String TAG = UpdateInfoService.class.getSimpleName();
     // 文件目录
-    public final String APP_NAME = "com.jwei.publicone";
+    public final String APP_NAME = "com.jwei.xzfit";
     public String HOME_DIR = "";
     public String APK_DIR = "";
 

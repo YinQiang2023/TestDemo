@@ -74,8 +74,8 @@ class DebugDialActivity : BaseActivity<ActivityDebugFirewareUpgradeBinding, Devi
         FileUtils.createOrExistsDir(mFilePath)
         binding.tvTip1.text =
             "操作方法\n\n1.将表盘文件夹(文件夹名不能有空格，在线必须有 img_effect.png 和 hor.bin 文件，相册必须有img_zdy_bg.png 和 img_zdy_text.png)\n\n" +
-                    "2.在线表盘放到[内部存储\\Android\\data\\com.jwei.publicone\\otal\\dial]目录下\n\n" +
-                    "3.相册表盘放到[内部存储\\Android\\data\\com.jwei.publicone\\otal\\customDial]目录下\n\n" +
+                    "2.在线表盘放到[内部存储\\Android\\data\\com.jwei.xzfit\\otal\\dial]目录下\n\n" +
+                    "3.相册表盘放到[内部存储\\Android\\data\\com.jwei.xzfit\\otal\\customDial]目录下\n\n" +
                     "4.点击[选择文件]按钮，选择文件\n\n" +
                     "5.点击[更新表盘]开始更新表盘"
         binding.btnDone.text = "更新表盘"

@@ -19,10 +19,10 @@ import java.util.concurrent.TimeUnit
  */
 internal object DownloadRetrofitClient {
     //国内
-    private val mBaseURL: String by lazy { AppUtils.getMetaDataByKey("com.jwei.publicone.serverUrl")!! }
+    private val mBaseURL: String by lazy { AppUtils.getMetaDataByKey("com.jwei.xzfit.serverUrl")!! }
 
     //国外
-    private val mBaseEnURL: String by lazy { AppUtils.getMetaDataByKey("com.jwei.publicone.foreignServerUrl")!! }
+    private val mBaseEnURL: String by lazy { AppUtils.getMetaDataByKey("com.jwei.xzfit.foreignServerUrl")!! }
 
     val service: DownloadApi
         get() {

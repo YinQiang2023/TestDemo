@@ -172,7 +172,7 @@ class AddAlarmClockActivity : BaseActivity<ActivityAddAlarmClockBinding, DeviceM
             isUnCommit = false
         }/*TODO 默认08:00
             else{
-            val newDataString = TimeUtils.getNowString(com.jwei.publicone.utils.TimeUtils.getSafeDateFormat("HH:mm"))
+            val newDataString = TimeUtils.getNowString(com.jwei.xzfit.utils.TimeUtils.getSafeDateFormat("HH:mm"))
             mHour = newDataString.split(":")[0].toInt()
             mMinute = newDataString.split(":")[1].toInt()
         }*/

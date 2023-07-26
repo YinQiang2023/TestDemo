@@ -263,7 +263,7 @@ public class BmpUtils {
 
 //    public static File createImageFile(Context context, boolean isCrop) {
 //        try {
-//            String timeStamp = com.jwei.publicone.utils.TimeUtils.getSafeDateFormat("yyyyMMdd_HHmmss").format(new Date());
+//            String timeStamp = com.jwei.xzfit.utils.TimeUtils.getSafeDateFormat("yyyyMMdd_HHmmss").format(new Date());
 //            String fileName = "";
 //            if (isCrop) {
 //                fileName = "IMG_" + timeStamp + "_CROP.jpg";

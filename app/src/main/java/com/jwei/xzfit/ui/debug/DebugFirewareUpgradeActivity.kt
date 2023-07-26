@@ -43,7 +43,7 @@ class DebugFirewareUpgradeActivity : BaseActivity<ActivityDebugFirewareUpgradeBi
         LogUtils.e(mFilePath)
         FileUtils.createOrExistsDir(mFilePath)
 
-        binding.tvTip1.text = "操作方法\n\n1.将[OTA文件(.bin)]，放到[内部存储\\Android\\data\\com.jwei.publicone\\otal\\fireware]目录下\n\n\n2.点击[选择文件]按钮，选择文件\n\n\n3.点击[升级]开始升级"
+        binding.tvTip1.text = "操作方法\n\n1.将[OTA文件(.bin)]，放到[内部存储\\Android\\data\\com.jwei.xzfit\\otal\\fireware]目录下\n\n\n2.点击[选择文件]按钮，选择文件\n\n\n3.点击[升级]开始升级"
         binding.btnFile.text = "选择固件文件"
         WakeLockManager.instance.keepUnLock(this.lifecycle)
 

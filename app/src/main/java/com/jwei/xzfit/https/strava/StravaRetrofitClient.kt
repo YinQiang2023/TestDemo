@@ -27,7 +27,7 @@ object StravaRetrofitClient : BaseRetrofitClient() {
         Retrofit.Builder()
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(AppUtils.getMetaDataByKey("com.jwei.publicone.stravaUrl")!!)
+            .baseUrl(AppUtils.getMetaDataByKey("com.jwei.xzfit.stravaUrl")!!)
             .build()
             .create(StravaApiService::class.java)
     }

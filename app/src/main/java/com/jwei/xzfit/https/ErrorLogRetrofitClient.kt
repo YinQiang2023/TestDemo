@@ -82,7 +82,7 @@ object ErrorLogRetrofitClient : BaseRetrofitClient() {
     }
 
     val service by lazy {
-        getService(ErrorLogService::class.java, AppUtils.getMetaDataByKey("com.jwei.publicone.serverUrl"))
+        getService(ErrorLogService::class.java, AppUtils.getMetaDataByKey("com.jwei.xzfit.serverUrl"))
     }
 
 

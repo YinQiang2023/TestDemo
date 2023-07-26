@@ -19,10 +19,10 @@ import java.util.concurrent.TimeUnit
  */
 object TrackingRetrofitClient {
     //国内
-    private val mBaseURL: String by lazy { AppUtils.getMetaDataByKey("com.jwei.publicone.trackingServerUrl")!! }
+    private val mBaseURL: String by lazy { AppUtils.getMetaDataByKey("com.jwei.xzfit.trackingServerUrl")!! }
 
     //国外
-    private val mBaseEnURL: String by lazy { AppUtils.getMetaDataByKey("com.jwei.publicone.trackingForeignServerUrl")!! }
+    private val mBaseEnURL: String by lazy { AppUtils.getMetaDataByKey("com.jwei.xzfit.trackingForeignServerUrl")!! }
 
     val service: TrackingApi
         get() {

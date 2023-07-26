@@ -462,7 +462,7 @@ class SportFragment : BaseFragment<FragmentSportBinding, SportModel>(
             mLocationClient?.stopLocation()
             mLocationClient?.onDestroy()
             mLocationClient = null
-            /*java.lang.RuntimeException: Unable to destroy activity {com.jwei.publicone/com.jwei.publicone.ui.HomeActivity}: java.lang.NullPointerException: Attempt to invoke interface method 'boolean com.google.maps.api.android.lib6.impl.bq.W()' on a null object reference
+            /*java.lang.RuntimeException: Unable to destroy activity {com.jwei.xzfit/com.jwei.xzfit.ui.HomeActivity}: java.lang.NullPointerException: Attempt to invoke interface method 'boolean com.google.maps.api.android.lib6.impl.bq.W()' on a null object reference
             if (mMapFragment != null && mGoogleMap != null) {
                 mMapFragment?.onDestroy()
             }*/

@@ -29,10 +29,10 @@ import javax.net.ssl.*
 object MyRetrofitClient : BaseRetrofitClient() {
 
     //国内
-    val serverUrlZhService by lazy { getService(ApiService::class.java, AppUtils.getMetaDataByKey("com.jwei.publicone.serverUrl")) }
+    val serverUrlZhService by lazy { getService(ApiService::class.java, AppUtils.getMetaDataByKey("com.jwei.xzfit.serverUrl")) }
 
     //国外
-    val serverUrlEnService by lazy { getService(ApiService::class.java, AppUtils.getMetaDataByKey("com.jwei.publicone.foreignServerUrl")) }
+    val serverUrlEnService by lazy { getService(ApiService::class.java, AppUtils.getMetaDataByKey("com.jwei.xzfit.foreignServerUrl")) }
 
     //用户选择地区的服务器 中国内 或国外
     val service: ApiService

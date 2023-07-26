@@ -328,7 +328,7 @@ class StressActivity : BaseActivity<ActivityStressBinding, DailyModel>(ActivityS
 //                }
 //
 //                index++
-//                val date = com.jwei.publicone.utils.TimeUtils.getSafeDateFormat("yyyy/MM/dd HH:mm:ss").parse(timeArray[i])
+//                val date = com.jwei.xzfit.utils.TimeUtils.getSafeDateFormat("yyyy/MM/dd HH:mm:ss").parse(timeArray[i])
 //                progressTime[i] = date.time.toString()
 //            }
 //        } catch (e: ParseException) {

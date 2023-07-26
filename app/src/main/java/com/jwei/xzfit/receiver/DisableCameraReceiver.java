@@ -53,7 +53,7 @@ public class DisableCameraReceiver extends BroadcastReceiver {
         }
 
         // Disable this receiver so it won't run again.
-        disableComponent(context, "com.jwei.publicone.receiver.DisableCameraReceiver");
+        disableComponent(context, "com.jwei.xzfit.receiver.DisableCameraReceiver");
     }
 
     private boolean hasCamera() {

@@ -268,7 +268,7 @@ object AppTrackingManager {
                                     }
                                     //移除未完成事件不上报
                                     if (item.errorCode.isEmpty() || item.errorCode.endsWith("00")) {
-                                        //com.jwei.publicone.utils.LogUtils.d(TAG, "过滤异常日志上报：" + GsonUtils.toJson(item))
+                                        //com.jwei.xzfit.utils.LogUtils.d(TAG, "过滤异常日志上报：" + GsonUtils.toJson(item))
                                         item.isUpLoad = true
                                         item.saveUpdate()
                                         continue
@@ -595,7 +595,7 @@ object AppTrackingManager {
                                     if (item.functionStatus.isNotEmpty()) functionStatus = item.functionStatus
                                 })
                             }
-                            //com.jwei.publicone.utils.LogUtils.d(TAG, "postBehaviorTracking:${GsonUtils.toJson(serItems)}")
+                            //com.jwei.xzfit.utils.LogUtils.d(TAG, "postBehaviorTracking:${GsonUtils.toJson(serItems)}")
                             val requestBody = GsonUtils.toJson(gson, serItems).toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
                             val result = TrackingRetrofitClient.service.appUserBehaviorTrackingBulk(requestBody)
                             com.jwei.xzfit.utils.LogUtils.d(TAG, "postBehaviorTracking:${GsonUtils.toJson(result)}")
