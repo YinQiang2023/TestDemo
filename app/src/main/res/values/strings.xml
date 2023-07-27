@@ -1274,6 +1274,9 @@
     <string name="power_consumption_motorola2">2. Click \"Battery\" to enter, select \"Do not optimize\";</string>
     <string name="notify_guided_hint">If you want to receive message notifications on the device, it is recommended to turn on the message reminder switch and incoming call reminder</string>
     <string name="set_up_later">Set up later</string>
+    <string name="watch_face_suc">The dial is installed successfully</string>
+    <string name="watch_face_fai">Watch face installation failed</string>
+    <string name="watch_face_verify_fai">Dial installation verification failed</string>
     <!-- 默认-英语 -->
 
     <!-- 通知推送屏蔽内容-->

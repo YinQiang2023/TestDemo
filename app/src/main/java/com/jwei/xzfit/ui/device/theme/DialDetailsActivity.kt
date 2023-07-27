@@ -24,6 +24,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alibaba.fastjson.JSON
 import com.blankj.utilcode.util.*
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
@@ -44,6 +45,8 @@ import com.jwei.xzfit.https.response.DialInfoResponse
 import com.jwei.xzfit.receiver.SifliReceiver
 import com.jwei.xzfit.ui.adapter.MultiItemCommonAdapter
 import com.jwei.xzfit.ui.data.Global
+import com.jwei.xzfit.ui.data.Global.deviceSettingBean
+import com.jwei.xzfit.ui.device.bean.DeviceSettingBean
 import com.jwei.xzfit.ui.eventbus.EventAction
 import com.jwei.xzfit.ui.eventbus.EventMessage
 import com.jwei.xzfit.ui.livedata.RefreshMyDialListState
@@ -141,6 +144,16 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
     private val fileStateTrackingLog by lazy { TrackingLog.getDevTyepTrack("请求设备传文件状态", "获取发送表盘文件状态", "PREPARE_INSTALL_WATCH_FACE") }
 
     private var isSending = false
+
+    //产品功能列表
+    private val deviceSettingBean by lazy {
+        JSON.parseObject(
+            SpUtils.getValue(
+                SpUtils.DEVICE_SETTING,
+                ""
+            ), DeviceSettingBean::class.java
+        )
+    }
 
     override fun onClick(v: View?) {
         when (v?.id) {
@@ -274,6 +287,24 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
         CallBackUtils.setWatchFaceInstallCallBack(object : WatchFaceInstallCallBack {
             override fun onresult(result: WatchFaceInstallResultBean?) {
                 com.blankj.utilcode.util.LogUtils.d("表盘安装结果：$result")
+                DialogUtils.dismissDialog(dialog)
+                if (dialInstallTask != null) {
+                    ThreadUtils.cancel(dialInstallTask)
+                }
+                when (result?.code) {
+                    WatchFaceInstallCallBack.WatchFaceInstallCode.INSTALL_SUCCESS.state -> {
+                        //安装成功
+                        ToastUtils.showToast(getString(R.string.watch_face_suc))
+                    }
+
+                    WatchFaceInstallCallBack.WatchFaceInstallCode.INSTALL_FAILED.state -> {
+                        ToastUtils.showToast(getString(R.string.watch_face_fai))
+                    }
+
+                    WatchFaceInstallCallBack.WatchFaceInstallCode.VERIFY_FAILED.state -> {
+                        ToastUtils.showToast(getString(R.string.watch_face_verify_fai))
+                    }
+                }
             }
         })
 
@@ -403,7 +434,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                     binding.tvIntroduction.text = it.data.dialDescribe
                     groupDialList.clear()
                     dialFileList.clear()
-                    it.data.groupDialList?.let { groups->
+                    it.data.groupDialList?.let { groups ->
                         groupDialList.addAll(groups)
                     }
                     if (!it.data.dialFileUrl.isNullOrEmpty()) {
@@ -432,8 +463,8 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                             })
                     }
 
-                    for ( i in 0 until groupDialList.size){
-                        if(groupDialList[i].dialId == it.data.dialId){
+                    for (i in 0 until groupDialList.size) {
+                        if (groupDialList[i].dialId == it.data.dialId) {
                             clickCount = i
                         }
                     }
@@ -891,6 +922,11 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                                 wrActivity?.get()?.postDialLog(3)
                                 RefreshMyDialListState.postValue(true)
                                 ErrorUtils.clearErrorBigData()
+
+                                //根据后台是否配置启用表盘安装结果，继续弹窗等待安装
+                                if (wrActivity?.get()?.deviceSettingBean?.settingsRelated?.dial_installation_completed == true) {
+                                    wrActivity?.get()?.dealDialInstall()
+                                }
                             }
 
                             @SuppressLint("SetTextI18n")
@@ -1194,6 +1230,11 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                                 wrActivity?.get()?.postDialLog(3)
                                 RefreshMyDialListState.postValue(true)
                                 ErrorUtils.clearErrorBigData()
+
+                                //根据后台是否配置启用表盘安装结果，继续弹窗等待安装
+                                if (wrActivity?.get()?.deviceSettingBean?.settingsRelated?.dial_installation_completed == true) {
+                                    wrActivity?.get()?.dealDialInstall()
+                                }
                             }
 
                             @SuppressLint("SetTextI18n")
@@ -1455,6 +1496,49 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
     private fun sifliFaceState(faceState: SifliReceiver.SifliFaceState) {
         sifliDFUTask?.finish(faceState.state == 0)
     }
+
+    //endregion
+
+    //region 表盘安装结果
+    private fun dealDialInstall() {
+        //继续显示等待框
+        dialog?.show()
+        startOrRefDialInstallTimeOut()
+    }
+
+
+    private inner class DialInstallTask : ThreadUtils.SimpleTask<Int>() {
+        var i = 0
+        var isOk = false
+
+        fun finish(isOk: Boolean) {
+            i = 30
+            this.isOk = isOk
+        }
+
+        override fun doInBackground(): Int {
+            while (i <= 30) {
+                i++
+                Thread.sleep(1000)
+            }
+            return 0
+        }
+
+        override fun onSuccess(result: Int?) {
+            DialogUtils.dismissDialog(dialog)
+            ToastUtils.showToast(getString(R.string.watch_face_fai))
+        }
+    }
+
+    private var dialInstallTask: DialInstallTask? = null
+    private fun startOrRefDialInstallTimeOut() {
+        if (dialInstallTask != null) {
+            ThreadUtils.cancel(dialInstallTask)
+        }
+        dialInstallTask = DialInstallTask()
+        ThreadUtils.executeByIo(dialInstallTask)
+    }
+
 
     //endregion
 

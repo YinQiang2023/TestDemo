@@ -1274,5 +1274,8 @@
     <string name="power_consumption_motorola2">2、点击“电池“进入，选择“不优化“；</string>
     <string name="notify_guided_hint">如需在设备上接收消息通知，建议开启消息提醒开关及来电提醒</string>
     <string name="set_up_later">稍后设置</string>
+    <string name="watch_face_suc">表盘安装成功</string>
+    <string name="watch_face_fai">表盘安装失败</string>
+    <string name="watch_face_verify_fai">表盘安装验证失败</string>
     <!-- 中文简体 -->
 </resources>
