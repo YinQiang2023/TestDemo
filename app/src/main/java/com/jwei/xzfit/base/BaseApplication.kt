@@ -162,7 +162,7 @@ class BaseApplication : Application(), OnMapsSdkInitializedCallback {
             com.zhapp.ble.utils.SaveLog.init(this)
             HttpLog.init(this)
             //bugly
-            CrashReport.initCrashReport(mContext, "72e8206b11", AppUtils.isAppDebug())
+            CrashReport.initCrashReport(mContext, "2d628928e9", AppUtils.isAppDebug())
             //创建固件升级测试文件目录
             initBetaFireWareUpPath()
             //前后台监听

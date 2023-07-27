@@ -30,7 +30,7 @@ android {
         minSdk 21
         targetSdk 31
         versionCode 60
-        versionName "6.0.3" //versionName X.Y.Z ---> XY=“versionCode”X十位Y个位,Z=正式版本0，测试版本1..累加
+        versionName "6.0.4" //versionName X.Y.Z ---> XY=“versionCode”X十位Y个位,Z=正式版本0，测试版本1..累加
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
