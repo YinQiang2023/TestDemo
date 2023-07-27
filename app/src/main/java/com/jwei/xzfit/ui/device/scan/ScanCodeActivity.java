@@ -44,11 +44,14 @@ import com.jwei.xzfit.R;
 import com.jwei.xzfit.db.model.track.TrackingLog;
 import com.jwei.xzfit.dialog.DialogUtils;
 import com.jwei.xzfit.ui.data.Global;
+import com.jwei.xzfit.ui.device.DeviceManageActivity;
 import com.jwei.xzfit.ui.device.bean.DeviceScanQrCodeBean;
 import com.jwei.xzfit.ui.eventbus.EventAction;
 import com.jwei.xzfit.ui.eventbus.EventMessage;
 import com.jwei.xzfit.ui.user.QAActivity;
 import com.jwei.xzfit.utils.LogUtils;
+import com.jwei.xzfit.utils.ManageActivity;
+import com.jwei.xzfit.utils.SpUtils;
 import com.jwei.xzfit.utils.manager.AppTrackingManager;
 
 import org.greenrobot.eventbus.EventBus;
@@ -179,6 +182,17 @@ public class ScanCodeActivity extends Activity {
                                     AppTrackingManager.trackingModule(AppTrackingManager.MODULE_BIND, trackingLog, "1214", true, false);
                                 }
                             } else {
+                                LogUtils.i(TAG, "CURRENT_FIRMWARE_PLATFORM = "+SpUtils.getSPUtilsInstance().getString(SpUtils.CURRENT_FIRMWARE_PLATFORM, ""));
+                                if(TextUtils.equals(mDeviceScanQrCodeBean.getDfu(),"1")) {
+                                    if (TextUtils.equals(SpUtils.getSPUtilsInstance().getString(SpUtils.CURRENT_FIRMWARE_PLATFORM, ""),
+                                            Global.FIRMWARE_PLATFORM_SIFLI)) {
+                                        ManageActivity.INSTANCE.removeActivity(ScanCodeActivity.class);
+                                        ManageActivity.INSTANCE.removeActivity(DeviceManageActivity.class);
+                                        ManageActivity.INSTANCE.removeActivity(ScanDeviceActivity.class);
+                                        EventBus.getDefault().post(new EventMessage(EventAction.ACTION_SIFLI_WITHOUT_SERVICE, mDeviceScanQrCodeBean));
+                                        return;
+                                    }
+                                }
 
                                 boolean isOK = Global.INSTANCE.checkDeviceType(String.valueOf(mDeviceScanQrCodeBean.getmDeviceRadioBroadcastBean().getDeviceType()));
                                 if (isOK) {

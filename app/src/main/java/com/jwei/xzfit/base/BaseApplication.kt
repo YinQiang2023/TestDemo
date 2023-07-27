@@ -264,7 +264,7 @@ class BaseApplication : Application(), OnMapsSdkInitializedCallback {
             }
         })
 
-        ControlBleTools.getInstance().isScanBroadcastWithoutService(true)
+        //ControlBleTools.getInstance().isScanBroadcastWithoutService(true)
     }
 
     /**

@@ -175,6 +175,7 @@ object SpUtils {
         return sharedPreferences?.getString(key, defValue).toString()
     }
 
+    @JvmStatic
     fun getSPUtilsInstance(): com.blankj.utilcode.util.SPUtils {
         return com.blankj.utilcode.util.SPUtils.getInstance(sharedPreferencesFit, Context.MODE_PRIVATE)
     }

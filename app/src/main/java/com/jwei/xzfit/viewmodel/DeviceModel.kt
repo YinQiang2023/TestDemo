@@ -245,6 +245,11 @@ class DeviceModel : BaseViewModel() {
                         //TODO 上架屏蔽 - 开发中
                         //dataBean.settingsRelated.dev_trace_switch = settingsRelated.contains("dev_trace_switch")
                         dataBean.settingsRelated.dev_trace_switch = false
+                        //TODO 上架屏蔽 - 开发中
+                        //dataBean.settingsRelated.familiar_with_not_turning_on_the_screen = settingsRelated.contains("familiar_with_not_turning_on_the_screen")
+                        dataBean.settingsRelated.familiar_with_not_turning_on_the_screen = false
+                        dataBean.settingsRelated.dial_installation_completed = settingsRelated.contains("dial_installation_completed")
+
 
                         dataBean.functionRelated.find_phone = functionRelated.contains("find_phone")
                         dataBean.functionRelated.find_device =
@@ -999,7 +1004,7 @@ class DeviceModel : BaseViewModel() {
                         FirewareUpdateParam(
                             Global.deviceType,
                             Global.deviceVersion,
-                            firmwarePlatform,
+                            /*firmwarePlatform*/"4",
                             userId
                         ),
                         FirewareUpdateParam::class.java

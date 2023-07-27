@@ -162,8 +162,6 @@ class ScanDeviceActivity : BaseActivity<ScanDeviceActivityBinding, DeviceModel>(
         //后台绑定回调
         viewModel.getProductList.observe(this, Observer {
             if (!TextUtils.isEmpty(it)) {
-
-
                 if (it != HttpCommonAttributes.REQUEST_SUCCESS) {
                     AppTrackingManager.trackingModule(
                         AppTrackingManager.MODULE_BIND,
@@ -185,8 +183,8 @@ class ScanDeviceActivity : BaseActivity<ScanDeviceActivityBinding, DeviceModel>(
                         searchDeviceMethod()
                     } else {
                         LogUtils.i(TAG, "产品列表-获取成功 = 无数据")
-                        ToastUtils.showToast(getString(R.string.err_network_tips))
-                        finish()
+                        ToastUtils.showToast(getString(R.string.no_data))
+//                        finish()
                     }
                 } else if (it == HttpCommonAttributes.SERVER_ERROR) {
                     ToastUtils.showToast(getString(R.string.not_network_tips))

@@ -868,26 +868,32 @@ object Global {
     /**
      * Nordic
      */
+    @JvmField
     val FIRMWARE_PLATFORM_NORDIC = "0"
     /**
      * Realtek
      */
+    @JvmField
     val FIRMWARE_PLATFORM_REALTEK = "1"
     /**
      * Dialog
      */
+    @JvmField
     val FIRMWARE_PLATFORM_DIALOG = "2"
     /**
      * 炬芯
      */
+    @JvmField
     val FIRMWARE_PLATFORM_JUXING = "3"
     /**
      * 思澈
      */
+    @JvmField
     val FIRMWARE_PLATFORM_SIFLI = "4"
     /**
      * 杰理
      */
+    @JvmField
     val FIRMWARE_PLATFORM_JIELI = "5"
     //endregion
 }

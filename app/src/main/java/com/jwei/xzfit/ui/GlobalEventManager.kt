@@ -48,6 +48,7 @@ import com.jwei.xzfit.https.response.ProductListResponse
 import com.jwei.xzfit.receiver.SifliReceiver
 import com.jwei.xzfit.ui.data.Global
 import com.jwei.xzfit.ui.device.backgroundpermission.BackgroundPermissionMainActivity
+import com.jwei.xzfit.ui.device.bean.DeviceScanQrCodeBean
 import com.jwei.xzfit.ui.device.bean.DeviceSettingBean
 import com.jwei.xzfit.ui.device.bean.NotifyItem
 import com.jwei.xzfit.ui.device.setting.notify.MsgNotifySetActivity
@@ -239,8 +240,14 @@ object GlobalEventManager {
                             checkFirmwareUpgrade(isOnlyDeviceType, device.deviceType)
                         }
                     }
-                }else if(msg.obj is com.jwei.xzfit.ui.device.bean.DeviceScanQrCodeBean?) {
-
+                }else if(msg.obj is DeviceScanQrCodeBean?) {
+                    val device = msg.obj as DeviceScanQrCodeBean?
+                    if (device != null) {
+                        if (ControlBleTools.getInstance().currentDeviceMac == device.getmDeviceRadioBroadcastBean().deviceMac && !TextUtils.isEmpty(device.getmDeviceRadioBroadcastBean().deviceType.toString()) && !isUpload) {
+                            isOnlyDeviceType = true
+                            checkFirmwareUpgrade(isOnlyDeviceType, device.getmDeviceRadioBroadcastBean().deviceType.toString())
+                        }
+                    }
                 }
             }
             //endregion
