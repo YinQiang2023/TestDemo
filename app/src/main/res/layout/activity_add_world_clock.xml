@@ -79,7 +79,7 @@
             app:layout_constraintTop_toBottomOf="@+id/layoutView01"
             tools:visibility="visible" />
 
-        <com.jwei.xzfit.ui.view.SideBar
+        <com.smartwear.xzfit.ui.view.SideBar
             android:id="@+id/side_bar"
             android:layout_width="50dp"
             android:layout_height="0dp"

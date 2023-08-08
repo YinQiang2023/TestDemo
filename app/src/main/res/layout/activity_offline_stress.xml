@@ -39,7 +39,7 @@
             <com.haibin.calendarview.CalendarView
                 android:id="@+id/calendarView"
                 style="@style/public_1_calender"
-                app:month_view="com.jwei.xzfit.ui.view.SimpleMonthView"
+                app:month_view="com.smartwear.xzfit.ui.view.SimpleMonthView"
                 tools:visibility="visible" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -151,7 +151,7 @@
 
                 </LinearLayout>
 
-                <com.jwei.xzfit.ui.view.OfflineStressView
+                <com.smartwear.xzfit.ui.view.OfflineStressView
                     android:id="@+id/mStressView"
                     android:layout_width="match_parent"
                     android:layout_height="136dp"

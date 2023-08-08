@@ -177,7 +177,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view6"
-                    app:month_view="com.jwei.xzfit.ui.view.WomenHealthMonthView" />
+                    app:month_view="com.smartwear.xzfit.ui.view.WomenHealthMonthView" />
 
                 <View
                     android:id="@+id/view7"

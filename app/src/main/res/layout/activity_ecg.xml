@@ -72,7 +72,7 @@
             app:current_month_lunar_text_color="#000000"
             app:current_month_text_color="@color/color_FFFFFF"
             app:min_year="2004"
-            app:month_view="com.jwei.xzfit.ui.view.SimpleMonthView"
+            app:month_view="com.smartwear.xzfit.ui.view.SimpleMonthView"
             app:other_month_text_color="#5fffffff"
             app:scheme_text=""
             app:scheme_text_color="#ffffff"
@@ -82,7 +82,7 @@
             app:selected_theme_color="@color/app_index_color"
             app:week_background="@color/index_bg_color"
             app:week_text_color="#ffffff"
-            app:week_view="com.jwei.xzfit.ui.view.SimpleWeekView" />
+            app:week_view="com.smartwear.xzfit.ui.view.SimpleWeekView" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

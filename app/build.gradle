@@ -9,10 +9,10 @@ plugins {
 Properties accessManagerProp = new Properties()
 accessManagerProp.load(new FileInputStream(file("../accessManager.properties")))
 //服务器连接 0:线上后台，1：测试后台，2：本地后台
-int debugUrl = 1
+int debugUrl = 2
 
 android {
-    namespace 'com.jwei.xzfit'
+    namespace 'com.smartwear.xzfit'
 
     compileSdk 31
 
@@ -26,7 +26,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.jwei.xzfit"
+        applicationId "com.smartwear.xzfit"
         minSdk 21
         targetSdk 31
         versionCode 60

@@ -163,7 +163,7 @@
             tools:visibility="visible">
 
 
-            <com.jwei.xzfit.view.BatteryPowerView
+            <com.smartwear.xzfit.view.BatteryPowerView
                 android:id="@+id/battery"
                 android:layout_width="24dp"
                 android:layout_height="11dp"

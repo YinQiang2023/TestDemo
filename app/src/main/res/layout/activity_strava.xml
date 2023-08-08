@@ -81,7 +81,7 @@
                 app:layout_constraintStart_toEndOf="@+id/iv1"
                 app:layout_constraintTop_toBottomOf="@+id/tv2" />
 
-            <com.jwei.xzfit.view.MySwitchCompat
+            <com.smartwear.xzfit.view.MySwitchCompat
                 android:id="@+id/mSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

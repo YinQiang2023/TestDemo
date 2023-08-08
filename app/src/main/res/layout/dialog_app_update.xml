@@ -55,7 +55,7 @@
             android:textColor="@color/color_171717"
             android:textSize="16sp" />
 
-        <com.jwei.xzfit.ui.view.CustomProgressTextView
+        <com.smartwear.xzfit.ui.view.CustomProgressTextView
             android:id="@+id/ctvDialogProgress"
             android:layout_width="match_parent"
             android:layout_height="18dp"

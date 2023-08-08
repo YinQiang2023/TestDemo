@@ -315,7 +315,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             />
 
-                        <com.jwei.xzfit.view.CircularSeekBar
+                        <com.smartwear.xzfit.view.CircularSeekBar
                             android:id="@+id/sbUnLock"
                             android:layout_width="65dp"
                             android:layout_height="65dp"
@@ -377,7 +377,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <com.jwei.xzfit.view.CircularSeekBar
+                        <com.smartwear.xzfit.view.CircularSeekBar
                             android:id="@+id/sbStop"
                             android:layout_width="65dp"
                             android:layout_height="65dp"

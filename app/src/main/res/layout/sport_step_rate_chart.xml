@@ -125,7 +125,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.jwei.xzfit.view.DeviceSportChartView
+    <com.smartwear.xzfit.view.DeviceSportChartView
         android:id="@+id/mStepSpeedCurveChartView"
         android:layout_width="match_parent"
         android:layout_height="120dp"

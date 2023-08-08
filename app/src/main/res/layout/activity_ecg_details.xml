@@ -62,7 +62,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.jwei.xzfit.view.RoundProgressView
+                <com.smartwear.xzfit.view.RoundProgressView
                     android:id="@+id/roundProgressView"
                     android:layout_width="160dp"
                     android:layout_height="160dp"
@@ -416,7 +416,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <com.jwei.xzfit.ui.healthy.ecg.view.ECGView
+                    <com.smartwear.xzfit.ui.healthy.ecg.view.ECGView
                         android:id="@+id/ecgDetailsEcgview"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -457,7 +457,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayoutEcgView">
 
-                    <com.jwei.xzfit.ui.healthy.ecg.view.ECGView
+                    <com.smartwear.xzfit.ui.healthy.ecg.view.ECGView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="3dp"

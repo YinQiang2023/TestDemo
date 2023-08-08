@@ -175,7 +175,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvDeviceName"
                 tools:visibility="visible">
 
-                <com.jwei.xzfit.view.BatteryPowerView
+                <com.smartwear.xzfit.view.BatteryPowerView
                     android:id="@+id/battery"
                     android:layout_width="24dp"
                     android:layout_height="11dp"
@@ -307,7 +307,7 @@
         android:layout_weight="1"
         tools:visibility="gone" />
 
-    <com.jwei.xzfit.ui.view.ViewForLayoutNoInternet
+    <com.smartwear.xzfit.ui.view.ViewForLayoutNoInternet
         android:id="@+id/lyNoNetWork"
         android:layout_width="match_parent"
         android:layout_height="0dp"

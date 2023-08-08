@@ -1277,6 +1277,7 @@
     <string name="watch_face_suc">The dial is installed successfully</string>
     <string name="watch_face_fai">Watch face installation failed</string>
     <string name="watch_face_verify_fai">Dial installation verification failed</string>
+    <string name="low_storage_tips">The memory is full, please delete and synchronize</string>
     <!-- 默认-英语 -->
 
     <!-- 通知推送屏蔽内容-->

@@ -1217,7 +1217,7 @@
     <string name="turn_on_hand_washing">开启洗手提醒</string>
     <string name="open_remind_hand_washing_tip">启用\"洗手提醒\"后，会在设定时间内进行震动提醒。</string>
     <string name="guest_login">无账号登录</string>
-    <string name="br_bond_tips">通话蓝牙配对中，请稍后…</string>
+    <string name="br_bond_tips">通话蓝牙配对中，请稍候…</string>
     <string name="upgrade_immediately">立即升级</string>
     <string name="find_new_ota_version">OTA升级</string>
     <string name="find_new_ota_version_tips">OTA更新啦!点击下方立即更新!</string>
@@ -1277,5 +1277,6 @@
     <string name="watch_face_suc">表盘安装成功</string>
     <string name="watch_face_fai">表盘安装失败</string>
     <string name="watch_face_verify_fai">表盘安装验证失败</string>
+    <string name="low_storage_tips">内存已满，请删减后同步</string>
     <!-- 中文简体 -->
 </resources>

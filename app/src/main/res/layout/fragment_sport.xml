@@ -68,7 +68,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-               <!-- <com.jwei.xzfit.view.GoogleMapView
+               <!-- <smartweartwear.xzfit.view.GoogleMapView
                     android:id="@+id/googleMapLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -78,7 +78,7 @@
                         android:id="@+id/gMap"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
-                </com.jwei.xzfit.view.GoogleMapView>-->
+                </smartweartwear.xzfit.view.GoogleMapView>-->
 
                 <FrameLayout
                     android:id="@+id/fr_google_map"
