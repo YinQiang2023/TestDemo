@@ -12,7 +12,7 @@ import org.json.JSONObject
  * on 2021/8/6
  */
 object JsonUtils {
-    const val serviceKey = "kk.szxzkjyxgs.23"
+    const val serviceKey = "wo.szzhkjyxgs.20"
     fun <T> getRequestJson(anyBody: Any, clazz: (Class<T>)): RequestBody {
         val gson = GsonBuilder().create()
         val postObject = JSONObject()

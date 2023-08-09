@@ -162,11 +162,11 @@ class AboutActivity : BaseActivity<ActivityAboutBinding, BaseViewModel>(Activity
                                 }
                             }
                         }
-                        if (AppUtils.isBetaApp()) {
+                        /*if (AppUtils.isBetaApp()) {
                             if (TextUtils.equals("问题反馈", v.tvItemLeft.text.toString().trim())) {
                                 startActivity(Intent(this@AboutActivity, DebugFeedbackActivity::class.java))
                             }
-                        }
+                        }*/
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }

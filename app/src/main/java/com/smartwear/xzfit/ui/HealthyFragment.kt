@@ -444,7 +444,7 @@ class HealthyFragment : BaseFragment<FragmentHealthyBinding, DailyModel>(Fragmen
         //查询服务器最近一条运动记录
         SportModel().querySportRecordData("", true, 1, "1")
         //查询最近一次ecg数据
-        if (Global.deviceSettingBean!!.dataRelated.ecg) {
+        if (Global.deviceSettingBean?.dataRelated?.ecg == true) {
             EcgModel().getEcgLastlyData()
         }
     }
