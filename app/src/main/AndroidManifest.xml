@@ -18,17 +18,18 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- 后台获取位置信息 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- Android 9前台服务权限 -->
     <uses-permission android:name="android.permission.VIBRATE" /> <!-- 允许震动 -->
-    <!-- <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> &lt;!&ndash; 允许请求安装包 &ndash;&gt; -->
-    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 允许读取用户的联系人数据 -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- 允许访问联系人通讯录信息 -->
-    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 允许电话呼叫 -->
-    <uses-permission android:name="android.permission.READ_CALL_LOG" /> <!-- 允许读取用户的通话日志 -->
-    <uses-permission android:name="android.permission.READ_SMS" /> <!-- 允许应用程序读取短信 -->
-    <uses-permission android:name="android.permission.SEND_SMS" /> <!-- 允许应用程序读取短信 -->
-    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" /> <!-- 允许应用程序接听来电 -->
+    <!--
+    <uses-permission android:name="android.permission.READ_CONTACTS" /> &lt;!&ndash; 允许读取用户的联系人数据 &ndash;&gt;
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> &lt;!&ndash; 允许访问联系人通讯录信息 &ndash;&gt;
+    <uses-permission android:name="android.permission.CALL_PHONE" /> &lt;!&ndash; 允许电话呼叫 &ndash;&gt;
+    <uses-permission android:name="android.permission.READ_CALL_LOG" /> &lt;!&ndash; 允许读取用户的通话日志 &ndash;&gt;
+    <uses-permission android:name="android.permission.READ_SMS" /> &lt;!&ndash; 允许应用程序读取短信 &ndash;&gt;
+    <uses-permission android:name="android.permission.SEND_SMS" /> &lt;!&ndash; 允许应用程序读取短信 &ndash;&gt;
+    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" /> &lt;!&ndash; 允许应用程序接听来电 &ndash;&gt;
     <uses-permission
         android:name="android.permission.QUERY_ALL_PACKAGES"
-        tools:ignore="QueryAllPackagesPermission" /> <!-- Android10 获取应用列表 -->
+        tools:ignore="QueryAllPackagesPermission" /> &lt;!&ndash; Android10 获取应用列表 &ndash;&gt;
+    -->
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /> <!-- 音乐控制 -->
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" /> <!-- 不显示下载请求的Notification -->
     <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" /> <!-- 访问DownloadManager的权限 -->
@@ -601,7 +602,7 @@
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
 
-                <!-- scheme StravaManager INFOWEAR_SCHEME_URL scheme协议头 -->
+                <!-- scheme StravaManager XZFIT_SCHEME_URL scheme协议头 -->
                 <!-- host https://www.strava.com/settings/api Strava应用配置回调域 -->
                 <data
                     android:host="wearheart"

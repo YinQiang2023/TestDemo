@@ -306,7 +306,7 @@ class DebugFeedbackActivity : BaseActivity<ActivityDebugFeedbackBinding, DeviceM
             PermissionUtils.PERMISSION_GROUP_SDCARD
         ) {
             val zipFilePath = getExternalFilesDir("logZip")?.absolutePath + File.separator +
-                    "Infowear_log_" + System.currentTimeMillis() + ".zip"
+                    "Xzfit_log_" + System.currentTimeMillis() + ".zip"
             val logDirs = arrayListOf<String>()
             getExternalFilesDir("log")?.absolutePath?.let {
                 logDirs.add(it)

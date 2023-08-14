@@ -36,7 +36,7 @@ class StravaWebLoginActivity : BaseActivity<ActivityStravaLoginBinding, BaseView
         if (intent != null) {
             val schemeUri = intent.data
             if (schemeUri != null) {
-                if (schemeUri.toString().startsWith(StravaManager.INFOWEAR_SCHEME_URL)) {
+                if (schemeUri.toString().startsWith(StravaManager.XZFIT_SCHEME_URL)) {
                     val code = schemeUri.getQueryParameter("code")
                     val resultIntent = Intent()
                     if (!TextUtils.isEmpty(code)) {

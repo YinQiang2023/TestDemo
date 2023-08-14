@@ -29,8 +29,8 @@ android {
         applicationId "com.smartwear.xzfit"
         minSdk 21
         targetSdk 31
-        versionCode 61
-        versionName "6.1.0" //versionName X.Y.Z ---> XY=“versionCode”X十位Y个位,Z=正式版本0，测试版本1..累加
+        versionCode 62
+        versionName "6.2.0" //versionName X.Y.Z ---> XY=“versionCode”X十位Y个位,Z=正式版本0，测试版本1..累加
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {

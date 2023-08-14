@@ -99,6 +99,9 @@ object DevSportManager {
                     ), DeviceSettingBean::class.java
                 )
             }
+            EventAction.ACTION_DEV_SPORT_PERMISSION->{
+                sendSportResponseBean()
+            }
         }
     }
 

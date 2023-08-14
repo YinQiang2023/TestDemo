@@ -83,7 +83,7 @@
         <item name="scheme_text_color">@color/color_878787</item>
         <item name="scheme_theme_color">@color/color_878787</item>
         <item name="selected_lunar_text_color">#CFCFCF</item>
-        <item name="selected_text_color">@color/color_FFFFFF</item>
+        <item name="selected_text_color">@color/color_878787</item>
         <item name="selected_theme_color">@color/app_index_color</item>
         <item name="week_background">@color/transparent</item>
         <item name="week_text_color">@color/color_878787</item>

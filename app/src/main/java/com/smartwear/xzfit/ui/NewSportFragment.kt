@@ -23,6 +23,7 @@ import com.smartwear.xzfit.utils.AppUtils
 import com.smartwear.xzfit.utils.SpUtils
 import com.smartwear.xzfit.utils.manager.AppTrackingManager
 import com.smartwear.xzfit.viewmodel.SportModel
+import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
@@ -44,6 +45,9 @@ class NewSportFragment : BaseFragment<NewSportFragmentBinding, SportModel>(
 
     //分钟变化数
     private var minuteChange = 0
+
+    //是否设备请求辅助运动无权限
+    private var isDevRequestPer = false
 
 
     override fun setTitleId(): Int {
@@ -216,6 +220,7 @@ class NewSportFragment : BaseFragment<NewSportFragmentBinding, SportModel>(
     public fun refMap(event: EventMessage) {
         //设备辅助运动无权限
         if (event.action == EventAction.ACTION_DEV_SPORT_NO_PERMISSION) {
+            isDevRequestPer = true
             showDeviceSportNoPermissionHint()
         }
         //设备辅助运动未开GPS
@@ -311,7 +316,6 @@ class NewSportFragment : BaseFragment<NewSportFragmentBinding, SportModel>(
      * 检查权限
      * */
     fun requestPermissions() {
-
         com.smartwear.xzfit.utils.PermissionUtils.requestPermissions(
             this.lifecycle,
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) getString(R.string.permission_location_12) else getString(R.string.permission_location),
@@ -320,6 +324,10 @@ class NewSportFragment : BaseFragment<NewSportFragmentBinding, SportModel>(
             //获取定位
             getLocation()
             checkQLocationPermission()
+            if(isDevRequestPer){
+                isDevRequestPer = false
+                EventBus.getDefault().post(EventMessage(EventAction.ACTION_DEV_SPORT_PERMISSION))
+            }
         }
     }
 
@@ -389,7 +397,9 @@ class NewSportFragment : BaseFragment<NewSportFragmentBinding, SportModel>(
                     requestPermissions()
                 }
 
-                override fun OnCancel() {}
+                override fun OnCancel() {
+                    isDevRequestPer = false
+                }
             }
         ).show()
     }

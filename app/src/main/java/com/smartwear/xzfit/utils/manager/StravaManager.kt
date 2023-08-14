@@ -54,7 +54,7 @@ object StravaManager {
     private const val APP_LOGIN_URL = "https://www.strava.com/oauth/mobile/authorize"
 
     //InfoWear scheme uri
-    const val INFOWEAR_SCHEME_URL = "infowear://wearheart"
+    const val XZFIT_SCHEME_URL = "xzfit://wearheart"
 
     //web登录url
     private var STRAVA_WBE_LOGIN_URL = "http://www.strava.com/oauth/authorize?client_id=" +
@@ -126,7 +126,7 @@ object StravaManager {
                 val intentUri = Uri.parse(APP_LOGIN_URL)
                     .buildUpon()
                     .appendQueryParameter("client_id", STRAVA_CLIENT_ID)
-                    .appendQueryParameter("redirect_uri", INFOWEAR_SCHEME_URL)
+                    .appendQueryParameter("redirect_uri", XZFIT_SCHEME_URL)
                     .appendQueryParameter("response_type", "code")
                     .appendQueryParameter("approval_prompt", "auto")
                     .appendQueryParameter("scope", "activity:write,read_all")

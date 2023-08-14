@@ -77,7 +77,7 @@ public class HttpLog {
         String oldLog = FileIOUtils.readFile2String(logFile);
         if (TextUtils.isEmpty(oldLog)) {
             StringBuffer buffer = new StringBuffer();
-            buffer.append("INFOWEAR HTTP LOG");
+            buffer.append("XZFIT HTTP LOG");
             buffer.append("\r\n");
             buffer.append("appVersion ----> ");
             buffer.append(AppUtils.getAppVersionName());

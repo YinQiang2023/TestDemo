@@ -2,6 +2,7 @@ package com.smartwear.xzfit.ui.view
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import com.haibin.calendarview.Calendar
@@ -52,7 +53,8 @@ class WomenHealthMonthView(private val my_contex: Context) : MonthView(my_contex
         val str = calendar.scheme
         val text_color = Global.getTextColor(str)
         mSchemeTextPaint.color = resources.getColor(text_color)
-        mCurDayTextPaint.color = resources.getColor(text_color)
+        //今天日期颜色
+        mCurDayTextPaint.color = Color.parseColor("#000000")
         if (hasScheme) {
             canvas.drawText(
                 calendar.day.toString(),

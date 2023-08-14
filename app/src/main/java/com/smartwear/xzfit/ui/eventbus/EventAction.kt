@@ -134,6 +134,9 @@ object EventAction {
     //SIFLI 无可用服务
     const val ACTION_SIFLI_WITHOUT_SERVICE = "ACTION_SIFLI_FACE_PROGRESS"
 
+    //设备请求辅助运动权限允许
+    const val ACTION_DEV_SPORT_PERMISSION = "ACTION_DEV_SPORT_PERMISSION"
+
 
 
 
