@@ -1278,6 +1278,7 @@
     <string name="watch_face_fai">Watch face installation failed</string>
     <string name="watch_face_verify_fai">Dial installation verification failed</string>
     <string name="low_storage_tips">The memory is full, please delete and synchronize</string>
+    <string name="notification_13_permission_hint">Notification</string>
     <!-- 默认-英语 -->
 
     <!-- 通知推送屏蔽内容-->
@@ -1301,6 +1302,8 @@
     <string name="notiface_snapchat_no_prompt3">正在更新消息...</string>
     <string name="notiface_snapchat_no_prompt4">正在更新消息…</string>
     <string name="notiface_icq_no_prompt_1">条新讯息</string>
+    <string name="notiface_waths_no_prompt_1">条新消息</string>
+    <string name="notiface_waths_no_prompt_2">new messages</string>
     <!--  公用不翻译  -->
     <string name="main_app_name">XzFit</string>
     <string name="no_data_sign">--</string>

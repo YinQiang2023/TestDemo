@@ -137,6 +137,9 @@ object EventAction {
     //设备请求辅助运动权限允许
     const val ACTION_DEV_SPORT_PERMISSION = "ACTION_DEV_SPORT_PERMISSION"
 
+    //权限被拒绝
+    const val ACTION_PERMISSION_DENIED = "ACTION_PERMISSION_DENIED"
+
 
 
 

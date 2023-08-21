@@ -7,6 +7,7 @@ import android.text.format.DateFormat
 import androidx.lifecycle.MutableLiveData
 import com.alibaba.fastjson.JSON
 import com.blankj.utilcode.util.FileUtils
+import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.ThreadUtils
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
@@ -398,18 +399,20 @@ class DailyModel : BaseViewModel() {
     //查询未上传的日常数据并上传
     suspend fun queryUnUploadDailyData(isSend: Boolean): MutableList<Daily> {
         return suspendCancellableCoroutine<MutableList<Daily>> {
-            var list: MutableList<Daily>? = null
-            list = LitePal.where(
-                "isUpLoad = 0 and userId = ?",
-                SpUtils.getValue(SpUtils.USER_ID, "")
-            ).limit(10).find(Daily::class.java)
-            if (list == null) list = mutableListOf()
-            if (isSend) {
-                if (list!!.size > 0) {
-                    upLoadDaily(list!!)
+            synchronized(DailyModel::class.java) {
+                var list: MutableList<Daily>? = null
+                list = LitePal.where(
+                    "isUpLoad = 0 and userId = ?",
+                    SpUtils.getValue(SpUtils.USER_ID, "")
+                ).limit(10).find(Daily::class.java)
+                if (list == null) list = mutableListOf()
+                if (isSend) {
+                    if (list!!.size > 0) {
+                        upLoadDaily(list!!)
+                    }
                 }
+                it.resume(list)
             }
-            it.resume(list)
         }
     }
     //endregion
@@ -550,15 +553,17 @@ class DailyModel : BaseViewModel() {
 
     suspend fun queryUnUploadSleepData(isSend: Boolean): MutableList<Sleep> {
         return suspendCancellableCoroutine<MutableList<Sleep>> {
-            var list: MutableList<Sleep>? = null
-            list = LitePal.where("isUpLoad = 0 and userId = ?", SpUtils.getValue(SpUtils.USER_ID, "")).limit(10).find(Sleep::class.java)
-            if (list == null) list = mutableListOf()
-            if (isSend) {
-                if (list.size > 0) {
-                    upLoadSleep(list)
+            synchronized(DailyModel::class.java) {
+                var list: MutableList<Sleep>? = null
+                list = LitePal.where("isUpLoad = 0 and userId = ?", SpUtils.getValue(SpUtils.USER_ID, "")).limit(10).find(Sleep::class.java)
+                if (list == null) list = mutableListOf()
+                if (isSend) {
+                    if (list.size > 0) {
+                        upLoadSleep(list)
+                    }
                 }
+                it.resume(list)
             }
-            it.resume(list)
         }
     }
 
@@ -826,18 +831,20 @@ class DailyModel : BaseViewModel() {
 
     suspend fun queryUnUploadHeartRate(isSend: Boolean): MutableList<HeartRate> {
         return suspendCancellableCoroutine<MutableList<HeartRate>> {
-            var list: MutableList<HeartRate>? = null
-            list = LitePal.where(
-                "isUpLoad = 0 and userId = ?",
-                SpUtils.getValue(SpUtils.USER_ID, "")
-            ).limit(10).find(HeartRate::class.java)
-            if (list == null) list = mutableListOf()
-            if (isSend) {
-                if (list.size > 0) {
-                    upLoadHeartRate(list)
+            synchronized(DailyModel::class.java) {
+                var list: MutableList<HeartRate>? = null
+                list = LitePal.where(
+                    "isUpLoad = 0 and userId = ?",
+                    SpUtils.getValue(SpUtils.USER_ID, "")
+                ).limit(10).find(HeartRate::class.java)
+                if (list == null) list = mutableListOf()
+                if (isSend) {
+                    if (list.size > 0) {
+                        upLoadHeartRate(list)
+                    }
                 }
+                it.resume(list)
             }
-            it.resume(list)
         }
     }
     //endregion
@@ -849,6 +856,8 @@ class DailyModel : BaseViewModel() {
             LogUtils.i(TAG, "saveSingleHeartRateData --> ${data.toString()}")
             val userId = SpUtils.getValue(SpUtils.USER_ID, "")
             val list = mutableListOf<SingleHeartRate>()
+            //去重
+            data.list = data.list.distinct()
             for (i in data.list.indices) {
                 val bean = SingleHeartRate()
                 bean.userId = userId
@@ -856,23 +865,10 @@ class DailyModel : BaseViewModel() {
                     "userId = ? and measureTimestamp = ?",
                     userId, data.list[i].measureTimestamp.toString()
                 ).find(SingleHeartRate::class.java)
-                val value = data.list[i].measureData.toString()
                 if (findData.size > 0) {
-                    var isCanSave = true
                     for (oldItem in findData) {
-                        if (oldItem.singleHeartRateData == value) {
-                            if (oldItem.isUpLoad) {
-                                //如果旧数据已经上传，则保留旧数据，此条放弃
-                                isCanSave = false
-                                break
-                            } else {
-                                //如果旧数据未上传，则使用新数据
-                                oldItem.delete()
-                            }
-                        }
-                    }
-                    if (!isCanSave) {
-                        break //此条放弃
+                        //只要用户id 测试时间一致，就把旧数据移除
+                        oldItem.delete()
                     }
                 }
                 bean.singleHeartRateData = data.list[i].measureData.toString()
@@ -971,7 +967,16 @@ class DailyModel : BaseViewModel() {
                         bean.deviceSyncTimestamp = list[i].timeStamp.toString()
                         bean.measureData = list[i].singleHeartRateData
                         bean.measureTime = list[i].measureTimestamp
-                        dataList.dataList.add(bean)
+                        //如果存在测试数据测量时间一致的数据则不上报,并移除
+                        var isCanAdd = true
+                        val old = dataList.dataList.find { it.measureData == bean.measureData && it.measureTime == bean.measureTime }
+                        if(old != null) {
+                            isCanAdd = false
+                            list[i].delete()
+                        }
+                        if(isCanAdd) {
+                            dataList.dataList.add(bean)
+                        }
                     }
                     trackingLog.serReqJson = AppUtils.toSimpleJsonString(dataList)
                     val result = MyRetrofitClient.service.upLoadSingleHeartRateData(
@@ -1012,12 +1017,14 @@ class DailyModel : BaseViewModel() {
 
     fun queryUnUploadSingleHeartRate() {
         launchUI {
-            val list = LitePal.where(
-                "isUpLoad = 0 and userId = ?",
-                SpUtils.getValue(SpUtils.USER_ID, "")
-            ).limit(10).find(SingleHeartRate::class.java)
-            if (list.size > 0) {
-                upLoadSingleHeartRate(list)
+            synchronized(DailyModel::class.java) {
+                val list = LitePal.where(
+                    "isUpLoad = 0 and userId = ?",
+                    SpUtils.getValue(SpUtils.USER_ID, "")
+                ).limit(10).find(SingleHeartRate::class.java)
+                if (list.size > 0) {
+                    upLoadSingleHeartRate(list)
+                }
             }
         }
     }
@@ -1209,18 +1216,20 @@ class DailyModel : BaseViewModel() {
 
     suspend fun queryUnUploadBloodOxygen(isSend: Boolean): MutableList<BloodOxygen> {
         return suspendCancellableCoroutine<MutableList<BloodOxygen>> {
-            var list: MutableList<BloodOxygen>? = null
-            list = LitePal.where(
-                "isUpLoad = 0 and userId = ?",
-                SpUtils.getValue(SpUtils.USER_ID, "")
-            ).limit(10).find(BloodOxygen::class.java)
-            if (list == null) list = mutableListOf()
-            if (isSend) {
-                if (list.size > 0) {
-                    upLoadBloodOxygen(list)
+            synchronized(DailyModel::class.java) {
+                var list: MutableList<BloodOxygen>? = null
+                list = LitePal.where(
+                    "isUpLoad = 0 and userId = ?",
+                    SpUtils.getValue(SpUtils.USER_ID, "")
+                ).limit(10).find(BloodOxygen::class.java)
+                if (list == null) list = mutableListOf()
+                if (isSend) {
+                    if (list.size > 0) {
+                        upLoadBloodOxygen(list)
+                    }
                 }
+                it.resume(list)
             }
-            it.resume(list)
         }
     }
     //endregion
@@ -1234,7 +1243,8 @@ class DailyModel : BaseViewModel() {
 
             val listTemp = mutableListOf<SingleBloodOxygen>()
             val list = mutableListOf<SingleBloodOxygen>()
-
+            //去重
+            data.list = data.list.distinct()
             for (i in data.list.indices) {
                 val bean = SingleBloodOxygen()
                 bean.userId = userId
@@ -1242,23 +1252,10 @@ class DailyModel : BaseViewModel() {
                     "userId = ? and measureTimestamp = ?",
                     userId, (data.list[i].measureTimestamp.toLong() * 1000).toString()
                 ).find(SingleBloodOxygen::class.java)
-                val value = data.list[i].measureData.toString()
                 if (findData.size > 0) {
-                    var isCanSave = true
                     for (oldItem in findData) {
-                        if (oldItem.singleBloodOxygenData == value) {
-                            if (oldItem.isUpLoad) {
-                                //如果旧数据已经上传，则保留旧数据，此条放弃
-                                isCanSave = false
-                                break
-                            } else {
-                                //如果旧数据未上传，则使用新数据
-                                oldItem.delete()
-                            }
-                        }
-                    }
-                    if (!isCanSave) {
-                        break //此条放弃
+                        //只要用户id 测试时间一致，就把旧数据移除
+                        oldItem.delete()
                     }
                 }
                 bean.singleBloodOxygenData = data.list[i].measureData.toString()
@@ -1365,7 +1362,16 @@ class DailyModel : BaseViewModel() {
                         bean.deviceSyncTimestamp = list[i].timeStamp.toString()
                         bean.measureData = list[i].singleBloodOxygenData
                         bean.measureTime = DateUtils.getStringDate(list[i].measureTimestamp.trim().toLong(), DateUtils.TIME_YYYY_MM_DD_HHMMSS)
-                        dataList.dataList.add(bean)
+                        //如果存在测试数据测量时间一致的数据则不上报,并移除
+                        var isCanAdd = true
+                        val old = dataList.dataList.find { it.measureData == bean.measureData && it.measureTime == bean.measureTime }
+                        if(old != null) {
+                            isCanAdd = false
+                            list[i].delete()
+                        }
+                        if(isCanAdd) {
+                            dataList.dataList.add(bean)
+                        }
                     }
                     LogUtils.i(TAG, "upLoadSingleBloodOxygen dataList = ${AppUtils.toSimpleJsonString(dataList)}")
                     trackingLog.serReqJson = AppUtils.toSimpleJsonString(dataList)
@@ -1407,18 +1413,20 @@ class DailyModel : BaseViewModel() {
 
     suspend fun queryUnUploadSingleBloodOxygen(isSend: Boolean): MutableList<SingleBloodOxygen> {
         return suspendCancellableCoroutine<MutableList<SingleBloodOxygen>> {
-            var list: MutableList<SingleBloodOxygen>? = null
-            list = LitePal.where(
-                "isUpLoad = 0 and userId = ?",
-                SpUtils.getValue(SpUtils.USER_ID, "")
-            ).limit(30).find(SingleBloodOxygen::class.java)
-            if (list == null) list = mutableListOf()
-            if (isSend) {
-                if (list.size > 0) {
-                    upLoadSingleBloodOxygen(list)
+            synchronized(DailyModel::class.java) {
+                var list: MutableList<SingleBloodOxygen>? = null
+                list = LitePal.where(
+                    "isUpLoad = 0 and userId = ?",
+                    SpUtils.getValue(SpUtils.USER_ID, "")
+                ).limit(30).find(SingleBloodOxygen::class.java)
+                if (list == null) list = mutableListOf()
+                if (isSend) {
+                    if (list.size > 0) {
+                        upLoadSingleBloodOxygen(list)
+                    }
                 }
+                it.resume(list)
             }
-            it.resume(list)
         }
     }
     //endregion
@@ -1641,18 +1649,20 @@ class DailyModel : BaseViewModel() {
 
     suspend fun queryUnUploadPressure(isSend: Boolean): MutableList<Pressure> {
         return suspendCancellableCoroutine<MutableList<Pressure>> {
-            var list: MutableList<Pressure>? = null
-            list = LitePal.where(
-                "isUpLoad = 0 and userId = ?",
-                SpUtils.getValue(SpUtils.USER_ID, "")
-            ).limit(10).find(Pressure::class.java)
-            if (list == null) list = mutableListOf()
-            if (isSend) {
-                if (list.size > 0) {
-                    upLoadPressure(list)
+            synchronized(DailyModel::class.java) {
+                var list: MutableList<Pressure>? = null
+                list = LitePal.where(
+                    "isUpLoad = 0 and userId = ?",
+                    SpUtils.getValue(SpUtils.USER_ID, "")
+                ).limit(10).find(Pressure::class.java)
+                if (list == null) list = mutableListOf()
+                if (isSend) {
+                    if (list.size > 0) {
+                        upLoadPressure(list)
+                    }
                 }
+                it.resume(list)
             }
-            it.resume(list)
         }
     }
     //endregion
@@ -1666,7 +1676,8 @@ class DailyModel : BaseViewModel() {
             val userId = SpUtils.getValue(SpUtils.USER_ID, "")
             val listTemp = mutableListOf<SinglePressure>()
             val list = mutableListOf<SinglePressure>()
-
+            //去重
+            data.list = data.list.distinct()
             for (i in data.list.indices) {
                 val bean = SinglePressure()
                 bean.userId = userId
@@ -1674,23 +1685,10 @@ class DailyModel : BaseViewModel() {
                     "userId = ? and measureTimestamp = ?",
                     userId, (data.list[i].measureTimestamp.toLong() * 1000).toString()
                 ).find(SinglePressure::class.java)
-                val value = data.list[i].measureData.toString()
                 if (findData.size > 0) {
-                    var isCanSave = true
                     for (oldItem in findData) {
-                        if (oldItem.singlePressureData == value) {
-                            if (oldItem.isUpLoad) {
-                                //如果旧数据已经上传，则保留旧数据，此条放弃
-                                isCanSave = false
-                                break
-                            } else {
-                                //如果旧数据未上传，则使用新数据
-                                oldItem.delete()
-                            }
-                        }
-                    }
-                    if (!isCanSave) {
-                        break //此条放弃
+                        //只要用户id 测试时间一致，就把旧数据移除
+                        oldItem.delete()
                     }
                 }
                 bean.singlePressureData = data.list[i].measureData.toString()
@@ -1746,6 +1744,7 @@ class DailyModel : BaseViewModel() {
         launchUI {
             val trackingLog = TrackingLog.getSerTypeTrack("日常数据上传服务器", "压力单次测量 批量上传", "infowear/pressureMeasure/bulk")
             try {
+                trackingLog.log = GsonUtils.toJson(list)
                 val userId = SpUtils.getValue(SpUtils.USER_ID, "")
                 if (userId.isNotEmpty()) {
                     val dataList = UpLoadSinglePressureBean()
@@ -1756,15 +1755,29 @@ class DailyModel : BaseViewModel() {
                     }
                     LogUtils.i(TAG, "upLoadSinglePressure list = ${list.toTypedArray().contentToString()}")
                     for (i in 0 until lenght) {
-                        val bean = UpLoadSinglePressureBean.Data()
-                        bean.userId = userId
-                        bean.deviceType = list[i].deviceType
-                        bean.deviceMac = list[i].deviceMac
-                        bean.deviceVersion = list[i].deviceVersion
-                        bean.deviceSyncTimestamp = list[i].timeStamp.toString()
-                        bean.measureData = list[i].singlePressureData
-                        bean.measureTime = DateUtils.getStringDate(list[i].measureTimestamp.trim().toLong(), DateUtils.TIME_YYYY_MM_DD_HHMMSS)
-                        dataList.dataList.add(bean)
+                        try {
+                            val bean = UpLoadSinglePressureBean.Data()
+                            bean.userId = userId
+                            bean.deviceType = list[i].deviceType
+                            bean.deviceMac = list[i].deviceMac
+                            bean.deviceVersion = list[i].deviceVersion
+                            bean.deviceSyncTimestamp = list[i].timeStamp.toString()
+                            bean.measureData = list[i].singlePressureData
+                            //java.lang.NumberFormatException: For input string TODO
+                            bean.measureTime = DateUtils.getStringDate(list[i].measureTimestamp.trim().toLong(), DateUtils.TIME_YYYY_MM_DD_HHMMSS)
+                            //如果存在测试数据测量时间一致的数据则不上报,并移除
+                            var isCanAdd = true
+                            val old = dataList.dataList.find { it.measureData == bean.measureData && it.measureTime == bean.measureTime }
+                            if(old != null) {
+                                isCanAdd = false
+                                list[i].delete()
+                            }
+                            if(isCanAdd) {
+                                dataList.dataList.add(bean)
+                            }
+                        } catch (e: NumberFormatException) {
+                            e.printStackTrace()
+                        }
                     }
                     trackingLog.serReqJson = AppUtils.toSimpleJsonString(dataList)
                     LogUtils.i(TAG, "upLoadSinglePressure dataList = ${dataList.dataList.toTypedArray().contentToString()}")
@@ -1806,18 +1819,20 @@ class DailyModel : BaseViewModel() {
 
     suspend fun queryUnUploadSinglePressure(isSend: Boolean): MutableList<SinglePressure> {
         return suspendCancellableCoroutine<MutableList<SinglePressure>> {
-            var list: MutableList<SinglePressure>? = null
-            list = LitePal.where(
-                "isUpLoad = 0 and userId = ?",
-                SpUtils.getValue(SpUtils.USER_ID, "")
-            ).limit(30).find(SinglePressure::class.java)
-            if (list == null) list = mutableListOf()
-            if (isSend) {
-                if (list.size > 0) {
-                    upLoadSinglePressure(list)
+            synchronized(DailyModel::class.java) {
+                var list: MutableList<SinglePressure>? = null
+                list = LitePal.where(
+                    "isUpLoad = 0 and userId = ?",
+                    SpUtils.getValue(SpUtils.USER_ID, "")
+                ).limit(30).find(SinglePressure::class.java)
+                if (list == null) list = mutableListOf()
+                if (isSend) {
+                    if (list.size > 0) {
+                        upLoadSinglePressure(list)
+                    }
                 }
+                it.resume(list)
             }
-            it.resume(list)
         }
     }
     //endregion
@@ -2000,18 +2015,20 @@ class DailyModel : BaseViewModel() {
 
     suspend fun queryUnUploadEffectiveStand(isSend: Boolean): MutableList<EffectiveStand> {
         return suspendCancellableCoroutine<MutableList<EffectiveStand>> {
-            var list: MutableList<EffectiveStand>? = null
-            list = LitePal.where(
-                "isUpLoad = 0 and userId = ?",
-                SpUtils.getValue(SpUtils.USER_ID, "")
-            ).limit(10).find(EffectiveStand::class.java)
-            if (list == null) list = mutableListOf()
-            if (isSend) {
-                if (list.size > 0) {
-                    upLoadEffectiveStand(list)
+            synchronized(DailyModel::class.java) {
+                var list: MutableList<EffectiveStand>? = null
+                list = LitePal.where(
+                    "isUpLoad = 0 and userId = ?",
+                    SpUtils.getValue(SpUtils.USER_ID, "")
+                ).limit(10).find(EffectiveStand::class.java)
+                if (list == null) list = mutableListOf()
+                if (isSend) {
+                    if (list.size > 0) {
+                        upLoadEffectiveStand(list)
+                    }
                 }
+                it.resume(list)
             }
-            it.resume(list)
         }
     }
     //endregion
@@ -2095,6 +2112,7 @@ class DailyModel : BaseViewModel() {
                             }
                         }
                     }
+
                     else -> {
                         val stepPosition =
                             Global.healthyItemList.indexOfFirst { it.topTitleText == BaseApplication.mContext.getString(R.string.healthy_sports_list_step) }
@@ -2152,6 +2170,7 @@ class DailyModel : BaseViewModel() {
                             }
                         }
                     }
+
                     else -> {
                         val position =
                             Global.healthyItemList.indexOfFirst { it.topTitleText == BaseApplication.mContext.getString(R.string.healthy_sports_list_sleep) }
@@ -2198,6 +2217,7 @@ class DailyModel : BaseViewModel() {
                             }
                         }
                     }
+
                     else -> {
                         val position =
                             Global.healthyItemList.indexOfFirst { it.topTitleText == BaseApplication.mContext.getString(R.string.healthy_sports_list_heart) }
@@ -2242,6 +2262,7 @@ class DailyModel : BaseViewModel() {
                             }
                         }
                     }
+
                     else -> {
                         val position =
                             Global.healthyItemList.indexOfFirst { it.topTitleText == BaseApplication.mContext.getString(R.string.healthy_sports_list_blood_oxygen) }
@@ -2284,6 +2305,7 @@ class DailyModel : BaseViewModel() {
                             Global.healthyItemList[position].context = result.data.measureData
                         }
                     }
+
                     else -> {
                         val position = Global.healthyItemList.indexOfFirst {
                             it.topTitleText == BaseApplication.mContext.getString(R.string.healthy_sports_list_blood_oxygen)
@@ -2338,6 +2360,7 @@ class DailyModel : BaseViewModel() {
                             }
                         }
                     }
+
                     else -> {
                         val position =
                             Global.healthyItemList.indexOfFirst { it.topTitleText == BaseApplication.mContext.getString(R.string.healthy_sports_list_effective_stand) }
@@ -2382,6 +2405,7 @@ class DailyModel : BaseViewModel() {
                                 Global.healthyItemList[position].context = result.data.measureData
                             }
                         }
+
                         else -> {
                             val position =
                                 Global.healthyItemList.indexOfFirst { it.topTitleText == BaseApplication.mContext.getString(R.string.healthy_pressure_title) }
@@ -2428,6 +2452,7 @@ class DailyModel : BaseViewModel() {
                                 }
                             }
                         }
+
                         else -> {
                             val position =
                                 Global.healthyItemList.indexOfFirst { it.topTitleText == BaseApplication.mContext.getString(R.string.healthy_pressure_title) }
@@ -2537,7 +2562,7 @@ class DailyModel : BaseViewModel() {
         if (isSaveDeviceIconIng) return
         isSaveDeviceIconIng = true
 
-        GlideApp.with(BaseApplication.mContext).load(homeLogo).into(object :CustomTarget<Drawable>(){
+        GlideApp.with(BaseApplication.mContext).load(homeLogo).into(object : CustomTarget<Drawable>() {
             override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
                 val bitmapDrawable: BitmapDrawable = resource as BitmapDrawable
                 val bitmap: Bitmap = bitmapDrawable.bitmap

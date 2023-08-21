@@ -37,17 +37,17 @@ class SportCountDownActivity : BaseActivity<ActivitySportCountDownBinding, Sport
         mAnimationSet.interpolator = LinearInterpolator()
 
         mAnListener = object : Animator.AnimatorListener {
-            override fun onAnimationStart(animation: Animator?) {}
+            override fun onAnimationStart(animation: Animator) {}
 
-            override fun onAnimationEnd(animation: Animator?) {
+            override fun onAnimationEnd(animation: Animator) {
                 viewModel.sportLiveData.resetTempData()
                 finish()
                 startActivity(Intent(this@SportCountDownActivity, MapSportActivity::class.java))
             }
 
-            override fun onAnimationCancel(animation: Animator?) {}
+            override fun onAnimationCancel(animation: Animator) {}
 
-            override fun onAnimationRepeat(animation: Animator?) {}
+            override fun onAnimationRepeat(animation: Animator) {}
 
         }
         //endregion

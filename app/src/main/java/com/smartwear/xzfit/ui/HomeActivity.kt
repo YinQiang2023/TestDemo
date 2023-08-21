@@ -1,5 +1,6 @@
 package com.smartwear.xzfit.ui
 
+import android.Manifest
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Build
@@ -10,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.blankj.utilcode.util.*
+import com.blankj.utilcode.util.LogUtils
 import com.zhapp.ble.ControlBleTools
 import com.zhapp.ble.ThemeManager
 import com.zhapp.ble.callback.CallBackUtils
@@ -26,15 +28,20 @@ import com.smartwear.xzfit.service.LocationService
 import com.smartwear.xzfit.service.MyNotificationsService
 import com.smartwear.xzfit.ui.adapter.FragmentAdapter
 import com.smartwear.xzfit.ui.data.Global
+import com.smartwear.xzfit.ui.eventbus.EventAction
+import com.smartwear.xzfit.ui.eventbus.EventMessage
 import com.smartwear.xzfit.ui.user.AppUpdateManager
 import com.smartwear.xzfit.ui.user.UpdateInfoService
 import com.smartwear.xzfit.utils.*
 import com.smartwear.xzfit.utils.AppUtils
+import com.smartwear.xzfit.utils.PermissionUtils
 import com.smartwear.xzfit.utils.ToastUtils
 import com.smartwear.xzfit.utils.manager.AppTrackingManager
 import com.smartwear.xzfit.utils.manager.GoogleFitManager
 import com.smartwear.xzfit.viewmodel.DeviceModel
 import com.smartwear.xzfit.viewmodel.UserModel
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 /**
  * 首页
@@ -94,12 +101,15 @@ class HomeActivity : BaseActivity<HomeActivityBinding, UserModel>(
                 R.id.radioButton1 -> {
                     updateUi(0)
                 }
+
                 R.id.radioButton2 -> {
                     updateUi(1)
                 }
+
                 R.id.radioButton3 -> {
                     updateUi(2)
                 }
+
                 R.id.radioButton4 -> {
                     updateUi(3)
                 }
@@ -110,6 +120,7 @@ class HomeActivity : BaseActivity<HomeActivityBinding, UserModel>(
 
     override fun initData() {
         super.initData()
+        AppUtils.registerEventBus(this)
         //获取设备语言
         Global.getDevLanguage()
         //获取设备产品列表
@@ -166,33 +177,82 @@ class HomeActivity : BaseActivity<HomeActivityBinding, UserModel>(
      * 通知使用权
      */
     fun areNotificationsEnabled() {
-        if (!NotificationUtils.areNotificationsEnabled(this)) {
-            val msg = StringBuilder()
-            msg.append(getString(R.string.notification_permission_hint))
-            DialogUtils.showDialogTitleAndOneButton(
-                this,
-                getString(R.string.apply_permission),
-                msg.toString(),
-                getString(R.string.know),
-                object : DialogUtils.DialogClickListener {
-                    override fun OnOK() {
-                        NotificationUtils.goToSetNotification(
-                            this@HomeActivity,
-                            SET_NOTIFICATION_REQUEST_CODE
-                        )
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { //Android 13 通知使用权运动时权限申请
+            if (!PermissionUtils.checkPermissions(*PermissionUtils.PERMISSION_NOTIF13)) {
+                PermissionUtils.checkRequestPermissions(
+                    lifecycle,
+                    getString(R.string.notification_13_permission_hint),
+                    PermissionUtils.PERMISSION_NOTIF13
+                ) {
+                    //通知使用权限
+                    areNotificationsEnabled()
+
+                    if (NotificationUtils.areNotificationsEnabled(this)) {
+                        //重启蓝牙服务重启app通知
+                        if (AppUtils.isOpenBluetooth()) {
+                            com.smartwear.xzfit.utils.LogUtils.e("sdk release", "Notification permission authorization")
+                            ControlBleTools.getInstance().release()
+                            BaseApplication.application.initControlBleTools(BaseApplication.mContext)
+                        }
+                        //重启定位服务
+                        LocationService.initLocationService(BaseApplication.mContext)
                     }
 
-                    override fun OnCancel() {
-                        NotificationUtils.goToSetNotification(
-                            this@HomeActivity,
-                            SET_NOTIFICATION_REQUEST_CODE
-                        )
-                    }
-                })
+                }
+                return
+            }
+        }
+        if (!NotificationUtils.areNotificationsEnabled(this)) {
+            showSetNotificationDialog()
         } else {
             //通知访问权限
             if (MyNotificationsService.checkNotificationIsEnable(this, NOTIFICATION_ENABLE_REQUEST_CODE)) {
                 firstConnect()
+            }
+        }
+    }
+
+    /**
+     * 通知使用权设置提示弹窗
+     */
+    private fun showSetNotificationDialog() {
+        LogUtils.d("showSetNotificationDialog")
+        val msg = StringBuilder()
+        msg.append(getString(R.string.notification_permission_hint))
+        DialogUtils.showDialogTitleAndOneButton(
+            this,
+            getString(R.string.apply_permission),
+            msg.toString(),
+            getString(R.string.know),
+            object : DialogUtils.DialogClickListener {
+                override fun OnOK() {
+                    NotificationUtils.goToSetNotification(
+                        this@HomeActivity,
+                        SET_NOTIFICATION_REQUEST_CODE
+                    )
+                }
+
+                override fun OnCancel() {
+                    NotificationUtils.goToSetNotification(
+                        this@HomeActivity,
+                        SET_NOTIFICATION_REQUEST_CODE
+                    )
+                }
+            })
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onEventMsg(event: EventMessage) {
+        when (event.action) {
+            //权限被拒绝
+            EventAction.ACTION_PERMISSION_DENIED -> {
+                val deniedBean = event.obj as PermissionUtils.DeniedBean
+                if (!deniedBean.deniedForever.contains(Manifest.permission.POST_NOTIFICATIONS) &&
+                    deniedBean.denied.contains(Manifest.permission.POST_NOTIFICATIONS)
+                ) {
+                    //通知权限拒绝且可以允许申请
+                    showSetNotificationDialog()
+                }
             }
         }
     }
@@ -226,17 +286,17 @@ class HomeActivity : BaseActivity<HomeActivityBinding, UserModel>(
                             appCheckUpdate()
                         }
                     } else {
-                        AppTrackingManager.trackingModule(AppTrackingManager.MODULE_RECONNECT, TrackingLog.getStartTypeTrack("重连"), isStart = true)
+                        /*AppTrackingManager.trackingModule(AppTrackingManager.MODULE_RECONNECT, TrackingLog.getStartTypeTrack("重连"), isStart = true)
                         AppTrackingManager.trackingModule(AppTrackingManager.MODULE_RECONNECT, TrackingLog.getAppTypeTrack("发起连接").apply {
                             log = "connect() name:${SpUtils.getValue(SpUtils.DEVICE_NAME, "")},address:${SpUtils.getValue(SpUtils.DEVICE_MAC, "")}"
                         })
-                        AppTrackingManager.trackingModule(AppTrackingManager.MODULE_RECONNECT, TrackingLog.getAppTypeTrack("系统蓝牙开关被关闭"), "1311", true)
+                        AppTrackingManager.trackingModule(AppTrackingManager.MODULE_RECONNECT, TrackingLog.getAppTypeTrack("系统蓝牙开关被关闭"), "1311", true)*/
                         //蓝牙未开启， 蓝牙开启后由 EventAction.ACTION_BLE_STATUS_CHANGE -> DeviceFragment 处响应并触发连接
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                            com.smartwear.xzfit.utils.PermissionUtils.checkRequestPermissions(
+                            PermissionUtils.checkRequestPermissions(
                                 null,
                                 BaseApplication.mContext.getString(R.string.permission_bluetooth),
-                                com.smartwear.xzfit.utils.PermissionUtils.PERMISSION_BLE12
+                                PermissionUtils.PERMISSION_BLE12
                             ) {
                                 AppUtils.enableBluetooth(this, 0)
                                 //检测app升级
@@ -267,16 +327,16 @@ class HomeActivity : BaseActivity<HomeActivityBinding, UserModel>(
             if (NotificationUtils.areNotificationsEnabled(this)) {
                 //重启蓝牙服务重启app通知
                 if (AppUtils.isOpenBluetooth()) {
-                    com.smartwear.xzfit.utils.LogUtils.e("sdk release","Notification permission authorization")
+                    com.smartwear.xzfit.utils.LogUtils.e("sdk release", "Notification permission authorization")
                     ControlBleTools.getInstance().release()
                     BaseApplication.application.initControlBleTools(BaseApplication.mContext)
                 }
                 //重启定位服务
                 LocationService.initLocationService(BaseApplication.mContext)
-                //获取 访问通知权限
-                if (MyNotificationsService.checkNotificationIsEnable(this, NOTIFICATION_ENABLE_REQUEST_CODE)) {
-                    firstConnect()
-                }
+            }
+            //获取 访问通知权限
+            if (MyNotificationsService.checkNotificationIsEnable(this, NOTIFICATION_ENABLE_REQUEST_CODE)) {
+                firstConnect()
             }
         } else if (requestCode == NOTIFICATION_ENABLE_REQUEST_CODE) {
             firstConnect()
@@ -335,6 +395,7 @@ class HomeActivity : BaseActivity<HomeActivityBinding, UserModel>(
                     )
                 )
             }
+
             1 -> {
                 binding.bottomMenu.bottomMenuImg2.setBackgroundResource(R.mipmap.menu_sport_selected)
                 binding.bottomMenu.bottomMenuText2.setTextColor(
@@ -344,6 +405,7 @@ class HomeActivity : BaseActivity<HomeActivityBinding, UserModel>(
                     )
                 )
             }
+
             2 -> {
                 binding.bottomMenu.bottomMenuImg3.setBackgroundResource(R.mipmap.menu_device_selected)
                 binding.bottomMenu.bottomMenuText3.setTextColor(
@@ -353,6 +415,7 @@ class HomeActivity : BaseActivity<HomeActivityBinding, UserModel>(
                     )
                 )
             }
+
             3 -> {
                 binding.bottomMenu.bottomMenuImg4.setBackgroundResource(R.mipmap.menu_me_selected)
                 binding.bottomMenu.bottomMenuText4.setTextColor(
@@ -379,23 +442,32 @@ class HomeActivity : BaseActivity<HomeActivityBinding, UserModel>(
         try {
             //android.content.ActivityNotFoundException
             //No Activity found to handle Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000000 }
+            //java.lang.SecurityException
+            //Permission Denial: starting Intent { act=android.intent.action.MAIN flg=0x10400000 cmp=com.huawei.android.launcher/.powersavemode.PowerSaveModeLauncher } from ProcessRecord{53f8c84 13883:com.zhapp.infowear/u0a143} (pid=13883, uid=10143) not exported from uid 10063
             ActivityUtils.startHomeActivity()
         } catch (e: ActivityNotFoundException) {
             e.printStackTrace()
+            exitApp()
+        } catch (e: SecurityException) {
+            e.printStackTrace()
+            exitApp()
+        }
+    }
 
-            var mNowTime = System.currentTimeMillis()
-            if (mNowTime - mPressedTime > 2000) {
-                ToastUtils.showToast(R.string.exit_app_tips)
-                mPressedTime = mNowTime
-            } else {
-                com.blankj.utilcode.util.AppUtils.exitApp()
-            }
+    fun exitApp() {
+        var mNowTime = System.currentTimeMillis()
+        if (mNowTime - mPressedTime > 2000) {
+            ToastUtils.showToast(R.string.exit_app_tips)
+            mPressedTime = mNowTime
+        } else {
+            com.blankj.utilcode.util.AppUtils.exitApp()
         }
     }
     //endregion
 
     override fun onDestroy() {
         super.onDestroy()
+        AppUtils.unregisterEventBus(this)
         //手动杀死app / 退出登录 / 重新登录
         AppTrackingManager.saveBehaviorTracking(AppTrackingManager.getNewBehaviorTracking("1", "2"))
 //        //清除sdk内部设备信息

@@ -1278,5 +1278,6 @@
     <string name="watch_face_fai">表盘安装失败</string>
     <string name="watch_face_verify_fai">表盘安装验证失败</string>
     <string name="low_storage_tips">内存已满，请删减后同步</string>
+    <string name="notification_13_permission_hint">通知</string>
     <!-- 中文简体 -->
 </resources>

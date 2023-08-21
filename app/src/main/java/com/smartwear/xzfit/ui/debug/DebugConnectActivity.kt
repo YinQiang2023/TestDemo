@@ -36,14 +36,8 @@ class DebugConnectActivity : BaseActivity<ActivityDebugConnectBinding, DeviceMod
 
     override fun onClick(v: View) {
         if (v.id == binding.btnReset.id) {
-            PermissionUtils.checkRequestPermissions(
-                this.lifecycle, getString(R.string.permission_sdcard),
-                PermissionUtils.PERMISSION_GROUP_SDCARD
-            ) {
-                DebugDevConnectMonitor.resetMonitor()
-                updateUi()
-            }
-
+            DebugDevConnectMonitor.resetMonitor()
+            updateUi()
         }
     }
 

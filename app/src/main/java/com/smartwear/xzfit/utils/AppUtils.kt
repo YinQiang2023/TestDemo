@@ -7,6 +7,7 @@ import android.bluetooth.BluetoothAdapter
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.graphics.Point
@@ -577,6 +578,14 @@ object AppUtils {
     fun biDiFormatterStr(res: String): String {
         return BidiFormatter.getInstance(Locale.getDefault())
             .unicodeWrap(res, TextDirectionHeuristicsCompat.LOCALE)
+    }
+
+    fun closeSilently(cursor: Cursor?) {
+        try {
+            cursor?.close()
+        } catch (t: Throwable) {
+            Log.w("Cursor", "fail to close", t)
+        }
     }
 
 

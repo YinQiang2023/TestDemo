@@ -176,11 +176,7 @@ object AppUpdateManager {
             appUpdateDialog?.dismiss()
             ToastUtils.showToast(R.string.sd_card)
         }*/
-        PermissionUtils.checkRequestPermissions(
-            null,
-            BaseApplication.mContext.getString(R.string.permission_sdcard),
-            PermissionUtils.PERMISSION_GROUP_SDCARD
-        ) {
+
             if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
                 NetworkUtils.isAvailableAsync { isAvailable ->
                     if (!isAvailable) {
@@ -198,7 +194,6 @@ object AppUpdateManager {
                 }
                 ToastUtils.showToast(R.string.sd_card)
             }
-        }
     }
 
     private fun gotoBrowser(context: Context, url: String) {

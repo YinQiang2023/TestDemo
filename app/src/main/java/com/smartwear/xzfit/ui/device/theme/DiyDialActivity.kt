@@ -706,10 +706,6 @@ class DiyDialActivity : BaseActivity<ActivityDiyDialBinding, DeviceModel>(
                     })
             }
             binding.clUpload.id -> {
-                if (!com.blankj.utilcode.util.PermissionUtils.isGranted(*PermissionUtils.PERMISSION_GROUP_CAMERA)) {
-                    perMissTrackingLog = TrackingLog.getAppTypeTrack("相机权限未开启")
-                    AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_DIAL, perMissTrackingLog!!, "1811", true)
-                }
                 PermissionUtils.checkRequestPermissions(
                     this.lifecycle,
                     getString(R.string.permission_camera),
@@ -748,10 +744,6 @@ class DiyDialActivity : BaseActivity<ActivityDiyDialBinding, DeviceModel>(
         view.findViewById<View>(R.id.photograph).setOnClickListener {
             dialogAvatar?.dismiss()
             delAllCacheImg()
-            if (!com.blankj.utilcode.util.PermissionUtils.isGranted(*PermissionUtils.PERMISSION_GROUP_CAMERA)) {
-                perMissTrackingLog = TrackingLog.getAppTypeTrack("相机权限未开启")
-                AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_DIAL, perMissTrackingLog!!, "1811", true)
-            }
             PermissionUtils.checkRequestPermissions(
                 this.lifecycle,
                 getString(R.string.permission_camera),
@@ -763,7 +755,13 @@ class DiyDialActivity : BaseActivity<ActivityDiyDialBinding, DeviceModel>(
         view.findViewById<View>(R.id.albums).setOnClickListener {
             dialogAvatar?.dismiss()
             delAllCacheImg()
-            getPhotograph()
+            PermissionUtils.checkRequestPermissions(
+                this.lifecycle,
+                getString(R.string.permission_camera),
+                PermissionUtils.PERMISSION_GROUP_CAMERA
+            ) {
+                getPhotograph()
+            }
         }
         view.findViewById<View>(R.id.cancel).setOnClickListener { dialogAvatar?.dismiss() }
         dialogAvatar?.onWindowAttributesChanged(wl)

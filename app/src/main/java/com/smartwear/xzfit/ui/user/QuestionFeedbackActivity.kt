@@ -116,7 +116,7 @@ class QuestionFeedbackActivity : BaseActivity<ActivityQuestionFeedbackBinding, U
                 PermissionUtils.checkRequestPermissions(
                     this@QuestionFeedbackActivity.lifecycle,
                     getString(R.string.permission_sdcard),
-                    PermissionUtils.PERMISSION_GROUP_SDCARD
+                    PermissionUtils.PERMISSION_GROUP_CAMERA
                 ) {
                     showAvatarDialog()
                 }

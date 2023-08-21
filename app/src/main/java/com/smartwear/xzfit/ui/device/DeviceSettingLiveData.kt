@@ -190,6 +190,10 @@ class DeviceSettingLiveData private constructor() {
                 mVibrationMode.postValue(model)
             }
 
+            override fun onVibrationDurationResult(duration: Int) {
+
+            }
+
             override fun onPowerSavingResult(isOpen: Boolean) {
                 LogUtils.d("省电设置 ->$isOpen")
                 mPowerSaving.postValue(isOpen)

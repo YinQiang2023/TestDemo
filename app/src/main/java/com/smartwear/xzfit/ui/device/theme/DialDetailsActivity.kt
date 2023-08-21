@@ -180,10 +180,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
             }
 
             binding.layoutSelectPicture.id -> {
-                if (!com.blankj.utilcode.util.PermissionUtils.isGranted(*PermissionUtils.PERMISSION_GROUP_CAMERA)) {
-                    perMissTrackingLog = TrackingLog.getAppTypeTrack("相机权限未开启")
-                    AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_DIAL, perMissTrackingLog!!, "1811", true)
-                }
+
                 PermissionUtils.checkRequestPermissions(
                     this.lifecycle,
                     getString(R.string.permission_camera),
@@ -209,10 +206,6 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                     AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_DIAL, TrackingLog.getAppTypeTrack("在线表盘"))
                 } else {
                     AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_DIAL, TrackingLog.getAppTypeTrack("相册表盘"))
-                    if (!com.blankj.utilcode.util.PermissionUtils.isGranted(*PermissionUtils.PERMISSION_GROUP_CAMERA)) {
-                        perMissTrackingLog = TrackingLog.getAppTypeTrack("相机权限未开启")
-                        AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_DIAL, perMissTrackingLog!!, "1811", true)
-                    }
                     if (photoTrackingLog != null) {
                         AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_DIAL, photoTrackingLog!!, "1812", true)
                         photoTrackingLog = null
@@ -1319,6 +1312,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                 "BUSY" -> {
                     ToastUtils.showToast(R.string.ota_device_busy_tips)
                 }
+
                 "LOW_STORAGE" -> {
                     ToastUtils.showToast(R.string.low_storage_tips)
                 }
@@ -1601,10 +1595,6 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
         view.findViewById<View>(R.id.photograph).setOnClickListener {
             dialogAvatar?.dismiss()
             delAllCacheImg()
-            if (!com.blankj.utilcode.util.PermissionUtils.isGranted(*PermissionUtils.PERMISSION_GROUP_CAMERA)) {
-                perMissTrackingLog = TrackingLog.getAppTypeTrack("相机权限未开启")
-                AppTrackingManager.trackingModule(AppTrackingManager.MODULE_SYNC_DIAL, perMissTrackingLog!!, "1811", true)
-            }
             PermissionUtils.checkRequestPermissions(this.lifecycle, getString(R.string.permission_camera), PermissionUtils.PERMISSION_GROUP_CAMERA) {
                 takePictures()
             }
@@ -1612,7 +1602,13 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
         view.findViewById<View>(R.id.albums).setOnClickListener {
             dialogAvatar?.dismiss()
             delAllCacheImg()
-            getPhotograph()
+            PermissionUtils.checkRequestPermissions(
+                this.lifecycle,
+                getString(R.string.permission_camera),
+                PermissionUtils.PERMISSION_GROUP_CAMERA
+            ) {
+                getPhotograph()
+            }
         }
         view.findViewById<View>(R.id.cancel).setOnClickListener { dialogAvatar?.dismiss() }
         dialogAvatar?.onWindowAttributesChanged(wl)

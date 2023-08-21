@@ -86,7 +86,7 @@ class PersonalInfoActivity : BaseActivity<ActivityPersonalInfoBinding, UserModel
                 PermissionUtils.checkRequestPermissions(
                     this.lifecycle,
                     getString(R.string.permission_sdcard),
-                    PermissionUtils.PERMISSION_GROUP_SDCARD
+                    PermissionUtils.PERMISSION_GROUP_CAMERA
                 ) {
                     showAvatarDialog()
                 }

@@ -13,6 +13,7 @@ import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.RomUtils
+import com.blankj.utilcode.util.ThreadUtils
 import com.smartwear.xzfit.R
 import com.smartwear.xzfit.base.BaseApplication
 import com.smartwear.xzfit.dialog.DialogUtils
@@ -21,7 +22,6 @@ import com.smartwear.xzfit.service.MyNotificationsService
 import com.smartwear.xzfit.ui.eventbus.EventAction
 import com.smartwear.xzfit.ui.eventbus.EventMessage
 import org.greenrobot.eventbus.EventBus
-import java.lang.Exception
 import java.lang.StringBuilder
 import java.util.*
 
@@ -33,6 +33,13 @@ object PermissionUtils : LifecycleObserver {
     const val TAG = "Permission"
 
     //region 权限组
+
+    //Android 13 通知使用权
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    val PERMISSION_NOTIF13 = arrayOf(
+        Manifest.permission.POST_NOTIFICATIONS
+    )
+
     //Android 12 蓝牙权限
     @RequiresApi(Build.VERSION_CODES.S)
     val PERMISSION_BLE12 = arrayOf(
@@ -41,10 +48,10 @@ object PermissionUtils : LifecycleObserver {
     )
 
     //SDCard
-    val PERMISSION_GROUP_SDCARD = arrayOf(
+    /*val PERMISSION_GROUP_SDCARD = arrayOf(
         Manifest.permission.READ_EXTERNAL_STORAGE,
         Manifest.permission.WRITE_EXTERNAL_STORAGE
-    )
+    )*/
 
     //定位
     val PERMISSION_GROUP_LOCATION = arrayOf(
@@ -58,17 +65,20 @@ object PermissionUtils : LifecycleObserver {
         Manifest.permission.ACCESS_BACKGROUND_LOCATION
     )
 
-    //相机
-    val PERMISSION_CAMERA = arrayOf(
-        Manifest.permission.CAMERA
-    )
 
     //相机组
-    val PERMISSION_GROUP_CAMERA = arrayOf(
-        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-        Manifest.permission.READ_EXTERNAL_STORAGE,
-        Manifest.permission.CAMERA
-    )
+    val PERMISSION_GROUP_CAMERA = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        arrayOf(
+            Manifest.permission.READ_MEDIA_IMAGES,
+            Manifest.permission.CAMERA
+        )
+    } else {
+        arrayOf(
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA
+        )
+    }
 
     //监听来电、接电话挂电话、读取联系人
     val PERMISSIONS_MAIL_AND_PHONE_LIST = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -96,13 +106,15 @@ object PermissionUtils : LifecycleObserver {
     //endregion
 
     //region 系统设置授权监听
+    //请求权限页面生命周期观察者，权限完成任务代码块 map
     private val blockMap = hashMapOf<Lifecycle, () -> Unit>()
-    private val perMap = hashMapOf<Lifecycle, Array<String>>()
+    //进入设置页面的 请求权限页面生命周期观察者，请求的权限map
+    private val settingPerMap = hashMapOf<Lifecycle, Array<String>>()
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     private fun lifeResume() {
-        perMap.keys.forEach { lifecycle ->
-            val pers = perMap.get(lifecycle)
+        settingPerMap.keys.forEach { lifecycle ->
+            val pers = settingPerMap.get(lifecycle)
             if (pers != null && pers.isNotEmpty()) {
                 LogUtils.d(TAG, "lifeResume - ${pers.contentToString()}")
                 if (checkPermissions(*pers)) {
@@ -110,7 +122,7 @@ object PermissionUtils : LifecycleObserver {
                 }
             }
         }
-        perMap.clear()
+        settingPerMap.clear()
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
@@ -122,7 +134,7 @@ object PermissionUtils : LifecycleObserver {
             }
         }
         blockMap.clear()
-        perMap.clear()
+        settingPerMap.clear()
     }
     //endregion
 
@@ -171,7 +183,10 @@ object PermissionUtils : LifecycleObserver {
                             requestPermissions(lifecycle, perName, permissions, block)
                         }
 
-                        override fun OnCancel() {}
+                        override fun OnCancel() {
+                            val deniedBean = DeniedBean(mutableListOf(),permissions.toMutableList())
+                            EventBus.getDefault().post(EventMessage(EventAction.ACTION_PERMISSION_DENIED, deniedBean))
+                        }
                     }
                 ).show()
             }
@@ -217,9 +232,14 @@ object PermissionUtils : LifecycleObserver {
                         mDeniedForever.addAll(deniedForever)
                         showPermissionMissDialog(lifecycle, block, perName, permissions)
                     }
+                    val deniedBean = DeniedBean(deniedForever,denied);
+                    EventBus.getDefault().post(EventMessage(EventAction.ACTION_PERMISSION_DENIED, deniedBean))
+
                 }
             }).request()
     }
+
+    data class DeniedBean(var deniedForever: MutableList<String>, var denied: MutableList<String>)
 
     /**
      * 权限被永久拒绝dialog提示
@@ -241,7 +261,7 @@ object PermissionUtils : LifecycleObserver {
                         lifecycle?.let {
                             it.addObserver(this@PermissionUtils)
                             blockMap[it] = block
-                            perMap.put(it, permissions)
+                            settingPerMap.put(it, permissions)
                         }
                     }
 
@@ -251,19 +271,34 @@ object PermissionUtils : LifecycleObserver {
     }
 
     private fun fixBugMiUiSMS() {
-        try {
-            val cursor: Cursor? = BaseApplication.mContext.contentResolver.query(
-                Telephony.Sms.CONTENT_URI, SmsContentObserver.PROJECT,
-                null,
-                null,
-                "_id desc"
-            )
-            cursor?.moveToFirst()
-            MyNotificationsService.setIsRegisterContentObserverSms(false)
-            EventBus.getDefault().post(EventMessage(EventAction.ACTION_SYS_NOTIFY_PERMISSION_CHANGE))
-        } catch (e: Exception) {
-            Log.w(TAG, "fixBugMiUiSMS Exception")
-            e.printStackTrace()
-        }
+        var cursor: Cursor? = null
+        ThreadUtils.executeByIo(object : ThreadUtils.Task<Any>() {
+            override fun doInBackground(): Any {
+                cursor = BaseApplication.mContext.contentResolver.query(
+                    Telephony.Sms.CONTENT_URI, SmsContentObserver.PROJECT,
+                    null,
+                    null,
+                    "_id desc"
+                )
+                cursor?.moveToFirst()
+                return 0
+            }
+
+            override fun onCancel() {
+                AppUtils.closeSilently(cursor)
+            }
+
+            override fun onFail(t: Throwable?) {
+                Log.w(TAG, "fixBugMiUiSMS Exception:$t")
+                t?.printStackTrace()
+                AppUtils.closeSilently(cursor)
+            }
+
+            override fun onSuccess(result: Any?) {
+                AppUtils.closeSilently(cursor)
+                MyNotificationsService.setIsRegisterContentObserverSms(false)
+                EventBus.getDefault().post(EventMessage(EventAction.ACTION_SYS_NOTIFY_PERMISSION_CHANGE))
+            }
+        })
     }
 }

@@ -55,33 +55,35 @@ class DebugActivity : BaseActivity<ActivityDebugBinding, DeviceModel>(
             binding.tvChangeDevice.id -> {
                 changeDevice()
             }
+
             binding.tvDebug.id -> {
                 startActivity(Intent(this, DebugListActivity::class.java))
             }
+
             binding.tvFirewareUpgrade.id -> {
                 startActivity(Intent(this, DebugFirewareUpgradeActivity::class.java))
             }
+
             binding.tvTheme.id -> {
                 startActivity(Intent(this, DebugDialActivity::class.java))
             }
+
             binding.tvDevConnect.id -> {
                 startActivity(Intent(this, DebugConnectActivity::class.java))
             }
+
             binding.tvClassicBle.id -> {
                 startActivity(Intent(this, DebugClassicBleActivity::class.java))
             }
+
             binding.tvFeedbackDecoding.id -> {
                 startActivity(Intent(this, DebugLogDecodingActivity::class.java))
             }
+
             binding.tvApps.id -> {
-                PermissionUtils.checkRequestPermissions(
-                    this.lifecycle, getString(R.string.permission_sdcard),
-                    PermissionUtils.PERMISSION_GROUP_SDCARD
-                ) {
-                    val filePath = PathUtils.getAppDataPathExternalFirst() + "/log/appPackage.txt"
-                    FileUtils.createFileByDeleteOldFile(filePath)
-                    shareApps(filePath)
-                }
+                val filePath = PathUtils.getAppDataPathExternalFirst() + "/log/appPackage.txt"
+                FileUtils.createFileByDeleteOldFile(filePath)
+                shareApps(filePath)
             }
         }
     }
@@ -157,12 +159,15 @@ class DebugActivity : BaseActivity<ActivityDebugBinding, DeviceModel>(
                             DialogUtils.dismissDialog(loadDialog)
                             ControlBleTools.getInstance().sendFindWear(null)
                         }
+
                         BleCommonAttributes.STATE_CONNECTING -> {
                             ToastUtils.showShort(getString(R.string.device_connecting))
                         }
+
                         BleCommonAttributes.STATE_DISCONNECTED -> {
                             ToastUtils.showShort(getString(R.string.device_disconnected))
                         }
+
                         BleCommonAttributes.STATE_TIME_OUT -> {
                         }
                     }

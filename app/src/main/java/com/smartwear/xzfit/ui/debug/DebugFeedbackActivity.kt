@@ -92,11 +92,7 @@ class DebugFeedbackActivity : BaseActivity<ActivityDebugFeedbackBinding, DeviceM
                 startActivity(intent)
             }
             binding.btnShare.id -> {
-                PermissionUtils.checkRequestPermissions(
-                    this.lifecycle,
-                    getString(R.string.permission_sdcard),
-                    PermissionUtils.PERMISSION_GROUP_SDCARD
-                ) {
+
                     val zipFilePath = getExternalFilesDir("logZip")?.absolutePath + File.separator +
                             "Android_log_" + TimeUtils.date2String(Date(), com.smartwear.xzfit.utils.TimeUtils.getSafeDateFormat("yyyy-MM-dd")) + ".zip"
                     val logDir = getExternalFilesDir("log")?.absolutePath
@@ -106,15 +102,9 @@ class DebugFeedbackActivity : BaseActivity<ActivityDebugFeedbackBinding, DeviceM
                     } else {
                         ToastUtils.showLong("暂无日志可分享。")
                     }
-
-                }
             }
             binding.btnShare2.id -> {
-                PermissionUtils.checkRequestPermissions(
-                    this.lifecycle,
-                    getString(R.string.permission_sdcard),
-                    PermissionUtils.PERMISSION_GROUP_SDCARD
-                ) {
+
                     val zipFilePath = getExternalFilesDir("logZip")?.absolutePath + File.separator +
                             "Android_log_" + System.currentTimeMillis() + ".zip"
                     val logDir = getExternalFilesDir("log")?.absolutePath
@@ -124,9 +114,6 @@ class DebugFeedbackActivity : BaseActivity<ActivityDebugFeedbackBinding, DeviceM
                     } else {
                         ToastUtils.showLong("暂无日志可分享。")
                     }
-
-                }
-
             }
             binding.btnShare3.id -> {
                 if (!ControlBleTools.getInstance().isConnect) {
@@ -166,11 +153,6 @@ class DebugFeedbackActivity : BaseActivity<ActivityDebugFeedbackBinding, DeviceM
                 })
             }
             binding.btnShare4.id -> {
-                PermissionUtils.checkRequestPermissions(
-                    this.lifecycle,
-                    getString(R.string.permission_sdcard),
-                    PermissionUtils.PERMISSION_GROUP_SDCARD
-                ) {
                     val zipFilePath = getExternalFilesDir("logZip")?.absolutePath + File.separator +
                             "Device_log_" + System.currentTimeMillis() + ".zip"
                     val logDir = getExternalFilesDir("deviceLog")?.absolutePath
@@ -180,7 +162,6 @@ class DebugFeedbackActivity : BaseActivity<ActivityDebugFeedbackBinding, DeviceM
                     } else {
                         ToastUtils.showLong("暂无日志可分享。")
                     }
-                }
             }
             binding.btnShareAll.id -> {
                 loadDialog.show()
@@ -300,11 +281,6 @@ class DebugFeedbackActivity : BaseActivity<ActivityDebugFeedbackBinding, DeviceM
     //endregion
 
     fun shareAllLog() {
-        PermissionUtils.checkRequestPermissions(
-            this.lifecycle,
-            getString(R.string.permission_sdcard),
-            PermissionUtils.PERMISSION_GROUP_SDCARD
-        ) {
             val zipFilePath = getExternalFilesDir("logZip")?.absolutePath + File.separator +
                     "Xzfit_log_" + System.currentTimeMillis() + ".zip"
             val logDirs = arrayListOf<String>()
@@ -316,7 +292,6 @@ class DebugFeedbackActivity : BaseActivity<ActivityDebugFeedbackBinding, DeviceM
             }
             LogUtils.d(zipFilePath)
             shareAllZip(logDirs, zipFilePath)
-        }
     }
 
 

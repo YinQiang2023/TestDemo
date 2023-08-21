@@ -156,11 +156,12 @@ public class MyNotificationsService extends NotificationListenerService {
     /**
      * 系统NLS通知服务是否可用
      * adb shell dumpsys notification
+     *
      * @return
      */
-    private boolean isNotificationListenerServiceEnable(){
+    private boolean isNotificationListenerServiceEnable() {
         Set<String> packageNames = NotificationManagerCompat.getEnabledListenerPackages(BaseApplication.application);
-        if(packageNames.contains(BaseApplication.application.getPackageName())){
+        if (packageNames.contains(BaseApplication.application.getPackageName())) {
             return true;
         }
         return false;
@@ -273,7 +274,7 @@ public class MyNotificationsService extends NotificationListenerService {
             //系统时间变化
             boolean isEnable = isNotificationListenerServiceEnable();
             //com.blankj.utilcode.util.LogUtils.d("通知监听服务NLS是否可用：" + isEnable);
-            if(!isEnable){
+            if (!isEnable) {
                 toggleNotificationListenerService();
             }
         }
@@ -288,6 +289,8 @@ public class MyNotificationsService extends NotificationListenerService {
             initNotifyItems();
             //初始化内容监听者
             initContentObserver();
+            //初始化音乐
+            initMusicCallBack();
         } else if (event.getAction().equals(EventAction.ACTION_VOLUME_CHANGE)) {
             //LogUtils.d(TAG,"音乐 音量变化");
             int volume = VolumeUtils.getVolume(AudioManager.STREAM_MUSIC);
@@ -321,14 +324,14 @@ public class MyNotificationsService extends NotificationListenerService {
                 String number = phoneDtoModel.getTelPhone();
                 long date = phoneDtoModel.getDate();
                 if (checkPNisAllowNotify(Global.PACKAGE_MISS_CALL)) {
-                    LogUtils.d(TAG, "未接来电--------->" + name + "," + number + "," + TimeUtils.millis2String(date, com.smartwear.xzfit.utils.TimeUtils.getSafeDateFormat(com.smartwear.xzfit.utils.TimeUtils.DATEFORMAT_COMM)), true);
+                    LogUtils.d(TAG, "未接来电--------->" + name + "," + number + "," + TimeUtils.millis2String(date, com.smartwear.xzfit.utils.TimeUtils.getSafeDateFormat(com.smartwear.xzfit.utils.TimeUtils.DATEFORMAT_COMM)));
 
                     AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, TrackingLog.getStartTypeTrack("消息通知"), "", false, true);
                     TrackingLog log = TrackingLog.getAppTypeTrack("未接来电");
-                    log.setLog("未接来电--------->" + name.length() + "," + number.length() + "," + TimeUtils.millis2String(date, com.smartwear.xzfit.utils.TimeUtils.getSafeDateFormat(com.smartwear.xzfit.utils.TimeUtils.DATEFORMAT_COMM)) + " ; isconnect:" + ControlBleTools.getInstance().isConnect());
+                    log.setLog("未接来电--------->" + (name == null ? "" : name.length()) + "," + (number == null ? "" : number.length()) + "," + TimeUtils.millis2String(date, com.smartwear.xzfit.utils.TimeUtils.getSafeDateFormat(com.smartwear.xzfit.utils.TimeUtils.DATEFORMAT_COMM)) + " ; isconnect:" + ControlBleTools.getInstance().isConnect());
                     AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, log, "", false, false);
                     if (Math.abs(System.currentTimeMillis() - date) > MISS_CALL_INTERVAL) {
-                        com.smartwear.xzfit.utils.LogUtils.d(TAG, "无效未接来电 > 120s", true);
+                        com.smartwear.xzfit.utils.LogUtils.d(TAG, "无效未接来电 > 120s");
                         if (ControlBleTools.getInstance().isConnect()) {
                             AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, TrackingLog.getAppTypeTrack("重复异常拦截"), "", false, false);
                             TrackingLog errorLog = TrackingLog.getAppTypeTrack("未接来电120s前拦截");
@@ -352,7 +355,7 @@ public class MyNotificationsService extends NotificationListenerService {
                                         if (state == SendCmdState.SUCCEED) {
                                             AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, TrackingLog.getEndTypeTrack("消息通知"), "", true, false);
                                         } else {
-                                            if (ControlBleTools.getInstance().isConnect())
+                                            if (ControlBleTools.getInstance().isConnect() && state != SendCmdState.UNINITIALIZED)
                                                 AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, TrackingLog.getAppTypeTrack("发送手机消息至设备失败或超时"), "1715", true, false);
                                         }
                                     }
@@ -369,20 +372,21 @@ public class MyNotificationsService extends NotificationListenerService {
                 String context = phoneDtoModel.getSmsContext();
                 long date = phoneDtoModel.getDate();
                 if (checkPNisAllowNotify(Global.PACKAGE_MMS)) {
-                    LogUtils.d(TAG, "发送短信通知--------->" + name + "," + number + "," + context, true);
+                    LogUtils.d(TAG, "发送短信通知--------->" + name + "," + number + "," + context);
 
                     AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, TrackingLog.getStartTypeTrack("消息通知"), "", false, true);
                     TrackingLog log = TrackingLog.getAppTypeTrack("短信通知");
-                    log.setLog("短信通知--------->" + name.length() + ",number:" + number.length() + ",context:" + context.length() + ",date:" + date +
+                    log.setLog("短信通知--------->" + (name == null ? "" : name.length()) + "," + (number == null ? "" : number.length()) + ",context:" + (context == null?"":context.length()) + ",date:" + date +
                             "; now:" + System.currentTimeMillis() + "; isConnect:" + ControlBleTools.getInstance().isConnect());
                     AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, log, "", false, false);
                     if (Math.abs(System.currentTimeMillis() - date) > SMS_INTERVAL) {
-                        LogUtils.d(TAG, "无效短信 - 与当前时间相差 10s", true);
+                        LogUtils.d(TAG, "无效短信 - 与当前时间相差 10s");
                         if (ControlBleTools.getInstance().isConnect()) {
                             //通知拦截异常埋点上报
-                            TrackingLog trackingLog = TrackingLog.getAppTypeTrack("短信消息10s前拦截");
+                            //TODO
+                            /*TrackingLog trackingLog = TrackingLog.getAppTypeTrack("短信消息10s前拦截");
                             trackingLog.setLog("无效短信 - 与当前时间相差 10s: last:" + mLastSmsDate + ", now：" + date);
-                            AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, trackingLog, "1712", true, false);
+                            AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, trackingLog, "1712", true, false);*/
                         }
                         return;
                     }
@@ -402,7 +406,7 @@ public class MyNotificationsService extends NotificationListenerService {
                     //发送短信通知
                     if (ControlBleTools.getInstance().isConnect()) {
                         TrackingLog trackingLog = TrackingLog.getDevTyepTrack("发送通知至设备", "发送系统通知", "SEND_SYSTEM_NOTIFICATION", "");
-                        trackingLog.setLog("发送短信通知--------->name:" + name.length() + ",number:" + number.length() + ",context:" + context.length());
+                        trackingLog.setLog("发送短信通知--------->name:" + (name == null ? "" : name.length()) + "," + (number == null ? "" : number.length()) + ",context:" + (context == null ? "" : context.length()));
                         ControlBleTools.getInstance().sendSystemNotification(2,
                                 TextUtils.isEmpty(number) ? "" : number,
                                 TextUtils.isEmpty(name) ? "" : name,
@@ -416,7 +420,7 @@ public class MyNotificationsService extends NotificationListenerService {
                                         if (state == SendCmdState.SUCCEED) {
                                             AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, TrackingLog.getEndTypeTrack("消息通知"), "", true, false);
                                         } else {
-                                            if (ControlBleTools.getInstance().isConnect())
+                                            if (ControlBleTools.getInstance().isConnect() && state != SendCmdState.UNINITIALIZED)
                                                 AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, TrackingLog.getAppTypeTrack("发送手机消息至设备失败或超时"), "1715", true, false);
                                         }
                                     }
@@ -430,15 +434,15 @@ public class MyNotificationsService extends NotificationListenerService {
                 PhoneDtoModel phoneDtoModel = (PhoneDtoModel) event.getObj();
                 String number = phoneDtoModel.getTelPhone();
                 String context = phoneDtoModel.getSmsContext();
-                LogUtils.d(TAG, "设备来电快捷回复发送短信--------->" + number + "," + context, true);
+                LogUtils.d(TAG, "设备来电快捷回复发送短信--------->" + number + "," + context);
                 //发送短信
                 if (TextUtils.isEmpty(number) || TextUtils.isEmpty(context)) {
                     //快捷回复未空
-                    LogUtils.d(TAG, "快捷回复失败--->内容或者号码为空", true);
+                    LogUtils.d(TAG, "快捷回复失败--->内容或者号码为空");
                     return;
                 }
                 if (!PhoneUtils.isSimCardReady()) {
-                    LogUtils.d(TAG, "快捷回复失败--->SIM卡未准备好", true);
+                    LogUtils.d(TAG, "快捷回复失败--->SIM卡未准备好");
                     return;
                 }
                 try {
@@ -450,12 +454,12 @@ public class MyNotificationsService extends NotificationListenerService {
                         }
                     } else {
                         //没权限
-                        LogUtils.d(TAG, "快捷回复失败--->没发送短信权限", true);
+                        LogUtils.d(TAG, "快捷回复失败--->没发送短信权限");
                         EventBus.getDefault().post(new EventMessage(EventAction.ACTION_SMS_NOT_PER, phoneDtoModel));
                     }
                 } catch (Exception e) {
                     //发送异常
-                    LogUtils.d(TAG, "快捷回复失败--->异常", true);
+                    LogUtils.d(TAG, "快捷回复失败--->异常");
                     e.printStackTrace();
                 }
             }
@@ -487,11 +491,11 @@ public class MyNotificationsService extends NotificationListenerService {
                         //Log.d(TAG,"TelephonyManager: CALL_STATE ---> CALL_STATE_RINGING");
                         if (!isCallComing) {
                             isCallComing = true;
-                            LogUtils.d(TAG, "来电 = phoneNumber = " + phoneNumber + "   callName = " + callName, true);
+                            LogUtils.d(TAG, "来电 = phoneNumber = " + phoneNumber + "   callName = " + callName);
 
                             AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, TrackingLog.getStartTypeTrack("消息通知"), "", false, true);
                             TrackingLog log = TrackingLog.getAppTypeTrack("来电通知");
-                            log.setLog("来电 = phoneNumber = " + phoneNumber.length() + "   callName = " + callName.length() + "; isConnect:" + ControlBleTools.getInstance().isConnect());
+                            log.setLog("来电 = phoneNumber = " + (phoneNumber==null?"":phoneNumber.length()) + "   callName = " + (callName == null?"":callName.length()) + "; isConnect:" + ControlBleTools.getInstance().isConnect());
                             AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, log, "", false, false);
 
                             if ((Math.abs(System.currentTimeMillis() - CALL_STATE_RINGING_LAST_TIME) > 2000)) {
@@ -511,7 +515,7 @@ public class MyNotificationsService extends NotificationListenerService {
                                                     if (state == SendCmdState.SUCCEED) {
                                                         AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, trackingLog, "", true, false);
                                                     } else {
-                                                        if (ControlBleTools.getInstance().isConnect()) {
+                                                        if (ControlBleTools.getInstance().isConnect() && state != SendCmdState.UNINITIALIZED) {
                                                             trackingLog.setLog(trackingLog.getLog() + "\n发送手机消息至设备失败或超时");
                                                             AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, trackingLog, "1715", true, false);
                                                         }
@@ -533,13 +537,14 @@ public class MyNotificationsService extends NotificationListenerService {
                         // Log.d(TAG,"TelephonyManager: CALL_STATE ---> CALL_STATE_IDLE");
                         isCallComing = false;
                         if (!TextUtils.isEmpty(phoneNumber)) {
-                            LogUtils.d(TAG, "挂电话 ---> phoneNumber = " + phoneNumber + "   callName = " + callName, true);
+                            LogUtils.d(TAG, "挂电话 ---> phoneNumber = " + phoneNumber + "   callName = " + callName);
                             if (Math.abs(System.currentTimeMillis() - OFFHOOK_LAST_TIME) > 2000) {
                                 ControlBleTools.getInstance().sendCallState(1, null);
                                 //PhoneUtil.endCall(BaseApplication.mContext);
                             }
                             OFFHOOK_LAST_TIME = System.currentTimeMillis();
                         }
+                        //恢复静音
                         ThreadUtils.runOnUiThreadDelayed(() -> {
                             PhoneUtil.recoverRingerMute(BaseApplication.mContext);
                         }, 1000);
@@ -550,11 +555,12 @@ public class MyNotificationsService extends NotificationListenerService {
                         Log.d(TAG, "TelephonyManager: CALL_STATE ---> CALL_STATE_OFFHOOK");
                         if (!TextUtils.isEmpty(phoneNumber)) {
                             if (Math.abs(System.currentTimeMillis() - OFFHOOK_LAST_TIME) > 2000) {
-                                LogUtils.d(TAG, "接电话 ---> phoneNumber = " + phoneNumber + "   callName = " + callName, true);
+                                LogUtils.d(TAG, "接电话 ---> phoneNumber = " + phoneNumber + "   callName = " + callName);
                                 ControlBleTools.getInstance().sendCallState(0, null);
                             }
                             OFFHOOK_LAST_TIME = System.currentTimeMillis();
                         }
+                        //恢复静音
                         ThreadUtils.runOnUiThreadDelayed(() -> {
                             PhoneUtil.recoverRingerMute(BaseApplication.mContext);
                         }, 1000);
@@ -585,20 +591,20 @@ public class MyNotificationsService extends NotificationListenerService {
                             }, 1000);
                             break;
                         case 1:
-                            LogUtils.e(TAG, "设备-挂电话", true);
+                            LogUtils.e(TAG, "设备-挂电话");
                             //恢复静音
                             ThreadUtils.runOnUiThreadDelayed(() -> {
                                 PhoneUtil.recoverRingerMute(BaseApplication.mContext);
                             }, 1000);
                             if (mDeviceSettingBean != null && !mDeviceSettingBean.getReminderRelated().getIncoming_call_rejection()) {
                                 //未启用来电拒接功能
-                                com.smartwear.xzfit.utils.LogUtils.e("endCall", "设备不支持来电拒接功能！！！！", true);
+                                com.smartwear.xzfit.utils.LogUtils.e("endCall", "设备不支持来电拒接功能！！！！");
                                 break;
                             }
                             PhoneUtil.endCall(BaseApplication.mContext);
                             break;
                         case 2:
-                            LogUtils.e(TAG, "设备-来电静音", true);
+                            LogUtils.e(TAG, "设备-来电静音");
                             if (isNotificationPolicyAccessGranted()) {
                                 PhoneUtil.toggleRingerMute(BaseApplication.mContext);
                             }
@@ -616,8 +622,11 @@ public class MyNotificationsService extends NotificationListenerService {
 //    private long lastMusicCmdTime = 0L;
 
     private void initMusicCallBack() {
+        if (!MyNotificationsService.isEnabled(BaseApplication.mContext)) {
+            return;
+        }
+        LogUtils.d(TAG, "initMusicCallBack");
         MusicSyncManager.getInstance().attachedNotificationListenerService(this);
-
         CallBackUtils.musicCallBack = new MusicCallBack() {
             @Override
             public void onRequestMusic() {
@@ -625,7 +634,7 @@ public class MyNotificationsService extends NotificationListenerService {
                 if (mDeviceSettingBean != null && !mDeviceSettingBean.getFunctionRelated().getMusic_control()) {
                     //无权限
                     ControlBleTools.getInstance().syncMusicInfo(new MusicInfoBean(1, "", 0, 0), null);
-                    com.smartwear.xzfit.utils.LogUtils.e("onSendMusicCmd", "设备不支持音乐控制功能！！！！", true);
+                    com.smartwear.xzfit.utils.LogUtils.e("onSendMusicCmd", "设备不支持音乐控制功能！！！！");
                     return;
                 }
                 if (!MyNotificationsService.isEnabled(context)) {
@@ -656,10 +665,10 @@ public class MyNotificationsService extends NotificationListenerService {
             @Override
             public void onSendMusicCmd(int command) {
                 if (mDeviceSettingBean != null && !mDeviceSettingBean.getFunctionRelated().getMusic_control()) {
-                    com.smartwear.xzfit.utils.LogUtils.e("onSendMusicCmd", "设备不支持音乐控制功能！！！！", true);
+                    com.smartwear.xzfit.utils.LogUtils.e("onSendMusicCmd", "设备不支持音乐控制功能！！！！");
                     return;
                 }
-                LogUtils.d(TAG, "音乐 onSendMusicCmd 收到设备的指令 = " + command, true);
+                LogUtils.d(TAG, "音乐 onSendMusicCmd 收到设备的指令 = " + command);
                 boolean isMediacontrolSuccess = false;
                 switch (command) {
                     case MusicProtos.SEPlayerControlCommand.PLAYING_VALUE:
@@ -845,8 +854,12 @@ public class MyNotificationsService extends NotificationListenerService {
      */
     public static boolean isNotificationPolicyAccessGranted() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (notificationManager == null) notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            if (notificationManager.isNotificationPolicyAccessGranted()) {
+            if (notificationManager == null) {
+                if (context != null) {
+                    notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                }
+            }
+            if (notificationManager != null && notificationManager.isNotificationPolicyAccessGranted()) {
                 com.blankj.utilcode.util.LogUtils.d("isNotificationPolicyAccessGranted " + notificationManager.isNotificationPolicyAccessGranted());
                 return true;
             }
@@ -860,8 +873,12 @@ public class MyNotificationsService extends NotificationListenerService {
      * 打开免打扰模式设置
      */
     public static void openDoNotDisturb(Context context) {
-        if (notificationManager == null) notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !notificationManager.isNotificationPolicyAccessGranted()) {
+        if (notificationManager == null) {
+            if (context != null) {
+                notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && notificationManager != null && !notificationManager.isNotificationPolicyAccessGranted()) {
             Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
             context.startActivity(intent);
         }
@@ -951,7 +968,8 @@ public class MyNotificationsService extends NotificationListenerService {
                     + "\n package name -->" + packageName
                     + "\n title        -->" + (!TextUtils.isEmpty(extraTitle) ? extraTitle.toString() : "")
                     + "\n text         -->" + (extraText != null ? extraText.toString() : "")
-                    + "\n ticker text  -->" + (tickerText != null ? tickerText.toString() : ""), true
+                    + "\n ticker text  -->" + (tickerText != null ? tickerText.toString() : "")
+                    + "\n icConnect    -->" + ControlBleTools.getInstance().isConnect()
             );
             AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, TrackingLog.getStartTypeTrack("消息通知"), "", false, true);
             TrackingLog appNotifyLog = TrackingLog.getStartTypeTrack("接收到的通知栏消息");
@@ -966,7 +984,7 @@ public class MyNotificationsService extends NotificationListenerService {
             if (TextUtils.isEmpty(extraText)
                     && !TextUtils.isEmpty(tickerText)
                     && !TextUtils.isEmpty(extraTitle)
-                    && !Objects.equals(tickerText, extraTitle)
+                    && !TextUtils.equals(tickerText, extraTitle)
             ) {
                 extraText = tickerText;
             }
@@ -987,8 +1005,8 @@ public class MyNotificationsService extends NotificationListenerService {
             LogUtils.e(TAG, "\n latest msg is " + latestMessage + "\n now msg is " + nowMessage);
             LogUtils.e(TAG, "msg compare result is " + latestMessage.equals(nowMessage));
             if (latestPageageName.equalsIgnoreCase(packageName) && latestMessage.replaceAll("\n", "").equalsIgnoreCase(nowMessage.replaceAll("\n", ""))) {
-                if (nowTime - latestSendTime < OutTime) {
-                    LogUtils.w(TAG, "retuen 3s repeat message = " + (nowTime - latestSendTime) + "ms", true);
+                if (Math.abs(nowTime - latestSendTime) < OutTime) {
+                    LogUtils.w(TAG, "retuen 3s repeat message = " + (nowTime - latestSendTime) + "ms");
                     return;
                 }
             }
@@ -1005,7 +1023,7 @@ public class MyNotificationsService extends NotificationListenerService {
             }
 
             //过滤 不需要的通知
-            if (checkIsSkipNotification(packageName, extraTitle + ":" + extraTitle)) {
+            if (checkIsSkipNotification(packageName, title + ":" + text)) {
                 /*if (ControlBleTools.getInstance().isConnect()) {
                     appNotifyLog.setLog(appNotifyLog.getLog() + "\n过滤不需要的通知");
                     AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, appNotifyLog, "1717", true, false);
@@ -1028,11 +1046,11 @@ public class MyNotificationsService extends NotificationListenerService {
                             public void onState(SendCmdState state) {
                                 trackingLog.setEndTime(TrackingLog.getNowString());
                                 trackingLog.setDevResult("state : " + state);
-                                if (state == SendCmdState.SUCCEED || state == SendCmdState.UNINITIALIZED) {
+                                if (state == SendCmdState.SUCCEED) {
                                     AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, trackingLog, "", false, false);
                                     AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, TrackingLog.getEndTypeTrack("消息通知"), "", true, false);
                                 } else {
-                                    if (ControlBleTools.getInstance().isConnect()) {
+                                    if (ControlBleTools.getInstance().isConnect() && state != SendCmdState.UNINITIALIZED) {
                                         trackingLog.setLog(trackingLog.getLog() + "\n发送手机消息至设备失败或超时");
                                         AppTrackingManager.trackingModule(AppTrackingManager.MODULE_NOTIFY, trackingLog, "1715", true, false);
                                     }
@@ -1155,6 +1173,10 @@ public class MyNotificationsService extends NotificationListenerService {
             //ICQ New
             SKIP_MAP.put(new String[]{"com.icq.mobile.client"},
                     new String[]{getString(R.string.notiface_icq_no_prompt_1)});
+            //whatsApp
+            SKIP_MAP.put(new String[]{"com.whatsapp"},
+                    new String[]{getString(R.string.notiface_waths_no_prompt_1),
+                            getString(R.string.notiface_waths_no_prompt_2)});
         }
     }
     //endregion
@@ -1162,7 +1184,7 @@ public class MyNotificationsService extends NotificationListenerService {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        LogUtils.e(TAG,"onDestroy");
+        LogUtils.e(TAG, "onDestroy");
         com.smartwear.xzfit.utils.AppUtils.unregisterEventBus(this);
         unRegisterReceiver();
         BaseApplication.application.startMyNotificationsService();

@@ -281,50 +281,50 @@ class SportShareActivity : BaseActivity<ActivitySportShareBinding, SportModel>(
     private val RESULT_GET_PHOTOGRAPH_CODE = 0x161
 
     private fun showCameraDialog() {
-        PermissionUtils.checkRequestPermissions(
-            this.lifecycle,
-            getString(R.string.permission_sdcard),
-            PermissionUtils.PERMISSION_GROUP_SDCARD
-        ) {
-            if (dialogAvatar != null && dialogAvatar!!.isShowing) {
-                return@checkRequestPermissions
-            }
-            val view: View = layoutInflater.inflate(
-                R.layout.dialog_photo_choose, null
+        if (dialogAvatar != null && dialogAvatar!!.isShowing) {
+            return
+        }
+        val view: View = layoutInflater.inflate(
+            R.layout.dialog_photo_choose, null
+        )
+        dialogAvatar = Dialog(this, R.style.transparentFrameWindowStyle)
+        dialogAvatar?.setContentView(
+            view, ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
             )
-            dialogAvatar = Dialog(this, R.style.transparentFrameWindowStyle)
-            dialogAvatar?.setContentView(
-                view, ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-                )
-            )
-            val window: Window = dialogAvatar?.window!!
-            window.setWindowAnimations(R.style.picker_view_slide_anim)
-            val wl = window.attributes
-            wl.x = 0
-            wl.y = windowManager.defaultDisplay.height
-            wl.width = ViewGroup.LayoutParams.MATCH_PARENT
-            wl.height = ViewGroup.LayoutParams.WRAP_CONTENT
-            view.findViewById<View>(R.id.photograph).setOnClickListener {
-                dialogAvatar?.dismiss()
-                PermissionUtils.checkRequestPermissions(
-                    this.lifecycle,
-                    getString(R.string.permission_camera),
-                    PermissionUtils.PERMISSION_GROUP_CAMERA
-                ) {
-                    takePictures()
-                }
+        )
+        val window: Window = dialogAvatar?.window!!
+        window.setWindowAnimations(R.style.picker_view_slide_anim)
+        val wl = window.attributes
+        wl.x = 0
+        wl.y = windowManager.defaultDisplay.height
+        wl.width = ViewGroup.LayoutParams.MATCH_PARENT
+        wl.height = ViewGroup.LayoutParams.WRAP_CONTENT
+        view.findViewById<View>(R.id.photograph).setOnClickListener {
+            dialogAvatar?.dismiss()
+            PermissionUtils.checkRequestPermissions(
+                this.lifecycle,
+                getString(R.string.permission_camera),
+                PermissionUtils.PERMISSION_GROUP_CAMERA
+            ) {
+                takePictures()
             }
-            view.findViewById<View>(R.id.albums).setOnClickListener {
-                dialogAvatar?.dismiss()
+        }
+        view.findViewById<View>(R.id.albums).setOnClickListener {
+            dialogAvatar?.dismiss()
+            PermissionUtils.checkRequestPermissions(
+                this.lifecycle,
+                getString(R.string.permission_camera),
+                PermissionUtils.PERMISSION_GROUP_CAMERA
+            ) {
                 getPhotograph()
             }
-            view.findViewById<View>(R.id.cancel).setOnClickListener { dialogAvatar?.dismiss() }
-            dialogAvatar?.onWindowAttributesChanged(wl)
-            dialogAvatar?.setCanceledOnTouchOutside(true)
-            dialogAvatar?.show()
         }
+        view.findViewById<View>(R.id.cancel).setOnClickListener { dialogAvatar?.dismiss() }
+        dialogAvatar?.onWindowAttributesChanged(wl)
+        dialogAvatar?.setCanceledOnTouchOutside(true)
+        dialogAvatar?.show()
     }
 
     /**
@@ -521,30 +521,36 @@ class SportShareActivity : BaseActivity<ActivitySportShareBinding, SportModel>(
                 1 -> {
                     addDistanceBean(this)
                 }
+
                 2 -> {
                     addDistanceBean(this)
                     add(StyleBean("", "", ""))
                     addTimeBean(this)
                 }
+
                 3 -> {
                     addDistanceBean(this, true)
                     addPacesBean(this, true)
                     addTimeBean(this, true)
                     addCaloriesBean(this, true)
                 }
+
                 4 -> {
                     addDistanceBean(this)
                     addPacesBean(this)
                     addTimeBean(this)
                 }
+
                 5 -> {
                     addTimeBean(this)
                 }
+
                 6 -> {
                     addCaloriesBean(this)
                     add(StyleBean("", "", ""))
                     addTimeBean(this)
                 }
+
                 7 -> {
                     addCaloriesBean(this)
                 }
@@ -683,6 +689,7 @@ class SportShareActivity : BaseActivity<ActivitySportShareBinding, SportModel>(
                         //GlideApp.with(this).load(mBms.get(0)).into(img)
                     }
                 }
+
                 1 -> {
                     //长图
                     if (::mBms.isInitialized) {
@@ -777,6 +784,7 @@ class SportShareActivity : BaseActivity<ActivitySportShareBinding, SportModel>(
             binding.ivBack.id -> {
                 finish()
             }
+
             binding.btnShare.id -> {
                 //移除分享按钮
                 binding.shareLayout.removeView(binding.btnShare)

@@ -136,13 +136,7 @@ class SportDataActivity : BaseActivity<ActivitySportDataBinding, SportModel>(
 
     override fun onClick(v: View?) {
         if (v?.id == ivRightIcon?.id) {
-            com.smartwear.xzfit.utils.PermissionUtils.checkRequestPermissions(
-                this.lifecycle,
-                getString(R.string.permission_sdcard),
-                com.smartwear.xzfit.utils.PermissionUtils.PERMISSION_GROUP_SDCARD
-            ) {
-                share()
-            }
+            share()
         }
     }
 

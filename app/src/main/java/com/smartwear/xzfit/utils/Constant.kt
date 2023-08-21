@@ -53,13 +53,13 @@ object Constant {
 
     const val SEX_DEFAULT_VALUE = "0"
 
-    const val PRIVACY_POLICY_URL_ZH = "http://8.208.19.240/html/yinsi_zh.html"
-    const val PRIVACY_POLICY_URL_EN = "http://8.208.19.240/html/yinsi_en.html"
+    const val PRIVACY_POLICY_URL_ZH = "https://app-eu.xiaozhuantech.com/html/yinsi_zh.html"
+    const val PRIVACY_POLICY_URL_EN = "https://app-eu.xiaozhuantech.com/html/yinsi_en.html"
 
-    const val USER_AGREEMENT_URL_ZH = "http://8.208.19.240/html/user_zh.html"
-    const val USER_AGREEMENT_URL_EN = "http://8.208.19.240/html/user_en.html"
+    const val USER_AGREEMENT_URL_ZH = "https://app-eu.xiaozhuantech.com/html/user_zh.html"
+    const val USER_AGREEMENT_URL_EN = "https://app-eu.xiaozhuantech.com/html/user_en.html"
 
-    const val FAQ_URL_ZH = "http://8.208.19.240/html/faq/cn/index.html"
-    const val FAQ_URL_EN = "http://8.208.19.240/html/faq/en/index.html"
+    const val FAQ_URL_ZH = "https://app-eu.xiaozhuantech.com/html/faq/cn/index.html"
+    const val FAQ_URL_EN = "https://app-eu.xiaozhuantech.com/html/faq/en/index.html"
 
 }
