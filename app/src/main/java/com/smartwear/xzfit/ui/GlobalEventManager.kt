@@ -740,7 +740,7 @@ object GlobalEventManager {
             if (!isOk) {
                 showUpdateFailedDialog()
             } else {
-                BleBCManager.getInstance().removeBond(SpUtils.getHeadsetMac(SpUtils.getValue(SpUtils.DEVICE_MAC, "")))
+                //BleBCManager.getInstance().removeBond(SpUtils.getHeadsetMac(SpUtils.getValue(SpUtils.DEVICE_MAC, "")))
                 isOtaSending = false
                 isUpload = false
             }
