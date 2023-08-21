@@ -268,9 +268,11 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
             binding.clTheme.id -> {
                 startActivity(Intent(activity, ThemeCenterActivity::class.java))
             }
+
             binding.layoutDevManage.root.id -> {
                 startActivity(Intent(activity, DeviceManageActivity::class.java))
             }
+
             binding.layoutState.id -> {
                 if (binding.tvState.text.toString()
                         .trim() == getString(R.string.device_connected_failed) ||
@@ -284,11 +286,13 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                     )
                 }
             }
+
             binding.lySyncing.id -> {
                 if (binding.tvSync.text.toString().trim() == getString(R.string.sync_fail_tips)) {
                     EventBus.getDefault().post(EventMessage(EventAction.ACTION_REF_SYNC))
                 }
             }
+
             binding.lyNoDeviceBind.lyNoBindAdd.id -> {
                 startAddDevice()
             }
@@ -455,6 +459,7 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                 )
                 loadViews(ControlBleTools.getInstance().isConnect, true)
             }
+
             EventAction.ACTION_REFRESH_BATTERY_INFO -> {
                 val batteryInfo = msg.obj as RealTimeBean.DeviceBatteryInfo
                 refreshBatteryInfo(
@@ -462,6 +467,7 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                     batteryInfo.chargeStatus.trim().toInt()
                 )
             }
+
             EventAction.ACTION_DEVICE_BLE_STATUS_CHANGE -> {
                 when (msg.arg) {
                     BleCommonAttributes.STATE_CONNECTED -> {
@@ -484,6 +490,7 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                         bindDeviceByReConnect()
 //                        }
                     }
+
                     BleCommonAttributes.STATE_CONNECTING -> {
                         com.blankj.utilcode.util.LogUtils.w(TAG, "device connecting")
                         binding.tvState.text = BaseApplication.mContext.getString(R.string.device_connecting)
@@ -503,6 +510,7 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                             canRecordConnectBleOff = true
                         }
                     }
+
                     BleCommonAttributes.STATE_DISCONNECTED -> {
                         com.blankj.utilcode.util.LogUtils.w(TAG, "device disconnect")
                         MicroManager.findPhone(1)
@@ -518,6 +526,7 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                             binding.layoutBattery.visibility = View.GONE
                         }
                     }
+
                     BleCommonAttributes.STATE_TIME_OUT -> {
                         LogUtils.w(TAG, "device connect timeout")
                         /*binding.tvState.text = BaseApplication.mContext.getString(R.string.device_connected_failed)
@@ -536,10 +545,12 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                     }
                 }
             }
+
             EventAction.ACTION_REF_BIND_DEVICE -> {
                 //refDeviceListUI()
                 refreshDeviceView()
             }
+
             EventAction.ACTION_NETWORK_DISCONNECTED -> {
                 binding.lyNoNetWork.visibility = View.VISIBLE
                 binding.lyNoNetWork.setType(ViewForLayoutNoInternet.TYPE_NO_NETWORK)
@@ -656,6 +667,7 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                                 )
                             )
                         }
+
                         getString(R.string.device_set_contacts) -> {
                             startActivity(Intent(activity, ContactsActivity::class.java))
                         }
@@ -663,21 +675,27 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                         getString(R.string.device_fragment_set_message) -> {
                             startActivity(Intent(activity, MsgNotifySetActivity::class.java))
                         }
+
                         getString(R.string.device_fragment_set_remind) -> {
                             startActivity(Intent(activity, RemindSetActivity::class.java))
                         }
+
                         getString(R.string.device_set_heart) -> {
                             startActivity(Intent(activity, HeartRateSettingActivity::class.java))
                         }
+
                         getString(R.string.device_set_pressure) -> {
                             startActivity(Intent(activity, StressSetActivity::class.java))
                         }
+
                         getString(R.string.device_fragment_set_sleep) -> {
                             startActivity(Intent(activity, SleepSettingActivity::class.java))
                         }
+
                         getString(R.string.device_set_weather) -> {
                             startActivity(Intent(activity, WeatherActivity::class.java))
                         }
+
                         getString(R.string.device_set_take_picture) -> {
                             gotoCameraActivity()
                             AppTrackingManager.saveOnlyBehaviorTracking("6", "7")
@@ -707,6 +725,7 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                 getString(R.string.device_fragment_set_theme_center) -> {
                     return deviceSettingBean!!.functionRelated.dial
                 }
+
                 getString(R.string.device_set_contacts) -> {
                     return deviceSettingBean!!.functionRelated.contacts
                 }
@@ -714,6 +733,7 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                 getString(R.string.device_fragment_set_message) -> {
                     return deviceSettingBean!!.reminderRelated.notification
                 }
+
                 getString(R.string.device_fragment_set_remind) -> {
                     return deviceSettingBean!!.reminderRelated.alarm_clock ||
                             deviceSettingBean!!.reminderRelated.sedentary ||
@@ -722,19 +742,24 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                             deviceSettingBean!!.reminderRelated.reminder_to_take_medicine ||
                             deviceSettingBean!!.reminderRelated.event_reminder
                 }
+
                 getString(R.string.device_set_heart) -> {
                     return deviceSettingBean!!.settingsRelated.continuous_heart_rate_switch
                             || deviceSettingBean!!.reminderRelated.heart_rate_warning
                 }
+
                 getString(R.string.device_set_pressure) -> {
                     return deviceSettingBean!!.dataRelated.continuous_pressure
                 }
+
                 getString(R.string.device_fragment_set_sleep) -> {
                     return deviceSettingBean!!.settingsRelated.sleep_rapid_eye_movement_switch
                 }
+
                 getString(R.string.device_set_weather) -> {
                     return deviceSettingBean!!.functionRelated.weather
                 }
+
                 getString(R.string.device_set_take_picture) -> {
                     return deviceSettingBean!!.functionRelated.shake_and_shake_to_take_pictures
                 }
@@ -803,6 +828,7 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                         ControlBleTools.getInstance().disconnect()
                     }
                 }
+
                 HttpCommonAttributes.SERVER_ERROR -> {
                     showNoHaveDevice() //用于HealthyFragment刷新设备状态
                     binding.lyNoNetWork.visibility = View.VISIBLE
@@ -811,6 +837,7 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                     binding.lyDeviceBind.visibility = View.GONE
                     binding.lyNoNetWork.refreshHead()
                 }
+
                 HttpCommonAttributes.REQUEST_SEND_CODE_NO_DATA -> {
                     showNoHaveDevice()
                 }
@@ -870,9 +897,7 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                         GlideApp.with(requireActivity()).load(R.mipmap.device_no_bind_right_img).into(binding.ivIcon)
                         //移除缓存的设备产品图
                         AppUtils.tryBlock {
-                            if (PermissionUtils.checkPermissions(*PermissionUtils.PERMISSION_GROUP_SDCARD)) {
-                                FileUtils.delete(Global.DEVICE_ICON_PATH)
-                            }
+                            FileUtils.delete(Global.DEVICE_ICON_PATH)
                         }
                     }
                     //endregion
@@ -1069,7 +1094,12 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
                                     com.blankj.utilcode.util.LogUtils.d("showVerifyUserIdTimeoutDialog")
                                     showVerifyUserIdTimeoutDialog()
                                 }
-                                AppTrackingManager.trackingModule(AppTrackingManager.MODULE_RECONNECT, verifyTrackingLog.apply { log += "检测用户是否id一致失败/超时" }, "1316", true)
+                                AppTrackingManager.trackingModule(
+                                    AppTrackingManager.MODULE_RECONNECT,
+                                    verifyTrackingLog.apply { log += "检测用户是否id一致失败/超时" },
+                                    "1316",
+                                    true
+                                )
                             } else {
                                 AppTrackingManager.trackingModule(AppTrackingManager.MODULE_RECONNECT, verifyTrackingLog)
                             }
@@ -1140,28 +1170,28 @@ class DeviceFragment : BaseFragment<FragmentDeviceBinding, DeviceModel>(
     //endregion
 
     //region 同步刷新数据状态
-/*    fun startSyncAnimation() {
-        binding.lySyncing.visibility = View.VISIBLE
-        val animationDrawable = binding.ivSync.background as AnimationDrawable
-        binding.ivSyncState.setImageDrawable(animationDrawable)
-        animationDrawable.start()
-        binding.tvSync.text = getString(R.string.healthy_sports_sync_tips)
-        loadViews(false)
-    }
-
-    fun stopSyncAnimation(state:Int) {
-        loadViews(ControlBleTools.getInstance().isConnect)
-        if(state == 0){ //SNYC_SUCCESS = 0
-            binding.ivSyncState.setImageDrawable(ContextCompat.getDrawable(BaseApplication.mContext, R.mipmap.un_bind_success))
-            binding.tvSync.text = getString(R.string.sync_success_tips)
-            ThreadUtils.runOnUiThreadDelayed({
-                binding.lySyncing.visibility = View.GONE
-            },1000)
-        }else{ // SNYC_FAIL | TIME_OUT
-            binding.ivSyncState.setImageDrawable(ContextCompat.getDrawable(BaseApplication.mContext, R.mipmap.icon_ref_connect))
-            binding.tvSync.text = getString(R.string.sync_fail_tips)
+    /*    fun startSyncAnimation() {
+            binding.lySyncing.visibility = View.VISIBLE
+            val animationDrawable = binding.ivSync.background as AnimationDrawable
+            binding.ivSyncState.setImageDrawable(animationDrawable)
+            animationDrawable.start()
+            binding.tvSync.text = getString(R.string.healthy_sports_sync_tips)
+            loadViews(false)
         }
-    }*/
+
+        fun stopSyncAnimation(state:Int) {
+            loadViews(ControlBleTools.getInstance().isConnect)
+            if(state == 0){ //SNYC_SUCCESS = 0
+                binding.ivSyncState.setImageDrawable(ContextCompat.getDrawable(BaseApplication.mContext, R.mipmap.un_bind_success))
+                binding.tvSync.text = getString(R.string.sync_success_tips)
+                ThreadUtils.runOnUiThreadDelayed({
+                    binding.lySyncing.visibility = View.GONE
+                },1000)
+            }else{ // SNYC_FAIL | TIME_OUT
+                binding.ivSyncState.setImageDrawable(ContextCompat.getDrawable(BaseApplication.mContext, R.mipmap.icon_ref_connect))
+                binding.tvSync.text = getString(R.string.sync_fail_tips)
+            }
+        }*/
     //endregion
 
     //region 设备连接失败

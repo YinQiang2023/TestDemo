@@ -9,12 +9,12 @@ plugins {
 Properties accessManagerProp = new Properties()
 accessManagerProp.load(new FileInputStream(file("../accessManager.properties")))
 //服务器连接 0:线上后台，1：测试后台，2：本地后台
-int debugUrl = 0
+int debugUrl = 1
 
 android {
     namespace 'com.smartwear.xzfit'
 
-    compileSdk 31
+    compileSdk 33
 
     signingConfigs {
         release {
@@ -28,9 +28,9 @@ android {
     defaultConfig {
         applicationId "com.smartwear.xzfit"
         minSdk 21
-        targetSdk 31
-        versionCode 62
-        versionName "6.2.0" //versionName X.Y.Z ---> XY=“versionCode”X十位Y个位,Z=正式版本0，测试版本1..累加
+        targetSdk 33
+        versionCode 63
+        versionName "6.3.1" //versionName X.Y.Z ---> XY=“versionCode”X十位Y个位,Z=正式版本0，测试版本1..累加
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
