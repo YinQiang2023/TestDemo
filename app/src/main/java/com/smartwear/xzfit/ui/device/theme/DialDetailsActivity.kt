@@ -1438,6 +1438,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                 val unZipDirPath = PathUtils.getExternalAppFilesPath() + "/otal/face/" + com.blankj.utilcode.util.FileUtils.getFileNameNoExtension(zipFile)
                 //解压
                 com.blankj.utilcode.util.FileUtils.createOrExistsDir(unZipDirPath)
+                com.blankj.utilcode.util.FileUtils.deleteAllInDir(unZipDirPath)
                 ZipUtils.unzipFile(zipFile, com.blankj.utilcode.util.FileUtils.getFileByPath(unZipDirPath))
                 //去掉一层文件夹再压缩
                 val faceZipPath = "${PathUtils.getExternalAppFilesPath()}/otal/face/dynamic_app.zip"

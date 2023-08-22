@@ -661,6 +661,7 @@ object GlobalEventManager {
                 val zipFile = com.blankj.utilcode.util.FileUtils.getFileByPath(path)
                 val unZipDirPath = PathUtils.getExternalAppFilesPath() + "/otal/firmware/" + com.blankj.utilcode.util.FileUtils.getFileNameNoExtension(zipFile)
                 com.blankj.utilcode.util.FileUtils.createOrExistsDir(unZipDirPath)
+                com.blankj.utilcode.util.FileUtils.deleteAllInDir(unZipDirPath)
                 ZipUtils.unzipFile(zipFile, com.blankj.utilcode.util.FileUtils.getFileByPath(unZipDirPath))
                 return com.blankj.utilcode.util.FileUtils.listFilesInDir(unZipDirPath, true)
             }
