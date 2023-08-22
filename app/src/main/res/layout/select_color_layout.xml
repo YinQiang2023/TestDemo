@@ -17,7 +17,7 @@
             android:layout_height="30dp"
             android:layout_alignParentEnd="true" />
 
-        <com.smartwear.xzfit.view.ColorPickerView
+        <com.smartwear.publicwatch.view.ColorPickerView
             android:id="@+id/colorPickerView"
             android:layout_width="fill_parent"
             android:layout_height="250dp"

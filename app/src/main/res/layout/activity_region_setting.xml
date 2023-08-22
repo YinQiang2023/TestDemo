@@ -66,7 +66,7 @@
             android:overScrollMode="never"
             android:scrollbars="none" />
 
-        <com.smartwear.xzfit.ui.view.SideBar
+        <com.smartwear.publicwatch.ui.view.SideBar
             android:id="@+id/side_bar"
             android:layout_width="40dp"
             android:layout_height="match_parent"

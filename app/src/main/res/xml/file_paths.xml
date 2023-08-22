@@ -3,7 +3,7 @@
 
     <external-files-path
         name="external_files"
-        path="com.smartwear.xzfit/apk/" />
+        path="com.smartwear.publicwatch/apk/" />
 
 <!--    这个是保存拍照图片的路径,必须配置-->
     <files-path

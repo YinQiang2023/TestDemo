@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.smartwear.xzfit">
+    package="com.smartwear.publicwatch">
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -61,7 +61,7 @@
     <!--endregion-->
 
     <application
-        android:name="com.smartwear.xzfit.base.BaseApplication"
+        android:name="com.smartwear.publicwatch.base.BaseApplication"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:hardwareAccelerated="true"
@@ -79,7 +79,7 @@
         tools:targetApi="m">
 
         <activity
-            android:name="com.smartwear.xzfit.ui.WelcomeActivity"
+            android:name="com.smartwear.publicwatch.ui.WelcomeActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="true"
             android:screenOrientation="nosensor"
@@ -91,181 +91,181 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.smartwear.xzfit.ui.guide.GuidePageActivity"
+            android:name="com.smartwear.publicwatch.ui.guide.GuidePageActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.guide.GuideConfigActivity"
+            android:name="com.smartwear.publicwatch.ui.guide.GuideConfigActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.weather.WeatherCitySearchActivity"
+            android:name="com.smartwear.publicwatch.ui.device.weather.WeatherCitySearchActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.weather.WeatherActivity"
+            android:name="com.smartwear.publicwatch.ui.device.weather.WeatherActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.wristbright.WristBrightActivity"
+            android:name="com.smartwear.publicwatch.ui.device.wristbright.WristBrightActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.heartrate.HeartRateSettingActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.heartrate.HeartRateSettingActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.contacts.ContactsActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.contacts.ContactsActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.contacts.AddContactActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.contacts.AddContactActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.sleep.SleepSettingActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.sleep.SleepSettingActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.theme.MyDialCenterActivity"
+            android:name="com.smartwear.publicwatch.ui.device.theme.MyDialCenterActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.history.EffectiveStandActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.history.EffectiveStandActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.theme.DialDetailsActivity"
+            android:name="com.smartwear.publicwatch.ui.device.theme.DialDetailsActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.theme.DiyDialActivity"
+            android:name="com.smartwear.publicwatch.ui.device.theme.DiyDialActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.theme.FunctionSelectActivity"
+            android:name="com.smartwear.publicwatch.ui.device.theme.FunctionSelectActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.theme.DialMoreActivity"
+            android:name="com.smartwear.publicwatch.ui.device.theme.DialMoreActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.theme.ThemeCenterActivity"
+            android:name="com.smartwear.publicwatch.ui.device.theme.ThemeCenterActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.devicecontrol.UnBindDeviceActivity"
+            android:name="com.smartwear.publicwatch.ui.device.devicecontrol.UnBindDeviceActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.DeviceManageActivity"
+            android:name="com.smartwear.publicwatch.ui.device.DeviceManageActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.devicecontrol.NotEnabledActivity"
+            android:name="com.smartwear.publicwatch.ui.device.devicecontrol.NotEnabledActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.devicecontrol.EnableDeviceActivity"
+            android:name="com.smartwear.publicwatch.ui.device.devicecontrol.EnableDeviceActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.history.womenhealth.WomenPeriodSettingActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.history.womenhealth.WomenPeriodSettingActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.history.womenhealth.WomenHealthActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.history.womenhealth.WomenHealthActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.history.womenhealth.WomenCycleExplainActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.history.womenhealth.WomenCycleExplainActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.history.HeartRateHistoryActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.history.HeartRateHistoryActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.history.DailyDataActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.history.DailyDataActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.history.BloodOxygenActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.history.BloodOxygenActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.history.HeartRateActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.history.HeartRateActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.history.SleepHistoryActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.history.SleepHistoryActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.DeviceSetActivity"
+            android:name="com.smartwear.publicwatch.ui.device.DeviceSetActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.EditCardActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.EditCardActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
@@ -277,337 +277,337 @@
             />
         -->
         <activity
-            android:name="com.smartwear.xzfit.ui.HomeActivity"
+            android:name="com.smartwear.publicwatch.ui.HomeActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.scan.ScanDeviceActivity"
+            android:name="com.smartwear.publicwatch.ui.device.scan.ScanDeviceActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.scan.ScanCodeActivity"
+            android:name="com.smartwear.publicwatch.ui.device.scan.ScanCodeActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.login.LoginActivity"
+            android:name="com.smartwear.publicwatch.ui.login.LoginActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTop"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.sport.SportCountDownActivity"
+            android:name="com.smartwear.publicwatch.ui.sport.SportCountDownActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.sport.MapSportActivity"
+            android:name="com.smartwear.publicwatch.ui.sport.MapSportActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.sport.SportSingleDataActivity"
+            android:name="com.smartwear.publicwatch.ui.sport.SportSingleDataActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.sport.SportDataActivity"
+            android:name="com.smartwear.publicwatch.ui.sport.SportDataActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.sport.SportShareActivity"
+            android:name="com.smartwear.publicwatch.ui.sport.SportShareActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.sport.SportRecordActivity"
+            android:name="com.smartwear.publicwatch.ui.sport.SportRecordActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.debug.DebugActivity"
+            android:name="com.smartwear.publicwatch.ui.debug.DebugActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.debug.DebugFirewareUpgradeActivity"
+            android:name="com.smartwear.publicwatch.ui.debug.DebugFirewareUpgradeActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.debug.DebugDialActivity"
+            android:name="com.smartwear.publicwatch.ui.debug.DebugDialActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.debug.DebugConnectActivity"
+            android:name="com.smartwear.publicwatch.ui.debug.DebugConnectActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.debug.DebugClassicBleActivity"
+            android:name="com.smartwear.publicwatch.ui.debug.DebugClassicBleActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.debug.DebugFeedbackActivity"
+            android:name="com.smartwear.publicwatch.ui.debug.DebugFeedbackActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
 
         <activity
-            android:name="com.smartwear.xzfit.ui.debug.DebugWeatherActivity"
+            android:name="com.smartwear.publicwatch.ui.debug.DebugWeatherActivity"
                         android:configChanges="${CONFIG_CHANGES}"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.debug.DebugNoticeActivity"
-                        android:configChanges="${CONFIG_CHANGES}"
-            android:launchMode="singleTask"
-            android:screenOrientation="nosensor" />
-
-        <activity
-            android:name="com.smartwear.xzfit.ui.debug.DebugListActivity"
+            android:name="com.smartwear.publicwatch.ui.debug.DebugNoticeActivity"
                         android:configChanges="${CONFIG_CHANGES}"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
 
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.notify.MsgNotifySetActivity"
+            android:name="com.smartwear.publicwatch.ui.debug.DebugListActivity"
+                        android:configChanges="${CONFIG_CHANGES}"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+
+        <activity
+            android:name="com.smartwear.publicwatch.ui.device.setting.notify.MsgNotifySetActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.remind.RemindSetActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.remind.RemindSetActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.remind.ReminderActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.remind.ReminderActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.remind.ClockEventReminderActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.remind.ClockEventReminderActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.remind.AddAlarmClockActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.remind.AddAlarmClockActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.remind.AddEventActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.remind.AddEventActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.notify.NotifyOtherSetActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.notify.NotifyOtherSetActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.DevMoreSetActivity"
+            android:name="com.smartwear.publicwatch.ui.device.DevMoreSetActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.more.ScreenDisplayActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.more.ScreenDisplayActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.more.DoNotDisturbActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.more.DoNotDisturbActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.more.LightSetActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.more.LightSetActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.more.ApplicationSortActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.more.ApplicationSortActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.more.LanguageSetActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.more.LanguageSetActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.more.ShortReplyActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.more.ShortReplyActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.scan.BindDeviceActivity"
+            android:name="com.smartwear.publicwatch.ui.device.scan.BindDeviceActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.login.privacy.PrivacyPolicyActivity"
+            android:name="com.smartwear.publicwatch.ui.login.privacy.PrivacyPolicyActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.login.privacy.UseAgreementActivity"
+            android:name="com.smartwear.publicwatch.ui.login.privacy.UseAgreementActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.login.privacy.PrivacyStatementActivity"
+            android:name="com.smartwear.publicwatch.ui.login.privacy.PrivacyStatementActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.login.LoginHomeActivity"
+            android:name="com.smartwear.publicwatch.ui.login.LoginHomeActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.login.register.RegisterActivity"
+            android:name="com.smartwear.publicwatch.ui.login.register.RegisterActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.login.FindPassWordActivity"
+            android:name="com.smartwear.publicwatch.ui.login.FindPassWordActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.user.UserInfoActivity"
+            android:name="com.smartwear.publicwatch.ui.user.UserInfoActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.user.PersonalInfoActivity"
+            android:name="com.smartwear.publicwatch.ui.user.PersonalInfoActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.user.UnitSettingActivity"
+            android:name="com.smartwear.publicwatch.ui.user.UnitSettingActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.user.TargetSettingActivity"
+            android:name="com.smartwear.publicwatch.ui.user.TargetSettingActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.user.HelpAndFeedbackMainActivity"
+            android:name="com.smartwear.publicwatch.ui.user.HelpAndFeedbackMainActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.user.AboutActivity"
+            android:name="com.smartwear.publicwatch.ui.user.AboutActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.user.QuestionFeedbackActivity"
+            android:name="com.smartwear.publicwatch.ui.user.QuestionFeedbackActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.backgroundpermission.BackgroundPermissionMainActivity"
+            android:name="com.smartwear.publicwatch.ui.device.backgroundpermission.BackgroundPermissionMainActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.backgroundpermission.BackgroundDetailsActivity"
+            android:name="com.smartwear.publicwatch.ui.device.backgroundpermission.BackgroundDetailsActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.smartwear.xzfit.ui.user.AccountSecurityActivity"
+            android:name="com.smartwear.publicwatch.ui.user.AccountSecurityActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.smartwear.xzfit.ui.user.WriteOffActivity"
+            android:name="com.smartwear.publicwatch.ui.user.WriteOffActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.smartwear.xzfit.ui.user.DataReductionActivity"
+            android:name="com.smartwear.publicwatch.ui.user.DataReductionActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.smartwear.xzfit.ui.user.GoogleFitActivity"
+            android:name="com.smartwear.publicwatch.ui.user.GoogleFitActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.smartwear.xzfit.ui.user.StravaActivity"
+            android:name="com.smartwear.publicwatch.ui.user.StravaActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.smartwear.xzfit.ui.user.StravaWebLoginActivity"
+            android:name="com.smartwear.publicwatch.ui.user.StravaWebLoginActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="true"
             android:launchMode="singleTask"
@@ -615,11 +615,11 @@
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
 
-                <!-- scheme StravaManager XZFIT_SCHEME_URL scheme协议头 -->
+                <!-- scheme StravaManager Lit Brick_SCHEME_URL scheme协议头 -->
                 <!-- host https://www.strava.com/settings/api Strava应用配置回调域 -->
                 <data
                     android:host="wearheart"
-                    android:scheme="xzfit" />
+                    android:scheme="Lit Brick" />
 
                 <category android:name="android.intent.category.DEFAULT" />
 
@@ -629,103 +629,103 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.ecg.EcgDetailsActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.ecg.EcgDetailsActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.ecg.EcgReportActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.ecg.EcgReportActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="landscape" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.ecg.EcgCalibrationQuestionActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.ecg.EcgCalibrationQuestionActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.ecg.EcgCalibrationActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.ecg.EcgCalibrationActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.ecg.EcgActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.ecg.EcgActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.ecg.EcgMeasureActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.ecg.EcgMeasureActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.user.QAActivity"
+            android:name="com.smartwear.publicwatch.ui.user.QAActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.sportmode.SportsModeActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.sportmode.SportsModeActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.sportmode.AddSportModeActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.sportmode.AddSportModeActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.worldclock.WorldClockActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.worldclock.WorldClockActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.worldclock.AddWorldClockActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.worldclock.AddWorldClockActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.history.StressActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.history.StressActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.healthy.history.OfflineStressActivity"
+            android:name="com.smartwear.publicwatch.ui.healthy.history.OfflineStressActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.device.setting.stress.StressSetActivity"
+            android:name="com.smartwear.publicwatch.ui.device.setting.stress.StressSetActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.region.RegionSettingActivity"
+            android:name="com.smartwear.publicwatch.ui.region.RegionSettingActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.region.SelectRegionActivity"
+            android:name="com.smartwear.publicwatch.ui.region.SelectRegionActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
         <activity
-            android:name="com.smartwear.xzfit.ui.debug.DebugLogDecodingActivity"
+            android:name="com.smartwear.publicwatch.ui.debug.DebugLogDecodingActivity"
             android:configChanges="${CONFIG_CHANGES}"
             android:exported="false"
             android:launchMode="singleTask"
@@ -742,7 +742,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="${GOOGLE_MAP_API_KEY}" /> <!-- 监听系统通知 -->
         <service
-            android:name="com.smartwear.xzfit.service.MyNotificationsService"
+            android:name="com.smartwear.publicwatch.service.MyNotificationsService"
             android:enabled="true"
             android:exported="true"
             android:foregroundServiceType="location"
@@ -804,7 +804,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" /> <!-- 定位服务 -->
         <service
-            android:name="com.smartwear.xzfit.service.LocationService"
+            android:name="com.smartwear.publicwatch.service.LocationService"
             android:enabled="true"
             android:exported="true"
             android:foregroundServiceType="location">
@@ -814,27 +814,27 @@
         </service> <!-- 自定义广播 -->
         <!-- 设备找手机通知被用户取消广播 -->
         <receiver
-            android:name="com.smartwear.xzfit.receiver.StopFindPhoneReceiver"
-            android:exported="false" /> <!-- xzfit 服务器url -->
+            android:name="com.smartwear.publicwatch.receiver.StopFindPhoneReceiver"
+            android:exported="false" /> <!-- Lit Brick 服务器url -->
         <meta-data
-            android:name="com.smartwear.xzfit.serverUrl"
+            android:name="com.smartwear.publicwatch.serverUrl"
             android:value="${SERVICE_URL}" />
         <meta-data
-            android:name="com.smartwear.xzfit.foreignServerUrl"
+            android:name="com.smartwear.publicwatch.foreignServerUrl"
             android:value="${SERVICE_URL_FOREIGN}" />
         <meta-data
-            android:name="com.smartwear.xzfit.trackingServerUrl"
+            android:name="com.smartwear.publicwatch.trackingServerUrl"
             android:value="${TRACKING_SERVICE_URL}" />
         <meta-data
-            android:name="com.smartwear.xzfit.trackingForeignServerUrl"
+            android:name="com.smartwear.publicwatch.trackingForeignServerUrl"
             android:value="${TRACKING_SERVICE_URL_FOREIGN}" /> <!-- strava 服务器url -->
         <meta-data
-            android:name="com.smartwear.xzfit.stravaUrl"
+            android:name="com.smartwear.publicwatch.stravaUrl"
             android:value="${SERVICE_STRAVA_URL}" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.smartwear.xzfit.fileprovider"
+            android:authorities="com.smartwear.publicwatch.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

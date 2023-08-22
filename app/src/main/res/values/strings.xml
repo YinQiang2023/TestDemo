@@ -2,11 +2,11 @@
     <!-- 默认-英语 -->
     <!--占位符放置最前%-->
     <string name="miss_permission_hint">App needs to request %s permission to use this function normally</string>
-    <string name="denied_forever_permission_hint">Permission request rejected. App needs to use %s permission. Please go to \"Settings\">\"App management\">\"XzFit\">\"Permission\" to allow related permission to use this function normally</string>
+    <string name="denied_forever_permission_hint">Permission request rejected. App needs to use %s permission. Please go to \"Settings\">\"App management\">\"Lit Brick\">\"Permission\" to allow related permission to use this function normally</string>
     <string name="remote_landing">Your account was accessed on another device at %s. If it was not done by you, the password may have been leaked. You are advised to go to App to log in, click Forget Password and change the password</string>
     <string name="exit_app_tips">Press again to exit App</string>
     <string name="privacy_statement_title">Privacy permission statement</string>
-    <string name="privacy_statement_content">Welcome to XzFit. You can use this App to manage your device and view related exercise and health data. We will strictly abide by relevant laws, regulations and privacy policies to protect your personal information. To provide the most basic services, the App needs to be connected to the internet.</string>
+    <string name="privacy_statement_content">Welcome to Lit Brick. You can use this App to manage your device and view related exercise and health data. We will strictly abide by relevant laws, regulations and privacy policies to protect your personal information. To provide the most basic services, the App needs to be connected to the internet.</string>
     <string name="privacy_statement_agree">Agree and continue</string>
     <string name="privacy_statement_quit">Exit</string>
     <string name="privacy_statement_disagree">Disagree</string>
@@ -22,7 +22,7 @@
     <string name="send_code_mistake">Wrong verification code</string>
     <string name="not_network_tips">Please make sure WiFi or data network is available</string>
     <string name="err_network_tips">Request failed. Retry later</string>
-    <string name="disagree_context">Your consent is required before you continue to use XzFit services.</string>
+    <string name="disagree_context">Your consent is required before you continue to use Lit Brick services.</string>
     <string name="disagree_left_btn">Disagree</string>
     <string name="disagree_right_btn">Agree and continue</string>
     <string name="scan_device_title">Bind device</string>
@@ -71,7 +71,7 @@
     <string name="device_fragment_using">Enabling</string>
     <string name="device_fragment_using_no">Not enabled</string>
     <string name="device_set_title">Device detail</string>
-    <string name="device_welcome_user">XzFit Welcome</string>
+    <string name="device_welcome_user">Lit Brick Welcome</string>
     <string name="device_no_bind_add_text">Please add your device</string>
     <string name="device_no_bind_click_add_text">Click to add your device</string>
     <string name="device_battery_charge_state">Charging</string>
@@ -304,7 +304,7 @@
     <string name="dialog_unbind_btn">Unbind</string>
     <string name="dialog_unbind_btn2">Continue to unbind</string>
     <string name="dialog_title_bluetooth_not_enabled">Bluetooth not enabled</string>
-    <string name="dialog_context_open_bluetooth">Please turn on Bluetooth to allow XzFit to be connected with device</string>
+    <string name="dialog_context_open_bluetooth">Please turn on Bluetooth to allow Lit Brick to be connected with device</string>
     <string name="dialog_confirm_unbind_device_tips">Confirm to unbind device?</string>
     <string name="dialog_confirm_unbind_device_tips2">Device not connected. Unbinding may cause loss of unsynced data. Continue to unbind?</string>
     <string name="dialog_confirm_unbind_device_tips3">Unbinding not enabled for device. It requires factory reset manually for device to bind with account. Confirm to unbind?</string>
@@ -577,11 +577,11 @@
     <string name="know">Got it</string>
     <string name="manual_binding">Manual settings</string>
     <string name="apply_permission">Permission application</string>
-    <string name="open_gps_hint">Please turn on XzFit location service in Settings>Privacy>Location Service</string>
+    <string name="open_gps_hint">Please turn on Lit Brick location service in Settings>Privacy>Location Service</string>
     <string name="open_location_per_explain">This App collects location data to enable [background acquisition of device location information], [acquisition of device location information], to record your location track and perform App exercise function.</string>
-    <string name="open_notify_hint">App needs to use notification access for device music control, notification of incoming calls and SMS, third-party App notifications synced to device, etc. Please grant notification access to XzFit to use this function normally</string>
-    <string name="open_notify_donotdisturb_hint">App  needs to use DND permission. Please turn on DND permission for XzFit to use this function normally</string>
-    <string name="notification_permission_hint">App needs to use App notification permission. Please go to \"Settings\">\"Notification management\">"XzFit\"> and allow notification permission to use App normally</string>
+    <string name="open_notify_hint">App needs to use notification access for device music control, notification of incoming calls and SMS, third-party App notifications synced to device, etc. Please grant notification access to Lit Brick to use this function normally</string>
+    <string name="open_notify_donotdisturb_hint">App  needs to use DND permission. Please turn on DND permission for Lit Brick to use this function normally</string>
+    <string name="notification_permission_hint">App needs to use App notification permission. Please go to \"Settings\">\"Notification management\">"Lit Brick\"> and allow notification permission to use App normally</string>
     <string name="permission_location">Location information</string>
     <string name="permission_camera">Camera, file and media</string>
     <string name="permission_sdcard">File and media</string>
@@ -723,7 +723,7 @@
     <string name="locate_success_tips">Located</string>
     <string name="locate_tips1">Location not turned on. Turn on location?</string>
     <string name="guide_title">User guide</string>
-    <string name="guide_bottom_tips1">Welcome to XzFit App. You may use this App</string>
+    <string name="guide_bottom_tips1">Welcome to Lit Brick App. You may use this App</string>
     <string name="guide_bottom_tips2">to manage your device and view related exercise and health data</string>
     <string name="personal_information">Personal data</string>
     <string name="unit_setting">Unit settings</string>
@@ -803,8 +803,8 @@
     <string name="running_permission_title">Enabling background run access</string>
     <string name="running_permission_cur_phone">Current mobile phones</string>
     <string name="phone_huawei">Huawei EMUI/HarmonyOS</string>
-    <string name="running_permission_tip">Why do I need to keep the XzFit APP running in the background?</string>
-    <string name="running_permission_tip2">When using the message alert function, you need to keep XzFit APP running in the background. If incoming calls, SMS and APP notification alerts are not received, it may be due to the following system misuse process, you can refer to the following suggestions to set it up. \n\nNote: If you have third party security software installed in your phone, you also need to add XzFit to its application whitelist.</string>
+    <string name="running_permission_tip">Why do I need to keep the Lit Brick APP running in the background?</string>
+    <string name="running_permission_tip2">When using the message alert function, you need to keep Lit Brick APP running in the background. If incoming calls, SMS and APP notification alerts are not received, it may be due to the following system misuse process, you can refer to the following suggestions to set it up. \n\nNote: If you have third party security software installed in your phone, you also need to add Lit Brick to its application whitelist.</string>
     <string name="running_permission_tip3">Setting method</string>
     <string name="running_permission_tip4">The steps are as follows:</string>
     <string name="running_permission_boot_completed">Allow application self-start</string>
@@ -823,47 +823,47 @@
     <string name="power_saving2">2. Open the \"Settings\" button in the upper right corner of the page, and turn off \"Battery saver\" and \"Ultra battery saver\" on the \"Settings\" page;</string>
     <string name="power_saving3">3. Go back to the \"Battery saver and Battery\" page, click \"Battery\" > \"Automated tasks\", and choose to turn off all automatic task scenarios after entering.</string>
     <string name="unlimited1">1. Open Settings and click on \"Apps\" > \"Manage apps\".</string>
-    <string name="unlimited2">2. locate the XzFit APP and click into it.</string>
+    <string name="unlimited2">2. locate the Lit Brick APP and click into it.</string>
     <string name="unlimited3">3. Click on \"Battery saver\", go to it and select \"No restrictions\".</string>
     <string name="boot_completed_xiaomi1">1. Open Settings and click on \"Apps\" > \"Manage apps\".</string>
-    <string name="boot_completed_xiaomi2">2. locate the XzFit APP and click into it.</string>
+    <string name="boot_completed_xiaomi2">2. locate the Lit Brick APP and click into it.</string>
     <string name="boot_completed_xiaomi3">3. Select \" Autostart\" and turn it on.</string>
     <string name="boot_completed_huawei1">1. Open the \"Optimizer\" App on the desktop of your mobile phone, select \"Application Launch Management\" and click on it to enter.</string>
-    <string name="boot_completed_huawei2">2. Find XzFit, if the switch is off, turn the switch on and then off;If the switch is on, set the switch to off, and in the \"Manual Management\" pop-up window, check the \"Auto-launch\", \"Secondary launch\" and \"Run in background\" boxes and click \"OK\".</string>
+    <string name="boot_completed_huawei2">2. Find Lit Brick, if the switch is off, turn the switch on and then off;If the switch is on, set the switch to off, and in the \"Manual Management\" pop-up window, check the \"Auto-launch\", \"Secondary launch\" and \"Run in background\" boxes and click \"OK\".</string>
     <string name="boot_completed_huawei3">If you are unable to set it up as described above, try the following steps.</string>
     <string name="boot_completed_huawei4">1. open the system settings of the phone.</string>
     <string name="boot_completed_huawei5">2. Select "Apps" (or "Apps&amp;services" for HarmonyOS) > "App Launch".</string>
-    <string name="boot_completed_huawei6">3. Find XzFit, if the switch is off, turn the switch on and then off;If the switch is on, set the switch to off, and in the \"Manual Management\" pop-up window, check the \"Auto-launch\", \"Secondary launch\" and \"Run in background\" boxes and click \"OK\".</string>
+    <string name="boot_completed_huawei6">3. Find Lit Brick, if the switch is off, turn the switch on and then off;If the switch is on, set the switch to off, and in the \"Manual Management\" pop-up window, check the \"Auto-launch\", \"Secondary launch\" and \"Run in background\" boxes and click \"OK\".</string>
     <string name="boot_completed_oppo1">1. Open the \"Phone Manager\" App on the desktop of your phone and select \"Privacy permissions\".</string>
     <string name="boot_completed_oppo2">2. Find \"Startup Manager\" in Privacy permissions and click on it to enter.</string>
-    <string name="boot_completed_oppo3">3. Find XzFit in the list of programs and turn on the switch</string>
+    <string name="boot_completed_oppo3">3. Find Lit Brick in the list of programs and turn on the switch</string>
     <string name="boot_completed_vivo1">1. Open the \"iManager\" App on your mobile desktop and click on \"App Manager\".</string>
     <string name="boot_completed_vivo2">2. Click on \"Permission management\" in the app manager interface.</string>
     <string name="boot_completed_vivo3">3. Find \"Autostart\" in Permission Management.</string>
-    <string name="boot_completed_vivo4">4. Find XzFit in the Autostart manager and turn on the switch.</string>
+    <string name="boot_completed_vivo4">4. Find Lit Brick in the Autostart manager and turn on the switch.</string>
     <string name="Locking_xiaomi1">1. Open the \"Recently Opened Programs\" page of your phone.</string>
-    <string name="Locking_xiaomi2">2. Long press the XzFit APP card until the lock icon appears on the right side, click to lock it.</string>
+    <string name="Locking_xiaomi2">2. Long press the Lit Brick APP card until the lock icon appears on the right side, click to lock it.</string>
     <string name="Locking_huawei1">1. Open the \"Recently Opened Programs\" page of your phone.</string>
-    <string name="Locking_huawei2">2. Just pull down the XzFit APP and the lock symbol will appear at the top of the APP.</string>
+    <string name="Locking_huawei2">2. Just pull down the Lit Brick APP and the lock symbol will appear at the top of the APP.</string>
     <string name="Locking_oppo1">1. Open the \"Recently Opened Programs\" page of your phone.</string>
-    <string name="Locking_oppo2">2. Click the \":\" at the top of XzFit APP, the lock icon will appear, click to lock it.</string>
+    <string name="Locking_oppo2">2. Click the \":\" at the top of Lit Brick APP, the lock icon will appear, click to lock it.</string>
     <string name="Locking_vivo1">1. Open the \"Recently Opened Programs\" page of your phone.</string>
-    <string name="Locking_vivo2">2. Just pull down the XzFit APP and the lock symbol will appear above the APP card.</string>
+    <string name="Locking_vivo2">2. Just pull down the Lit Brick APP and the lock symbol will appear above the APP card.</string>
     <string name="powermanagement1">1. Open your phone\'s \"Settings\".</string>
     <string name="powermanagement2">2. Search for \"Battery optimization\" in the search box.</string>
     <string name="powermanagement3">3. Click into Battery Optimization and select \"All apps\" as the filter in the upper left corner.</string>
-    <string name="powermanagement4">4. Find XzFit, select \"Not allowed\" and click OK.</string>
+    <string name="powermanagement4">4. Find Lit Brick, select \"Not allowed\" and click OK.</string>
     <string name="power_consumption_oppo1">1. Open the settings and click on \"Battery\".</string>
     <string name="power_consumption_oppo2">2. Click on \"App battery management\".</string>
-    <string name="power_consumption_oppo3">3. locate XzFit and click into it.</string>
+    <string name="power_consumption_oppo3">3. locate Lit Brick and click into it.</string>
     <string name="power_consumption_oppo4">4. Turn the allow background activity switch on.</string>
     <string name="power_consumption_vivo1">1. Open the phone settings and click on \"Battery\".</string>
     <string name="power_consumption_vivo2">2. select \"High background power consumption\" (called \"Background power consumption management\" by Origin OS).</string>
-    <string name="power_consumption_vivo3">3. Find XzFit and click the Allow button (for Origin OS, find XzFit and select \"High background power usage\")</string>
-    <string name="phone_other1">1. lock the XzFit APP in the Recently Opened Programs page.</string>
-    <string name="phone_other2">2. find Self-boot Management in Security Centre or Phone Settings, then find XzFit and switch it on.</string>
-    <string name="phone_other3">3. add XzFit to its whitelist in the Security Centre or in the phone settings.</string>
-    <string name="phone_other4">4. If you have installed relevant application hibernation tools in your phone, such as Green Guardian and Self-Start Manager, you need to remove XzFit from the list of these hibernation applications.</string>
+    <string name="power_consumption_vivo3">3. Find Lit Brick and click the Allow button (for Origin OS, find Lit Brick and select \"High background power usage\")</string>
+    <string name="phone_other1">1. lock the Lit Brick APP in the Recently Opened Programs page.</string>
+    <string name="phone_other2">2. find Self-boot Management in Security Centre or Phone Settings, then find Lit Brick and switch it on.</string>
+    <string name="phone_other3">3. add Lit Brick to its whitelist in the Security Centre or in the phone settings.</string>
+    <string name="phone_other4">4. If you have installed relevant application hibernation tools in your phone, such as Green Guardian and Self-Start Manager, you need to remove Lit Brick from the list of these hibernation applications.</string>
     <string name="running_permission_set">Go to set</string>
     <string name="agps_updating_tips">AGPS updating</string>
     <string name="agps_update_success_tips">Updated</string>
@@ -879,7 +879,7 @@
     <string name="bind_view_back_tips">Exit binding?</string>
     <string name="bind_device_tip2">Please click Agree on watch</string>
     <string name="range_tips">Range:</string>
-    <string name="device_sport_no_per_tips">XzFit needs location permission for normal use of exercise management on device</string>
+    <string name="device_sport_no_per_tips">Lit Brick needs location permission for normal use of exercise management on device</string>
     <string name="device_sport_no_gps_tips">Please turn on system location for normal use of exercise management on device</string>
     <string name="accounts_ecurity">Accounts and Security</string>
     <string name="write_off">Delete account</string>
@@ -890,7 +890,7 @@
     <string name="write_off_last_tips">After entering the password and confirming it, the account will be logged out</string>
     <string name="data_reduction">Data authorization</string>
     <string name="close_power_saving">It is detected that the power saving mode is turned on, click OK to exit the power saving mode</string>
-    <string name="google_fit_explanation">If you choose to turn on the Google fit switch, you will share XzFit fitness data (which may include steps, distance, calories, height, weight, sleep, etc.) to Google Fit. You can connect or disconnect the sharing at any time in the XzFit APP.</string>
+    <string name="google_fit_explanation">If you choose to turn on the Google fit switch, you will share Lit Brick fitness data (which may include steps, distance, calories, height, weight, sleep, etc.) to Google Fit. You can connect or disconnect the sharing at any time in the Lit Brick APP.</string>
     <string name="manual_bind">Manual binding</string>
     <string name="scan_timeout_tips">The QR code was not scanned, do you want to continue?</string>
     <string name="connect_fail_tips">The device has been reset to factory settings or is bound by another account, please check and try again</string>
@@ -975,13 +975,13 @@
     <string name="contact_duplicate_tip">Contact already exists</string>
     <string name="contact_del_tip">Are you sure you want to delete this contact?</string>
     <string name="refreshing_tips">Refreshing…</string>
-    <string name="strava_data_hint">*Because Strava uses different algorithms, some data items may not be completely consistent with XzFit</string>
+    <string name="strava_data_hint">*Because Strava uses different algorithms, some data items may not be completely consistent with Lit Brick</string>
     <string name="ucrop_label_original" tools:override="true">Original</string>
     <string name="ucrop_menu_crop" tools:override="true">Crop</string>
     <string name="ucrop_rotate" tools:override="true">Rotate</string>
     <string name="ucrop_scale" tools:override="true">Scale</string>
     <string name="img_fail_tip">Failed to get image resource, please try to get it again</string>
-    <string name="strava_explanation">If you choose to turn on the Strava switch, you will share XzFit fitness data (including steps, distance, calories, etc.) to Strava. You can connect or disconnect the sharing at any time in the XzFit APP.</string>
+    <string name="strava_explanation">If you choose to turn on the Strava switch, you will share Lit Brick fitness data (including steps, distance, calories, etc.) to Strava. You can connect or disconnect the sharing at any time in the Lit Brick APP.</string>
     <string name="pool_length">Pool length</string>
     <string name="trip">Number of trips</string>
     <string name="avg_stroke_frequency">Average stroke frequency</string>
@@ -1260,17 +1260,17 @@
     <string name="not_support_device_bind">Binding to this device is not currently supported</string>
     <string name="running_permission_one_plus">One plus</string>
     <string name="locking_one_plus1">1. Open the \"Recently Used Programs\" page of the mobile phone;</string>
-    <string name="locking_one_plus2">2. Click the XzFit Logo, and click to lock the app after a pop-up window appears;</string>
-    <string name="power_consumption_one_plus1">1. Open the system settings, click \"Applications\" > select XzFit to enter;</string>
+    <string name="locking_one_plus2">2. Click the Lit Brick Logo, and click to lock the app after a pop-up window appears;</string>
+    <string name="power_consumption_one_plus1">1. Open the system settings, click \"Applications\" > select Lit Brick to enter;</string>
     <string name="power_consumption_one_plus2">2. Click \"Battery\" to enter;</string>
     <string name="power_consumption_one_plus3">3. Select \"Do not optimize\";</string>
     <string name="running_permission_samsung">Samsung</string>
     <string name="locking_samsung1">1. Open the \"Recently Used Programs\" page of the mobile phone;</string>
-    <string name="locking_samsung2">2. Press and hold the XzFit card, and click to lock it after a pop-up window appears;</string>
-    <string name="power_consumption_samsung1">1. Open the system settings, click \"Applications\" > select XzFit to enter;</string>
+    <string name="locking_samsung2">2. Press and hold the Lit Brick card, and click to lock it after a pop-up window appears;</string>
+    <string name="power_consumption_samsung1">1. Open the system settings, click \"Applications\" > select Lit Brick to enter;</string>
     <string name="power_consumption_samsung2">2. Click \"Battery\" to enter, select \"Do not optimize\";</string>
     <string name="running_permission_motorola">Motorola</string>
-    <string name="power_consumption_motorola1">1. Open the system settings, click \"Apps and Notifications\" > select XzFit to enter;</string>
+    <string name="power_consumption_motorola1">1. Open the system settings, click \"Apps and Notifications\" > select Lit Brick to enter;</string>
     <string name="power_consumption_motorola2">2. Click \"Battery\" to enter, select \"Do not optimize\";</string>
     <string name="notify_guided_hint">If you want to receive message notifications on the device, it is recommended to turn on the message reminder switch and incoming call reminder</string>
     <string name="set_up_later">Set up later</string>
@@ -1305,7 +1305,7 @@
     <string name="notiface_waths_no_prompt_1">条新消息</string>
     <string name="notiface_waths_no_prompt_2">new messages</string>
     <!--  公用不翻译  -->
-    <string name="main_app_name">XzFit</string>
+    <string name="main_app_name">Lit Brick</string>
     <string name="no_data_sign">--</string>
     <string name="hr_unit_bpm">bpm</string>
     <string name="unit_steps">steps</string>

@@ -19,7 +19,7 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "XzFit"
+rootProject.name = "Lit Brick"
 include ':app'
 include ':ZhAppBle'
 include ':mycamera'

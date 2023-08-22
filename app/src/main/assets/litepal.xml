@@ -6,25 +6,25 @@
     <version value="6" />
     <!--映射模型-->
     <list>
-        <mapping class="com.smartwear.xzfit.db.model.Daily" />
-        <mapping class="com.smartwear.xzfit.db.model.Sleep" />
-        <mapping class="com.smartwear.xzfit.db.model.HeartRate" />
-        <mapping class="com.smartwear.xzfit.db.model.SingleHeartRate" />
-        <mapping class="com.smartwear.xzfit.db.model.sport.SportModleInfo" />
-        <mapping class="com.smartwear.xzfit.db.model.sport.ExerciseApp" />
-        <mapping class="com.smartwear.xzfit.db.model.sport.ExerciseAuxiliary" />
-        <mapping class="com.smartwear.xzfit.db.model.sport.ExerciseIndoor" />
-        <mapping class="com.smartwear.xzfit.db.model.sport.ExerciseOutdoor" />
-        <mapping class="com.smartwear.xzfit.db.model.sport.ExerciseSwimming" />
-        <mapping class="com.smartwear.xzfit.db.model.BloodOxygen" />
-        <mapping class="com.smartwear.xzfit.db.model.EffectiveStand" />
-        <mapping class="com.smartwear.xzfit.db.model.SingleBloodOxygen" />
-        <mapping class="com.smartwear.xzfit.db.model.Ecg" />
-        <mapping class="com.smartwear.xzfit.db.model.SinglePressure" />
-        <mapping class="com.smartwear.xzfit.db.model.Pressure" />
-        <mapping class="com.smartwear.xzfit.db.model.track.AppTrackingLog" />
-        <mapping class="com.smartwear.xzfit.db.model.track.DevTrackingLog" />
-        <mapping class="com.smartwear.xzfit.db.model.track.BehaviorTrackingLog" />
+        <mapping class="com.smartwear.publicwatch.db.model.Daily" />
+        <mapping class="com.smartwear.publicwatch.db.model.Sleep" />
+        <mapping class="com.smartwear.publicwatch.db.model.HeartRate" />
+        <mapping class="com.smartwear.publicwatch.db.model.SingleHeartRate" />
+        <mapping class="com.smartwear.publicwatch.db.model.sport.SportModleInfo" />
+        <mapping class="com.smartwear.publicwatch.db.model.sport.ExerciseApp" />
+        <mapping class="com.smartwear.publicwatch.db.model.sport.ExerciseAuxiliary" />
+        <mapping class="com.smartwear.publicwatch.db.model.sport.ExerciseIndoor" />
+        <mapping class="com.smartwear.publicwatch.db.model.sport.ExerciseOutdoor" />
+        <mapping class="com.smartwear.publicwatch.db.model.sport.ExerciseSwimming" />
+        <mapping class="com.smartwear.publicwatch.db.model.BloodOxygen" />
+        <mapping class="com.smartwear.publicwatch.db.model.EffectiveStand" />
+        <mapping class="com.smartwear.publicwatch.db.model.SingleBloodOxygen" />
+        <mapping class="com.smartwear.publicwatch.db.model.Ecg" />
+        <mapping class="com.smartwear.publicwatch.db.model.SinglePressure" />
+        <mapping class="com.smartwear.publicwatch.db.model.Pressure" />
+        <mapping class="com.smartwear.publicwatch.db.model.track.AppTrackingLog" />
+        <mapping class="com.smartwear.publicwatch.db.model.track.DevTrackingLog" />
+        <mapping class="com.smartwear.publicwatch.db.model.track.BehaviorTrackingLog" />
     </list>
 
     <!--region 数据库升级记录 -->

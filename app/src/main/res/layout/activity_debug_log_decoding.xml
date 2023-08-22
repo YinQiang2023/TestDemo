@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autoLink="web"
-                android:text="操作方法\n\n1.将[反馈日志文件(.zip或.bin)]，放到[内部存储\\Android\\data\\com.smartwear.xzfit\\files\\decoding]目录下\n\n2.点击[选择文件]按钮，选择文件\n\n3.点击[解码]开始解码"
+                android:text="操作方法\n\n1.将[反馈日志文件(.zip或.bin)]，放到[内部存储\\Android\\data\\com.smartwear.publicwatch\\files\\decoding]目录下\n\n2.点击[选择文件]按钮，选择文件\n\n3.点击[解码]开始解码"
                 android:textColor="@color/color_171717" />
 
             <TextView

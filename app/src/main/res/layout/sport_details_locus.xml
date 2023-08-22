@@ -19,7 +19,7 @@
             android:layout_weight="1">
 
 
-            <com.smartwear.xzfit.view.GoogleMapView
+            <com.smartwear.publicwatch.view.GoogleMapView
                 android:id="@+id/googleMapLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -29,9 +29,9 @@
                     android:id="@+id/gMap"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
-            </com.smartwear.xzfit.view.GoogleMapView>
+            </com.smartwear.publicwatch.view.GoogleMapView>
 
-            <com.smartwear.xzfit.view.AMapView
+            <com.smartwear.publicwatch.view.AMapView
                 android:id="@+id/aMap"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

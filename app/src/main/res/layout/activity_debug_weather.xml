@@ -32,7 +32,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
                 android:autoLink="web"
-                android:text="操作方法\n\n1.将[天气配置文件(.txt)]，放到[内部存储\\Android\\data\\com.smartwear.xzfit\\weather]目录下\n\n2.进入界面自动加载配置"
+                android:text="操作方法\n\n1.将[天气配置文件(.txt)]，放到[内部存储\\Android\\data\\com.smartwear.publicwatch\\weather]目录下\n\n2.进入界面自动加载配置"
                 android:textColor="@color/color_171717"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/frameLayout2" />

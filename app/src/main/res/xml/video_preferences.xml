@@ -15,7 +15,7 @@
 -->
 
 <PreferenceGroup
-    xmlns:camera="http://schemas.android.com/apk/res/com.smartwear.xzfit"
+    xmlns:camera="http://schemas.android.com/apk/res/com.smartwear.publicwatch"
     xmlns:tools="http://schemas.android.com/tools"
     camera:title="@string/pref_camcorder_settings_category"
     tools:ignore="ResAuto">

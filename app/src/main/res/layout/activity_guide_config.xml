@@ -25,7 +25,7 @@
         android:textSize="15sp"
         tools:text="描述内容" />
 
-    <com.smartwear.xzfit.ui.guide.view.PageIndicatorView
+    <com.smartwear.publicwatch.ui.guide.view.PageIndicatorView
         android:id="@+id/pageIndicator"
         android:layout_width="match_parent"
         android:layout_height="0dp"

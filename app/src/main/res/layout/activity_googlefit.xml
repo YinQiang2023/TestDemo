@@ -49,7 +49,7 @@
             app:layout_constraintStart_toEndOf="@+id/iv1"
             app:layout_constraintTop_toTopOf="@+id/iv1" />
 
-        <com.smartwear.xzfit.view.MySwitchCompat
+        <com.smartwear.publicwatch.view.MySwitchCompat
             android:id="@+id/mSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

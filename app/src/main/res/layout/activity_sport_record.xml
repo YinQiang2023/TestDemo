@@ -66,11 +66,11 @@
             android:layout_marginBottom="0dp"
             android:background="@color/transparent"
             android:visibility="visible"
-            app:month_view="com.smartwear.xzfit.ui.view.SimpleMonthView"
-            app:week_view="com.smartwear.xzfit.ui.view.SimpleWeekView" />
+            app:month_view="com.smartwear.publicwatch.ui.view.SimpleMonthView"
+            app:week_view="com.smartwear.publicwatch.ui.view.SimpleWeekView" />
 
 
-        <com.smartwear.xzfit.ui.refresh.CustomizeRefreshLayout
+        <com.smartwear.publicwatch.ui.refresh.CustomizeRefreshLayout
             android:id="@+id/lyRefresh"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -110,7 +110,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </com.smartwear.xzfit.ui.refresh.CustomizeRefreshLayout>
+        </com.smartwear.publicwatch.ui.refresh.CustomizeRefreshLayout>
 
     </com.haibin.calendarview.CalendarLayout>
 

@@ -98,7 +98,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.smartwear.xzfit.view.DeviceSportChartView
+    <com.smartwear.publicwatch.view.DeviceSportChartView
         android:id="@+id/mSpeedCurveChartView"
         android:layout_width="match_parent"
         android:layout_height="120dp"

@@ -17,7 +17,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <com.smartwear.xzfit.view.wheelview.widget.NumberWheelView
+    <com.smartwear.publicwatch.view.wheelview.widget.NumberWheelView
         android:id="@+id/wheel_picker_time_hour_wheel"
         style="@style/WheelDefault"
         android:layout_width="0dp"
@@ -31,7 +31,7 @@
         android:layout_gravity="center_vertical"
         android:text="" />
 
-    <com.smartwear.xzfit.view.wheelview.widget.NumberWheelView
+    <com.smartwear.publicwatch.view.wheelview.widget.NumberWheelView
         android:id="@+id/wheel_picker_time_minute_wheel"
         style="@style/WheelDefault"
         android:layout_width="0dp"
@@ -45,7 +45,7 @@
         android:layout_gravity="center_vertical"
         android:text="" />
 
-    <com.smartwear.xzfit.view.wheelview.widget.NumberWheelView
+    <com.smartwear.publicwatch.view.wheelview.widget.NumberWheelView
         android:id="@+id/wheel_picker_time_second_wheel"
         style="@style/WheelDefault"
         android:layout_width="0dp"
@@ -59,7 +59,7 @@
         android:layout_gravity="center_vertical"
         android:text="" />
 
-    <com.smartwear.xzfit.view.wheelview.widget.WheelView
+    <com.smartwear.publicwatch.view.wheelview.widget.WheelView
         android:id="@+id/wheel_picker_time_meridiem_wheel"
         style="@style/WheelDefault"
         android:layout_width="0dp"

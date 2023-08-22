@@ -40,7 +40,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-    <com.smartwear.xzfit.view.MySwitchCompat
+    <com.smartwear.publicwatch.view.MySwitchCompat
         android:id="@+id/mSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

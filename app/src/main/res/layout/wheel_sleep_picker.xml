@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <com.smartwear.xzfit.view.wheelview.widget.WheelView
+    <com.smartwear.publicwatch.view.wheelview.widget.WheelView
         android:id="@+id/wheelHour"
         style="@style/WheelDefault"
         android:layout_width="0dp"
@@ -19,7 +19,7 @@
         android:text=":"
         android:textSize="20sp" />
 
-    <com.smartwear.xzfit.view.wheelview.widget.WheelView
+    <com.smartwear.publicwatch.view.wheelview.widget.WheelView
         android:id="@+id/wheelMin"
         style="@style/WheelDefault"
         android:layout_width="0dp"

@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.smartwear.xzfit.view.wheelview.widget.WheelView
+        <com.smartwear.publicwatch.view.wheelview.widget.WheelView
             android:id="@+id/wheel_picker_linkage_first_wheel"
             style="@style/WheelDefault"
             android:layout_width="0dp"
@@ -34,7 +34,7 @@
             android:layout_gravity="center_vertical"
             android:text="" />
 
-        <com.smartwear.xzfit.view.wheelview.widget.WheelView
+        <com.smartwear.publicwatch.view.wheelview.widget.WheelView
             android:id="@+id/wheel_picker_linkage_second_wheel"
             style="@style/WheelDefault"
             android:layout_width="0dp"
@@ -48,7 +48,7 @@
             android:layout_gravity="center_vertical"
             android:text="" />
 
-        <com.smartwear.xzfit.view.wheelview.widget.WheelView
+        <com.smartwear.publicwatch.view.wheelview.widget.WheelView
             android:id="@+id/wheel_picker_linkage_third_wheel"
             style="@style/WheelDefault"
             android:layout_width="0dp"
