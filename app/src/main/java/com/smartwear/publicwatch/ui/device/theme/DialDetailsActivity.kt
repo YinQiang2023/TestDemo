@@ -113,6 +113,8 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
     private var deviceShape = ""  //主题形状 = 0=方形/1=球拍/2=圆形/3=圆角矩形1
     private var clockDialDataFormat = 0
 
+    private var siflieffectImgUrl = ""
+
     lateinit var layountInflater: LayoutInflater
     private val colorList = intArrayOf(
         R.color.theme_color1,
@@ -359,6 +361,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                                     val bitmapDrawable: BitmapDrawable = resource as BitmapDrawable
                                     val bitmap: Bitmap = bitmapDrawable.bitmap
                                     if (TextUtils.equals(deviceShape, "2")) {
+                                        //此处只需要显示效果
                                         binding.ivThemeMain.setImageBitmap(BmpUtils.getCoverBitmap2_1(this@DialDetailsActivity, bitmap))
                                     } else {
                                         binding.ivThemeMain.setImageBitmap(bitmap)
@@ -383,7 +386,10 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                                         oldBgBitmap = bitmap
                                         newBgBitmap = if (photoBitmap == null) bitmap else photoBitmap
                                         if (TextUtils.equals(deviceShape, "2")) {
+                                            //显示效果
                                             binding.ivThemeMain.setImageBitmap(BmpUtils.getCoverBitmap2_1(this@DialDetailsActivity, newBgBitmap))
+                                            //发送效果
+                                            newBgBitmap = BmpUtils.getCoverBitmap(this@DialDetailsActivity, newBgBitmap)
                                         } else {
                                             binding.ivThemeMain.setImageBitmap(newBgBitmap)
                                         }
@@ -437,6 +443,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                     it.data.groupDialList?.let { groups ->
                         groupDialList.addAll(groups)
                     }
+                    siflieffectImgUrl = it.data.effectImgUrl
                     if (!it.data.dialFileUrl.isNullOrEmpty()) {
                         val file = DialInfoResponse.DialFile()
                         file.dialFileUrl = it.data.dialFileUrl
@@ -445,6 +452,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                     if (!it.data.binSize.isNullOrEmpty()) {
                         binding.tvSize.text = "${UnitConversionUtils.bigDecimalFormat(it.data.binSize.trim().toFloat() / 1024)} KB"
                     }
+                    binding.llStyle.visibility = View.GONE
                     binding.layoutCustomize.visibility = View.GONE
                     binding.layoutSelectPicture.visibility = View.GONE
 
@@ -717,6 +725,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
      * 下载在线表盘
      */
     private fun downloadOnlineDial() {
+        dialog?.show()
         ErrorUtils.initType(ErrorUtils.ERROR_TYPE_FOR_DIAL)
         ErrorUtils.onLogResult("sendOnlineDial downFile start")
         LogUtils.i(TAG, "sendOnlineDial downFile start", true)
@@ -1001,7 +1010,11 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                     ToastUtils.showToast(R.string.healthy_sports_sync_fail)
                 }
             }
-
+            if (statusName != "READY") {
+                wrActivity?.get()?.apply {
+                    DialogUtils.dismissDialog(dialog)
+                }
+            }
         }
 
         override fun timeOut() {
@@ -1321,6 +1334,11 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                     ToastUtils.showToast(R.string.healthy_sports_sync_fail)
                 }
             }
+            if (statusName != "READY") {
+                wrActivity?.get()?.apply {
+                    DialogUtils.dismissDialog(dialog)
+                }
+            }
 
         }
 
@@ -1420,6 +1438,7 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                 val unZipDirPath = PathUtils.getExternalAppFilesPath() + "/otal/face/" + com.blankj.utilcode.util.FileUtils.getFileNameNoExtension(zipFile)
                 //解压
                 com.blankj.utilcode.util.FileUtils.createOrExistsDir(unZipDirPath)
+                com.blankj.utilcode.util.FileUtils.deleteAllInDir(unZipDirPath)
                 ZipUtils.unzipFile(zipFile, com.blankj.utilcode.util.FileUtils.getFileByPath(unZipDirPath))
                 //去掉一层文件夹再压缩
                 val faceZipPath = "${PathUtils.getExternalAppFilesPath()}/otal/face/dynamic_app.zip"
@@ -1457,9 +1476,9 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
 
     private inner class SifliDFUTask : ThreadUtils.SimpleTask<Int>() {
         var i = 0
-        var isOk = false
+        var isOk = -1
 
-        fun finish(isOk: Boolean) {
+        fun finish(isOk: Int) {
             i = 30
             this.isOk = isOk
         }
@@ -1474,18 +1493,23 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
 
         override fun onSuccess(result: Int?) {
             //超时 或者 完成（成功失败）
-            DialogUtils.dismissDialog(dialog)
             sifliFaceUploadDialog?.isShowing()?.let {
                 if (it) sifliFaceUploadDialog?.cancel()
+                sifliFaceUploadDialog = null
             }
-            //清除已使用的文件
-            com.blankj.utilcode.util.FileUtils.deleteAllInDir(PathUtils.getExternalAppFilesPath() + "/otal/face/")
-            if (!isOk) {
-                ToastUtils.showToast(R.string.healthy_sports_sync_fail)
-            } else {
+            if (isOk == 0) {
                 ToastUtils.showToast(R.string.sync_success_tips)
                 RefreshMyDialListState.postValue(true)
+            } else {
+                if(isOk == 37){
+                    ToastUtils.showToast(R.string.low_storage_tips)
+                }else {
+                    ToastUtils.showToast(R.string.healthy_sports_sync_fail)
+                }
             }
+            DialogUtils.dismissDialog(dialog)
+            //清除已使用的文件
+            com.blankj.utilcode.util.FileUtils.deleteAllInDir(PathUtils.getExternalAppFilesPath() + "/otal/face/")
         }
     }
 
@@ -1503,25 +1527,36 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
         DialogUtils.dismissDialog(dialog)
         startOrRefSifliTimeOut()
         progress?.let {
-            if (it == 0) {
-                com.blankj.utilcode.util.LogUtils.d("effectImgUrl:" + groupDialList[clickCount].effectImgUrl)
+            if (sifliFaceUploadDialog == null) {
+                val imgUrl = if(groupDialList.isEmpty()){
+                    siflieffectImgUrl
+                }else{
+                    groupDialList[clickCount].effectImgUrl
+                }
                 sifliFaceUploadDialog = DownloadDialog(
                     this@DialDetailsActivity,
                     getString(R.string.theme_center_dial_up_load_title),
-                    groupDialList[clickCount].effectImgUrl
+                    imgUrl
                 )
                 sifliFaceUploadDialog?.showDialog()
                 sifliFaceUploadDialog?.tvSize?.text = getString(R.string.theme_center_dial_up_load_tips)
-            } else {
-                sifliFaceUploadDialog?.progressView?.max = 100
-                sifliFaceUploadDialog?.progressView?.progress = it
-                sifliFaceUploadDialog?.tvProgress?.text = "$it%"
             }
+            sifliFaceUploadDialog?.progressView?.max = 100
+            sifliFaceUploadDialog?.progressView?.progress = it
+            sifliFaceUploadDialog?.tvProgress?.text = "$it%"
         }
     }
 
     private fun sifliFaceState(faceState: SifliReceiver.SifliFaceState) {
-        sifliDFUTask?.finish(faceState.state == 0)
+        if(faceState.state == 0) {
+            sifliDFUTask?.finish(faceState.state)
+        }else{
+            if(faceState.state == 2){
+                sifliDFUTask?.finish(faceState.rsp)
+            }else{
+                sifliDFUTask?.finish(faceState.state)
+            }
+        }
     }
 
     //endregion
@@ -1674,13 +1709,14 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
      * 裁剪完成
      */
     private fun cropDone() {
-        if (dialUri == null) {
+        val file = UriUtils.uri2File(dialUri)
+        if (dialUri == null || file == null) {
             ToastUtils.showToast(R.string.img_fail_tip)
             return
         }
         //压缩
         Luban.with(this)
-            .load(UriUtils.uri2File(dialUri))
+            .load(file)
             .ignoreBy(100) //压缩上限 100KB
             .filter { path -> !(TextUtils.isEmpty(path) || path.toLowerCase(Locale.ENGLISH).endsWith(".gif")) }
             .setTargetDir(Global.LUBAN_CACHE_DIR)
@@ -1700,7 +1736,9 @@ class DialDetailsActivity : BaseActivity<ActivityDialDetailsBinding, DeviceModel
                         photoBitmap = bitmap
                         //ImageUtils.save(bitmap,AppUtils.createImageFile(), Bitmap.CompressFormat.JPEG)
                         if (TextUtils.equals(deviceShape, "2")) {
+                            //发送效果
                             newBgBitmap = BmpUtils.getCoverBitmap(this@DialDetailsActivity, bitmap)
+                            //显示效果
                             binding.ivThemeMain.setImageBitmap(BmpUtils.getCoverBitmap2_1(this@DialDetailsActivity, bitmap))
                         } else {
                             newBgBitmap = bitmap

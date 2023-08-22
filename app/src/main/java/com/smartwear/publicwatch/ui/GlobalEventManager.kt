@@ -274,6 +274,7 @@ object GlobalEventManager {
     fun checkFirmwareUpgrade(isOnlyType: Boolean = false, deviceType: String = "") {
         topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity?)
         if (topActivity.get() == null) {
+            isCanShowFirmwareUpgrade = false
             return
         }
         val deviceModel: DeviceModel = ViewModelProvider(topActivity.get()!!).get(DeviceModel::class.java)
@@ -363,6 +364,7 @@ object GlobalEventManager {
         isUpload = true
         topActivity = WeakReference(ActivityUtils.getTopActivity() as AppCompatActivity?)
         if (topActivity.get() == null) {
+            isUpload = false
             return
         }
         val deviceModel: DeviceModel = ViewModelProvider(topActivity.get()!!).get(DeviceModel::class.java)
@@ -541,6 +543,7 @@ object GlobalEventManager {
         }
 
         override fun timeOut() {
+            isUpload = false
             topActivity.get()?.apply {
                 LogUtils.e(TAG, "showUpdateDialog getDeviceLargeFileState timeOut")
                 ErrorUtils.onLogResult("ota getDeviceLargeFileState timeOut")
@@ -658,6 +661,7 @@ object GlobalEventManager {
                 val zipFile = com.blankj.utilcode.util.FileUtils.getFileByPath(path)
                 val unZipDirPath = PathUtils.getExternalAppFilesPath() + "/otal/firmware/" + com.blankj.utilcode.util.FileUtils.getFileNameNoExtension(zipFile)
                 com.blankj.utilcode.util.FileUtils.createOrExistsDir(unZipDirPath)
+                com.blankj.utilcode.util.FileUtils.deleteAllInDir(unZipDirPath)
                 ZipUtils.unzipFile(zipFile, com.blankj.utilcode.util.FileUtils.getFileByPath(unZipDirPath))
                 return com.blankj.utilcode.util.FileUtils.listFilesInDir(unZipDirPath, true)
             }
@@ -740,7 +744,7 @@ object GlobalEventManager {
             if (!isOk) {
                 showUpdateFailedDialog()
             } else {
-                BleBCManager.getInstance().removeBond(SpUtils.getHeadsetMac(SpUtils.getValue(SpUtils.DEVICE_MAC, "")))
+                //BleBCManager.getInstance().removeBond(SpUtils.getHeadsetMac(SpUtils.getValue(SpUtils.DEVICE_MAC, "")))
                 isOtaSending = false
                 isUpload = false
             }

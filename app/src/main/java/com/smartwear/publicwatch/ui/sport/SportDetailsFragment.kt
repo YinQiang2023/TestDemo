@@ -933,7 +933,7 @@ class SportDetailsFragment : BaseFragment<FragmentSportDetailsBinding, SportMode
                     .append(allS).setFontSize(16f).setForegroundColor(ContextCompat.getColor(BaseApplication.mContext, R.color.color_171717))
                     .append(" ").setFontSize(10f)
                     .append(getString(R.string.unit_secs)).setFontSize(11f)
-                    .setForegroundColor(Color.WHITE)
+                    .setForegroundColor(ContextCompat.getColor(BaseApplication.mContext, R.color.color_171717))
                     .create()
             }
         }
