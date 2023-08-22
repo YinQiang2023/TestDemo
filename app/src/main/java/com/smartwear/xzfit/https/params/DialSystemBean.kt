@@ -5,6 +5,6 @@ class DialSystemBean {
     var deviceType = ""
     var languageCode = ""
     override fun toString(): String {
-        return "DialSystemBean(dialCodes='$dialCodes', deviceType='$deviceType')"
+        return "DialSystemBean(dialCodes='$dialCodes', deviceType='$deviceType', languageCode='$languageCode')"
     }
 }
