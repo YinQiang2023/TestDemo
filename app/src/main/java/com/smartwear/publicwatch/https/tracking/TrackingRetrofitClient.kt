@@ -55,7 +55,7 @@ object TrackingRetrofitClient {
 
                 val request: Request = chain.request().newBuilder()
                     .addHeader("appId", CommonAttributes.APP_ID)
-                    .addHeader("secretKey", "10d16a6f-d5dc-11ed-aedc-0c42a1f03fc6")
+                    .addHeader("secretKey", "d99e5b50-415211ee878400163e013639")
                     .addHeader("content-type", "application/json")
                     .addHeader("av", AppUtils.getAppVersionName())
                     .addHeader("ut", System.currentTimeMillis().toString())

@@ -89,7 +89,6 @@ object AppTrackingManager {
      */
     @JvmStatic
     fun trackingModule(moduleId: Int, trackingLog: TrackingLog, code: String = "", isEnd: Boolean = false, isStart: Boolean = false) {
-        if(true) return //TODO 可维可测 上架屏蔽 - 开发中
         if (moduleId < 10 || moduleId > 21) {
             com.smartwear.publicwatch.utils.LogUtils.e(TAG, "日志埋点异常 -- moduleId:$moduleId,trackingLog:$trackingLog")
             return
