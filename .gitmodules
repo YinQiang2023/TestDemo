@@ -1,3 +1,3 @@
 [submodule "PublicOneSdk"]
 	path = PublicOneSdk
-	url = git@github.com:zhouhaiandroid163/PublicOneSdk.git
+	url = https://github.com/zhouhaiandroid163/PublicOneSdk.git
