@@ -193,8 +193,8 @@ dependencies {
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
     //endregion
     //ZH BLE SDK
-    implementation project(path: ':ZhAppBle')
-    zhBleImplementation project(path: ':ZhAppBle')
+    implementation project(path: ':PublicOneSdk')
+    zhBleImplementation project(path: ':PublicOneSdk')
     //相机库
     implementation project(path: ':mycamera')
     //protobuf
